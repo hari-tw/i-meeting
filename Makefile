@@ -6,4 +6,4 @@ clean:
 	-rm -rf build/*
 
 test:
-	GHUNIT_CLI=1 CFFIXED_USER_HOME=. xcodebuild -project i-meeting.xcodeproj -sdk iphonesimulator6.0 -target i-meeting-tests -configuration Debug build
+	GHUNIT_CLI=1 CFFIXED_USER_HOME=. xcodebuild -project i-meeting.xcodeproj -sdk iphonesimulator5.0 -target i-meeting-tests -configuration Debug build
