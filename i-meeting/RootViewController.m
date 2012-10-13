@@ -47,4 +47,5 @@
     UIViewController *reader = [self.qrCodeController prepareQrCodeReader];
     [self presentModalViewController:reader animated:YES];
 }
+
 @end

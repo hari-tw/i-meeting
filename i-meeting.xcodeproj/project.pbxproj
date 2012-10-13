@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		832B188216295EC000035B63 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B188116295EC000035B63 /* CalendarViewController.m */; };
 		83AC4DAB16281DE5000C60C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAA16281DE5000C60C9 /* UIKit.framework */; };
 		83AC4DAD16281DE5000C60C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAC16281DE5000C60C9 /* Foundation.framework */; };
 		83AC4DAF16281DE5000C60C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAE16281DE5000C60C9 /* CoreGraphics.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		832B188016295EC000035B63 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		832B188116295EC000035B63 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		83AC4DA616281DE5000C60C9 /* i-meeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "i-meeting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83AC4DAA16281DE5000C60C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		83AC4DAC16281DE5000C60C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -187,6 +190,8 @@
 				83AC4DB916281DE5000C60C9 /* AppDelegate.h */,
 				83AC4DBA16281DE5000C60C9 /* AppDelegate.m */,
 				83AC4DDB16281E6E000C60C9 /* MainStoryboard.storyboard */,
+				832B188016295EC000035B63 /* CalendarViewController.h */,
+				832B188116295EC000035B63 /* CalendarViewController.m */,
 				83AC4DCF16281E3D000C60C9 /* Phone.h */,
 				83AC4DD016281E3D000C60C9 /* Phone.m */,
 				83AC4DD116281E3D000C60C9 /* QRCodeController.h */,
@@ -424,6 +429,7 @@
 				83AC4DD816281E3D000C60C9 /* QRCodeController.m in Sources */,
 				83AC4DD916281E3D000C60C9 /* QRCodeManager.m in Sources */,
 				83AC4DDA16281E3D000C60C9 /* RootViewController.m in Sources */,
+				832B188216295EC000035B63 /* CalendarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

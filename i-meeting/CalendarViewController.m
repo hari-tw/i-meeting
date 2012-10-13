@@ -1,0 +1,52 @@
+//
+//  CalendarViewController.m
+//  i-meeting
+//
+//  Created by Sanchit Bahal on 13/10/12.
+//  Copyright (c) 2012 ThoughtWorks Technologies (India) Pvt. Ltd. All rights reserved.
+//
+
+#import "CalendarViewController.h"
+
+@interface CalendarViewController ()
+
+- (void)loadCalendar;
+
+@end
+
+@implementation CalendarViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	[self loadCalendar];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)loadCalendar {
+    NSURL *url = [[NSURL alloc] initWithString:@"http://www.google.com/calendar/embed?src=thoughtworks.com_383736383938353235%40resource.calendar.google.com&ctz=Asia/Calcutta&mode=AGENDA&showPrint=0&showTabs=0"];
+    NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
+    
+    [self.webView loadRequest:urlRequest];
+
+}
+
+- (void)viewDidUnload {
+    [self setWebView:nil];
+    [super viewDidUnload];
+}
+@end

@@ -12,7 +12,7 @@
 
 + (BOOL)isMeetingRoomQrCode:(NSString *)qrCode
 {
-    NSArray *meetingRooms = [NSArray arrayWithObjects:@"Chandni Chowk", @"Jantar Mantar", nil];
+    NSArray *meetingRooms = [NSArray arrayWithObjects:@"Parliament", @"Chandni Chowk", @"Jantar Mantar", nil];
     return [meetingRooms containsObject:qrCode];
 }
 
