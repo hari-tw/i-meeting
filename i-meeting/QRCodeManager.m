@@ -8,12 +8,27 @@
 
 #import "QRCodeManager.h"
 
+@interface QRCodeManager()
+
+@property (readonly, strong) NSArray *meetingRooms;
+
+@end
+
 @implementation QRCodeManager
 
-+ (BOOL)isMeetingRoomQrCode:(NSString *)qrCode
+@synthesize meetingRooms = _meetingRooms;
+
+- (NSArray *)meetingRooms {
+    if (!_meetingRooms) {
+        _meetingRooms = [NSArray arrayWithObjects:@"Parliament", @"Chandni Chowk", @"Jantar Mantar", nil];
+    }
+    
+    return _meetingRooms;
+}
+
+- (BOOL)isMeetingRoomQrCode:(NSString *)qrCode
 {
-    NSArray *meetingRooms = [NSArray arrayWithObjects:@"Parliament", @"Chandni Chowk", @"Jantar Mantar", nil];
-    return [meetingRooms containsObject:qrCode];
+    return [self.meetingRooms containsObject:qrCode];
 }
 
 @end

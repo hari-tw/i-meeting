@@ -13,8 +13,13 @@
 
 - (void)testForAValidMeetingRoom
 {
-    GHAssertTrue([QRCodeManager isMeetingRoomQrCode:@"Chandni Chowk"], @"Assertion failed");
-    GHAssertFalse([QRCodeManager isMeetingRoomQrCode:@"foo"], @"Assertion failed");
+    QRCodeManager *manager = [QRCodeManager new];
+    
+    GHAssertTrue([manager isMeetingRoomQrCode:@"Parliament"], @"Assertion failed");
+    GHAssertTrue([manager isMeetingRoomQrCode:@"Chandni Chowk"], @"Assertion failed");
+    GHAssertTrue([manager isMeetingRoomQrCode:@"Jantar Mantar"], @"Assertion failed");
+    
+    GHAssertFalse([manager isMeetingRoomQrCode:@"foo"], @"Assertion failed");
 }
 
 @end

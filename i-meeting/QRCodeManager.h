@@ -10,6 +10,6 @@
 
 @interface QRCodeManager : NSObject
 
-+ (BOOL)isMeetingRoomQrCode:(NSString *)qrCode;
+- (BOOL)isMeetingRoomQrCode:(NSString *)qrCode;
 
 @end

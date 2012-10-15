@@ -10,16 +10,19 @@
 #import "QRCodeManager.h"
 #import "Phone.h"
 
+@interface QRCodeController()
+
+@property (readonly, strong) Phone *phone;
+
+@end
+
 @implementation QRCodeController
 
-Phone *phone;
+@synthesize phone = _phone;
 
-- (id)init
-{
-    self = [super init];
-    phone = [Phone new];
-    
-    return self;
+- (Phone *)phone {
+    if (!_phone) _phone = [Phone new];
+    return _phone;
 }
 
 - (UIViewController *)prepareQrCodeReader
@@ -48,7 +51,7 @@ Phone *phone;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *scannedCode = [self getScannedCode:info];
-    BOOL isMeetingRoomQrCode = [QRCodeManager isMeetingRoomQrCode:scannedCode];
+    BOOL isMeetingRoomQrCode = [[QRCodeManager new] isMeetingRoomQrCode:scannedCode];
     //scannedImage.image = [info objectForKey: UIImagePickerControllerOriginalImage];
     
     [picker dismissModalViewControllerAnimated:YES];
@@ -65,7 +68,7 @@ Phone *phone;
     if (buttonIndex == 1)
     {
         NSLog(@"Button YES pressed.");
-        [phone turnVibrationOn];
+        [self.phone turnVibrationOn];
     }
 }
 

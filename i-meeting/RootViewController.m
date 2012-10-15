@@ -19,23 +19,8 @@
 
 @synthesize qrCodeController = _qrCodeController;
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (QRCodeController *)qrCodeController {
-    if (!_qrCodeController) {
-        _qrCodeController = [QRCodeController new];
-    }
-    
+    if (!_qrCodeController) _qrCodeController = [QRCodeController new];
     return _qrCodeController;
 }
 
