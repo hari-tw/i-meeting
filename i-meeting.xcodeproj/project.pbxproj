@@ -45,6 +45,7 @@
 		83AC4E2C16281F42000C60C9 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4E2B16281F42000C60C9 /* GHUnitIOS.framework */; };
 		83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */; };
 		83AC4E3016282043000C60C9 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD416281E3D000C60C9 /* QRCodeManager.m */; };
+		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,8 @@
 		83AC4E2B16281F42000C60C9 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		83AC4E2D16282032000C60C9 /* QRCodeManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManagerTest.h; sourceTree = "<group>"; };
 		83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManagerTest.m; sourceTree = "<group>"; };
+		9B11225C162DA88900723640 /* AddNewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewEventViewController.h; sourceTree = "<group>"; };
+		9B11225D162DA88900723640 /* AddNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewEventViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,8 @@
 				83AC4DD016281E3D000C60C9 /* Phone.m */,
 				83AC4DD116281E3D000C60C9 /* QRCodeController.h */,
 				83AC4DD216281E3D000C60C9 /* QRCodeController.m */,
+				9B11225C162DA88900723640 /* AddNewEventViewController.h */,
+				9B11225D162DA88900723640 /* AddNewEventViewController.m */,
 				83AC4DD316281E3D000C60C9 /* QRCodeManager.h */,
 				83AC4DD416281E3D000C60C9 /* QRCodeManager.m */,
 				83AC4DD516281E3D000C60C9 /* RootViewController.h */,
@@ -436,6 +441,7 @@
 				83AC4DDA16281E3D000C60C9 /* RootViewController.m in Sources */,
 				832B188216295EC000035B63 /* CalendarViewController.m in Sources */,
 				38589B95162DA46C0007A1F1 /* LoginViewController.m in Sources */,
+				9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

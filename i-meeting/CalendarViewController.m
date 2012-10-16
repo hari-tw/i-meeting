@@ -42,11 +42,23 @@
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
     
     [self.webView loadRequest:urlRequest];
+    if (self.isViewLoaded  && self.view.window){
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewView)];
+        self.navigationItem.rightBarButtonItem = addButton;
+        self.navigationItem.rightBarButtonItem.title = @"Add New";
+    }
 
+}
+
+- (void)insertNewView{
+    
 }
 
 - (void)viewDidUnload {
     [self setWebView:nil];
     [super viewDidUnload];
+}
+- (IBAction)addNew:(id)sender {
+    
 }
 @end

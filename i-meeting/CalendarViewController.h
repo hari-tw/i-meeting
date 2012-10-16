@@ -11,5 +11,6 @@
 @interface CalendarViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+- (IBAction)addNew:(id)sender;
 
 @end
