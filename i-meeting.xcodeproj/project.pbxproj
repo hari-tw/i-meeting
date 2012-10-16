@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38589B95162DA46C0007A1F1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38589B94162DA46C0007A1F1 /* LoginViewController.m */; };
 		832B188216295EC000035B63 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B188116295EC000035B63 /* CalendarViewController.m */; };
 		83AC4DAB16281DE5000C60C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAA16281DE5000C60C9 /* UIKit.framework */; };
 		83AC4DAD16281DE5000C60C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAC16281DE5000C60C9 /* Foundation.framework */; };
@@ -47,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38589B93162DA46C0007A1F1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		38589B94162DA46C0007A1F1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		832B188016295EC000035B63 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		832B188116295EC000035B63 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		83AC4DA616281DE5000C60C9 /* i-meeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "i-meeting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +193,8 @@
 				83AC4DB916281DE5000C60C9 /* AppDelegate.h */,
 				83AC4DBA16281DE5000C60C9 /* AppDelegate.m */,
 				83AC4DDB16281E6E000C60C9 /* MainStoryboard.storyboard */,
+				38589B93162DA46C0007A1F1 /* LoginViewController.h */,
+				38589B94162DA46C0007A1F1 /* LoginViewController.m */,
 				832B188016295EC000035B63 /* CalendarViewController.h */,
 				832B188116295EC000035B63 /* CalendarViewController.m */,
 				83AC4DCF16281E3D000C60C9 /* Phone.h */,
@@ -430,6 +435,7 @@
 				83AC4DD916281E3D000C60C9 /* QRCodeManager.m in Sources */,
 				83AC4DDA16281E3D000C60C9 /* RootViewController.m in Sources */,
 				832B188216295EC000035B63 /* CalendarViewController.m in Sources */,
+				38589B95162DA46C0007A1F1 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sDa-vP-Bpb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sDa-vP-Bpb">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -49,7 +49,13 @@
                             <constraint firstAttribute="bottom" secondItem="BmP-YM-UIV" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="pIy-ye-E1C"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mPD-sh-xYg"/>
+                    <navigationItem key="navigationItem" id="mPD-sh-xYg">
+                        <barButtonItem key="rightBarButtonItem" title="Sign in" id="Ql6-RX-7jw">
+                            <connections>
+                                <segue destination="Qnc-7R-23r" kind="push" id="7AY-Fe-KAu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
@@ -65,13 +71,15 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlS-Ht-B5d">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="5tS-23-xAC"/>
+                                </constraints>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tlS-Ht-B5d" firstAttribute="leading" secondItem="rkh-fN-lOK" secondAttribute="leading" type="default" id="G4Y-6s-RE9"/>
-                            <constraint firstItem="tlS-Ht-B5d" firstAttribute="trailing" secondItem="rkh-fN-lOK" secondAttribute="trailing" type="default" id="Kjp-WT-Cn8"/>
                             <constraint firstItem="tlS-Ht-B5d" firstAttribute="top" secondItem="rkh-fN-lOK" secondAttribute="top" type="default" id="Tyu-Cm-0RX"/>
+                            <constraint firstItem="tlS-Ht-B5d" firstAttribute="leading" secondItem="rkh-fN-lOK" secondAttribute="leading" constant="-4" id="fvX-Gp-Wor"/>
                             <constraint firstItem="tlS-Ht-B5d" firstAttribute="bottom" secondItem="rkh-fN-lOK" secondAttribute="bottom" type="default" id="gdf-xk-xtb"/>
                         </constraints>
                     </view>
@@ -84,12 +92,52 @@
             </objects>
             <point key="canvasLocation" x="226" y="-152"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="BOz-X5-BsK">
+            <objects>
+                <viewController id="Qnc-7R-23r" customClass="LoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fmr-du-RvC">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKc-CG-csn">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sign in">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLoginClick:" destination="Qnc-7R-23r" eventType="touchUpInside" id="nZ6-WG-5qH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GKc-CG-csn" firstAttribute="leading" secondItem="fmr-du-RvC" secondAttribute="leading" constant="134" id="AbS-aN-Ai6"/>
+                            <constraint firstAttribute="bottom" secondItem="GKc-CG-csn" secondAttribute="bottom" constant="141" id="y1q-a6-7Kz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YEh-SA-zWM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zjo-eB-Jsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="648" y="-161"/>
+        </scene>
     </scenes>
     <classes>
         <class className="CalendarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onLoginClick:"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
