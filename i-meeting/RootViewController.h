@@ -11,5 +11,6 @@
 @interface RootViewController : UIViewController <UIAlertViewDelegate>
 
 - (IBAction)btnScan:(UIButton *)sender;
+- (IBAction)btnCalendar:(id)sender;
 
 @end
