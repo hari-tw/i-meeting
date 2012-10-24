@@ -11,11 +11,13 @@
 #import "GTLCalendar.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "DateTimeUtility.h"
+#import "NewCalendarViewController.h"
 
 @interface RootViewController ()
 
 @property (nonatomic, strong) QRCodeController *qrCodeController;
 @property (nonatomic, strong) GTLServiceCalendar *calendarService;
+@property (nonatomic, strong) NSArray *eventsSummaries;
 
 @end
 
@@ -23,6 +25,7 @@
 
 @synthesize qrCodeController = _qrCodeController;
 @synthesize calendarService = _calendarService;
+@synthesize eventsSummaries = _eventsSummaries;
 
 - (QRCodeController *)qrCodeController
 {
@@ -89,13 +92,21 @@
         return;
     }
     
-    NSLog(@"%@", object);
-    
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
+    self.eventsSummaries = [events.items valueForKey:@"summary"];
+    
+    [self performSegueWithIdentifier:@"calendarSegue" sender:self];
+    
     for (GTLCalendarEvent *event in events) {
         NSLog(@"%@", event);
     }
-    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"calendarSegue"]) {
+        [segue.destinationViewController setEvents:self.eventsSummaries];
+    }
 }
 
 @end

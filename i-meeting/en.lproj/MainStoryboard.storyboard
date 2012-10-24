@@ -68,6 +68,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="WSa-KA-q1z" kind="push" identifier="calendarSegue" id="VM3-JR-CEJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,7 +104,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XeC-LF-h86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-370" y="-296"/>
+            <point key="canvasLocation" x="-302" y="-644"/>
+        </scene>
+        <!--New Calendar View Controller-->
+        <scene sceneID="4fu-u9-4Q2">
+            <objects>
+                <tableViewController id="WSa-KA-q1z" customClass="NewCalendarViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Edq-9P-h3c">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Vkx-k0-EeF">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WSa-KA-q1z" id="3EO-68-LEX"/>
+                            <outlet property="delegate" destination="WSa-KA-q1z" id="tLI-i7-g6g"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="FeT-Mv-JaP"/>
+                    <connections>
+                        <outlet property="tableView" destination="Edq-9P-h3c" id="DrN-Kx-bpH"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mZk-az-2Kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-302" y="15"/>
         </scene>
         <!--Add New Event View Controller - AddNewInvite-->
         <scene sceneID="Xuv-vN-FDM">
@@ -181,7 +217,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kih-Qa-ggy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="196" y="-288"/>
+            <point key="canvasLocation" x="180" y="-644"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="BOz-X5-BsK">
@@ -215,37 +251,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="648" y="-161"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddNewEventViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewEventViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="bookButton:"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="descriptionField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="subjectField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CalendarViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addNew:"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onLoginClick:"/>
-            </relationships>
-        </class>
-        <class className="RootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnCalendar:"/>
-                <relationship kind="action" name="btnScan:" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
