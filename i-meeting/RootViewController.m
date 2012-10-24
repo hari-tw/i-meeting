@@ -18,6 +18,7 @@
 @property (nonatomic, strong) QRCodeController *qrCodeController;
 @property (nonatomic, strong) GTLServiceCalendar *calendarService;
 @property (nonatomic, strong) NSArray *eventsSummaries;
+@property (nonatomic) BOOL isSignedIn;
 
 @end
 
@@ -26,6 +27,25 @@
 @synthesize qrCodeController = _qrCodeController;
 @synthesize calendarService = _calendarService;
 @synthesize eventsSummaries = _eventsSummaries;
+@synthesize isSignedIn = _isSignedIn;
+
+static NSString *kKeychainItemName = @"OAuth2 i-meeting";
+static NSString *kMyClientID = @"my client id";
+static NSString *kMyClientSecret = @"my client secret";
+
+- (void)awakeFromNib
+{
+    GTMOAuth2Authentication *auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+                                                                                          clientID:kMyClientID
+                                                                                      clientSecret:kMyClientSecret];
+    
+    NSLog(@"Can Authorize: %@", [auth canAuthorize] ? @"YES" : @"NO");
+
+    self.isSignedIn = [auth canAuthorize];
+    if (self.isSignedIn) {
+        self.calendarService.authorizer = auth;
+    }
+}
 
 - (QRCodeController *)qrCodeController
 {
@@ -56,15 +76,19 @@
 
 - (void)signInUser:(SEL)signInDoneSelector
 {
-    static NSString *const kKeychainItemName = @"OAuth2 i-meeting";
-    
-    NSString *kMyClientID = @"my client id";
-    NSString *kMyClientSecret = @"my client secret";
+    if (self.isSignedIn) {
+        [self performSelector:signInDoneSelector];
+        return;
+    }
     
     NSString *scope = @"https://www.googleapis.com/auth/calendar";
     
     GTMOAuth2ViewControllerTouch *viewController = [[GTMOAuth2ViewControllerTouch alloc]
-                                                    initWithScope:scope clientID:kMyClientID clientSecret:kMyClientSecret keychainItemName:kKeychainItemName completionHandler:^(GTMOAuth2ViewControllerTouch *viewController, GTMOAuth2Authentication *auth, NSError *error) {
+                                                    initWithScope:scope
+                                                    clientID:kMyClientID
+                                                    clientSecret:kMyClientSecret
+                                                    keychainItemName:kKeychainItemName
+                                                    completionHandler:^(GTMOAuth2ViewControllerTouch *viewController, GTMOAuth2Authentication *auth, NSError *error) {
                                                         if (error) {
                                                             NSLog(@"Authentication failed");
                                                         } else {
@@ -96,10 +120,6 @@
     self.eventsSummaries = [events.items valueForKey:@"summary"];
     
     [self performSegueWithIdentifier:@"calendarSegue" sender:self];
-    
-    for (GTLCalendarEvent *event in events) {
-        NSLog(@"%@", event);
-    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
