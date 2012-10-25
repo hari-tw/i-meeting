@@ -75,6 +75,7 @@
 		83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */; };
 		83AC4E3016282043000C60C9 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD416281E3D000C60C9 /* QRCodeManager.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
+		E8AF21D71639695800626FF6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E8AF21D61639695800626FF6 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,6 +231,7 @@
 		83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManagerTest.m; sourceTree = "<group>"; };
 		9B11225C162DA88900723640 /* AddNewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewEventViewController.h; sourceTree = "<group>"; };
 		9B11225D162DA88900723640 /* AddNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewEventViewController.m; sourceTree = "<group>"; };
+		E8AF21D61639695800626FF6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = "../../i-meeting/Settings.bundle"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +394,7 @@
 		83AC4D9B16281DE5000C60C9 = {
 			isa = PBXGroup;
 			children = (
+				E8AF21D61639695800626FF6 /* Settings.bundle */,
 				83AC4DB016281DE5000C60C9 /* i-meeting */,
 				83AC4E1616281F24000C60C9 /* i-meeting-tests */,
 				83AC4DA916281DE5000C60C9 /* Frameworks */,
@@ -641,6 +644,7 @@
 				83AC4DFF16281E8B000C60C9 /* zbar-helpicons.png in Resources */,
 				83AC4E0016281E8B000C60C9 /* zbar-samples.png in Resources */,
 				8318BE6716379E00003E2B01 /* GTMOAuth2ViewTouch.xib in Resources */,
+				E8AF21D71639695800626FF6 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
