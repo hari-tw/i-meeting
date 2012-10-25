@@ -30,8 +30,8 @@
 @synthesize isSignedIn = _isSignedIn;
 
 static NSString *kKeychainItemName = @"OAuth2 i-meeting";
-static NSString *kMyClientID = @"my client id";
-static NSString *kMyClientSecret = @"my client secret";
+static NSString *kMyClientID = @"471799291546-hudka7jkgjsgtub7jnniblqe3lnoggcn.apps.googleusercontent.com";
+static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
 
 - (void)awakeFromNib
 {
