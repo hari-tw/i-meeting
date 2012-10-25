@@ -7,6 +7,10 @@
 //
 
 #import "AddNewEventViewController.h"
+#import "GTLCalendarEvent.h"
+#import "GTLCalendarEventDateTime.h"
+#import "GTLServiceCalendar.h"
+#import "GTLQueryCalendar.h"
 
 @interface AddNewEventViewController ()
 
@@ -21,6 +25,8 @@
     if (self) {
         // Custom initialization
     }
+//    self.subjectField.delegate = self;
+//    self.descriptionField.delegate = self;
     return self;
 }
 
@@ -37,9 +43,8 @@
 }
 
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+        [theTextField resignFirstResponder];
     return YES;
 }
 
@@ -50,16 +55,29 @@
     [super viewDidUnload];
 }
 - (IBAction)bookButton:(id)sender {
+    GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
+    newEvent.summary = self.subjectField.text;
+    newEvent.descriptionProperty = self.descriptionField.text;
+    
+    GTLDateTime *startDate = [GTLDateTime dateTimeWithDate: self.datePicker.date timeZone:[NSTimeZone systemTimeZone]];
+    
+    newEvent.start = [GTLCalendarEventDateTime new];
+    newEvent.start.dateTime = startDate;
+    
+    GTLServiceCalendar *service = [GTLServiceCalendar new];
     
     
-//    
-//    eventStore=[[EKEventStore alloc] init];
-//    EKEvent *addEvent=[EKEvent eventWithEventStore:eventStore];
-//    addEvent.title=@"hello";
-//    addEvent.startDate=messageDate;
-//    addEvent.endDate=[addEvent.startDate dateByAddingTimeInterval:600];
-//    [addEvent setCalendar:[eventStore defaultCalendarForNewEvents]];
-//    addEvent.alarms=[NSArray arrayWithObject:[EKAlarm alarmWithAbsoluteDate:addEvent.startDate]];
-//    [eventStore saveEvent:addEvent span:EKSpanThisEvent error:nil];
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
+                                                                    calendarId:@"ishatrip@thoughtworks.com"];
+    
+    
+    [service executeQuery:query
+                               completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+                                   // Callback
+                                   if (error == nil) {
+                                       GTLCalendarEvent *event = object;
+                                   }
+                                }];
+
 }
 @end

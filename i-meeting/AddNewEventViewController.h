@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddNewEventViewController : UIViewController<UITextFieldDelegate>
+@interface AddNewEventViewController : UIViewController<UITextFieldDelegate> 
 @property (weak, nonatomic) IBOutlet UITextField *subjectField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionField;
 
