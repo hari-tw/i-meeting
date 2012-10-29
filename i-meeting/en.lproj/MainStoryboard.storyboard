@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sDa-vP-Bpb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nKR-Ea-wdD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Scan-->
         <scene sceneID="2Oh-ra-Zk2">
             <objects>
                 <navigationController definesPresentationContext="YES" id="sDa-vP-Bpb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Scan" id="2dV-KG-bh8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZOa-VN-TLR">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="p4f-Av-RdS"/>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="Twa-Hx-qL6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ef-dz-eV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1238" y="-296"/>
+            <point key="canvasLocation" x="-1823" y="-604"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Root View Controller - Scan-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="RootViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BmP-YM-UIV">
-                                <rect key="frame" x="20" y="441" width="280" height="44"/>
+                                <rect key="frame" x="20" y="392" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Scan">
@@ -44,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KXu-M2-HbU">
-                                <rect key="frame" x="20" y="382" width="280" height="44"/>
+                                <rect key="frame" x="20" y="333" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Calendar">
@@ -59,8 +60,9 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Scan" id="QbW-C2-p3A"/>
                     <navigationItem key="navigationItem" id="mPD-sh-xYg">
                         <barButtonItem key="rightBarButtonItem" title="Sign in" id="Ql6-RX-7jw">
                             <connections>
@@ -74,14 +76,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-785" y="-296"/>
+            <point key="canvasLocation" x="-1313" y="-604"/>
+        </scene>
+        <!--View Controller - My Meetings-->
+        <scene sceneID="YQD-qr-QGa">
+            <objects>
+                <viewController id="aWA-3A-0nh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fHZ-Sb-sWd">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Meetings" id="5x9-oW-TYh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Sm-0E-6XS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1823" y="-1423"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="tQD-oI-GLS">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="nKR-Ea-wdD" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="GcK-8H-tft">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="sDa-vP-Bpb" kind="relationship" relationship="viewControllers" id="e5c-Ug-k4V"/>
+                        <segue destination="aWA-3A-0nh" kind="relationship" relationship="viewControllers" id="DqT-pM-A8D"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QTo-fb-GIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2503" y="-1112"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="5LH-7H-KCB">
             <objects>
                 <viewController id="rqb-Fe-EyM" customClass="CalendarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rkh-fN-lOK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="tlS-Ht-B5d">
@@ -104,14 +141,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XeC-LF-h86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-302" y="-644"/>
+            <point key="canvasLocation" x="-740" y="-1044"/>
         </scene>
         <!--New Calendar View Controller-->
         <scene sceneID="4fu-u9-4Q2">
             <objects>
                 <tableViewController id="WSa-KA-q1z" customClass="NewCalendarViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Edq-9P-h3c">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -137,18 +174,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZk-az-2Kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-302" y="15"/>
+            <point key="canvasLocation" x="-732" y="-181"/>
         </scene>
         <!--Add New Event View Controller - AddNewInvite-->
         <scene sceneID="Xuv-vN-FDM">
             <objects>
                 <viewController title="AddNewInvite" id="6rz-ZE-9OP" customClass="AddNewEventViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9lj-b4-Hig">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subject" minimumFontSize="17" id="uHm-c3-7Uo">
-                                <rect key="frame" x="25" y="15" width="283" height="30"/>
+                                <rect key="frame" x="26" y="13" width="283" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -156,7 +193,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" id="zQv-xo-CTC">
-                                <rect key="frame" x="26" y="65" width="280" height="30"/>
+                                <rect key="frame" x="27" y="58" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -164,7 +201,7 @@
                                 </connections>
                             </textField>
                             <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="gm1-yi-JX3">
-                                <rect key="frame" x="-80" y="128" width="480" height="216"/>
+                                <rect key="frame" x="-79" y="106" width="480" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="372090181.66436201">
                                     <!--2012-10-16 14:23:01 +0000-->
                                 </date>
@@ -218,18 +255,18 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kih-Qa-ggy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Title" id="tGV-j3-Jy5"/>
             </objects>
-            <point key="canvasLocation" x="180" y="-644"/>
+            <point key="canvasLocation" x="-222" y="-1044"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="BOz-X5-BsK">
             <objects>
                 <viewController id="Qnc-7R-23r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fmr-du-RvC">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GKc-CG-csn">
-                                <rect key="frame" x="134" y="320" width="74" height="44"/>
+                                <rect key="frame" x="135" y="285" width="74" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -249,7 +286,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zjo-eB-Jsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648" y="-161"/>
+            <point key="canvasLocation" x="238" y="-553"/>
         </scene>
     </scenes>
     <classes>
