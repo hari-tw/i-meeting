@@ -120,7 +120,7 @@ static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
     }
     
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-    self.eventsSummaries = [events.items valueForKey:@"summary"];
+    self.eventsSummaries = events.items;
     
     [self performSegueWithIdentifier:@"calendarSegue" sender:self];
 }

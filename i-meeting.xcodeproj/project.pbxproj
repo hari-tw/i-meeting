@@ -74,6 +74,7 @@
 		83AC4E2C16281F42000C60C9 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4E2B16281F42000C60C9 /* GHUnitIOS.framework */; };
 		83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */; };
 		83AC4E3016282043000C60C9 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD416281E3D000C60C9 /* QRCodeManager.m */; };
+		83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E337A21640371B00BD3E90 /* CalendarCell.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
 /* End PBXBuildFile section */
@@ -229,6 +230,8 @@
 		83AC4E2B16281F42000C60C9 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		83AC4E2D16282032000C60C9 /* QRCodeManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManagerTest.h; sourceTree = "<group>"; };
 		83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManagerTest.m; sourceTree = "<group>"; };
+		83E337A11640371A00BD3E90 /* CalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
+		83E337A21640371B00BD3E90 /* CalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
 		9B11225C162DA88900723640 /* AddNewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewEventViewController.h; sourceTree = "<group>"; };
 		9B11225D162DA88900723640 /* AddNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewEventViewController.m; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -439,6 +442,8 @@
 				83AC4DB916281DE5000C60C9 /* AppDelegate.h */,
 				83AC4DBA16281DE5000C60C9 /* AppDelegate.m */,
 				83AC4DDB16281E6E000C60C9 /* MainStoryboard.storyboard */,
+				83E337A11640371A00BD3E90 /* CalendarCell.h */,
+				83E337A21640371B00BD3E90 /* CalendarCell.m */,
 				38589B93162DA46C0007A1F1 /* LoginViewController.h */,
 				38589B94162DA46C0007A1F1 /* LoginViewController.m */,
 				832B188016295EC000035B63 /* CalendarViewController.h */,
@@ -716,6 +721,7 @@
 				9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */,
 				8318BE6A1637AAA4003E2B01 /* DateTimeUtility.m in Sources */,
 				8318BE6D1637C979003E2B01 /* NewCalendarViewController.m in Sources */,
+				83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
