@@ -38,7 +38,7 @@
 }
 
 - (void)loadCalendar {
-    NSURL *url = [[NSURL alloc] initWithString:@"http://www.google.com/calendar/embed?src=thoughtworks.com_383736383938353235%40resource.calendar.google.com&ctz=Asia/Calcutta&mode=AGENDA&showPrint=0&showTabs=0"];
+    NSURL *url = [[NSURL alloc] initWithString:@"http://www.google.com"];
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
     
     [self.webView loadRequest:urlRequest];

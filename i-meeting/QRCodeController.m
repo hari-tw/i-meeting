@@ -7,23 +7,33 @@
 //
 
 #import "QRCodeController.h"
+#import "RootViewController.h"
 #import "QRCodeManager.h"
 #import "Phone.h"
 
 @interface QRCodeController()
 
 @property (readonly, strong) Phone *phone;
+@property (readonly, strong) RootViewController *rootViewController;
 
 @end
 
 @implementation QRCodeController
 
 @synthesize phone = _phone;
+@synthesize rootViewController = _rootViewController;
 
 - (Phone *)phone {
     if (!_phone) _phone = [Phone new];
     return _phone;
 }
+
+- (RootViewController *)rootViewController
+{
+    if (!_rootViewController) _rootViewController = [RootViewController new];
+    return _rootViewController;
+}
+
 
 - (UIViewController *)prepareQrCodeReader
 {
@@ -61,7 +71,11 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:scannedCode message:@"Turn vibration ON?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
         [alertView show];
     }
+    [self.rootViewController setCalendarUrl:scannedCode];
+    [self.rootViewController invokeCalendar];
 }
+
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

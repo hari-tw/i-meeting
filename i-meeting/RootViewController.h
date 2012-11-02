@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBarSDK.h"
 
-@interface RootViewController : UIViewController <UIAlertViewDelegate>
+@interface RootViewController : UIViewController <UIAlertViewDelegate,ZBarReaderDelegate>
 
 - (IBAction)btnScan:(UIButton *)sender;
 - (IBAction)btnCalendar:(id)sender;
+- (void)setCalendarUrl:(NSString *)calendarUrl;
+- (void)signInUser:(SEL)signInDoneSelector;
+- (void)invokeCalendar;
+- (UIViewController *)prepareQrCodeReader;
+- (NSString *)getScannedCode:(NSDictionary *)info;
 
 @end
+
