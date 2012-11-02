@@ -38,6 +38,7 @@
 		8318BE6A1637AAA4003E2B01 /* DateTimeUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE691637AAA4003E2B01 /* DateTimeUtility.m */; };
 		8318BE6D1637C979003E2B01 /* NewCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE6C1637C979003E2B01 /* NewCalendarViewController.m */; };
 		832B188216295EC000035B63 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B188116295EC000035B63 /* CalendarViewController.m */; };
+		83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9949B164419F9009CD997 /* QRCodeManager.m */; };
 		83AC4DAB16281DE5000C60C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAA16281DE5000C60C9 /* UIKit.framework */; };
 		83AC4DAD16281DE5000C60C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAC16281DE5000C60C9 /* Foundation.framework */; };
 		83AC4DAF16281DE5000C60C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAE16281DE5000C60C9 /* CoreGraphics.framework */; };
@@ -48,8 +49,6 @@
 		83AC4DBF16281DE5000C60C9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AC4DBE16281DE5000C60C9 /* Default@2x.png */; };
 		83AC4DC116281DE5000C60C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AC4DC016281DE5000C60C9 /* Default-568h@2x.png */; };
 		83AC4DD716281E3D000C60C9 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD016281E3D000C60C9 /* Phone.m */; };
-		83AC4DD816281E3D000C60C9 /* QRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD216281E3D000C60C9 /* QRCodeController.m */; };
-		83AC4DD916281E3D000C60C9 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD416281E3D000C60C9 /* QRCodeManager.m */; };
 		83AC4DDA16281E3D000C60C9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD616281E3D000C60C9 /* RootViewController.m */; };
 		83AC4DDD16281E6E000C60C9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83AC4DDB16281E6E000C60C9 /* MainStoryboard.storyboard */; };
 		83AC4DFC16281E8B000C60C9 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DF616281E8B000C60C9 /* libzbar.a */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -73,7 +72,6 @@
 		83AC4E2716281F24000C60C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AC4E2616281F24000C60C9 /* Default-568h@2x.png */; };
 		83AC4E2C16281F42000C60C9 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4E2B16281F42000C60C9 /* GHUnitIOS.framework */; };
 		83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */; };
-		83AC4E3016282043000C60C9 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD416281E3D000C60C9 /* QRCodeManager.m */; };
 		83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E337A21640371B00BD3E90 /* CalendarCell.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
@@ -166,6 +164,7 @@
 		8318BE6C1637C979003E2B01 /* NewCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCalendarViewController.m; sourceTree = "<group>"; };
 		832B188016295EC000035B63 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		832B188116295EC000035B63 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		83A9949B164419F9009CD997 /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
 		83AC4DA616281DE5000C60C9 /* i-meeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "i-meeting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83AC4DAA16281DE5000C60C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		83AC4DAC16281DE5000C60C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -181,10 +180,7 @@
 		83AC4DC016281DE5000C60C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		83AC4DCF16281E3D000C60C9 /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
 		83AC4DD016281E3D000C60C9 /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
-		83AC4DD116281E3D000C60C9 /* QRCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeController.h; sourceTree = "<group>"; };
-		83AC4DD216281E3D000C60C9 /* QRCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeController.m; sourceTree = "<group>"; };
 		83AC4DD316281E3D000C60C9 /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
-		83AC4DD416281E3D000C60C9 /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
 		83AC4DD516281E3D000C60C9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83AC4DD616281E3D000C60C9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		83AC4DDC16281E6E000C60C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -452,12 +448,10 @@
 				8318BE6C1637C979003E2B01 /* NewCalendarViewController.m */,
 				83AC4DCF16281E3D000C60C9 /* Phone.h */,
 				83AC4DD016281E3D000C60C9 /* Phone.m */,
-				83AC4DD116281E3D000C60C9 /* QRCodeController.h */,
-				83AC4DD216281E3D000C60C9 /* QRCodeController.m */,
 				9B11225C162DA88900723640 /* AddNewEventViewController.h */,
 				9B11225D162DA88900723640 /* AddNewEventViewController.m */,
 				83AC4DD316281E3D000C60C9 /* QRCodeManager.h */,
-				83AC4DD416281E3D000C60C9 /* QRCodeManager.m */,
+				83A9949B164419F9009CD997 /* QRCodeManager.m */,
 				83AC4DD516281E3D000C60C9 /* RootViewController.h */,
 				83AC4DD616281E3D000C60C9 /* RootViewController.m */,
 				8318BE681637AAA4003E2B01 /* DateTimeUtility.h */,
@@ -713,8 +707,6 @@
 				83AC4DB716281DE5000C60C9 /* main.m in Sources */,
 				83AC4DBB16281DE5000C60C9 /* AppDelegate.m in Sources */,
 				83AC4DD716281E3D000C60C9 /* Phone.m in Sources */,
-				83AC4DD816281E3D000C60C9 /* QRCodeController.m in Sources */,
-				83AC4DD916281E3D000C60C9 /* QRCodeManager.m in Sources */,
 				83AC4DDA16281E3D000C60C9 /* RootViewController.m in Sources */,
 				832B188216295EC000035B63 /* CalendarViewController.m in Sources */,
 				38589B95162DA46C0007A1F1 /* LoginViewController.m in Sources */,
@@ -722,6 +714,7 @@
 				8318BE6A1637AAA4003E2B01 /* DateTimeUtility.m in Sources */,
 				8318BE6D1637C979003E2B01 /* NewCalendarViewController.m in Sources */,
 				83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */,
+				83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,7 +722,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83AC4E3016282043000C60C9 /* QRCodeManager.m in Sources */,
 				83AC4E1D16281F24000C60C9 /* main.m in Sources */,
 				83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */,
 			);
