@@ -39,6 +39,14 @@
 		8318BE6D1637C979003E2B01 /* NewCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE6C1637C979003E2B01 /* NewCalendarViewController.m */; };
 		832B188216295EC000035B63 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B188116295EC000035B63 /* CalendarViewController.m */; };
 		83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9949B164419F9009CD997 /* QRCodeManager.m */; };
+		83A994A616441AE2009CD997 /* profile selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A9949E16441AE2009CD997 /* profile selected.png */; };
+		83A994A716441AE2009CD997 /* profile unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A9949F16441AE2009CD997 /* profile unselected.png */; };
+		83A994A816441AE2009CD997 /* rooms unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A016441AE2009CD997 /* rooms unselected.png */; };
+		83A994A916441AE2009CD997 /* rooms.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A116441AE2009CD997 /* rooms.png */; };
+		83A994AA16441AE2009CD997 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A216441AE2009CD997 /* scan.png */; };
+		83A994AB16441AE2009CD997 /* scan unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A316441AE2009CD997 /* scan unselected.png */; };
+		83A994AC16441AE2009CD997 /* settings selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A416441AE2009CD997 /* settings selected.png */; };
+		83A994AD16441AE2009CD997 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A516441AE2009CD997 /* settings.png */; };
 		83AC4DAB16281DE5000C60C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAA16281DE5000C60C9 /* UIKit.framework */; };
 		83AC4DAD16281DE5000C60C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAC16281DE5000C60C9 /* Foundation.framework */; };
 		83AC4DAF16281DE5000C60C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAE16281DE5000C60C9 /* CoreGraphics.framework */; };
@@ -165,6 +173,14 @@
 		832B188016295EC000035B63 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		832B188116295EC000035B63 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		83A9949B164419F9009CD997 /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
+		83A9949E16441AE2009CD997 /* profile selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile selected.png"; sourceTree = "<group>"; };
+		83A9949F16441AE2009CD997 /* profile unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile unselected.png"; sourceTree = "<group>"; };
+		83A994A016441AE2009CD997 /* rooms unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rooms unselected.png"; sourceTree = "<group>"; };
+		83A994A116441AE2009CD997 /* rooms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rooms.png; sourceTree = "<group>"; };
+		83A994A216441AE2009CD997 /* scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan.png; sourceTree = "<group>"; };
+		83A994A316441AE2009CD997 /* scan unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan unselected.png"; sourceTree = "<group>"; };
+		83A994A416441AE2009CD997 /* settings selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings selected.png"; sourceTree = "<group>"; };
+		83A994A516441AE2009CD997 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		83AC4DA616281DE5000C60C9 /* i-meeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "i-meeting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83AC4DAA16281DE5000C60C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		83AC4DAC16281DE5000C60C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -390,6 +406,24 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		83A9949D16441AAA009CD997 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				83A9949E16441AE2009CD997 /* profile selected.png */,
+				83A9949F16441AE2009CD997 /* profile unselected.png */,
+				83A994A016441AE2009CD997 /* rooms unselected.png */,
+				83A994A116441AE2009CD997 /* rooms.png */,
+				83A994A216441AE2009CD997 /* scan.png */,
+				83A994A316441AE2009CD997 /* scan unselected.png */,
+				83A994A416441AE2009CD997 /* settings selected.png */,
+				83A994A516441AE2009CD997 /* settings.png */,
+				83AC4DBC16281DE5000C60C9 /* Default.png */,
+				83AC4DBE16281DE5000C60C9 /* Default@2x.png */,
+				83AC4DC016281DE5000C60C9 /* Default-568h@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		83AC4D9B16281DE5000C60C9 = {
 			isa = PBXGroup;
 			children = (
@@ -464,13 +498,11 @@
 		83AC4DB116281DE5000C60C9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				83A9949D16441AAA009CD997 /* Images */,
 				83AC4DB216281DE5000C60C9 /* i-meeting-Info.plist */,
 				83AC4DB316281DE5000C60C9 /* InfoPlist.strings */,
 				83AC4DB616281DE5000C60C9 /* main.m */,
 				83AC4DB816281DE5000C60C9 /* i-meeting-Prefix.pch */,
-				83AC4DBC16281DE5000C60C9 /* Default.png */,
-				83AC4DBE16281DE5000C60C9 /* Default@2x.png */,
-				83AC4DC016281DE5000C60C9 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -644,6 +676,14 @@
 				83AC4E0016281E8B000C60C9 /* zbar-samples.png in Resources */,
 				8318BE6716379E00003E2B01 /* GTMOAuth2ViewTouch.xib in Resources */,
 				E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */,
+				83A994A616441AE2009CD997 /* profile selected.png in Resources */,
+				83A994A716441AE2009CD997 /* profile unselected.png in Resources */,
+				83A994A816441AE2009CD997 /* rooms unselected.png in Resources */,
+				83A994A916441AE2009CD997 /* rooms.png in Resources */,
+				83A994AA16441AE2009CD997 /* scan.png in Resources */,
+				83A994AB16441AE2009CD997 /* scan unselected.png in Resources */,
+				83A994AC16441AE2009CD997 /* settings selected.png in Resources */,
+				83A994AD16441AE2009CD997 /* settings.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

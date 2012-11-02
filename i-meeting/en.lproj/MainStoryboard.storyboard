@@ -8,7 +8,7 @@
         <scene sceneID="2Oh-ra-Zk2">
             <objects>
                 <navigationController definesPresentationContext="YES" id="sDa-vP-Bpb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Scan" id="2dV-KG-bh8"/>
+                    <tabBarItem key="tabBarItem" title="Scan" image="settings.png" id="2dV-KG-bh8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZOa-VN-TLR">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -62,7 +62,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Scan" id="QbW-C2-p3A"/>
+                    <tabBarItem key="tabBarItem" title="Scan" image="settings.png" id="QbW-C2-p3A"/>
                     <navigationItem key="navigationItem" title="Where's My Meeting" id="mPD-sh-xYg"/>
                     <connections>
                         <segue destination="WSa-KA-q1z" kind="push" identifier="calendarSegue" id="VM3-JR-CEJ"/>
@@ -81,7 +81,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Meetings" id="5x9-oW-TYh"/>
+                    <tabBarItem key="tabBarItem" title="My Meetings" image="profile unselected.png" id="5x9-oW-TYh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Sm-0E-6XS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -272,6 +272,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="-222" y="-1044"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profile unselected.png" width="22" height="24"/>
+        <image name="settings.png" width="21" height="21"/>
+    </resources>
     <classes>
         <class className="AddNewEventViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewEventViewController.h"/>
