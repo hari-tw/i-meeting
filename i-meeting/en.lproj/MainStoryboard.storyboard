@@ -121,13 +121,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="aS0-iU-12c">
-                        <barButtonItem key="rightBarButtonItem" title="Add New " id="jkI-KR-O4o">
-                            <connections>
-                                <segue destination="6rz-ZE-9OP" kind="push" id="xf8-hq-dcF"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="aS0-iU-12c"/>
                     <connections>
                         <outlet property="webView" destination="tlS-Ht-B5d" id="Teo-bf-PIA"/>
                     </connections>
@@ -180,14 +174,20 @@
                             <outlet property="delegate" destination="WSa-KA-q1z" id="tLI-i7-g6g"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="FeT-Mv-JaP"/>
+                    <navigationItem key="navigationItem" id="FeT-Mv-JaP">
+                        <barButtonItem key="rightBarButtonItem" title="Add New " id="jkI-KR-O4o">
+                            <connections>
+                                <segue destination="6rz-ZE-9OP" kind="push" id="xf8-hq-dcF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Edq-9P-h3c" id="DrN-Kx-bpH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZk-az-2Kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-732" y="-181"/>
+            <point key="canvasLocation" x="-740" y="-301"/>
         </scene>
         <!--Add New Event View Controller - AddNewInvite-->
         <scene sceneID="Xuv-vN-FDM">
@@ -214,7 +214,8 @@
                                 </connections>
                             </textField>
                             <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="gm1-yi-JX3">
-                                <rect key="frame" x="-78" y="147" width="480" height="216"/>
+                                <rect key="frame" x="20" y="112" width="280" height="216"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="372090181.66436201">
                                     <!--2012-10-16 14:23:01 +0000-->
                                 </date>
@@ -275,44 +276,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="profile unselected.png" width="22" height="24"/>
         <image name="settings.png" width="21" height="21"/>
     </resources>
-    <classes>
-        <class className="AddNewEventViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewEventViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="bookButton:"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="descriptionField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="subjectField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CalendarCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="timingsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CalendarViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addNew:"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="NewCalendarViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewCalendarViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnCalendar:"/>
-                <relationship kind="action" name="btnScan:" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

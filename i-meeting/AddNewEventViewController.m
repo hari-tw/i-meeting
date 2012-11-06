@@ -11,6 +11,7 @@
 #import "GTLCalendarEventDateTime.h"
 #import "GTLServiceCalendar.h"
 #import "GTLQueryCalendar.h"
+#import "RootViewController.h"
 
 @interface AddNewEventViewController ()
 
@@ -56,6 +57,7 @@
 }
 - (IBAction)bookButton:(id)sender {
     GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
+    
     newEvent.summary = self.subjectField.text;
     newEvent.descriptionProperty = self.descriptionField.text;
     
@@ -64,11 +66,15 @@
     newEvent.start = [GTLCalendarEventDateTime new];
     newEvent.start.dateTime = startDate;
     
-    GTLServiceCalendar *service = [GTLServiceCalendar new];
+    newEvent.end = [GTLCalendarEventDateTime new];
+    newEvent.end.dateTime = startDate;
+    
+    
+    GTLServiceCalendar *service = [RootViewController getService];
     
     
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
-                                                                    calendarId:@"ishatrip@thoughtworks.com"];
+                                                                    calendarId:@"tejinds@thoughtworks.com"];
     
     
     [service executeQuery:query
@@ -77,7 +83,7 @@
                                    if (error == nil) {
                                        GTLCalendarEvent *event = object;
                                    }
-                                }];
+                               }];
 
 }
 @end

@@ -36,6 +36,12 @@ static NSString *kKeychainItemName = @"OAuth2 i-meeting";
 static NSString *kMyClientID = @"471799291546-hudka7jkgjsgtub7jnniblqe3lnoggcn.apps.googleusercontent.com";
 static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
 
+static GTLServiceCalendar *calendarServiceInstance;
+
++ (GTLServiceCalendar *) getService{
+    return calendarServiceInstance;
+}
+
 - (Phone *)phone {
     if (!_phone) _phone = [Phone new];
     return _phone;
@@ -97,6 +103,7 @@ static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
                                                         } else {
                                                             NSLog(@"Authentication succeeded");
                                                             self.calendarService.authorizer = auth;
+                                                            calendarServiceInstance = self.calendarService;
                                                             [self performSelector:signInDoneSelector];
                                                         }
                                                     }];
