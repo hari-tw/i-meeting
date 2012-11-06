@@ -12,12 +12,12 @@
 
 @interface RootViewController : UIViewController <UIAlertViewDelegate,ZBarReaderDelegate>
 
-- (IBAction)btnScan:(UIButton *)sender;
 - (IBAction)btnCalendar:(id)sender;
 - (void)signInUser:(SEL)signInDoneSelector;
 - (UIViewController *)prepareQrCodeReader;
 - (NSString *)getScannedCode:(NSDictionary *)info;
 + (GTLServiceCalendar *) getService;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
 

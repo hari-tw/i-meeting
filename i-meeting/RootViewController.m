@@ -48,6 +48,18 @@ static GTLServiceCalendar *calendarServiceInstance;
     return _phone;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    // URL to generate QR Code
+    // https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=Hello%20World
+    NSLog(@"Scan button tapped.");
+    
+    UIViewController *reader = [self prepareQrCodeReader];
+    [self addChildViewController:reader];
+    [self.containerView addSubview:reader.view];
+    [reader didMoveToParentViewController:self];
+}
+
 - (void)awakeFromNib
 {
 //    GTMOAuth2Authentication *auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
@@ -62,21 +74,10 @@ static GTLServiceCalendar *calendarServiceInstance;
 //    }
 }
 
-
 - (GTLServiceCalendar *)calendarService
 {
     if (!_calendarService) _calendarService = [GTLServiceCalendar new];
     return _calendarService;
-}
-
-- (IBAction)btnScan:(UIButton *)sender
-{
-    // URL to generate QR Code
-    // https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=Hello%20World
-    NSLog(@"Scan button tapped.");
-    
-    UIViewController *reader = [self prepareQrCodeReader];
-    [self presentModalViewController:reader animated:YES];
 }
 
 - (IBAction)btnCalendar:(UIButton *)sender
@@ -153,6 +154,7 @@ static GTLServiceCalendar *calendarServiceInstance;
     reader.readerDelegate = self;
     reader.supportedOrientationsMask = ZBarOrientationMaskAll;
     reader.sourceType = UIImagePickerControllerSourceTypeCamera;
+    reader.showsZBarControls = NO;
     
     ZBarImageScanner *scanner = reader.scanner;
     [scanner setSymbology: ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
@@ -174,13 +176,15 @@ static GTLServiceCalendar *calendarServiceInstance;
 {
     NSString *scannedCode = [self getScannedCode:info];
     NSArray *arr = [scannedCode componentsSeparatedByString: @"="];
-    
-    [picker dismissModalViewControllerAnimated:YES];
-    
+
     self.meetingRoomName = arr[0];
     self.calendarId = arr[1];
     
     [self signInUser:@selector(displayCalendar)];
 }
 
+- (void)viewDidUnload {
+    [self setContainerView:nil];
+    [super viewDidUnload];
+}
 @end
