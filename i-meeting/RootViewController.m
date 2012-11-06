@@ -10,7 +10,7 @@
 #import "GTLCalendar.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "DateTimeUtility.h"
-#import "NewCalendarViewController.h"
+#import "CalendarViewController.h"
 #import "QRCodeManager.h"
 #import "Phone.h"
 
@@ -141,7 +141,7 @@ static GTLServiceCalendar *calendarServiceInstance;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"calendarSegue"]) {
-        NewCalendarViewController *calendarViewController = segue.destinationViewController;
+        CalendarViewController *calendarViewController = segue.destinationViewController;
         calendarViewController.events = self.eventsSummaries;
         calendarViewController.viewTitle = self.meetingRoomName;
     }

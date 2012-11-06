@@ -36,8 +36,7 @@
 		8318BE6216372E27003E2B01 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BE6116372E27003E2B01 /* libGTLTouchStaticLib.a */; };
 		8318BE6716379E00003E2B01 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8318BE6616379E00003E2B01 /* GTMOAuth2ViewTouch.xib */; };
 		8318BE6A1637AAA4003E2B01 /* DateTimeUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE691637AAA4003E2B01 /* DateTimeUtility.m */; };
-		8318BE6D1637C979003E2B01 /* NewCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE6C1637C979003E2B01 /* NewCalendarViewController.m */; };
-		832B188216295EC000035B63 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832B188116295EC000035B63 /* CalendarViewController.m */; };
+		8318BE6D1637C979003E2B01 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE6C1637C979003E2B01 /* CalendarViewController.m */; };
 		836F9FC516493486009E61AD /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9949B164419F9009CD997 /* QRCodeManager.m */; };
 		83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9949B164419F9009CD997 /* QRCodeManager.m */; };
 		83A994A616441AE2009CD997 /* profile selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A9949E16441AE2009CD997 /* profile selected.png */; };
@@ -170,10 +169,8 @@
 		8318BE6616379E00003E2B01 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		8318BE681637AAA4003E2B01 /* DateTimeUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimeUtility.h; sourceTree = "<group>"; };
 		8318BE691637AAA4003E2B01 /* DateTimeUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimeUtility.m; sourceTree = "<group>"; };
-		8318BE6B1637C979003E2B01 /* NewCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCalendarViewController.h; sourceTree = "<group>"; };
-		8318BE6C1637C979003E2B01 /* NewCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCalendarViewController.m; sourceTree = "<group>"; };
-		832B188016295EC000035B63 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
-		832B188116295EC000035B63 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		8318BE6B1637C979003E2B01 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		8318BE6C1637C979003E2B01 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		83A9949B164419F9009CD997 /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
 		83A9949E16441AE2009CD997 /* profile selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile selected.png"; sourceTree = "<group>"; };
 		83A9949F16441AE2009CD997 /* profile unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile unselected.png"; sourceTree = "<group>"; };
@@ -480,10 +477,8 @@
 				83E337A21640371B00BD3E90 /* CalendarCell.m */,
 				38589B93162DA46C0007A1F1 /* LoginViewController.h */,
 				38589B94162DA46C0007A1F1 /* LoginViewController.m */,
-				832B188016295EC000035B63 /* CalendarViewController.h */,
-				832B188116295EC000035B63 /* CalendarViewController.m */,
-				8318BE6B1637C979003E2B01 /* NewCalendarViewController.h */,
-				8318BE6C1637C979003E2B01 /* NewCalendarViewController.m */,
+				8318BE6B1637C979003E2B01 /* CalendarViewController.h */,
+				8318BE6C1637C979003E2B01 /* CalendarViewController.m */,
 				83AC4DCF16281E3D000C60C9 /* Phone.h */,
 				83AC4DD016281E3D000C60C9 /* Phone.m */,
 				9B11225C162DA88900723640 /* AddNewEventViewController.h */,
@@ -754,11 +749,10 @@
 				83AC4DBB16281DE5000C60C9 /* AppDelegate.m in Sources */,
 				83AC4DD716281E3D000C60C9 /* Phone.m in Sources */,
 				83AC4DDA16281E3D000C60C9 /* RootViewController.m in Sources */,
-				832B188216295EC000035B63 /* CalendarViewController.m in Sources */,
 				38589B95162DA46C0007A1F1 /* LoginViewController.m in Sources */,
 				9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */,
 				8318BE6A1637AAA4003E2B01 /* DateTimeUtility.m in Sources */,
-				8318BE6D1637C979003E2B01 /* NewCalendarViewController.m in Sources */,
+				8318BE6D1637C979003E2B01 /* CalendarViewController.m in Sources */,
 				83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */,
 				83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */,
 				E87E638616494EA90090928C /* MyMeetingViewController.m in Sources */,
