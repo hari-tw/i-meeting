@@ -49,16 +49,16 @@ static GTLServiceCalendar *calendarServiceInstance;
 
 - (void)awakeFromNib
 {
-    GTMOAuth2Authentication *auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
-                                                                                          clientID:kMyClientID
-                                                                                      clientSecret:kMyClientSecret];
-    
-    NSLog(@"Can Authorize: %@", [auth canAuthorize] ? @"YES" : @"NO");
-
-    self.isSignedIn = [auth canAuthorize];
-    if (self.isSignedIn) {
-        self.calendarService.authorizer = auth;
-    }
+//    GTMOAuth2Authentication *auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+//                                                                                          clientID:kMyClientID
+//                                                                                      clientSecret:kMyClientSecret];
+//    
+//    NSLog(@"Can Authorize: %@", [auth canAuthorize] ? @"YES" : @"NO");
+//
+//    self.isSignedIn = [auth canAuthorize];
+//    if (self.isSignedIn) {
+//        self.calendarService.authorizer = auth;
+//    }
 }
 
 
@@ -115,10 +115,11 @@ static GTLServiceCalendar *calendarServiceInstance;
 {
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarUrl];
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:@"mananbh@thoughtworks.com"];
     query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
     query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:23 minute:59 second:59];
     query.timeZone = @"Asia/Calcutta";
+
     [self.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 

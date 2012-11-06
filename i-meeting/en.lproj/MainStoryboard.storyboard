@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nKR-Ea-wdD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nKR-Ea-wdD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
@@ -71,21 +71,6 @@
             </objects>
             <point key="canvasLocation" x="-1313" y="-604"/>
         </scene>
-        <!--View Controller - My Meetings-->
-        <scene sceneID="YQD-qr-QGa">
-            <objects>
-                <viewController id="aWA-3A-0nh" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fHZ-Sb-sWd">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="My Meetings" image="profile unselected.png" id="5x9-oW-TYh"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Sm-0E-6XS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1823" y="-1423"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tQD-oI-GLS">
             <objects>
@@ -99,12 +84,45 @@
                     </tabBar>
                     <connections>
                         <segue destination="sDa-vP-Bpb" kind="relationship" relationship="viewControllers" id="e5c-Ug-k4V"/>
-                        <segue destination="aWA-3A-0nh" kind="relationship" relationship="viewControllers" id="DqT-pM-A8D"/>
+                        <segue destination="Iak-NN-ehx" kind="relationship" relationship="viewControllers" id="cBF-T9-tG9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTo-fb-GIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2503" y="-1112"/>
+            <point key="canvasLocation" x="-2503" y="-1102"/>
+        </scene>
+        <!--My Meeting View Controller - My Meetings-->
+        <scene sceneID="8qh-5g-uVC">
+            <objects>
+                <tableViewController id="Iak-NN-ehx" customClass="MyMeetingViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fZK-Pe-4no">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Z7w-Ms-3km">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Iak-NN-ehx" id="pxu-PT-z4c"/>
+                            <outlet property="delegate" destination="Iak-NN-ehx" id="ZcM-0H-uIH"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="My Meetings" id="CPY-bw-YBc"/>
+                    <connections>
+                        <outlet property="tableView" destination="fZK-Pe-4no" id="Uhd-dl-JgV"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAu-dt-Oyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1780" y="-1361"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="5LH-7H-KCB">
@@ -194,11 +212,11 @@
             <objects>
                 <viewController title="AddNewInvite" id="6rz-ZE-9OP" customClass="AddNewEventViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9lj-b4-Hig">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subject" minimumFontSize="17" id="uHm-c3-7Uo">
-                                <rect key="frame" x="27" y="15" width="283" height="30"/>
+                                <rect key="frame" x="27" y="12" width="283" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -206,7 +224,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" id="zQv-xo-CTC">
-                                <rect key="frame" x="28" y="70" width="280" height="30"/>
+                                <rect key="frame" x="28" y="57" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -214,7 +232,7 @@
                                 </connections>
                             </textField>
                             <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="gm1-yi-JX3">
-                                <rect key="frame" x="20" y="112" width="280" height="216"/>
+                                <rect key="frame" x="20" y="80" width="280" height="216"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="372090181.66436201">
                                     <!--2012-10-16 14:23:01 +0000-->
@@ -273,9 +291,52 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="profile unselected.png" width="22" height="24"/>
         <image name="settings.png" width="21" height="21"/>
     </resources>
+    <classes>
+        <class className="AddNewEventViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bookButton:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="descriptionField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="subjectField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CalendarCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="timingsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CalendarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addNew:"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="MyMeetingViewController" superclassName="NewCalendarViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyMeetingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NewCalendarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewCalendarViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnCalendar:"/>
+                <relationship kind="action" name="btnScan:" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -55,6 +55,7 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
+         NSLog(@"HERE");
     return self.events.count;
 }
 
@@ -62,7 +63,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    NSLog(@"REACHED HERE");
     id event = [self.events objectAtIndex:indexPath.row];
     NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
     NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
