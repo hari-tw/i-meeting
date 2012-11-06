@@ -12,5 +12,6 @@
 
 @property (nonatomic) NSArray *events;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSString *viewTitle;
 
 @end

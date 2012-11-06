@@ -194,7 +194,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="FeT-Mv-JaP">
-                        <barButtonItem key="rightBarButtonItem" title="Add New " id="jkI-KR-O4o">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="jkI-KR-O4o">
                             <connections>
                                 <segue destination="6rz-ZE-9OP" kind="push" id="xf8-hq-dcF"/>
                             </connections>

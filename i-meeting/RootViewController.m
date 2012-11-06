@@ -20,7 +20,8 @@
 @property (nonatomic, strong) GTLServiceCalendar *calendarService;
 @property (nonatomic, strong) NSArray *eventsSummaries;
 @property (nonatomic) BOOL isSignedIn;
-@property (nonatomic) NSString *calendarUrl;
+@property (nonatomic) NSString *calendarId;
+@property (nonatomic, strong) NSString *meetingRoomName;
 
 @end
 
@@ -29,8 +30,8 @@
 @synthesize calendarService = _calendarService;
 @synthesize eventsSummaries = _eventsSummaries;
 @synthesize isSignedIn = _isSignedIn;
-@synthesize calendarUrl = _calendarUrl;
-
+@synthesize calendarId = _calendarUrl;
+@synthesize meetingRoomName = _meetingRoomName;
 
 static NSString *kKeychainItemName = @"OAuth2 i-meeting";
 static NSString *kMyClientID = @"471799291546-hudka7jkgjsgtub7jnniblqe3lnoggcn.apps.googleusercontent.com";
@@ -115,7 +116,8 @@ static GTLServiceCalendar *calendarServiceInstance;
 {
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:@"mananbh@thoughtworks.com"];
+
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
     query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
     query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:23 minute:59 second:59];
     query.timeZone = @"Asia/Calcutta";
@@ -136,14 +138,12 @@ static GTLServiceCalendar *calendarServiceInstance;
     [self performSegueWithIdentifier:@"calendarSegue" sender:self];
 }
 
--(void) setCalendarUrl:(NSString *)calendarUrl{
-    self.calendarUrl = calendarUrl;
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"calendarSegue"]) {
-        [segue.destinationViewController setEvents:self.eventsSummaries];
+        NewCalendarViewController *calendarViewController = segue.destinationViewController;
+        calendarViewController.events = self.eventsSummaries;
+        calendarViewController.viewTitle = self.meetingRoomName;
     }
 }
 
@@ -174,28 +174,13 @@ static GTLServiceCalendar *calendarServiceInstance;
 {
     NSString *scannedCode = [self getScannedCode:info];
     NSArray *arr = [scannedCode componentsSeparatedByString: @"="];
-    BOOL isMeetingRoomQrCode = [[QRCodeManager new] isMeetingRoomQrCode:arr[0]];
-    //scannedImage.image = [info objectForKey: UIImagePickerControllerOriginalImage];
     
     [picker dismissModalViewControllerAnimated:YES];
     
-    if (isMeetingRoomQrCode)
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:arr[0] message:@"Turn vibration ON?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-        [alertView show];
-    }
-    _calendarUrl = arr[1];
+    self.meetingRoomName = arr[0];
+    self.calendarId = arr[1];
     
     [self signInUser:@selector(displayCalendar)];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        NSLog(@"Button YES pressed.");
-        [self.phone turnVibrationOn];
-    }
 }
 
 @end

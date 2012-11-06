@@ -14,7 +14,6 @@
 
 - (IBAction)btnScan:(UIButton *)sender;
 - (IBAction)btnCalendar:(id)sender;
-- (void)setCalendarUrl:(NSString *)calendarUrl;
 - (void)signInUser:(SEL)signInDoneSelector;
 - (UIViewController *)prepareQrCodeReader;
 - (NSString *)getScannedCode:(NSDictionary *)info;
