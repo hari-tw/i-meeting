@@ -71,6 +71,7 @@
     
     cell.titleLabel.text = [event valueForKey:@"summary"];
     cell.timingsLabel.text = [NSString stringWithFormat:@"%@-%@", eventStartTime, eventEndTime];
+    
     NSLog(@"%@", event);
     
     return cell;

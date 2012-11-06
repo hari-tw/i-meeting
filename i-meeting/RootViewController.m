@@ -74,7 +74,7 @@ static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
 
 - (IBAction)btnCalendar:(UIButton *)sender
 {
-[self signInUser:@selector(displayCalendar)];
+    [self signInUser:@selector(displayCalendar)];
 }
 
 - (void)signInUser:(SEL)signInDoneSelector
@@ -106,9 +106,12 @@ static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
 
 - (void)displayCalendar
 {
+    NSCalendar* myCalendar = [NSCalendar currentCalendar];
+    NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarUrl];
-    query.timeMin = [DateTimeUtility dateTimeForYear:2012 month:10 day:24 atHour:0 minute:0 second:0];
-    query.timeMax = [DateTimeUtility dateTimeForYear:2012 month:10 day:25 atHour:24 minute:0 second:0];
+    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
+    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:23 minute:59 second:59];
+    query.timeZone = @"Asia/Calcutta";
     [self.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 
@@ -175,7 +178,7 @@ static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
     }
     _calendarUrl = arr[1];
     
-[self signInUser:@selector(displayCalendar)];
+    [self signInUser:@selector(displayCalendar)];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
