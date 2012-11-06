@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewCalendarViewController.h"
+#import "CalendarViewController.h"
 
-@interface MyMeetingViewController : NewCalendarViewController
+@interface MyMeetingViewController : CalendarViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
