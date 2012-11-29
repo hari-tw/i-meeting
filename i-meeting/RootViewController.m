@@ -62,16 +62,16 @@ static GTLServiceCalendar *calendarServiceInstance;
 
 - (void)awakeFromNib
 {
-//    GTMOAuth2Authentication *auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
-//                                                                                          clientID:kMyClientID
-//                                                                                      clientSecret:kMyClientSecret];
-//    
-//    NSLog(@"Can Authorize: %@", [auth canAuthorize] ? @"YES" : @"NO");
-//
-//    self.isSignedIn = [auth canAuthorize];
-//    if (self.isSignedIn) {
-//        self.calendarService.authorizer = auth;
-//    }
+    GTMOAuth2Authentication *auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+                                                                                          clientID:kMyClientID
+                                                                                      clientSecret:kMyClientSecret];
+    
+    NSLog(@"Can Authorize: %@", [auth canAuthorize] ? @"YES" : @"NO");
+
+    self.isSignedIn = [auth canAuthorize];
+    if (self.isSignedIn) {
+        self.calendarService.authorizer = auth;
+    }
 }
 
 - (GTLServiceCalendar *)calendarService

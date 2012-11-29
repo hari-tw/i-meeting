@@ -20,14 +20,12 @@
 @implementation AddNewEventViewController
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
     }
-//    self.subjectField.delegate = self;
-//    self.descriptionField.delegate = self;
     return self;
 }
 
@@ -45,7 +43,7 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-        [theTextField resignFirstResponder];
+    [theTextField resignFirstResponder];
     return YES;
 }
 
@@ -53,8 +51,40 @@
     [self setSubjectField:nil];
     [self setDescriptionField:nil];
     [self setDatePicker:nil];
+    [self setCalendarView:nil];
     [super viewDidUnload];
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+        cell.textLabel.text = [NSString stringWithFormat:@"Row: %d", indexPath.row];
+    else
+        cell.textLabel.text = self.datePicker.date.description;
+}
+
+- (void)datePicked:(UIDatePicker *)sender
+{
+    UITableViewCell *startDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    UITableViewCell *endDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    if (startDateTimeCell.selected)
+        startDateTimeCell.textLabel.text = self.datePicker.date.description;
+    if (endDateTimeCell.selected)
+        endDateTimeCell.textLabel.text = self.datePicker.date.description;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
+    
+    NSLog(@"%@", [dateFormatter dateFromString:cell.textLabel.text]);
+    
+    self.datePicker.date = [dateFormatter dateFromString:cell.textLabel.text];
+}
+
 - (IBAction)bookButton:(id)sender {
     GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
     
@@ -78,12 +108,13 @@
     
     
     [service executeQuery:query
-                               completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
-                                   // Callback
-                                   if (error == nil) {
-                                       GTLCalendarEvent *event = object;
-                                   }
-                               }];
-
+        completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+            // Callback
+            if (error == nil) {
+                GTLCalendarEvent *event = object;
+            }
+        }];
+    
 }
+
 @end
