@@ -7,41 +7,30 @@
 //
 
 #import "RootViewController.h"
-#import "GTLCalendar.h"
-#import "GTMOAuth2ViewControllerTouch.h"
 #import "DateTimeUtility.h"
 #import "CalendarViewController.h"
 #import "QRCodeManager.h"
 #import "Phone.h"
+#import "SignInHandler.h"
 
 @interface RootViewController ()
 
 @property (readonly, strong) Phone *phone;
-@property (nonatomic, strong) GTLServiceCalendar *calendarService;
 @property (nonatomic, strong) NSArray *eventsSummaries;
 @property (nonatomic) BOOL isSignedIn;
 @property (nonatomic) NSString *calendarId;
 @property (nonatomic, strong) NSString *meetingRoomName;
+@property (nonatomic, strong) SignInHandler *signInHandler;
 
 @end
 
 @implementation RootViewController
 @synthesize phone = _phone;
-@synthesize calendarService = _calendarService;
 @synthesize eventsSummaries = _eventsSummaries;
 @synthesize isSignedIn = _isSignedIn;
 @synthesize calendarId = _calendarUrl;
 @synthesize meetingRoomName = _meetingRoomName;
-
-static NSString *kKeychainItemName = @"OAuth2 i-meeting";
-static NSString *kMyClientID = @"471799291546-hudka7jkgjsgtub7jnniblqe3lnoggcn.apps.googleusercontent.com";
-static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
-
-static GTLServiceCalendar *calendarServiceInstance;
-
-+ (GTLServiceCalendar *) getService{
-    return calendarServiceInstance;
-}
+@synthesize signInHandler = _signInHandler;
 
 - (Phone *)phone {
     if (!_phone) _phone = [Phone new];
@@ -60,70 +49,33 @@ static GTLServiceCalendar *calendarServiceInstance;
     [reader didMoveToParentViewController:self];
 }
 
-- (void)awakeFromNib
+- (SignInHandler *)signInHandler
 {
-    GTMOAuth2Authentication *auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
-                                                                                          clientID:kMyClientID
-                                                                                      clientSecret:kMyClientSecret];
-    
-    NSLog(@"Can Authorize: %@", [auth canAuthorize] ? @"YES" : @"NO");
-
-    self.isSignedIn = [auth canAuthorize];
-    if (self.isSignedIn) {
-        self.calendarService.authorizer = auth;
-    }
+    if (!_signInHandler) _signInHandler = [SignInHandler new];
+    return _signInHandler;
 }
 
-- (GTLServiceCalendar *)calendarService
+- (void)awakeFromNib
 {
-    if (!_calendarService) _calendarService = [GTLServiceCalendar new];
-    return _calendarService;
+    [self.signInHandler authorizeUser];
 }
 
 - (IBAction)btnCalendar:(UIButton *)sender
 {
-    [self signInUser:@selector(displayCalendar)];
-}
-
-- (void)signInUser:(SEL)signInDoneSelector
-{
-    if (self.isSignedIn) {
-        [self performSelector:signInDoneSelector];
-        return;
-    }
-    
-    NSString *scope = @"https://www.googleapis.com/auth/calendar";
-    
-    GTMOAuth2ViewControllerTouch *viewController = [[GTMOAuth2ViewControllerTouch alloc]
-                                                    initWithScope:scope
-                                                    clientID:kMyClientID
-                                                    clientSecret:kMyClientSecret
-                                                    keychainItemName:kKeychainItemName
-                                                    completionHandler:^(GTMOAuth2ViewControllerTouch *viewController, GTMOAuth2Authentication *auth, NSError *error) {
-                                                        if (error) {
-                                                            NSLog(@"Authentication failed");
-                                                        } else {
-                                                            NSLog(@"Authentication succeeded");
-                                                            self.calendarService.authorizer = auth;
-                                                            calendarServiceInstance = self.calendarService;
-                                                            [self performSelector:signInDoneSelector];
-                                                        }
-                                                    }];
-    
-    [[self navigationController] pushViewController:viewController animated:YES];
+    [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
 }
 
 - (void)displayCalendar
 {
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
-
+    
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
     query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
     query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:23 minute:59 second:59];
     query.timeZone = @"Asia/Calcutta";
-
-    [self.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
+    
+    [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
@@ -176,11 +128,11 @@ static GTLServiceCalendar *calendarServiceInstance;
 {
     NSString *scannedCode = [self getScannedCode:info];
     NSArray *arr = [scannedCode componentsSeparatedByString: @"="];
-
+    
     self.meetingRoomName = arr[0];
     self.calendarId = arr[1];
     
-    [self signInUser:@selector(displayCalendar)];
+    [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
 }
 
 - (void)viewDidUnload {

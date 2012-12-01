@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
-#import "GTLServiceCalendar.h"
 
-@interface RootViewController : UIViewController <UIAlertViewDelegate,ZBarReaderDelegate>
+@interface RootViewController : UIViewController <ZBarReaderDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 - (IBAction)btnCalendar:(id)sender;
-- (void)signInUser:(SEL)signInDoneSelector;
 - (UIViewController *)prepareQrCodeReader;
 - (NSString *)getScannedCode:(NSDictionary *)info;
-+ (GTLServiceCalendar *) getService;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end
 
