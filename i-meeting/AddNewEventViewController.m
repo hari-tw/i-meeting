@@ -43,32 +43,27 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
-        cell.textLabel.text = [NSString stringWithFormat:@"Row: %d", indexPath.row];
-    else
-        cell.textLabel.text = self.datePicker.date.description;
+    if (indexPath.row == 2)
+        cell.detailTextLabel.text = [DateTimeUtility stringFromDate:self.datePicker.date];
+    
+    if (indexPath.row == 3)
+        cell.detailTextLabel.text = [DateTimeUtility stringFromDate:[self.datePicker.date dateByAddingTimeInterval:30 * 60]];
 }
 
 - (void)datePicked:(UIDatePicker *)sender
 {
-    UITableViewCell *startDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-    UITableViewCell *endDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    UITableViewCell *startDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    UITableViewCell *endDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
     if (startDateTimeCell.selected)
-        startDateTimeCell.textLabel.text = self.datePicker.date.description;
+        startDateTimeCell.detailTextLabel.text = [DateTimeUtility stringFromDate:self.datePicker.date];
     if (endDateTimeCell.selected)
-        endDateTimeCell.textLabel.text = self.datePicker.date.description;
+        endDateTimeCell.detailTextLabel.text = [DateTimeUtility stringFromDate:self.datePicker.date];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
-    
-    NSLog(@"%@", [dateFormatter dateFromString:cell.textLabel.text]);
-    
-    self.datePicker.date = [dateFormatter dateFromString:cell.textLabel.text];
+    self.datePicker.date = [DateTimeUtility dateFromString:cell.detailTextLabel.text];
 }
 
 - (IBAction)bookButton:(id)sender {

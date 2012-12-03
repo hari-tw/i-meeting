@@ -28,4 +28,8 @@
                           minute:(int)minute
                           second:(int)second;
 
++ (NSString *)stringFromDate:(NSDate *)date;
+
++ (NSDate *)dateFromString:(NSString *)date;
+
 @end

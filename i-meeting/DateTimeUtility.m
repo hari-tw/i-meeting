@@ -42,11 +42,27 @@
     [dateComponents setHour:hour];
     [dateComponents setMinute:minute];
     [dateComponents setSecond:second];
-    [dateComponents setTimeZone:[NSTimeZone localTimeZone]];
+    [dateComponents setTimeZone:[NSTimeZone systemTimeZone]];
     
     GTLDateTime *dateTime = [GTLDateTime dateTimeWithDateComponents:dateComponents];
     return dateTime;
-    
+}
+
++ (NSDateFormatter *)dateFormatter
+{
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"dd MMM yyyy HH:mm"];
+    return dateFormatter;
+}
+
++ (NSString *)stringFromDate:(NSDate *)date
+{
+    return [[self dateFormatter] stringFromDate:date];
+}
+
++ (NSDate *)dateFromString:(NSString *)date
+{
+    return [[self dateFormatter] dateFromString:date];
 }
 
 @end
