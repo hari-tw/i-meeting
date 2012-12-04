@@ -75,8 +75,8 @@
 - (IBAction)bookButton:(id)sender {
     GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
     
-    newEvent.summary = @"Test subject";
-    newEvent.descriptionProperty = @"Test description";
+    newEvent.summary = self.subjectField.text;
+    newEvent.descriptionProperty = self.descriptionField.text;
     
     //    GTLDateTime *startDate = [GTLDateTime dateTimeWithDate: self.datePicker.date timeZone:[NSTimeZone systemTimeZone]];
     
@@ -90,7 +90,7 @@
     newEvent.end.dateTime = endDate;
     
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
-                                                                    calendarId:@"sbahal@thoughtworks.com"];
+                                                                    calendarId:@"renuahla@thoughtworks.com"];
     
     [self.signInHandler.calendarService executeQuery:query
                                    completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
@@ -102,4 +102,9 @@
     
 }
 
+- (void)viewDidUnload {
+    [self setSubjectField:nil];
+    [self setDescriptionField:nil];
+    [super viewDidUnload];
+}
 @end

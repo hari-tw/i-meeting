@@ -225,7 +225,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" id="La9-aV-iCG">
-                                                    <rect key="frame" x="10" y="0.0" width="282" height="43"/>
+                                                    <rect key="frame" x="9" y="0.0" width="282" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
@@ -324,6 +324,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="SqY-vP-Bdv" id="0hU-3w-9xG"/>
+                        <outlet property="descriptionField" destination="x8Y-CM-Y2e" id="vhO-5H-j9N"/>
+                        <outlet property="subjectField" destination="La9-aV-iCG" id="iBr-hr-HtX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRd-mL-uSE" userLabel="First Responder" sceneMemberID="firstResponder"/>

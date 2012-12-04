@@ -11,6 +11,7 @@
 @interface AddNewEventViewController : UITableViewController<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *subjectField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionField;
+
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 - (IBAction)bookButton:(id)sender;
