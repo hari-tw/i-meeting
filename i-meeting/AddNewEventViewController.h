@@ -13,7 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *descriptionField;
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (strong, nonatomic) NSString *location;
+@property (strong, nonatomic) NSString *meetingRoomId;
+@property (strong, nonatomic) NSString *meetingRoomName;
 
 - (IBAction)bookButton:(id)sender;
 - (IBAction)datePicked:(UIDatePicker *)sender;

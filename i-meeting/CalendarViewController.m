@@ -74,7 +74,8 @@
 {
     if ([segue.identifier isEqualToString:@"addEvent"]) {
         AddNewEventViewController *addNewEventViewController = segue.destinationViewController;
-        addNewEventViewController.location = self.viewTitle;
+        addNewEventViewController.meetingRoomId = self.calendarId;
+        addNewEventViewController.meetingRoomName = self.viewTitle;
     }
 }
 

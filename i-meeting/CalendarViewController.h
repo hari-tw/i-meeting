@@ -13,5 +13,6 @@
 @property (nonatomic) NSArray *events;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString *viewTitle;
+@property (strong, nonatomic) NSString *calendarId;
 
 @end

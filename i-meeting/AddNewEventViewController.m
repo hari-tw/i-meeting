@@ -84,30 +84,33 @@
     
     newEvent.summary = self.subjectField.text;
     newEvent.descriptionProperty = self.descriptionField.text;
-    newEvent.location = self.location;
+    newEvent.location = self.meetingRoomName;
+    
+    GTLCalendarEventAttendee *attendee = [GTLCalendarEventAttendee new];
+    attendee.email = self.meetingRoomId;
+    newEvent.attendees = [NSArray arrayWithObject:attendee];
     
     NSDate *sDate = [DateTimeUtility dateFromString:startDateString];
     
     NSDate *eDate = [DateTimeUtility dateFromString:endDateString];
-
+    
     GTLDateTime *endTime = [GTLDateTime dateTimeWithDate: eDate timeZone: [NSTimeZone systemTimeZone]];
     GTLDateTime *startTime = [GTLDateTime dateTimeWithDate: sDate timeZone: [NSTimeZone systemTimeZone]];
-
+    
     newEvent.start = [GTLCalendarEventDateTime new];
     newEvent.start.dateTime = startTime;
-
+    
     newEvent.end = [GTLCalendarEventDateTime new];
     newEvent.end.dateTime = endTime;
     
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
-                                                                    calendarId:@"renuahla@thoughtworks.com"];
+                                                                    calendarId:@"sbahal@thoughtworks.com"];
     
     [self.signInHandler.calendarService executeQuery:query
                                    completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
                                        // Callback
-                                       if (error == nil) {
-                                           GTLCalendarEvent *event = object;
-                                       }
+                                       if (error != nil)
+                                           NSLog(@"%@", error.description);
                                    }];
     
 }
