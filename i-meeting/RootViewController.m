@@ -97,6 +97,7 @@
         CalendarViewController *calendarViewController = segue.destinationViewController;
         calendarViewController.events = self.eventsSummaries;
         calendarViewController.viewTitle = self.meetingRoomName;
+        
     }
 }
 

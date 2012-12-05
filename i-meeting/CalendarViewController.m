@@ -9,6 +9,7 @@
 #import "CalendarViewController.h"
 #import "CalendarCell.h"
 #import  "GTLCalendarEventDateTime.h"
+#import "AddNewEventViewController.h"
 
 @interface CalendarViewController ()
 
@@ -67,6 +68,14 @@
     NSLog(@"%@", event);
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"addEvent"]) {
+        AddNewEventViewController *addNewEventViewController = segue.destinationViewController;
+        addNewEventViewController.location = self.viewTitle;
+    }
 }
 
 - (void)viewDidUnload {

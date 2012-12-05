@@ -75,19 +75,29 @@
 - (IBAction)bookButton:(id)sender {
     GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
     
+    UITableViewCell *startDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    
+    UITableViewCell *endDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    
+    NSString *startDateString = startDateTimeCell.detailTextLabel.text;
+    NSString *endDateString = endDateTimeCell.detailTextLabel.text;
+    
     newEvent.summary = self.subjectField.text;
     newEvent.descriptionProperty = self.descriptionField.text;
+    newEvent.location = self.location;
     
-    //    GTLDateTime *startDate = [GTLDateTime dateTimeWithDate: self.datePicker.date timeZone:[NSTimeZone systemTimeZone]];
+    NSDate *sDate = [DateTimeUtility dateFromString:startDateString];
     
-    GTLDateTime *startDate = [DateTimeUtility dateTimeForTodayAtHour:21 minute:0 second:0];
-    GTLDateTime *endDate = [DateTimeUtility dateTimeForTodayAtHour:21 minute:30 second:0];
-    
+    NSDate *eDate = [DateTimeUtility dateFromString:endDateString];
+
+    GTLDateTime *endTime = [GTLDateTime dateTimeWithDate: eDate timeZone: [NSTimeZone systemTimeZone]];
+    GTLDateTime *startTime = [GTLDateTime dateTimeWithDate: sDate timeZone: [NSTimeZone systemTimeZone]];
+
     newEvent.start = [GTLCalendarEventDateTime new];
-    newEvent.start.dateTime = startDate;
-    
+    newEvent.start.dateTime = startTime;
+
     newEvent.end = [GTLCalendarEventDateTime new];
-    newEvent.end.dateTime = endDate;
+    newEvent.end.dateTime = endTime;
     
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
                                                                     calendarId:@"renuahla@thoughtworks.com"];
