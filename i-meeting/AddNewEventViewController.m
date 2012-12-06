@@ -73,7 +73,8 @@
 }
 
 - (IBAction)bookButton:(id)sender {
-    GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
+    
+  
     
     UITableViewCell *startDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     
@@ -81,19 +82,26 @@
     
     NSString *startDateString = startDateTimeCell.detailTextLabel.text;
     NSString *endDateString = endDateTimeCell.detailTextLabel.text;
+       
+    NSDate *sDate = [DateTimeUtility dateFromString:startDateString];
+    
+    NSDate *eDate = [DateTimeUtility dateFromString:endDateString];
+    NSString *validation = @"";
+    
+    validation =[self validateEventTitle:self.subjectField.text Description:self.descriptionField.text StartDate:sDate EndDate:eDate];
+ 
+    if([validation isEqualToString:@""])
+    {
+    
+      GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
     
     newEvent.summary = self.subjectField.text;
     newEvent.descriptionProperty = self.descriptionField.text;
     newEvent.location = self.meetingRoomName;
-    
     GTLCalendarEventAttendee *attendee = [GTLCalendarEventAttendee new];
     attendee.email = self.meetingRoomId;
     newEvent.attendees = [NSArray arrayWithObject:attendee];
-    
-    NSDate *sDate = [DateTimeUtility dateFromString:startDateString];
-    
-    NSDate *eDate = [DateTimeUtility dateFromString:endDateString];
-    
+
     GTLDateTime *endTime = [GTLDateTime dateTimeWithDate: eDate timeZone: [NSTimeZone systemTimeZone]];
     GTLDateTime *startTime = [GTLDateTime dateTimeWithDate: sDate timeZone: [NSTimeZone systemTimeZone]];
     
@@ -104,15 +112,41 @@
     newEvent.end.dateTime = endTime;
     
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
-                                                                    calendarId:@"sbahal@thoughtworks.com"];
+                                                                    calendarId:@"renuahla@thoughtworks.com"];
     
     [self.signInHandler.calendarService executeQuery:query
                                    completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
                                        // Callback
                                        if (error != nil)
                                            NSLog(@"%@", error.description);
+                                       if (error == nil) {
+                                          // GTLCalendarEvent *event = object;
+                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Event Saved Successfully." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                           [alert show];
+                                       }
                                    }];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid" message:validation delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
     
+}
+
+-(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
+{
+   NSString *error = @"";
+     if([title isEqualToString: @""] && [description isEqualToString: @""])
+     {
+         error = [error stringByAppendingString:@"Enter Title/Description."];
+     }
+     NSDate *currentTime = [NSDate date];
+    if(([startDate compare:currentTime] != NSOrderedDescending)&&([endDate compare:startDate] != NSOrderedDescending)&&([endDate compare:startDate] == NSOrderedSame))
+    {
+        error = [error stringByAppendingString:@"Invalid event time."];
+    }
+    return error;
 }
 
 - (void)viewDidUnload {

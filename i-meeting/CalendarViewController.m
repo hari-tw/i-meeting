@@ -76,6 +76,7 @@
         AddNewEventViewController *addNewEventViewController = segue.destinationViewController;
         addNewEventViewController.meetingRoomId = self.calendarId;
         addNewEventViewController.meetingRoomName = self.viewTitle;
+
     }
 }
 
