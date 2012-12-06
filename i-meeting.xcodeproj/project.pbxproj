@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A76E3A216709C280041B3DD /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A76E3A116709C280041B3DD /* Property List.plist */; };
 		8318BDE2163715C6003E2B01 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE1163715C6003E2B01 /* Security.framework */; };
 		8318BDE416371610003E2B01 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE316371610003E2B01 /* SystemConfiguration.framework */; };
 		8318BE4116371CD2003E2B01 /* GTLCalendarAcl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BD7F16370F4C003E2B01 /* GTLCalendarAcl.m */; };
@@ -87,6 +88,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A76E3A116709C280041B3DD /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
 		8318BD7C16370F4C003E2B01 /* GTLCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLCalendar.h; sourceTree = "<group>"; };
 		8318BD7E16370F4C003E2B01 /* GTLCalendarAcl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLCalendarAcl.h; sourceTree = "<group>"; };
 		8318BD7F16370F4C003E2B01 /* GTLCalendarAcl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLCalendarAcl.m; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 		83AC4D9B16281DE5000C60C9 = {
 			isa = PBXGroup;
 			children = (
+				5A76E3A116709C280041B3DD /* Property List.plist */,
 				E896DF0B1639732F00A596A4 /* Settings.bundle */,
 				83AC4DB016281DE5000C60C9 /* i-meeting */,
 				83AC4E1616281F24000C60C9 /* i-meeting-tests */,
@@ -685,6 +688,7 @@
 				83A994AB16441AE2009CD997 /* scan unselected.png in Resources */,
 				83A994AC16441AE2009CD997 /* settings selected.png in Resources */,
 				83A994AD16441AE2009CD997 /* settings.png in Resources */,
+				5A76E3A216709C280041B3DD /* Property List.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
