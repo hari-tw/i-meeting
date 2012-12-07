@@ -34,29 +34,26 @@
 {
     [self displayCalendar];
     [super viewDidLoad];
-     NSString *propertyListFilePath=[[NSBundle mainBundle] pathForResource:@"Property List" ofType:@"plist"];
-
-    NSDictionary *propertiesDictionary = [[NSDictionary alloc] initWithContentsOfFile:propertyListFilePath];
-    for (id key in propertiesDictionary)
-    {
-        if([(NSString *)key isEqualToString:@"UserNameToViewCalendar"]){
-            //id value = [propertiesDictionary objectForKey:key];
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Hello!" message:@"Please enter the username whose calendar you want to view:" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:nil];
-            alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-            UITextField * alertTextField = [alert textFieldAtIndex:0];
-            alertTextField.keyboardType = UIKeyboardTypeDefault;
-            alertTextField.placeholder = @"Enter User Name";
-            [alert show];
-        }
-
+    
+    NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
+    NSString *userNameToViewCalendar = [userPreferences stringForKey:@"userNameToViewCalendar"];
+    if(userNameToViewCalendar == nil){
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Hello!"
+                                                         message:@"Please enter the username whose calendar you want to view:"
+                                                         delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:nil];
+        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        UITextField * alertTextField = [alert textFieldAtIndex:0];
+        alertTextField.keyboardType = UIKeyboardTypeDefault;
+        alertTextField.placeholder = @"Enter User Name";
+        [alert show];
     }
-    
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"Entered: %@",[[alertView textFieldAtIndex:0] text]);
-    
-}
+  -  (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+        NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
+        [userPreferences setObject:[[alertView textFieldAtIndex:0] text] forKey:@"userNameToViewCalendar"];
+        [userPreferences synchronize];
+  }
 
 - (SignInHandler *)signInHandler
 {
@@ -65,10 +62,11 @@
 }
 
 - (void)displayCalendar
-{
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:@"mananbh@thoughtworks.com"];
-    query.timeMin = [DateTimeUtility dateTimeForYear:2012 month:10 day:24 atHour:0 minute:0 second:0];
-    query.timeMax = [DateTimeUtility dateTimeForYear:2012 month:10 day:25 atHour:24 minute:0 second:0];
+    { NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
+    NSString *userNameToViewCalendar = [userPreferences stringForKey:@"userNameToViewCalendar"];
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:userNameToViewCalendar];
+    query.timeMin =  [DateTimeUtility dateTimeForYear:2012 month:12 day:06 atHour:0 minute:0 second:0];
+    query.timeMax = [DateTimeUtility dateTimeForYear:2012 month:12 day:07 atHour:24 minute:0 second:0];
     [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 
