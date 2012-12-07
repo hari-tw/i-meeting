@@ -75,6 +75,7 @@
     query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:23 minute:59 second:59];
     query.timeZone = @"Asia/Calcutta";
     
+    
     [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 
@@ -84,13 +85,13 @@
         NSLog(@"%@", error);
         return;
     }
-    
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
-    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.hour" ascending:YES];
+    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.minute" ascending:YES];
+    self.eventsSummaries = [self.eventsSummaries sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, nil]];
     [self performSegueWithIdentifier:@"calendarSegue" sender:self];
 }
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"calendarSegue"]) {
@@ -98,6 +99,13 @@
         calendarViewController.events = self.eventsSummaries;
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.calendarId;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+        [dateFormatter setDateFormat:@"EEE, dd MMM yyyy"];
+        NSDate *date1 = [NSDate date];
+        NSString *dateString = [dateFormatter stringFromDate:date1];
+        calendarViewController.currentDate = [NSString stringWithFormat:@"%@", dateString];
+
     }
 }
 

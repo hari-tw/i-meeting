@@ -31,6 +31,7 @@
     [super viewDidLoad];
     
     self.title = self.viewTitle;
+    self.currentDateLabel.text = self.currentDate;
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,12 +56,18 @@
 {
     static NSString *cellIdentifier = @"Cell";
     CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
     id event = [self.events objectAtIndex:indexPath.row];
     NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
     NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
+    int sampleHourToMin = ((eventStart.hour)*60)+eventStart.minute;
+    int sampleHourToMinEnd = (eventEnd.hour*60)+eventEnd.minute;
+    int sampleduration = sampleHourToMinEnd-sampleHourToMin;
+    NSLog(@"Hello   %d",sampleduration);
+
+    
     NSString *eventStartTime = [NSString stringWithFormat:@"%02d:%02d", eventStart.hour, eventStart.minute];
     NSString *eventEndTime = [NSString stringWithFormat:@"%02d:%02d", eventEnd.hour, eventEnd.minute];
+
     
     cell.titleLabel.text = [event valueForKey:@"summary"];
     cell.timingsLabel.text = [NSString stringWithFormat:@"%@-%@", eventStartTime, eventEndTime];
@@ -82,6 +89,7 @@
 
 - (void)viewDidUnload {
     [self setTableView:nil];
+    [self setCurrentDateLabel:nil];
     [super viewDidUnload];
 }
 @end

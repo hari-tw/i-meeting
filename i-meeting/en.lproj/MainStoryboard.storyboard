@@ -120,16 +120,24 @@
         <scene sceneID="4fu-u9-4Q2">
             <objects>
                 <tableViewController id="WSa-KA-q1z" customClass="CalendarViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Edq-9P-h3c">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="69" sectionHeaderHeight="22" sectionFooterHeight="22" id="Edq-9P-h3c">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableHeaderView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LX6-gC-ZHN">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.4698158021594056" green="0.48993228544448342" blue="0.50286599864130432" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Vkx-k0-EeF" customClass="CalendarCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="69" id="Vkx-k0-EeF" customClass="CalendarCell">
+                                <rect key="frame" x="0.0" y="55" width="320" height="69"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z8s-aQ-7vv">
@@ -146,10 +154,18 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hCv-r9-WwB">
+                                            <rect key="frame" x="20" y="40" width="280" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.37160326086956519" green="0.37160326086956519" blue="0.37160326086956519" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
+                                    <outlet property="durationLabel" destination="hCv-r9-WwB" id="PjH-bS-tVt"/>
                                     <outlet property="timingsLabel" destination="euQ-5c-DjA" id="EtT-kj-2Xu"/>
                                     <outlet property="titleLabel" destination="z8s-aQ-7vv" id="KR5-KH-X66"/>
                                 </connections>
@@ -168,6 +184,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="currentDateLabel" destination="LX6-gC-ZHN" id="zr9-DE-6tN"/>
                         <outlet property="tableView" destination="Edq-9P-h3c" id="Gdr-eY-aEH"/>
                     </connections>
                 </tableViewController>
@@ -336,6 +353,47 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="settings.png" width="21" height="21"/>
     </resources>
+    <classes>
+        <class className="AddNewEventViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bookButton:"/>
+                <relationship kind="action" name="datePicked:" candidateClass="UIDatePicker"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="descriptionField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="subjectField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CalendarCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timingsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CalendarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="currentDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MyMeetingViewController" superclassName="CalendarViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyMeetingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnCalendar:"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
