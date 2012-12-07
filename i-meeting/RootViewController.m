@@ -57,6 +57,7 @@
 
 - (void)awakeFromNib
 {
+    
     [self.signInHandler authorizeUser];
 }
 
