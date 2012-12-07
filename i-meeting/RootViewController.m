@@ -17,6 +17,7 @@
 
 @property (readonly, strong) Phone *phone;
 @property (nonatomic, strong) NSArray *eventsSummaries;
+@property (nonatomic, strong) NSArray *eventsSummariesForTomorrow;
 @property (nonatomic) BOOL isSignedIn;
 @property (nonatomic) NSString *calendarId;
 @property (nonatomic, strong) NSString *meetingRoomName;
@@ -27,6 +28,7 @@
 @implementation RootViewController
 @synthesize phone = _phone;
 @synthesize eventsSummaries = _eventsSummaries;
+@synthesize eventsSummariesForTomorrow = _eventsSummariesForTomorrow;
 @synthesize isSignedIn = _isSignedIn;
 @synthesize calendarId = _calendarUrl;
 @synthesize meetingRoomName = _meetingRoomName;
@@ -70,15 +72,33 @@
 {
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
-    
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
     query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
     query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:23 minute:59 second:59];
     query.timeZone = @"Asia/Calcutta";
-    
-    
     [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
+    
+//    NSDateComponents* components1 = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate dateWithTimeInterval:(24*60*60) sinceDate:[NSDate date]]];
+//    GTLQueryCalendar *query1 = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
+//    query1.timeMin = [DateTimeUtility dateTimeForYear:[components1 year] month:[components1 month] day:[components1 day] atHour:0 minute:0 second:0];
+//    query1.timeMax = [DateTimeUtility dateTimeForYear:[components1 year] month:[components1 month] day:[components1 day] atHour:23 minute:59 second:59];
+//    query1.timeZone = @"Asia/Calcutta";
+//    [self.signInHandler.calendarService executeQuery:query1 delegate:self didFinishSelector:@selector(didFinishQueryCalendar1:finishedWithObject:error:)];
 }
+
+//- (void)didFinishQueryCalendar1:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
+//{
+//    if (error) {
+//        NSLog(@"%@", error);
+//        return;
+//    }
+//    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
+//    self.eventsSummariesForTomorrow = events.items;
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.hour" ascending:YES];
+//    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.minute" ascending:YES];
+//    self.eventsSummariesForTomorrow = [self.eventsSummariesForTomorrow sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, nil]];
+//    [self performSegueWithIdentifier:@"calendarSegue" sender:self];
+//}
 
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
 {
@@ -93,6 +113,17 @@
     self.eventsSummaries = [self.eventsSummaries sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, nil]];
     [self performSegueWithIdentifier:@"calendarSegue" sender:self];
 }
+
+- (NSString *)dateToString
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    [dateFormatter setDateFormat:@"EEE, dd MMM yyyy"];
+    NSDate *date1 = [NSDate date];
+    NSString *dateString = [dateFormatter stringFromDate:date1];
+    return dateString;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"calendarSegue"]) {
@@ -100,12 +131,9 @@
         calendarViewController.events = self.eventsSummaries;
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.calendarId;
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-        [dateFormatter setDateFormat:@"EEE, dd MMM yyyy"];
-        NSDate *date1 = [NSDate date];
-        NSString *dateString = [dateFormatter stringFromDate:date1];
-        calendarViewController.currentDate = [NSString stringWithFormat:@"%@", dateString];
+        NSString *dateString;
+        dateString = [self dateToString];
+        calendarViewController.currentDate = [NSString stringWithFormat:@"%@",dateString];
 
     }
 }

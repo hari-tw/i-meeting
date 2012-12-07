@@ -29,7 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.title = self.viewTitle;
     self.currentDateLabel.text = self.currentDate;
 }
@@ -52,14 +51,9 @@
     return self.events.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSString *)durationOfMeeting:(NSDateComponents *)eventStart eventEnd:(NSDateComponents *)eventEnd
 {
-    NSString *durationString = @"";
-    static NSString *cellIdentifier = @"Cell";
-    CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    id event = [self.events objectAtIndex:indexPath.row];
-    NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
-    NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
+    NSString *durationString;
     int startTimeInMinute = ((eventStart.hour)*60)+eventStart.minute;
     int endTimeInMinute = (eventEnd.hour*60)+eventEnd.minute;
     int duration = endTimeInMinute-startTimeInMinute;
@@ -75,17 +69,27 @@
             durationString = [NSString stringWithFormat:@"%d hour %d minutes", hour,minutes];
         }
     }
-    
-    
+    return durationString;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *durationString = @"";
+    static NSString *cellIdentifier = @"Cell";
+    CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    id event = [self.events objectAtIndex:indexPath.row];
+    NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
+    NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
+    
+    durationString = [self durationOfMeeting:eventStart eventEnd:eventEnd];
     
     NSString *eventStartTime = [NSString stringWithFormat:@"%02d:%02d", eventStart.hour, eventStart.minute];
     NSString *eventEndTime = [NSString stringWithFormat:@"%02d:%02d", eventEnd.hour, eventEnd.minute];
-
     
     cell.titleLabel.text = [event valueForKey:@"summary"];
     cell.timingsLabel.text = [NSString stringWithFormat:@"%@-%@", eventStartTime, eventEndTime];
-    cell.durationLabel.text = [NSString stringWithFormat: @"Duration: %@", durationString];
+    cell.durationLabel.text = [NSString stringWithFormat: @"%@", durationString];
+    
     NSLog(@"%@", event);
     
     return cell;
