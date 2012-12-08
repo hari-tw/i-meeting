@@ -31,6 +31,11 @@ static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
     return _calendarService;
 }
 
+- (NSString *)userEmail
+{
+    return self.authToken.userEmail;
+}
+
 - (void)authorizeUser
 {
     self.authToken = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
@@ -41,6 +46,7 @@ static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
     
     if (self.isSignedIn) {
         self.calendarService.authorizer = self.authToken;
+        NSLog(@"%@", self.authToken.userEmail);
     }
 }
 
