@@ -12,7 +12,7 @@
 #import "AddNewEventViewController.h"
 #import "DateTimeUtility.h"
 #import "Foundation/Foundation.h"
-#import "DetailedViewController.h"
+
 
 
 
