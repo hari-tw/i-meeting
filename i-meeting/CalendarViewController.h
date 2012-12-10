@@ -10,6 +10,10 @@
 
 @interface CalendarViewController : UITableViewController
 
+{
+       NSMutableArray *dataArray;
+
+}
 @property (nonatomic) NSArray *events;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString *currentDate;

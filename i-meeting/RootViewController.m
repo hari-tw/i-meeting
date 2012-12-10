@@ -12,6 +12,8 @@
 #import "QRCodeManager.h"
 #import "Phone.h"
 #import "SignInHandler.h"
+#import "Foundation/NSCalendar.h"
+
 
 @interface RootViewController ()
 
@@ -60,7 +62,7 @@
 - (void)awakeFromNib
 {
     
-    [self.signInHandler authorizeUser];
+   [self.signInHandler authorizeUser];
 }
 
 - (IBAction)btnCalendar:(UIButton *)sender
@@ -71,34 +73,17 @@
 - (void)displayCalendar
 {
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
-    NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
+    NSDate *now = [NSDate new];
+    NSDateComponents *components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
-    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
-    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:23 minute:59 second:59];
+    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:[components hour] minute:[components minute] second:[components second]];
+    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:([components day]+1) atHour:23 minute:59 second:59];
     query.timeZone = @"Asia/Calcutta";
     [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
-    
-//    NSDateComponents* components1 = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate dateWithTimeInterval:(24*60*60) sinceDate:[NSDate date]]];
-//    GTLQueryCalendar *query1 = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
-//    query1.timeMin = [DateTimeUtility dateTimeForYear:[components1 year] month:[components1 month] day:[components1 day] atHour:0 minute:0 second:0];
-//    query1.timeMax = [DateTimeUtility dateTimeForYear:[components1 year] month:[components1 month] day:[components1 day] atHour:23 minute:59 second:59];
-//    query1.timeZone = @"Asia/Calcutta";
-//    [self.signInHandler.calendarService executeQuery:query1 delegate:self didFinishSelector:@selector(didFinishQueryCalendar1:finishedWithObject:error:)];
 }
 
-//- (void)didFinishQueryCalendar1:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
-//{
-//    if (error) {
-//        NSLog(@"%@", error);
-//        return;
-//    }
-//    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-//    self.eventsSummariesForTomorrow = events.items;
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.hour" ascending:YES];
-//    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.minute" ascending:YES];
-//    self.eventsSummariesForTomorrow = [self.eventsSummariesForTomorrow sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, nil]];
-//    [self performSegueWithIdentifier:@"calendarSegue" sender:self];
-//}
+
+
 
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
 {
@@ -108,9 +93,6 @@
     }
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.hour" ascending:YES];
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.minute" ascending:YES];
-    self.eventsSummaries = [self.eventsSummaries sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, nil]];
     [self performSegueWithIdentifier:@"calendarSegue" sender:self];
 }
 

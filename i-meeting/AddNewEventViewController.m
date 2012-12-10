@@ -112,7 +112,7 @@
     newEvent.end.dateTime = endTime;
     
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
-                                                                    calendarId:@"renuahla@thoughtworks.com"];
+                                                                    calendarId:@"akritiay@thoughtworks.com"];
     
     [self.signInHandler.calendarService executeQuery:query
                                    completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
