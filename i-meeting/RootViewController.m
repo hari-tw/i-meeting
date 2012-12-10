@@ -70,32 +70,6 @@
     [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
 }
 
-- (void)displayCalendar
-{
-    NSCalendar* myCalendar = [NSCalendar currentCalendar];
-    NSDate *now = [NSDate new];
-    NSDateComponents *components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
-    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:[components hour] minute:[components minute] second:[components second]];
-    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:([components day]+1) atHour:23 minute:59 second:59];
-    query.timeZone = @"Asia/Calcutta";
-    [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
-}
-
-
-
-
-- (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
-{
-    if (error) {
-        NSLog(@"%@", error);
-        return;
-    }
-    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-    self.eventsSummaries = events.items;
-    [self performSegueWithIdentifier:@"calendarSegue" sender:self];
-}
-
 - (NSString *)dateToString
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -110,7 +84,6 @@
 {
     if ([segue.identifier isEqualToString:@"calendarSegue"]) {
         CalendarViewController *calendarViewController = segue.destinationViewController;
-        calendarViewController.events = self.eventsSummaries;
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.calendarId;
         NSString *dateString;
@@ -151,8 +124,9 @@
     
     self.meetingRoomName = arr[0];
     self.calendarId = arr[1];
+    [self performSegueWithIdentifier:@"calendarSegue" sender:self];
+
     
-    [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
 }
 
 - (void)viewDidUnload {

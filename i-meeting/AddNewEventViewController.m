@@ -31,9 +31,20 @@
     return _signInHandler;
 }
 
+- (void)viewDidLoad
+{
+    NSDate *minDate = [NSDate date];
+    NSDate *maxDate = [[NSDate alloc] initWithTimeIntervalSinceNow:60*60*48];
+    
+    self.datePicker.minimumDate = minDate;
+    self.datePicker.maximumDate = maxDate;
+    [super viewDidLoad];
+}
+
 - (void)awakeFromNib
 {
     [self.signInHandler authorizeUser];
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
@@ -110,9 +121,10 @@
     
     newEvent.end = [GTLCalendarEventDateTime new];
     newEvent.end.dateTime = endTime;
+        NSString *userName = [self.signInHandler userEmail];
     
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
-                                                                    calendarId:@"akritiay@thoughtworks.com"];
+                                                                    calendarId:userName];
     
     [self.signInHandler.calendarService executeQuery:query
                                    completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {

@@ -10,18 +10,17 @@
 #import "CalendarCell.h"
 #import  "GTLCalendarEventDateTime.h"
 #import "AddNewEventViewController.h"
-#import "DateTimeUtility.h"
 #import "Foundation/Foundation.h"
-
-
-
+#import "SignInHandler.h"
+#import "DateTimeUtility.h"
 
 @interface CalendarViewController ()
-
-
+@property (nonatomic, strong) SignInHandler *signInHandler;
 @end
 
 @implementation CalendarViewController
+@synthesize signInHandler = _signInHandler;
+@synthesize events;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -32,10 +31,21 @@
     return self;
 }
 
-
+- (SignInHandler *)signInHandler
+{
+    if (!_signInHandler) _signInHandler = [SignInHandler new];
+    return _signInHandler;
+}
+- (void)awakeFromNib
+{
+    [self.signInHandler authorizeUser];
+ 
+}
 
 - (void)viewDidLoad
 {
+    [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
+
     [super viewDidLoad];
     
     self.title = self.viewTitle;
@@ -218,6 +228,33 @@ return cell;
    
         }
  
+
+- (void)displayCalendar
+{
+    NSCalendar* myCalendar = [NSCalendar currentCalendar];
+    NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
+    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
+    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:23 minute:59 second:59];
+    query.timeZone = @"Asia/Calcutta";
+    [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
+}
+
+- (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
+{
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
+    self.events = events.items;
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.hour" ascending:YES];
+    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.minute" ascending:YES];
+    self.events = [self.events sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, nil]];
+    [self.tableView reloadData];
+    
+}
+
 
 - (void)viewDidUnload {
     [self setTableView:nil];
