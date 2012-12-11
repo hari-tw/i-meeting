@@ -85,7 +85,7 @@
     NSDateComponents* components1 = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:tommorrow];
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
   
-    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
+    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:[components hour] minute:[components minute] second:[components second]];
     query.timeMax = [DateTimeUtility dateTimeForYear:[components1 year] month:[components1 month] day:[components1 day] atHour:23 minute:59 second:59];
     query.timeZone = @"Asia/Calcutta";
     query.singleEvents = TRUE;
@@ -119,8 +119,7 @@
     
    NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:now];
      NSDateComponents *dateComps1 = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:tommorrow];
-    
-    NSLog (@" %%%% %@ %%%%%%", now);
+
     for (int i=0; i<self.events2.count; i++) {
       
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.events2[i] valueForKey:@"start"]).dateTime.dateComponents;
