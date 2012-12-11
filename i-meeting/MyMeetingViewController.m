@@ -66,7 +66,7 @@
     }
     
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-    self.events = events.items;
+    self.events2 = events.items;
     [super viewDidLoad];
 }
 

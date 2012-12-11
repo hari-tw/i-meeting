@@ -21,7 +21,7 @@
 
 @implementation CalendarViewController
 @synthesize signInHandler = _signInHandler;
-@synthesize events;
+@synthesize events2;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -43,6 +43,25 @@
  
 }
 
+- (void)ForGettingEventsForEachSection
+{
+    NSMutableArray *todayDateEvents = [NSMutableArray new];
+    NSMutableArray *tommorrowDateEvents = [NSMutableArray new];
+    
+    
+    [self savingEventsInArray:tommorrowDateEvents todayDateEvents:todayDateEvents];
+    dataArray = [[NSMutableArray alloc] init];
+    
+    NSArray *firstSectionArray = todayDateEvents;
+    NSDictionary *firstItemsArrayDict = [NSDictionary dictionaryWithObject:firstSectionArray forKey:@"data"];
+    [dataArray addObject:firstItemsArrayDict];
+    
+    
+    NSArray *secondSectionArray = tommorrowDateEvents;
+    NSDictionary *secondItemsArrayDict = [NSDictionary dictionaryWithObject:secondSectionArray forKey:@"data"];
+    [dataArray addObject:secondItemsArrayDict];
+}
+
 - (void)viewDidLoad
 {
     [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
@@ -51,23 +70,9 @@
     
     self.title = self.viewTitle;
     
-    [self sortingTheEventsAccordingToTime];
     
-    NSMutableArray *todayDateEvents = [NSMutableArray new];
-    NSMutableArray *tommorrowDateEvents = [NSMutableArray new];
     
-  
-    [self savingEventsInArray:tommorrowDateEvents todayDateEvents:todayDateEvents];
-    dataArray = [[NSMutableArray alloc] init];
-
-    NSArray *firstSectionArray = todayDateEvents;
-    NSDictionary *firstItemsArrayDict = [NSDictionary dictionaryWithObject:firstSectionArray forKey:@"data"];
-    [dataArray addObject:firstItemsArrayDict];
-    
-
-    NSArray *secondSectionArray = tommorrowDateEvents;
-    NSDictionary *secondItemsArrayDict = [NSDictionary dictionaryWithObject:secondSectionArray forKey:@"data"];
-    [dataArray addObject:secondItemsArrayDict];
+   
 }
 
 - (void)sortingTheEventsAccordingToTime
@@ -77,7 +82,7 @@
     NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.day" ascending:YES];
     NSSortDescriptor *sortDescriptor3 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.hour" ascending:YES];
     NSSortDescriptor *sortDescriptor4 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.minute" ascending:YES];
-    self.events = [self.events sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, sortDescriptor2,sortDescriptor3,sortDescriptor4, nil]];
+    self.events2 = [self.events2 sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, sortDescriptor2,sortDescriptor3,sortDescriptor4, nil]];
 }
 
 
@@ -85,21 +90,22 @@
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate date];
+    
    NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:now];
     
     NSLog (@" %%%% %@ %%%%%%", now);
-    for (int i=0; i<self.events.count; i++) {
+    for (int i=0; i<self.events2.count; i++) {
       
-        NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.events[i] valueForKey:@"start"]).dateTime.dateComponents;
-       NSString *status = [self.events[i] valueForKey:@"status"];
+        NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.events2[i] valueForKey:@"start"]).dateTime.dateComponents;
+       NSString *status = [self.events2[i] valueForKey:@"status"];
         if ([status isEqualToString:@"confirmed"]) {
                   if (dateComps.day == eventStart.day)
             {
-                [todayDateEvents addObject:self.events[i]];
+                [todayDateEvents addObject:self.events2[i]];
                
             }
             else if ((dateComps.day+1)== eventStart.day){
-                [tommorrowDateEvents addObject:self.events[i]];
+                [tommorrowDateEvents addObject:self.events2[i]];
             }
         }}
 }
@@ -235,8 +241,8 @@ return cell;
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
-    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
-    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:23 minute:59 second:59];
+    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:[components hour] minute:[components minute] second:[components second]];
+    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:([components day]+1) atHour:23 minute:59 second:59];
     query.timeZone = @"Asia/Calcutta";
     [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
@@ -248,11 +254,11 @@ return cell;
         return;
     }
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-    self.events = events.items;
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.hour" ascending:YES];
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.minute" ascending:YES];
-    self.events = [self.events sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, nil]];
-    [self.tableView reloadData];
+    self.events2 = events.items;
+   [self sortingTheEventsAccordingToTime];
+   
+    [self ForGettingEventsForEachSection];
+     [self.tableView reloadData];
     
 }
 

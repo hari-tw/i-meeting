@@ -14,7 +14,7 @@
        NSMutableArray *dataArray;
 
 }
-@property (nonatomic) NSArray *events;
+@property (nonatomic) NSArray *events2;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString *currentDate;
 @property (strong, nonatomic) NSString *viewTitle;
