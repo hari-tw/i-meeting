@@ -15,6 +15,7 @@
 #import "DateTimeUtility.h"
 
 
+
 @interface CalendarViewController ()
 @property (nonatomic, strong) SignInHandler *signInHandler;
 @end
@@ -69,11 +70,39 @@
     [super viewDidLoad];
     
     self.title = self.viewTitle;
-    
-    
-    
    
 }
+
+- (void)displayCalendar
+{
+    NSCalendar* myCalendar = [NSCalendar currentCalendar];
+    NSDate *now = [NSDate new];
+   
+    NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
+     NSLog(@"^^^^^ %d ^^^^^^", [components hour]);
+    // query.showDeleted= FALSE;
+    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:[components hour] minute:[components minute] second:[components second]];
+    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:([components day]+1) atHour:23 minute:59 second:59];
+    query.timeZone = @"Asia/Calcutta";
+    [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
+}
+
+
+- (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
+{
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
+    self.events2 = events.items;
+    [self sortingTheEventsAccordingToTime];
+    [self ForGettingEventsForEachSection];
+    [self.tableView reloadData];
+    
+}
+
 
 - (void)sortingTheEventsAccordingToTime
 {
@@ -97,8 +126,8 @@
     for (int i=0; i<self.events2.count; i++) {
       
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.events2[i] valueForKey:@"start"]).dateTime.dateComponents;
-       NSString *status = [self.events2[i] valueForKey:@"status"];
-        if ([status isEqualToString:@"confirmed"]) {
+  //     NSString *status = [self.events2[i] valueForKey:@"status"];
+//        if ([status isEqualToString:@"confirmed"]) {
                   if (dateComps.day == eventStart.day)
             {
                 [todayDateEvents addObject:self.events2[i]];
@@ -107,7 +136,7 @@
             else if ((dateComps.day+1)== eventStart.day){
                 [tommorrowDateEvents addObject:self.events2[i]];
             }
-        }}
+        }
 }
 
 
@@ -236,31 +265,6 @@ return cell;
         }
  
 
-- (void)displayCalendar
-{
-    NSCalendar* myCalendar = [NSCalendar currentCalendar];
-    NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
-    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:[components hour] minute:[components minute] second:[components second]];
-    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:([components day]+1) atHour:23 minute:59 second:59];
-    query.timeZone = @"Asia/Calcutta";
-    [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
-}
-
-- (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
-{
-    if (error) {
-        NSLog(@"%@", error);
-        return;
-    }
-    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-    self.events2 = events.items;
-   [self sortingTheEventsAccordingToTime];
-   
-    [self ForGettingEventsForEachSection];
-     [self.tableView reloadData];
-    
-}
 
 
 - (void)viewDidUnload {
