@@ -34,36 +34,24 @@
 {
     [self displayCalendar];
     [super viewDidLoad];
-    
-    NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
-    NSString *userNameToViewCalendar = [userPreferences stringForKey:@"userNameToViewCalendar"];
-    if(userNameToViewCalendar == nil){
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Hello!"
-                                                         message:@"Please enter the username whose calendar you want to view:"
-                                                         delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:nil];
-        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-        UITextField * alertTextField = [alert textFieldAtIndex:0];
-        alertTextField.keyboardType = UIKeyboardTypeDefault;
-        alertTextField.placeholder = @"Enter User Name";
-        [alert show];
-    }
+   
 }
 
-  -  (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-        NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
-        [userPreferences setObject:[[alertView textFieldAtIndex:0] text] forKey:@"userNameToViewCalendar"];
-        [userPreferences synchronize];
-  }
-
+- (void)awakeFromNib
+{
+    
+    [self.signInHandler authorizeUser];
+}
+  
 - (SignInHandler *)signInHandler
 {
     if (!_signInHandler) _signInHandler = [SignInHandler new];
     return _signInHandler;
 }
 
-- (void)displayCalendar
-    { NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
-    NSString *userNameToViewCalendar = [userPreferences stringForKey:@"userNameToViewCalendar"];
+- (void)displayCalendar{
+    
+    NSString *userNameToViewCalendar = [self.signInHandler userEmail];
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:userNameToViewCalendar];
     query.timeMin =  [DateTimeUtility dateTimeForYear:2012 month:12 day:06 atHour:0 minute:0 second:0];
     query.timeMax = [DateTimeUtility dateTimeForYear:2012 month:12 day:07 atHour:24 minute:0 second:0];
