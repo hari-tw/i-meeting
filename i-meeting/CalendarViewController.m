@@ -68,13 +68,15 @@
     [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
 
     [super viewDidLoad];
-    
+    [self.spinner startAnimating];
     self.title = self.viewTitle;
+    
    
 }
 
 - (void)displayCalendar
 {
+    
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate new];
    
@@ -89,6 +91,7 @@
 }
 
 
+
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
 {
     if (error) {
@@ -100,6 +103,8 @@
     [self sortingTheEventsAccordingToTime];
     [self ForGettingEventsForEachSection];
     [self.tableView reloadData];
+    [self.spinner stopAnimating];
+
     
 }
 
