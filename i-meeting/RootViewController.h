@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
-- (IBAction)btnCalendar:(id)sender;
+
 - (UIViewController *)prepareQrCodeReader;
 - (NSString *)getScannedCode:(NSDictionary *)info;
 

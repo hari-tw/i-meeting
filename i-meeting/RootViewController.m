@@ -65,10 +65,7 @@
    [self.signInHandler authorizeUser];
 }
 
-- (IBAction)btnCalendar:(UIButton *)sender
-{
-    [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
-}
+
 
 - (NSString *)dateToString
 {
