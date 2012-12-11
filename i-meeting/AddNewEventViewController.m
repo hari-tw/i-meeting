@@ -13,6 +13,7 @@
 #import "GTLQueryCalendar.h"
 #import "RootViewController.h"
 #import "DateTimeUtility.h"
+#import "CalendarViewController.h"
 #import "SignInHandler.h"
 
 @interface AddNewEventViewController ()
@@ -133,8 +134,11 @@
                                            NSLog(@"%@", error.description);
                                        if (error == nil) {
                                           // GTLCalendarEvent *event = object;
-                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Event Saved Successfully." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                                           [alert show];
+                                           [self performSegueWithIdentifier:@"NewEventCreated" sender:self];
+
+                                           
+//                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Event Saved Successfully." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//                                           [alert show];
                                        }
                                    }];
     }
@@ -145,6 +149,31 @@
     }
     
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"NewEventCreated"]) {
+        CalendarViewController *calendarViewController = segue.destinationViewController;
+        calendarViewController.viewTitle = self.meetingRoomName;
+        calendarViewController.calendarId = self.meetingRoomId;
+        NSString *dateString;
+        dateString = [self dateToString];
+        calendarViewController.currentDate = [NSString stringWithFormat:@"%@",dateString];
+        
+    }
+}
+
+- (NSString *)dateToString
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    [dateFormatter setDateFormat:@"EEE, dd MMM yyyy"];
+    NSDate *date1 = [NSDate date];
+    NSString *dateString = [dateFormatter stringFromDate:date1];
+    return dateString;
+}
+
+
 
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {
