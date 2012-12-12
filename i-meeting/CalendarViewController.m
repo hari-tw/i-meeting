@@ -40,7 +40,7 @@
 }
 - (void)awakeFromNib
 {
-    [self.signInHandler authorizeUser];
+    //[self.signInHandler authorizeUser];
  
 }
 
@@ -65,7 +65,7 @@
 
 - (void)viewDidLoad
 {
-    [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
+    [self.signInHandler signInUser:@selector(displayCalendar:) withCalendarId:self.calendarId withParentController:self];
 
     [super viewDidLoad];
     [self.spinner startAnimating];
@@ -75,7 +75,7 @@
    
 }
 
-- (void)displayCalendar
+- (void)displayCalendar:(NSString*) calendarId
 {
     
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
@@ -84,7 +84,7 @@
    
     NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
     NSDateComponents* components1 = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:tommorrow];
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:calendarId];
   
     query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:[components hour] minute:[components minute] second:[components second]];
     query.timeMax = [DateTimeUtility dateTimeForYear:[components1 year] month:[components1 month] day:[components1 day] atHour:23 minute:59 second:59];

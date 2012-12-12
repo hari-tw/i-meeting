@@ -50,10 +50,10 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
     }
 }
 
-- (void)signInUser:(SEL)signInDoneSelector withParentController:(UIViewController *)parentController
+- (void)signInUser:(SEL)signInDoneSelector withCalendarId:(NSString*)calendarId withParentController:(UIViewController *)parentController
 {
     if (self.isSignedIn) {
-        [parentController performSelector:signInDoneSelector];
+        [parentController performSelector:signInDoneSelector withObject:calendarId];
         return;
     }
     
@@ -70,7 +70,7 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
                                                         } else {
                                                             NSLog(@"Authentication succeeded");
                                                             self.calendarService.authorizer = auth;
-                                                            [parentController performSelector:signInDoneSelector];
+                                                            [parentController performSelector:signInDoneSelector withObject:calendarId];
                                                         }
                                                     }];
     

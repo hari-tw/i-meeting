@@ -14,7 +14,7 @@
 @property (nonatomic) GTLServiceCalendar *calendarService;
 
 - (void)authorizeUser;
-- (void)signInUser:(SEL)signInDoneSelector withParentController:(UIViewController *)parentController;
+- (void)signInUser:(SEL)signInDoneSelector withCalendarId:(NSString*)calendarId withParentController:(UIViewController *)parentController;
 - (NSString *)userEmail;
 
 @end
