@@ -70,6 +70,7 @@
     [super viewDidLoad];
     [self.spinner startAnimating];
     self.title = self.viewTitle;
+     [self.spinner hidesWhenStopped];
     
    
 }
@@ -104,9 +105,10 @@
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.events2 = events.items;
     [self ForGettingEventsForEachSection];
-    [self.tableView reloadData];
     [self.spinner stopAnimating];
-
+  
+    [self.tableView reloadData];
+   
     
 }
 

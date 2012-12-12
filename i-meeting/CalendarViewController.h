@@ -21,5 +21,5 @@
 @property (strong, nonatomic) NSString *viewTitle;
 @property (strong, nonatomic) NSString *calendarId;
 @property (strong, nonatomic) IBOutlet UILabel *currentDateLabel;
-- (IBAction)animate:(id)sender;
+
 @end
