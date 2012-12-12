@@ -14,17 +14,12 @@
 #import "RootViewController.h"
 #import "DateTimeUtility.h"
 #import "CalendarViewController.h"
-#import "SignInHandler.h"
 
 @interface AddNewEventViewController ()
-
-@property (nonatomic, strong) SignInHandler *signInHandler;
 
 @end
 
 @implementation AddNewEventViewController
-
-@synthesize signInHandler = _signInHandler;
 
 - (SignInHandler *)signInHandler
 {
@@ -154,8 +149,10 @@
 {
     if ([segue.identifier isEqualToString:@"NewEventCreated"]) {
         CalendarViewController *calendarViewController = segue.destinationViewController;
+        
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.meetingRoomId;
+        [calendarViewController.signInHandler signInUser:@selector(displayCalendar:) withCalendarId:calendarViewController.calendarId withParentController:calendarViewController];
         NSString *dateString;
         dateString = [self dateToString];
         calendarViewController.currentDate = [NSString stringWithFormat:@"%@",dateString];

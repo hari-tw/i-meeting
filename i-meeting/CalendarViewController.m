@@ -11,19 +11,13 @@
 #import  "GTLCalendarEventDateTime.h"
 #import "AddNewEventViewController.h"
 #import "Foundation/Foundation.h"
-#import "SignInHandler.h"
 #import "DateTimeUtility.h"
 
-
-
 @interface CalendarViewController ()
-@property (nonatomic, strong) SignInHandler *signInHandler;
 @end
 
 @implementation CalendarViewController
-@synthesize signInHandler = _signInHandler;
 @synthesize eventsSummaries;
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -72,8 +66,6 @@
 
 - (void)viewDidLoad
 {
-    [self.signInHandler signInUser:@selector(displayCalendar:) withCalendarId:self.calendarId withParentController:self];
-
     [super viewDidLoad];
     [self.spinner startAnimating];
     self.title = self.viewTitle;
@@ -136,8 +128,6 @@
     
     for (int i=0; i<self.eventsSummaries.count; i++) {
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.eventsSummaries[i] valueForKey:@"start"]).dateTime.dateComponents;
-        NSArray *attendees = [eventsSummaries[i] valueForKey:@"attendees"];
-       if (attendees.count > 1){
         if (dateCompsofToday.day == eventStart.day)
         {
             [todayDateEvents addObject:self.eventsSummaries[i]];
@@ -149,7 +139,7 @@
         else if ((dateCompsdayAfterTommorrow.day)== eventStart.day){
             [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
         }
-       } }
+       } 
 }
 
 - (NSDate *)dateByAddingOneDay:(NSInteger)numberOfDays toDate:(NSDate *)inputDate
@@ -260,8 +250,7 @@ return cell;
         AddNewEventViewController *addNewEventViewController = segue.destinationViewController;
         addNewEventViewController.meetingRoomId = self.calendarId;
         addNewEventViewController.meetingRoomName = self.viewTitle;
-    }
-   
+    }   
 }
 
 - (void)viewDidUnload {

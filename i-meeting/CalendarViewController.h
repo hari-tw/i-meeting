@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SignInHandler.h"
 
 @interface CalendarViewController : UITableViewController
 
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) NSString *currentDate;
 @property (strong, nonatomic) NSString *viewTitle;
 @property (strong, nonatomic) NSString *calendarId;
+@property (strong, nonatomic) SignInHandler *signInHandler;
 @property (strong, nonatomic) IBOutlet UILabel *currentDateLabel;
 
 @end

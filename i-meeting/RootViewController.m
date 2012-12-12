@@ -83,6 +83,7 @@
         CalendarViewController *calendarViewController = segue.destinationViewController;
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.calendarId;
+        [calendarViewController.signInHandler signInUser:@selector(displayCalendar:) withCalendarId:self.calendarId withParentController:calendarViewController];
         NSString *dateString;
         dateString = [self dateToString];
         calendarViewController.currentDate = [NSString stringWithFormat:@"%@",dateString];
@@ -121,9 +122,8 @@
     
     self.meetingRoomName = arr[0];
     self.calendarId = arr[1];
-    [self performSegueWithIdentifier:@"calendarSegue" sender:self];
-
     
+    [self performSegueWithIdentifier:@"calendarSegue" sender:self];
 }
 
 - (void)viewDidUnload {
