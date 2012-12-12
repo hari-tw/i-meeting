@@ -128,6 +128,25 @@
     
     for (int i=0; i<self.eventsSummaries.count; i++) {
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.eventsSummaries[i] valueForKey:@"start"]).dateTime.dateComponents;
+        
+        NSArray *attendees = [eventsSummaries[i] valueForKey:@"attendees"];
+        NSString *email = [NSString new];
+        NSString *attendeesResponseStatus = [NSString new];
+        
+        for(int i=0; i<attendees.count; i++){
+        attendeesResponseStatus = [attendees[i] valueForKey:@"responseStatus"];
+            email = [attendees[i] valueForKey:@"email"];
+          
+            if ([email isEqualToString:self.calendarId] && [attendeesResponseStatus isEqualToString:@"accepted"]){
+               
+                attendeesResponseStatus = @"accepted";
+                 break;
+            }
+             attendeesResponseStatus = @"declined";
+        }
+        
+    if ([attendeesResponseStatus isEqualToString:@"accepted"]){
+
         if (dateCompsofToday.day == eventStart.day)
         {
             [todayDateEvents addObject:self.eventsSummaries[i]];
@@ -140,7 +159,8 @@
             [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
         }
        } 
-}
+    }
+    }
 
 - (NSDate *)dateByAddingOneDay:(NSInteger)numberOfDays toDate:(NSDate *)inputDate
 {
