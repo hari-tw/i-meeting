@@ -100,6 +100,7 @@
     query.timeZone = @"Asia/Calcutta";
     query.singleEvents = TRUE;
     query.orderBy = @"startTime";
+    
     [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 
@@ -135,6 +136,8 @@
     
     for (int i=0; i<self.eventsSummaries.count; i++) {
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.eventsSummaries[i] valueForKey:@"start"]).dateTime.dateComponents;
+        NSArray *attendees = [eventsSummaries[i] valueForKey:@"attendees"];
+       if (attendees.count > 1){
         if (dateCompsofToday.day == eventStart.day)
         {
             [todayDateEvents addObject:self.eventsSummaries[i]];
@@ -146,7 +149,7 @@
         else if ((dateCompsdayAfterTommorrow.day)== eventStart.day){
             [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
         }
-    }
+       } }
 }
 
 - (NSDate *)dateByAddingOneDay:(NSInteger)numberOfDays toDate:(NSDate *)inputDate
