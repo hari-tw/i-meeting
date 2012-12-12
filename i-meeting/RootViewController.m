@@ -65,18 +65,6 @@
    [self.signInHandler authorizeUser];
 }
 
-
-
-- (NSString *)dateToString
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-    [dateFormatter setDateFormat:@"EEE, dd MMM yyyy"];
-    NSDate *date1 = [NSDate date];
-    NSString *dateString = [dateFormatter stringFromDate:date1];
-    return dateString;
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"calendarSegue"]) {
@@ -84,10 +72,6 @@
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.calendarId;
         [calendarViewController.signInHandler signInUser:@selector(displayCalendar:) withCalendarId:self.calendarId withParentController:calendarViewController];
-        NSString *dateString;
-        dateString = [self dateToString];
-        calendarViewController.currentDate = [NSString stringWithFormat:@"%@",dateString];
-
     }
 }
 

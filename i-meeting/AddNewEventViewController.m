@@ -153,25 +153,9 @@
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.meetingRoomId;
         [calendarViewController.signInHandler signInUser:@selector(displayCalendar:) withCalendarId:calendarViewController.calendarId withParentController:calendarViewController];
-        NSString *dateString;
-        dateString = [self dateToString];
-        calendarViewController.currentDate = [NSString stringWithFormat:@"%@",dateString];
-        
+       
     }
 }
-
-- (NSString *)dateToString
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-    [dateFormatter setDateFormat:@"EEE, dd MMM yyyy"];
-    NSDate *date1 = [NSDate date];
-    NSString *dateString = [dateFormatter stringFromDate:date1];
-    return dateString;
-}
-
-
-
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {
    NSString *error = @"";
