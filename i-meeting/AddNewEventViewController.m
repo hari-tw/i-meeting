@@ -127,7 +127,8 @@
                                            NSLog(@"%@", error.description);
                                        if (error == nil) {
                                           // GTLCalendarEvent *event = object;
-                                           [self performSegueWithIdentifier:@"NewEventCreated" sender:self];
+                                          // [self performSegueWithIdentifier:@"NewEventCreated" sender:self];
+                                           [self.navigationController popViewControllerAnimated:YES];
 
                                            
 //                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Event Saved Successfully." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -141,19 +142,9 @@
         [alert show];
     }
     
+    
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"NewEventCreated"]) {
-        CalendarViewController *calendarViewController = segue.destinationViewController;
-        calendarViewController.viewTitle = self.meetingRoomName;
-        calendarViewController.calendarId = self.meetingRoomId;
-        [calendarViewController createAddEventButtonDynamically];
-        [calendarViewController.signInHandler signInUser:@selector(displayCalendar) withParentController:calendarViewController];
-       
-    }
-}
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {
    NSString *error = @"";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nKR-Ea-wdD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nKR-Ea-wdD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
@@ -348,7 +348,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="datePicker" destination="SqY-vP-Bdv" id="0hU-3w-9xG"/>
                         <outlet property="descriptionField" destination="x8Y-CM-Y2e" id="FQZ-za-MtM"/>
                         <outlet property="subjectField" destination="La9-aV-iCG" id="P31-6q-Xjm"/>
-                        <segue destination="WSa-KA-q1z" kind="push" identifier="NewEventCreated" id="l5O-p2-8eR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRd-mL-uSE" userLabel="First Responder" sceneMemberID="firstResponder"/>

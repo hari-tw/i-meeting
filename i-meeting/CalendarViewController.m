@@ -1,4 +1,4 @@
-//
+            //
 //  NewCalendarViewController.m
 //  i-meeting
 //
@@ -35,7 +35,23 @@
 - (void)awakeFromNib
 {
     [self.signInHandler authorizeUser];
+//    if([self.calendarId length] != 0)
+//    {
+//        [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
+//
+//    }
  
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    if([self.calendarId length] != 0)
+    {
+        [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
+        
+    }
+    
 }
 
 - (void)ForGettingEventsForEachSection
@@ -67,6 +83,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     [self.spinner startAnimating];
     self.title = self.viewTitle;
      [self.spinner hidesWhenStopped];

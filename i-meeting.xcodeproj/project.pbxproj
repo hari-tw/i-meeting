@@ -83,6 +83,7 @@
 		83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */; };
 		83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E337A21640371B00BD3E90 /* CalendarCell.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
+		AF837C7B1679B63D002B5374 /* PopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = AF837C7A1679B63D002B5374 /* PopSegue.m */; };
 		E87E638616494EA90090928C /* MyMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E87E638516494EA90090928C /* MyMeetingViewController.m */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
 /* End PBXBuildFile section */
@@ -248,6 +249,8 @@
 		83E337A21640371B00BD3E90 /* CalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
 		9B11225C162DA88900723640 /* AddNewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewEventViewController.h; sourceTree = "<group>"; };
 		9B11225D162DA88900723640 /* AddNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewEventViewController.m; sourceTree = "<group>"; };
+		AF837C791679B63D002B5374 /* PopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopSegue.h; sourceTree = "<group>"; };
+		AF837C7A1679B63D002B5374 /* PopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopSegue.m; sourceTree = "<group>"; };
 		E87E638416494EA90090928C /* MyMeetingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMeetingViewController.h; sourceTree = "<group>"; };
 		E87E638516494EA90090928C /* MyMeetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMeetingViewController.m; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -435,7 +438,6 @@
 				202B478F167224E300798AFD /* EventKit.framework */,
 				E896DF0B1639732F00A596A4 /* Settings.bundle */,
 				83AC4DB016281DE5000C60C9 /* i-meeting */,
-				83AC4E1616281F24000C60C9 /* i-meeting-tests */,
 				83AC4DA916281DE5000C60C9 /* Frameworks */,
 				83AC4DA716281DE5000C60C9 /* Products */,
 			);
@@ -498,6 +500,9 @@
 				E87E638416494EA90090928C /* MyMeetingViewController.h */,
 				E87E638516494EA90090928C /* MyMeetingViewController.m */,
 				83AC4DB116281DE5000C60C9 /* Supporting Files */,
+				AF837C791679B63D002B5374 /* PopSegue.h */,
+				AF837C7A1679B63D002B5374 /* PopSegue.m */,
+				83AC4E1616281F24000C60C9 /* i-meeting-tests */,
 			);
 			path = "i-meeting";
 			sourceTree = "<group>";
@@ -586,7 +591,7 @@
 				83AC4E1716281F24000C60C9 /* Supporting Files */,
 			);
 			path = "i-meeting-tests";
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		83AC4E1716281F24000C60C9 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -762,6 +767,7 @@
 				83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */,
 				E87E638616494EA90090928C /* MyMeetingViewController.m in Sources */,
 				83A7365A166A6DAB00DC5D61 /* SignInHandler.m in Sources */,
+				AF837C7B1679B63D002B5374 /* PopSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
