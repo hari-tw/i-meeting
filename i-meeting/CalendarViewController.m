@@ -74,7 +74,7 @@
    
 }
 
-- (void)displayCalendar:(NSString*) calendarId
+- (void)displayCalendar
 {
     
     NSCalendar* myCalendar = [NSCalendar currentCalendar];

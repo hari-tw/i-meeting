@@ -27,7 +27,7 @@
         calendarViewController.viewTitle = @"My Meetings";
         NSString* userEmail = [self.signInHandler userEmail];
         calendarViewController.calendarId = userEmail;
-        [calendarViewController.signInHandler signInUser:@selector(displayCalendar:) withCalendarId:calendarViewController.calendarId withParentController:calendarViewController];
+        [calendarViewController.signInHandler signInUser:@selector(displayCalendar) withParentController:calendarViewController];
     }
 }
 

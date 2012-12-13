@@ -80,9 +80,7 @@
 }
 
 - (IBAction)bookButton:(id)sender {
-    
-  
-    
+   
     UITableViewCell *startDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     
     UITableViewCell *endDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
@@ -152,7 +150,7 @@
         
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.meetingRoomId;
-        [calendarViewController.signInHandler signInUser:@selector(displayCalendar:) withCalendarId:calendarViewController.calendarId withParentController:calendarViewController];
+        [calendarViewController.signInHandler signInUser:@selector(displayCalendar) withParentController:calendarViewController];
        
     }
 }

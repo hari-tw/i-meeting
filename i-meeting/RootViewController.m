@@ -71,7 +71,7 @@
         CalendarViewController *calendarViewController = segue.destinationViewController;
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.calendarId;
-        [calendarViewController.signInHandler signInUser:@selector(displayCalendar:) withCalendarId:self.calendarId withParentController:calendarViewController];
+        [calendarViewController.signInHandler signInUser:@selector(displayCalendar) withParentController:calendarViewController];
     }
 }
 
