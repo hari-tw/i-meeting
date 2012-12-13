@@ -271,6 +271,12 @@ return cell;
     }   
 }
 
+-(void)createAddEventButtonDynamically
+{
+    UIBarButtonItem * addEventButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemAdd target:self action:@selector(addEvent:)];
+    self.navigationItem.rightBarButtonItem = addEventButton;
+}
+
 -(IBAction)addEvent:(id)sender
 {
     [self performSegueWithIdentifier:@"addEvent" sender:self];

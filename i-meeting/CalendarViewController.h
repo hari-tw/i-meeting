@@ -23,5 +23,6 @@
 @property (strong, nonatomic) NSString *calendarId;
 @property (strong, nonatomic) SignInHandler *signInHandler;
 @property (strong, nonatomic) IBOutlet UILabel *currentDateLabel;
+-(void) createAddEventButtonDynamically;
 
 @end
