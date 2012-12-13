@@ -71,6 +71,12 @@
         CalendarViewController *calendarViewController = segue.destinationViewController;
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.calendarId;
+        UIButton * addEventButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        addEventButton.frame = CGRectMake(0, 0, 100, 50);
+        [addEventButton addTarget:calendarViewController action:@selector(addEvent:) forControlEvents:UIControlEventTouchDown];
+        [addEventButton setTitle:@"+" forState:UIControlStateNormal];
+        [calendarViewController.view addSubview:addEventButton];
+
         [calendarViewController.signInHandler signInUser:@selector(displayCalendar) withParentController:calendarViewController];
     }
 }

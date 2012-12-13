@@ -70,8 +70,6 @@
     [self.spinner startAnimating];
     self.title = self.viewTitle;
      [self.spinner hidesWhenStopped];
-    
-   
 }
 
 - (void)displayCalendar
@@ -271,6 +269,11 @@ return cell;
         addNewEventViewController.meetingRoomId = self.calendarId;
         addNewEventViewController.meetingRoomName = self.viewTitle;
     }   
+}
+
+-(IBAction)addEvent:(id)sender
+{
+    [self performSegueWithIdentifier:@"addEvent" sender:self];
 }
 
 - (void)viewDidUnload {
