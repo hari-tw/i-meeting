@@ -149,19 +149,19 @@
         NSString *attendeesResponseStatus = [NSString new];
         
         for(int i=0; i<attendees.count; i++){
-        attendeesResponseStatus = [attendees[i] valueForKey:@"responseStatus"];
+        
             email = [attendees[i] valueForKey:@"email"];
           
-            if ([email isEqualToString:self.calendarId] && [attendeesResponseStatus isEqualToString:@"accepted"]){
-               
-                attendeesResponseStatus = @"accepted";
+            if ([email isEqualToString:self.calendarId] ){
+              attendeesResponseStatus = [attendees[i] valueForKey:@"responseStatus"];  
+                if(![attendeesResponseStatus isEqualToString:@"declined"]){
                  break;
+                }
             }
-             attendeesResponseStatus = @"declined";
         }
+            
         
-    if ([attendeesResponseStatus isEqualToString:@"accepted"]){
-
+        if (![attendeesResponseStatus isEqualToString:@"declined"]){
         if (dateCompsofToday.day == eventStart.day)
         {
             [todayDateEvents addObject:self.eventsSummaries[i]];
@@ -173,9 +173,10 @@
         else if ((dateCompsdayAfterTommorrow.day)== eventStart.day){
             [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
         }
-       } 
-    }
-    }
+        } 
+        }
+}
+
 
 - (NSDate *)dateByAddingOneDay:(NSInteger)numberOfDays toDate:(NSDate *)inputDate
 {

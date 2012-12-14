@@ -104,9 +104,11 @@
     newEvent.descriptionProperty = self.descriptionField.text;
     newEvent.location = self.meetingRoomName;
     GTLCalendarEventAttendee *attendee = [GTLCalendarEventAttendee new];
+    GTLCalendarEventAttendee *attendee1 = [GTLCalendarEventAttendee new];
     attendee.email = self.meetingRoomId;
-    newEvent.attendees = [NSArray arrayWithObject:attendee];
-
+    attendee1.email = [self.signInHandler userEmail];
+    attendee1.responseStatus = @"accepted";
+    newEvent.attendees = [NSArray arrayWithObjects:attendee,attendee1, nil];
     GTLDateTime *endTime = [GTLDateTime dateTimeWithDate: eDate timeZone: [NSTimeZone systemTimeZone]];
     GTLDateTime *startTime = [GTLDateTime dateTimeWithDate: sDate timeZone: [NSTimeZone systemTimeZone]];
     
@@ -115,7 +117,7 @@
     
     newEvent.end = [GTLCalendarEventDateTime new];
     newEvent.end.dateTime = endTime;
-        NSString *userName = [self.signInHandler userEmail];
+    NSString *userName = [self.signInHandler userEmail];
     
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
                                                                     calendarId:userName];
@@ -126,13 +128,7 @@
                                        if (error != nil)
                                            NSLog(@"%@", error.description);
                                        if (error == nil) {
-                                          // GTLCalendarEvent *event = object;
-                                          // [self performSegueWithIdentifier:@"NewEventCreated" sender:self];
-                                           [self.navigationController popViewControllerAnimated:YES];
-
-                                           
-//                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Event Saved Successfully." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//                                           [alert show];
+                                            [self.navigationController popViewControllerAnimated:YES];
                                        }
                                    }];
     }
