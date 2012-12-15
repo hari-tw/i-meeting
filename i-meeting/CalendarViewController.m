@@ -1,6 +1,6 @@
 #import "CalendarViewController.h"
 #import "CalendarCell.h"
-#import  "GTLCalendarEventDateTime.h"
+#import "GTLCalendarEventDateTime.h"
 #import "AddNewEventViewController.h"
 #import "Foundation/Foundation.h"
 #import "DateTimeUtility.h"
@@ -11,14 +11,6 @@
 @implementation CalendarViewController
 @synthesize eventsSummaries;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-    }
-    return self;
-}
-
 - (SignInHandler *)signInHandler
 {
     if (!_signInHandler) _signInHandler = [SignInHandler new];
@@ -27,23 +19,21 @@
 - (void)awakeFromNib
 {
     [self.signInHandler authorizeUser];
-//    if([self.calendarId length] != 0)
-//    {
-//        [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
-//
-//    }
- 
+    //    if([self.calendarId length] != 0)
+    //    {
+    //        [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
+    //
+    //    }
+    
 }
 
--(void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     if([self.calendarId length] != 0)
     {
         [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
-        
     }
-    
 }
 
 - (void)ForGettingEventsForEachSection
@@ -51,7 +41,6 @@
     NSMutableArray *todayDateEvents = [NSMutableArray new];
     NSMutableArray *tommorrowDateEvents = [NSMutableArray new];
     NSMutableArray *dayAfterTommorrowDateEvents = [NSMutableArray new];
-    
     
     [self savingEventsInArray:tommorrowDateEvents todayDateEvents:todayDateEvents dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents];
     dataArray = [[NSMutableArray alloc] init];
@@ -75,15 +64,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [self.spinner startAnimating];
     self.title = self.viewTitle;
-     [self.spinner hidesWhenStopped];
+    [self.spinner hidesWhenStopped];
 }
 
 - (void)displayCalendar
 {
-    
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate new];
     NSDate *endDate = [[NSDate alloc] initWithTimeIntervalSinceNow:60*60*48];
@@ -103,8 +91,6 @@
     [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 
-
-
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
 {
     if (error) {
@@ -115,10 +101,8 @@
     self.eventsSummaries = events.items;
     [self ForGettingEventsForEachSection];
     [self.spinner stopAnimating];
-  
-    [self.tableView reloadData];
-   
     
+    [self.tableView reloadData];
 }
 
 
@@ -141,34 +125,32 @@
         NSString *attendeesResponseStatus = [NSString new];
         
         for(int i=0; i<attendees.count; i++){
-        
+            
             email = [attendees[i] valueForKey:@"email"];
-          
+            
             if ([email isEqualToString:self.calendarId] ){
-              attendeesResponseStatus = [attendees[i] valueForKey:@"responseStatus"];  
+                attendeesResponseStatus = [attendees[i] valueForKey:@"responseStatus"];
                 if(![attendeesResponseStatus isEqualToString:@"declined"]){
-                 break;
+                    break;
                 }
             }
         }
-            
         
         if (![attendeesResponseStatus isEqualToString:@"declined"]){
-        if (dateCompsofToday.day == eventStart.day)
-        {
-            [todayDateEvents addObject:self.eventsSummaries[i]];
-            
+            if (dateCompsofToday.day == eventStart.day)
+            {
+                [todayDateEvents addObject:self.eventsSummaries[i]];
+                
+            }
+            else if ((dateCompsTommorrow.day)== eventStart.day){
+                [tommorrowDateEvents addObject:self.eventsSummaries[i]];
+            }
+            else if ((dateCompsdayAfterTommorrow.day)== eventStart.day){
+                [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
+            }
         }
-        else if ((dateCompsTommorrow.day)== eventStart.day){
-            [tommorrowDateEvents addObject:self.eventsSummaries[i]];
-        }
-        else if ((dateCompsdayAfterTommorrow.day)== eventStart.day){
-            [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
-        }
-        } 
-        }
+    }
 }
-
 
 - (NSDate *)dateByAddingOneDay:(NSInteger)numberOfDays toDate:(NSDate *)inputDate
 {
@@ -181,16 +163,11 @@
     return newDate;
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];}
-   
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSDictionary *dictionary = [dataArray objectAtIndex:section];
     NSArray *array = [dictionary objectForKey:@"data"];
-    	    return [array count];
+    return [array count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -223,11 +200,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSDate *now = [NSDate date];
-  
+    
     NSDate *endDate = [self dateByAddingOneDay:1 toDate:now];
     NSDate *dayAfterTommorrow = [self dateByAddingOneDay:2 toDate:now];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEE, dd MMM yyyy"];
+    [dateFormatter setDateFormat:@"EEEE, dd MMM yyyy"];
     
     NSString *dateString = [dateFormatter stringFromDate:now];
     NSString *dateString1 = [dateFormatter stringFromDate:endDate];
@@ -239,37 +216,33 @@
     [myArray addObject:dateString2];
     
     return ( [myArray objectAtIndex:section]);
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
     NSString *durationString = @"";
     static NSString *cellIdentifier = @"Cell";
     CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-
-     NSDictionary *dictionary = [dataArray objectAtIndex:indexPath.section];
+    
+    NSDictionary *dictionary = [dataArray objectAtIndex:indexPath.section];
     
     NSArray *array = [dictionary objectForKey:@"data"];
-   
-    id event = [array objectAtIndex:indexPath.row];
-  
-  NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
-  NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
-  NSString *eventStartTime = [NSString stringWithFormat:@"%02d:%02d", eventStart.hour, eventStart.minute];
-  NSString *eventEndTime = [NSString stringWithFormat:@"%02d:%02d", eventEnd.hour, eventEnd.minute];
-
-  durationString = [self durationOfMeeting:eventStart eventEnd:eventEnd];
     
-        cell.titleLabel.text = [event valueForKey:@"summary"];
-        cell.timingsLabel.text = [NSString stringWithFormat:@"%@", eventStartTime];
-        cell.durationLabel.text = [NSString stringWithFormat: @"-%@  Duration: %@", eventEndTime, durationString];
+    id event = [array objectAtIndex:indexPath.row];
+    
+    NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
+    NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
+    NSString *eventStartTime = [NSString stringWithFormat:@"%02d:%02d", eventStart.hour, eventStart.minute];
+    
+    durationString = [self durationOfMeeting:eventStart eventEnd:eventEnd];
+    
+    cell.titleLabel.text = [event valueForKey:@"summary"];
+    cell.timingsLabel.text = [NSString stringWithFormat:@"%@", eventStartTime];
+    cell.durationLabel.text = [NSString stringWithFormat: @"Duration: %@", durationString];
     
     NSLog(@"%@", event);
- 
-return cell;
-
+    
+    return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -278,16 +251,16 @@ return cell;
         AddNewEventViewController *addNewEventViewController = segue.destinationViewController;
         addNewEventViewController.meetingRoomId = self.calendarId;
         addNewEventViewController.meetingRoomName = self.viewTitle;
-    }   
+    }
 }
 
--(void)createAddEventButtonDynamically
+- (void)createAddEventButtonDynamically
 {
     UIBarButtonItem * addEventButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemAdd target:self action:@selector(addEvent:)];
     self.navigationItem.rightBarButtonItem = addEventButton;
 }
 
--(IBAction)addEvent:(id)sender
+- (IBAction)addEvent:(id)sender
 {
     [self performSegueWithIdentifier:@"addEvent" sender:self];
 }
@@ -298,5 +271,6 @@ return cell;
     [self setCurrentDate:nil];
     [super viewDidUnload];
 }
+
 @end
 

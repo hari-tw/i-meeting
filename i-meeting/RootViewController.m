@@ -20,6 +20,7 @@
 @end
 
 @implementation RootViewController
+
 @synthesize phone = _phone;
 @synthesize eventsSummaries = _eventsSummaries;
 @synthesize eventsSummariesForTomorrow = _eventsSummariesForTomorrow;
@@ -49,12 +50,6 @@
 {
     if (!_signInHandler) _signInHandler = [SignInHandler new];
     return _signInHandler;
-}
-
-- (void)awakeFromNib
-{
-    
-   [self.signInHandler authorizeUser];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
