@@ -1,11 +1,3 @@
-//
-//  SignInHandler.m
-//  i-meeting
-//
-//  Created by Sanchit Bahal on 01/12/12.
-//  Copyright (c) 2012 ThoughtWorks Technologies (India) Pvt. Ltd. All rights reserved.
-//
-
 #import "SignInHandler.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 
