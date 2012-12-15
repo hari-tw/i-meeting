@@ -20,12 +20,6 @@
 - (void)awakeFromNib
 {
     [self.signInHandler authorizeUser];
-    //    if([self.calendarId length] != 0)
-    //    {
-    //        [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
-    //
-    //    }
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -67,7 +61,7 @@
     [super viewDidLoad];
     
     [self.spinner startAnimating];
-    self.title = self.viewTitle;
+    self.title = self.viewTitle ? self.viewTitle : @"My Meetings";
     self.calendarId = self.calendarId ? self.calendarId : self.signInHandler.userEmail;
     [self.spinner hidesWhenStopped];
 }

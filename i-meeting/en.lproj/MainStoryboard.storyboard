@@ -21,6 +21,23 @@
             </objects>
             <point key="canvasLocation" x="-1823" y="-604"/>
         </scene>
+        <!--Navigation Controller - My Meetings-->
+        <scene sceneID="78a-JY-6jp">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="PQh-AX-0fJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Meetings" image="profile.png" id="lJE-ji-yvf"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8TQ-oN-b3X">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="WSa-KA-q1z" kind="relationship" relationship="rootViewController" id="HKs-m8-5cU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVg-OW-iYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1823" y="-1337"/>
+        </scene>
         <!--Root View Controller - Where's My Meeting-->
         <scene sceneID="5">
             <objects>
@@ -62,7 +79,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="sDa-vP-Bpb" kind="relationship" relationship="viewControllers" id="e5c-Ug-k4V"/>
-                        <segue destination="WSa-KA-q1z" kind="relationship" relationship="viewControllers" id="gaN-Qw-eRy"/>
+                        <segue destination="PQh-AX-0fJ" kind="relationship" relationship="viewControllers" id="EWf-do-DoX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTo-fb-GIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -344,6 +361,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VM3-JR-CEJ"/>
+        <segue reference="HKs-m8-5cU"/>
     </inferredMetricsTieBreakers>
 </document>
