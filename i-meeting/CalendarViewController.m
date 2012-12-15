@@ -16,6 +16,7 @@
     if (!_signInHandler) _signInHandler = [SignInHandler new];
     return _signInHandler;
 }
+
 - (void)awakeFromNib
 {
     [self.signInHandler authorizeUser];
@@ -67,6 +68,7 @@
     
     [self.spinner startAnimating];
     self.title = self.viewTitle;
+    self.calendarId = self.calendarId ? self.calendarId : self.signInHandler.userEmail;
     [self.spinner hidesWhenStopped];
 }
 
@@ -75,7 +77,6 @@
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate new];
     NSDate *endDate = [[NSDate alloc] initWithTimeIntervalSinceNow:60*60*48];
-    
     
     NSDateComponents* startDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
     NSDateComponents* endDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:endDate];

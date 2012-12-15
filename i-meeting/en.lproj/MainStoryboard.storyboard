@@ -62,66 +62,14 @@
                     </tabBar>
                     <connections>
                         <segue destination="sDa-vP-Bpb" kind="relationship" relationship="viewControllers" id="e5c-Ug-k4V"/>
-                        <segue destination="d5W-cm-Z1o" kind="relationship" relationship="viewControllers" id="luQ-np-93Z"/>
+                        <segue destination="WSa-KA-q1z" kind="relationship" relationship="viewControllers" id="gaN-Qw-eRy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTo-fb-GIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2503" y="-1102"/>
         </scene>
-        <!--Navigation Controller - My Meetings-->
-        <scene sceneID="8jI-iF-lfC">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="d5W-cm-Z1o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Meetings" id="X9I-dq-pcb"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Zg-HV-Qyw">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Iak-NN-ehx" kind="relationship" relationship="rootViewController" id="tmx-ks-Fzx"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZrU-7m-ngP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1829" y="-1411"/>
-        </scene>
-        <!--My Meeting View Controller - My Meetings-->
-        <scene sceneID="8qh-5g-uVC">
-            <objects>
-                <tableViewController id="Iak-NN-ehx" customClass="MyMeetingViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fZK-Pe-4no">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Z7w-Ms-3km">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Iak-NN-ehx" id="pxu-PT-z4c"/>
-                            <outlet property="delegate" destination="Iak-NN-ehx" id="ZcM-0H-uIH"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="My Meetings" id="CPY-bw-YBc"/>
-                    <navigationItem key="navigationItem" id="pWR-HU-o3P"/>
-                    <connections>
-                        <outlet property="tableView" destination="fZK-Pe-4no" id="Uhd-dl-JgV"/>
-                        <segue destination="WSa-KA-q1z" kind="push" identifier="myCalendarSeague" id="xZt-j7-MOe"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oAu-dt-Oyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1225" y="-1411"/>
-        </scene>
-        <!--Calendar View Controller-->
+        <!--Calendar View Controller - My Meetings-->
         <scene sceneID="4fu-u9-4Q2">
             <objects>
                 <tableViewController id="WSa-KA-q1z" customClass="CalendarViewController" sceneMemberID="viewController">
@@ -178,6 +126,7 @@
                             <outlet property="delegate" destination="WSa-KA-q1z" id="tLI-i7-g6g"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="My Meetings" image="profile.png" id="16i-lq-jSv"/>
                     <navigationItem key="navigationItem" id="FeT-Mv-JaP">
                         <barButtonItem key="backBarButtonItem" title="Back" id="gX4-Cd-k1v"/>
                     </navigationItem>
@@ -189,7 +138,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZk-az-2Kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-576" y="-962"/>
+            <point key="canvasLocation" x="-616" y="-1102"/>
         </scene>
         <!--Add New Event View Controller - Add Event-->
         <scene sceneID="ylq-Uy-k9p">
@@ -347,18 +296,54 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRd-mL-uSE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-163" y="-763"/>
+            <point key="canvasLocation" x="-79" y="-1102"/>
         </scene>
     </scenes>
     <resources>
+        <image name="profile.png" width="22" height="24"/>
         <image name="settings.png" width="21" height="21"/>
     </resources>
+    <classes>
+        <class className="AddNewEventViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bookButton:"/>
+                <relationship kind="action" name="datePicked:" candidateClass="UIDatePicker"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="descriptionField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="subjectField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CalendarCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timingsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CalendarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="currentDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xZt-j7-MOe"/>
+        <segue reference="VM3-JR-CEJ"/>
     </inferredMetricsTieBreakers>
 </document>

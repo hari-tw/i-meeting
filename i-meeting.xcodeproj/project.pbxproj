@@ -40,11 +40,9 @@
 		83A7365A166A6DAB00DC5D61 /* SignInHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A73659166A6DAB00DC5D61 /* SignInHandler.m */; };
 		83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9949B164419F9009CD997 /* QRCodeManager.m */; };
 		83A994A616441AE2009CD997 /* profile selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A9949E16441AE2009CD997 /* profile selected.png */; };
-		83A994A716441AE2009CD997 /* profile unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A9949F16441AE2009CD997 /* profile unselected.png */; };
+		83A994A716441AE2009CD997 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A9949F16441AE2009CD997 /* profile.png */; };
 		83A994A816441AE2009CD997 /* rooms unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A016441AE2009CD997 /* rooms unselected.png */; };
 		83A994A916441AE2009CD997 /* rooms.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A116441AE2009CD997 /* rooms.png */; };
-		83A994AA16441AE2009CD997 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A216441AE2009CD997 /* scan.png */; };
-		83A994AB16441AE2009CD997 /* scan unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A316441AE2009CD997 /* scan unselected.png */; };
 		83A994AC16441AE2009CD997 /* settings selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A416441AE2009CD997 /* settings selected.png */; };
 		83A994AD16441AE2009CD997 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A994A516441AE2009CD997 /* settings.png */; };
 		83AC4DAB16281DE5000C60C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4DAA16281DE5000C60C9 /* UIKit.framework */; };
@@ -83,7 +81,6 @@
 		83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E337A21640371B00BD3E90 /* CalendarCell.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 		AF837C7B1679B63D002B5374 /* PopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = AF837C7A1679B63D002B5374 /* PopSegue.m */; };
-		E87E638616494EA90090928C /* MyMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E87E638516494EA90090928C /* MyMeetingViewController.m */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
@@ -174,11 +171,9 @@
 		83A7365B166A724C00DC5D61 /* SignInHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInHandler.h; sourceTree = "<group>"; };
 		83A9949B164419F9009CD997 /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
 		83A9949E16441AE2009CD997 /* profile selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile selected.png"; sourceTree = "<group>"; };
-		83A9949F16441AE2009CD997 /* profile unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile unselected.png"; sourceTree = "<group>"; };
+		83A9949F16441AE2009CD997 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		83A994A016441AE2009CD997 /* rooms unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rooms unselected.png"; sourceTree = "<group>"; };
 		83A994A116441AE2009CD997 /* rooms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rooms.png; sourceTree = "<group>"; };
-		83A994A216441AE2009CD997 /* scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan.png; sourceTree = "<group>"; };
-		83A994A316441AE2009CD997 /* scan unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan unselected.png"; sourceTree = "<group>"; };
 		83A994A416441AE2009CD997 /* settings selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings selected.png"; sourceTree = "<group>"; };
 		83A994A516441AE2009CD997 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		83AC4DA616281DE5000C60C9 /* i-meeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "i-meeting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,8 +243,6 @@
 		9B11225D162DA88900723640 /* AddNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewEventViewController.m; sourceTree = "<group>"; };
 		AF837C791679B63D002B5374 /* PopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopSegue.h; sourceTree = "<group>"; };
 		AF837C7A1679B63D002B5374 /* PopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopSegue.m; sourceTree = "<group>"; };
-		E87E638416494EA90090928C /* MyMeetingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMeetingViewController.h; sourceTree = "<group>"; };
-		E87E638516494EA90090928C /* MyMeetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMeetingViewController.m; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -414,11 +407,9 @@
 			isa = PBXGroup;
 			children = (
 				83A9949E16441AE2009CD997 /* profile selected.png */,
-				83A9949F16441AE2009CD997 /* profile unselected.png */,
+				83A9949F16441AE2009CD997 /* profile.png */,
 				83A994A016441AE2009CD997 /* rooms unselected.png */,
 				83A994A116441AE2009CD997 /* rooms.png */,
-				83A994A216441AE2009CD997 /* scan.png */,
-				83A994A316441AE2009CD997 /* scan unselected.png */,
 				83A994A416441AE2009CD997 /* settings selected.png */,
 				83A994A516441AE2009CD997 /* settings.png */,
 				83AC4DBC16281DE5000C60C9 /* Default.png */,
@@ -483,8 +474,6 @@
 				8318BE681637AAA4003E2B01 /* DateTimeUtility.h */,
 				8318BE691637AAA4003E2B01 /* DateTimeUtility.m */,
 				83AC4DDB16281E6E000C60C9 /* MainStoryboard.storyboard */,
-				E87E638416494EA90090928C /* MyMeetingViewController.h */,
-				E87E638516494EA90090928C /* MyMeetingViewController.m */,
 				83AC4DCF16281E3D000C60C9 /* Phone.h */,
 				83AC4DD016281E3D000C60C9 /* Phone.m */,
 				AF837C791679B63D002B5374 /* PopSegue.h */,
@@ -683,11 +672,9 @@
 				8318BE6716379E00003E2B01 /* GTMOAuth2ViewTouch.xib in Resources */,
 				E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */,
 				83A994A616441AE2009CD997 /* profile selected.png in Resources */,
-				83A994A716441AE2009CD997 /* profile unselected.png in Resources */,
+				83A994A716441AE2009CD997 /* profile.png in Resources */,
 				83A994A816441AE2009CD997 /* rooms unselected.png in Resources */,
 				83A994A916441AE2009CD997 /* rooms.png in Resources */,
-				83A994AA16441AE2009CD997 /* scan.png in Resources */,
-				83A994AB16441AE2009CD997 /* scan unselected.png in Resources */,
 				83A994AC16441AE2009CD997 /* settings selected.png in Resources */,
 				83A994AD16441AE2009CD997 /* settings.png in Resources */,
 			);
@@ -759,7 +746,6 @@
 				8318BE6D1637C979003E2B01 /* CalendarViewController.m in Sources */,
 				83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */,
 				83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */,
-				E87E638616494EA90090928C /* MyMeetingViewController.m in Sources */,
 				83A7365A166A6DAB00DC5D61 /* SignInHandler.m in Sources */,
 				AF837C7B1679B63D002B5374 /* PopSegue.m in Sources */,
 			);
