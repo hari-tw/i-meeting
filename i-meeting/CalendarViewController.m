@@ -11,23 +11,12 @@
 @implementation CalendarViewController
 @synthesize eventsSummaries;
 
-- (SignInHandler *)signInHandler
-{
-    if (!_signInHandler) _signInHandler = [SignInHandler new];
-    return _signInHandler;
-}
-
-- (void)awakeFromNib
-{
-    [self.signInHandler authorizeUser];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     if([self.calendarId length] != 0)
     {
-        [self.signInHandler signInUser:@selector(displayCalendar) withParentController:self];
+        [self displayCalendar];
     }
 }
 
@@ -62,7 +51,7 @@
     
     [self.spinner startAnimating];
     self.title = self.viewTitle ? self.viewTitle : @"My Meetings";
-    self.calendarId = self.calendarId ? self.calendarId : self.signInHandler.userEmail;
+    self.calendarId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
     [self.spinner hidesWhenStopped];
 }
 
@@ -83,7 +72,7 @@
     query.singleEvents = TRUE;
     query.orderBy = @"startTime";
     
-    [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
+    [[SignInHandler instance].calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error

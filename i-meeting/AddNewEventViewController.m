@@ -7,17 +7,7 @@
 #import "DateTimeUtility.h"
 #import "CalendarViewController.h"
 
-@interface AddNewEventViewController ()
-
-@end
-
 @implementation AddNewEventViewController
-
-- (SignInHandler *)signInHandler
-{
-    if (!_signInHandler) _signInHandler = [SignInHandler new];
-    return _signInHandler;
-}
 
 - (void)viewDidLoad
 {
@@ -27,12 +17,6 @@
     self.datePicker.minimumDate = minDate;
     self.datePicker.maximumDate = maxDate;
     [super viewDidLoad];
-}
-
-- (void)awakeFromNib
-{
-    [self.signInHandler authorizeUser];
-    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
@@ -98,7 +82,7 @@
     GTLCalendarEventAttendee *attendee = [GTLCalendarEventAttendee new];
     GTLCalendarEventAttendee *attendee1 = [GTLCalendarEventAttendee new];
     attendee.email = self.meetingRoomId;
-    attendee1.email = [self.signInHandler userEmail];
+    attendee1.email = [[SignInHandler instance] userEmail];
     attendee1.responseStatus = @"accepted";
     newEvent.attendees = [NSArray arrayWithObjects:attendee,attendee1, nil];
     GTLDateTime *endTime = [GTLDateTime dateTimeWithDate: eDate timeZone: [NSTimeZone systemTimeZone]];
@@ -109,12 +93,12 @@
     
     newEvent.end = [GTLCalendarEventDateTime new];
     newEvent.end.dateTime = endTime;
-    NSString *userName = [self.signInHandler userEmail];
+    NSString *userName = [[SignInHandler instance] userEmail];
     
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
                                                                     calendarId:userName];
     
-    [self.signInHandler.calendarService executeQuery:query
+    [[SignInHandler instance].calendarService executeQuery:query
                                    completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
                                        // Callback
                                        if (error != nil)

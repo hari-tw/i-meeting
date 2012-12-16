@@ -34,6 +34,11 @@
     return _phone;
 }
 
+- (void)awakeFromNib
+{
+    [[SignInHandler instance ]authorizeUser:self];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     // URL to generate QR Code
@@ -46,12 +51,6 @@
     [reader didMoveToParentViewController:self];
 }
 
-- (SignInHandler *)signInHandler
-{
-    if (!_signInHandler) _signInHandler = [SignInHandler new];
-    return _signInHandler;
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"calendarSegue"]) {
@@ -59,7 +58,6 @@
         calendarViewController.viewTitle = self.meetingRoomName;
         calendarViewController.calendarId = self.calendarId;
         [calendarViewController createAddEventButtonDynamically];
-        [calendarViewController.signInHandler signInUser:@selector(displayCalendar) withParentController:calendarViewController];
     }
 }
 

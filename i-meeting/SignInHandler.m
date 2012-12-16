@@ -16,6 +16,13 @@
 static NSString *kKeychainItemName = @"OAuth2 i-meeting";
 static NSString *kMyClientID = @"918644537696.apps.googleusercontent.com";
 static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
+static SignInHandler *_instance = nil;
+
++ (SignInHandler *)instance
+{
+    if (!_instance) _instance = [SignInHandler new];
+    return _instance;
+}
 
 - (GTLServiceCalendar *)calendarService
 {
@@ -28,7 +35,7 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
     return self.authToken.userEmail;
 }
 
-- (void)authorizeUser
+- (void)authorizeUser:(UIViewController *)parentController
 {
     self.authToken = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
                                                                            clientID:kMyClientID
@@ -39,16 +46,14 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
     if (self.isSignedIn) {
         self.calendarService.authorizer = self.authToken;
         NSLog(@"%@", self.authToken.userEmail);
-    }
-}
-
-- (void)signInUser:(SEL)signInDoneSelector withParentController:(UIViewController *)parentController
-{
-    if (self.isSignedIn) {
-        [parentController performSelector:signInDoneSelector];
         return;
     }
     
+    [self presentAuthScreen:parentController];
+}
+
+- (void)presentAuthScreen:(UIViewController *)parentController
+{
     NSString *scope = @"https://www.googleapis.com/auth/calendar";
     
     GTMOAuth2ViewControllerTouch *viewController = [[GTMOAuth2ViewControllerTouch alloc]
@@ -62,11 +67,11 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
                                                         } else {
                                                             NSLog(@"Authentication succeeded");
                                                             self.calendarService.authorizer = auth;
-                                                            [parentController performSelector:signInDoneSelector];
                                                         }
                                                     }];
     
     [parentController.navigationController pushViewController:viewController animated:YES];
+
 }
 
 @end
