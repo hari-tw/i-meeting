@@ -179,7 +179,7 @@
     return durationString;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     NSDate *now = [NSDate date];
     
@@ -193,9 +193,20 @@
     NSString *dateString2 = [dateFormatter stringFromDate:dayAfterTommorrow];
     
     NSMutableArray *myArray = [NSMutableArray arrayWithObjects:dateString , dateString1, dateString2, nil ];
-   
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(0, 0, 320, 23);
+    label.textColor = [UIColor blackColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont fontWithName:@"System Bold" size:20.0];
+    label.text = [myArray objectAtIndex:section];
+    label.backgroundColor = [UIColor lightGrayColor];
+    // Create header view and add label as a subview
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320,96 )];
+    [view addSubview:label];
     
-    return ( [myArray objectAtIndex:section]);
+    
+    return (view);
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -213,12 +224,15 @@
     NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
     NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
     NSString *eventStartTime = [NSString stringWithFormat:@"%02d:%02d", eventStart.hour, eventStart.minute];
+     NSString *eventEndTime = [NSString stringWithFormat:@"%02d:%02d", eventEnd.hour, eventEnd.minute];
     
     durationString = [self durationOfMeeting:eventStart eventEnd:eventEnd];
     
     cell.titleLabel.text = [event valueForKey:@"summary"];
-    cell.timingsLabel.text = [NSString stringWithFormat:@"%@", eventStartTime];
-    cell.durationLabel.text = [NSString stringWithFormat: @"Duration: %@", durationString];
+    cell.timingsLabel.text = [NSString stringWithFormat:@"%@ - %@", eventStartTime, eventEndTime];
+    NSArray *organiser = [event valueForKey:@"organizer"];
+    cell.organizerLabel.text = [@"Organizer: " stringByAppendingString:[organiser valueForKey:@"displayName"]];
+    
     
     NSLog(@"%@", event);
     
