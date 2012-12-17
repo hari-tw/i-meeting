@@ -74,7 +74,7 @@
     if([validation isEqualToString:@""])
     {
     
-      GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
+    GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
     
     newEvent.summary = self.subjectField.text;
     newEvent.descriptionProperty = self.descriptionField.text;
@@ -93,29 +93,35 @@
     
     newEvent.end = [GTLCalendarEventDateTime new];
     newEvent.end.dateTime = endTime;
-    NSString *userName = [[SignInHandler instance] userEmail];
-    
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:newEvent
-                                                                    calendarId:userName];
-    
-    [[SignInHandler instance].calendarService executeQuery:query
-                                   completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
-                                       // Callback
-                                       if (error != nil)
-                                           NSLog(@"%@", error.description);
-                                       if (error == nil) {
-                                            [self.navigationController popViewControllerAnimated:YES];
-                                       }
-                                   }];
-    }
+    [self saveEvent:newEvent];
+  }
     else
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid" message:validation delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
-    
-    
+
 }
+
+-(void)saveEvent:(GTLCalendarEvent *)event
+{
+    NSString *userName = [[SignInHandler instance] userEmail];
+
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:event
+                                                                    calendarId:userName];
+    
+    [[SignInHandler instance].calendarService executeQuery:query
+                                         completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+                                             // Callback
+                                             if (error != nil)
+                                                 NSLog(@"%@", error.description);
+                                             if (error == nil) {
+                                                 [self.navigationController popViewControllerAnimated:YES];
+                                             }
+                                         }];
+       
+}
+
 
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {

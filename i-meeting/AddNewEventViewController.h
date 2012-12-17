@@ -14,4 +14,5 @@
 - (IBAction)datePicked:(UIDatePicker *)sender;
 -(IBAction)textFieldReturn:(id)sender;
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate;
+-(void)saveEvent:(GTLCalendarEvent *)event;
 @end
