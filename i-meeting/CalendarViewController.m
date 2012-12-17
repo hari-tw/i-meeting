@@ -90,62 +90,58 @@
 }
 
 
-- (void)savingEventsInArray:(NSMutableArray *)tommorrowDateEvents todayDateEvents:(NSMutableArray *)todayDateEvents dayAfterTommorrowDateEvents:(NSMutableArray *)dayAfterTommorrowDateEvents
+- (NSDateComponents *)calculateDateComponents:(NSDate *)date
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *dateCompsofToday= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
+    return dateCompsofToday;
+}
+
+- (void)savingEventsInArray:(NSMutableArray *)tommorrowDateEvents todayDateEvents:(NSMutableArray *)todayDateEvents dayAfterTommorrowDateEvents:(NSMutableArray *)dayAfterTommorrowDateEvents
+{
     NSDate *now = [NSDate date];
-    NSDate *tommorrow = [self dateByAddingOneDay:1 toDate:now];
-    NSDate *dayAfterTommorrow = [self dateByAddingOneDay:1 toDate:tommorrow];
+    NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
+    NSDate *dayAfterTommorrow = [tommorrow dateByAddingTimeInterval:60*60*24];
     
-    NSDateComponents *dateCompsofToday= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:now];
-    NSDateComponents *dateCompsTommorrow = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:tommorrow];
-    NSDateComponents *dateCompsdayAfterTommorrow = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:dayAfterTommorrow];
-    
+    NSDateComponents *dateCompsofToday = [self calculateDateComponents:now];
+    NSDateComponents *dateCompsTommorrow = [self calculateDateComponents:tommorrow];
+    NSDateComponents *dateCompsdayAfterTommorrow = [self calculateDateComponents:dayAfterTommorrow];
     for (int i=0; i<self.eventsSummaries.count; i++) {
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.eventsSummaries[i] valueForKey:@"start"]).dateTime.dateComponents;
         
         NSArray *attendees = [eventsSummaries[i] valueForKey:@"attendees"];
         NSString *email = [NSString new];
         NSString *attendeesResponseStatus = [NSString new];
+        attendeesResponseStatus = @"declined";
         
-        for(int i=0; i<attendees.count; i++){
+        for(int j=0; j<attendees.count; j++){
             
-            email = [attendees[i] valueForKey:@"email"];
+            email = [attendees[j] valueForKey:@"email"];
             
             if ([email isEqualToString:self.calendarId] ){
-                attendeesResponseStatus = [attendees[i] valueForKey:@"responseStatus"];
-                if(![attendeesResponseStatus isEqualToString:@"declined"]){
-                    break;
-                }
-            }
-        }
-        
-        if (![attendeesResponseStatus isEqualToString:@"declined"]){
+                attendeesResponseStatus = [attendees[j] valueForKey:@"responseStatus"];
+            
+           if (![attendeesResponseStatus isEqualToString:@"declined"]){
             if (dateCompsofToday.day == eventStart.day)
             {
                 [todayDateEvents addObject:self.eventsSummaries[i]];
-                
             }
-            else if ((dateCompsTommorrow.day)== eventStart.day){
+            else if ((dateCompsTommorrow.day)== eventStart.day)
+            {
                 [tommorrowDateEvents addObject:self.eventsSummaries[i]];
             }
-            else if ((dateCompsdayAfterTommorrow.day)== eventStart.day){
+            else if ((dateCompsdayAfterTommorrow.day)== eventStart.day)
+            {
                 [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
+            }
+        }
+            break;
+        
             }
         }
     }
 }
 
-- (NSDate *)dateByAddingOneDay:(NSInteger)numberOfDays toDate:(NSDate *)inputDate
-{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    NSDateComponents *dateComps = [[NSDateComponents alloc] init];
-    [dateComps setDay:numberOfDays];
-    
-    NSDate *newDate = [calendar dateByAddingComponents:dateComps toDate:inputDate options:0];
-    return newDate;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -162,14 +158,16 @@
 - (NSString *)durationOfMeeting:(NSDateComponents *)eventStart eventEnd:(NSDateComponents *)eventEnd
 {
     NSString *durationString;
-    int startTimeInMinute = ((eventStart.hour)*60)+eventStart.minute;
-    int endTimeInMinute = (eventEnd.hour*60)+eventEnd.minute;
-    int duration = endTimeInMinute-startTimeInMinute;
-    if (duration < 60) {
-        durationString = [NSString stringWithFormat:@"%d minutes", duration];}
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *startDate = [calendar dateFromComponents:eventStart];
+    NSDate *endDate = [calendar dateFromComponents:eventEnd];
+    NSTimeInterval duration = [endDate timeIntervalSinceDate:startDate];
+    int durationInMinute = (int) duration / 60;
+    if (durationInMinute < 60) {
+        durationString = [NSString stringWithFormat:@"%d minutes", durationInMinute];}
     else {
-        int hour = duration/60;
-        int minutes = duration%60;
+        int hour = durationInMinute/60;
+        int minutes = durationInMinute%60;
         if (minutes == 0) {
             durationString = [NSString stringWithFormat:@"%d hour", hour];
         }
@@ -185,19 +183,17 @@
 {
     NSDate *now = [NSDate date];
     
-    NSDate *endDate = [self dateByAddingOneDay:1 toDate:now];
-    NSDate *dayAfterTommorrow = [self dateByAddingOneDay:2 toDate:now];
+    NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
+    NSDate *dayAfterTommorrow = [tommorrow dateByAddingTimeInterval:60*60*24];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEEE, dd MMM yyyy"];
     
     NSString *dateString = [dateFormatter stringFromDate:now];
-    NSString *dateString1 = [dateFormatter stringFromDate:endDate];
+    NSString *dateString1 = [dateFormatter stringFromDate:tommorrow];
     NSString *dateString2 = [dateFormatter stringFromDate:dayAfterTommorrow];
     
-    NSMutableArray *myArray = [NSMutableArray array];
-    [myArray addObject:dateString];
-    [myArray addObject:dateString1];
-    [myArray addObject:dateString2];
+    NSMutableArray *myArray = [NSMutableArray arrayWithObjects:dateString , dateString1, dateString2, nil ];
+   
     
     return ( [myArray objectAtIndex:section]);
 }
@@ -213,7 +209,7 @@
     NSArray *array = [dictionary objectForKey:@"data"];
     
     id event = [array objectAtIndex:indexPath.row];
-    
+
     NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
     NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
     NSString *eventStartTime = [NSString stringWithFormat:@"%02d:%02d", eventStart.hour, eventStart.minute];

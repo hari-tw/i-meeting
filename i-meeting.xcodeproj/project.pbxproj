@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		207052A5167EEE7800023712 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 207052A4167EEE7800023712 /* libGTLTouchStaticLib.a */; };
 		8318BDE2163715C6003E2B01 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE1163715C6003E2B01 /* Security.framework */; };
 		8318BDE416371610003E2B01 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE316371610003E2B01 /* SystemConfiguration.framework */; };
 		8318BE4116371CD2003E2B01 /* GTLCalendarAcl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BD7F16370F4C003E2B01 /* GTLCalendarAcl.m */; };
@@ -35,7 +36,6 @@
 		8318BE6716379E00003E2B01 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8318BE6616379E00003E2B01 /* GTMOAuth2ViewTouch.xib */; };
 		8318BE6A1637AAA4003E2B01 /* DateTimeUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE691637AAA4003E2B01 /* DateTimeUtility.m */; };
 		8318BE6D1637C979003E2B01 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE6C1637C979003E2B01 /* CalendarViewController.m */; };
-		833D6D3F167E197100BB44FB /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 833D6D3E167E197100BB44FB /* libGTLTouchStaticLib.a */; };
 		833FCAC5167E1AE5009CC996 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 833FCABF167E1AE5009CC996 /* libzbar.a */; };
 		833FCAC6167E1AE5009CC996 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 833FCAC1167E1AE5009CC996 /* zbar-back.png */; };
 		833FCAC7167E1AE5009CC996 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 833FCAC2167E1AE5009CC996 /* zbar-help.html */; };
@@ -85,6 +85,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		207052A4167EEE7800023712 /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGTLTouchStaticLib.a; path = ../../Downloads/libGTLTouchStaticLib.a; sourceTree = "<group>"; };
 		8318BD7C16370F4C003E2B01 /* GTLCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLCalendar.h; sourceTree = "<group>"; };
 		8318BD7E16370F4C003E2B01 /* GTLCalendarAcl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLCalendarAcl.h; sourceTree = "<group>"; };
 		8318BD7F16370F4C003E2B01 /* GTLCalendarAcl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLCalendarAcl.m; sourceTree = "<group>"; };
@@ -167,7 +168,6 @@
 		8318BE6B1637C979003E2B01 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		8318BE6C1637C979003E2B01 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		833D6D28167E0D7400BB44FB /* i-meeting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "i-meeting.entitlements"; sourceTree = "<group>"; };
-		833D6D3E167E197100BB44FB /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGTLTouchStaticLib.a; sourceTree = "<group>"; };
 		833FCAAB167E1AE5009CC996 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		833FCAAC167E1AE5009CC996 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
 		833FCAAD167E1AE5009CC996 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -263,8 +263,8 @@
 				83AC4DAB16281DE5000C60C9 /* UIKit.framework in Frameworks */,
 				83AC4DAD16281DE5000C60C9 /* Foundation.framework in Frameworks */,
 				83AC4DAF16281DE5000C60C9 /* CoreGraphics.framework in Frameworks */,
-				833D6D3F167E197100BB44FB /* libGTLTouchStaticLib.a in Frameworks */,
 				833FCAC5167E1AE5009CC996 /* libzbar.a in Frameworks */,
+				207052A5167EEE7800023712 /* libGTLTouchStaticLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +506,7 @@
 		83AC4DA916281DE5000C60C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				833D6D3E167E197100BB44FB /* libGTLTouchStaticLib.a */,
+				207052A4167EEE7800023712 /* libGTLTouchStaticLib.a */,
 				833FCAA7167E1AE5009CC996 /* ZBarSDK */,
 				8318BDE316371610003E2B01 /* SystemConfiguration.framework */,
 				8318BDE1163715C6003E2B01 /* Security.framework */,
@@ -860,6 +860,7 @@
 					"\"$(SRCROOT)/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
 					"$(FRANK_LIBRARY_SEARCH_PATHS)",
+					"\"$(SRCROOT)/../../Downloads\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -892,6 +893,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../Downloads\"",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
