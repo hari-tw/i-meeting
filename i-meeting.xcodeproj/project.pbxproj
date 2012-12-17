@@ -852,7 +852,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../../Downloads/i-meeting\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "i-meeting/i-meeting-Prefix.pch";
@@ -863,9 +862,6 @@
 					"\"$(SRCROOT)/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
 					"$(FRANK_LIBRARY_SEARCH_PATHS)",
-					"\"$(SRCROOT)/../../Downloads\"",
-					"\"$(SRCROOT)/../../Downloads/i-meeting\"",
-					"\"$(SRCROOT)/../../Downloads/i-meeting/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -889,7 +885,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../../Downloads/i-meeting\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "i-meeting/i-meeting-Prefix.pch";
@@ -899,9 +894,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../../Downloads\"",
-					"\"$(SRCROOT)/../../Downloads/i-meeting\"",
-					"\"$(SRCROOT)/../../Downloads/i-meeting/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",

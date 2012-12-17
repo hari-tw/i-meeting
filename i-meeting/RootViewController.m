@@ -27,7 +27,6 @@
 @synthesize isSignedIn = _isSignedIn;
 @synthesize calendarId = _calendarUrl;
 @synthesize meetingRoomName = _meetingRoomName;
-@synthesize signInHandler = _signInHandler;
 
 - (Phone *)phone {
     if (!_phone) _phone = [Phone new];
