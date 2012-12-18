@@ -81,7 +81,6 @@
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 		AF837C7B1679B63D002B5374 /* PopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = AF837C7A1679B63D002B5374 /* PopSegue.m */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
-		F937132516809229007E1717 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2070551D167F222500023712 /* libGTLTouchStaticLib.a */; };
 		F937132C16809407007E1717 /* libGTLTouchStaticLib-sim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */; };
 /* End PBXBuildFile section */
 
@@ -254,7 +253,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F937132516809229007E1717 /* libGTLTouchStaticLib.a in Frameworks */,
 				8318BDE416371610003E2B01 /* SystemConfiguration.framework in Frameworks */,
 				8318BDE2163715C6003E2B01 /* Security.framework in Frameworks */,
 				83AC4E0C16281EF8000C60C9 /* libiconv.dylib in Frameworks */,
@@ -872,9 +870,25 @@
 					"-fobjc-arc",
 					"$(FRANK_LDFLAGS)",
 				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"$(inherited)",
+					"-all_load",
+					"-ObjC",
+					"-fobjc-arc",
+					"$(FRANK_LDFLAGS)",
+					"\"$(SRCROOT)/libGTLTouchStaticLib.a\"",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"$(inherited)",
+					"-all_load",
+					"-ObjC",
+					"-fobjc-arc",
+					"$(FRANK_LDFLAGS)",
+					"\"$(SRCROOT)/libGTLTouchStaticLib-sim.a\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -902,10 +916,16 @@
 					"-ObjC",
 					"-fobjc-arc",
 				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-all_load",
+					"-ObjC",
+					"-fobjc-arc",
+					"\"$(SRCROOT)/libGTLTouchStaticLib.a\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
