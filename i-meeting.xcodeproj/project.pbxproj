@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2070551E167F222500023712 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2070551D167F222500023712 /* libGTLTouchStaticLib.a */; };
-		2070551F167F222500023712 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2070551D167F222500023712 /* libGTLTouchStaticLib.a */; };
 		8318BDE2163715C6003E2B01 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE1163715C6003E2B01 /* Security.framework */; };
 		8318BDE416371610003E2B01 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE316371610003E2B01 /* SystemConfiguration.framework */; };
 		8318BE4116371CD2003E2B01 /* GTLCalendarAcl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BD7F16370F4C003E2B01 /* GTLCalendarAcl.m */; };
@@ -83,6 +81,8 @@
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 		AF837C7B1679B63D002B5374 /* PopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = AF837C7A1679B63D002B5374 /* PopSegue.m */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
+		F937132516809229007E1717 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2070551D167F222500023712 /* libGTLTouchStaticLib.a */; };
+		F937132C16809407007E1717 /* libGTLTouchStaticLib-sim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -246,6 +246,7 @@
 		AF837C791679B63D002B5374 /* PopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopSegue.h; sourceTree = "<group>"; };
 		AF837C7A1679B63D002B5374 /* PopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopSegue.m; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGTLTouchStaticLib-sim.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F937132516809229007E1717 /* libGTLTouchStaticLib.a in Frameworks */,
 				8318BDE416371610003E2B01 /* SystemConfiguration.framework in Frameworks */,
 				8318BDE2163715C6003E2B01 /* Security.framework in Frameworks */,
 				83AC4E0C16281EF8000C60C9 /* libiconv.dylib in Frameworks */,
@@ -265,7 +267,7 @@
 				83AC4DAD16281DE5000C60C9 /* Foundation.framework in Frameworks */,
 				83AC4DAF16281DE5000C60C9 /* CoreGraphics.framework in Frameworks */,
 				833FCAC5167E1AE5009CC996 /* libzbar.a in Frameworks */,
-				2070551E167F222500023712 /* libGTLTouchStaticLib.a in Frameworks */,
+				F937132C16809407007E1717 /* libGTLTouchStaticLib-sim.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +279,6 @@
 				83AC4E1416281F24000C60C9 /* Foundation.framework in Frameworks */,
 				83AC4E1516281F24000C60C9 /* CoreGraphics.framework in Frameworks */,
 				83AC4E2C16281F42000C60C9 /* GHUnitIOS.framework in Frameworks */,
-				2070551F167F222500023712 /* libGTLTouchStaticLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +509,7 @@
 		83AC4DA916281DE5000C60C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */,
 				2070551D167F222500023712 /* libGTLTouchStaticLib.a */,
 				833FCAA7167E1AE5009CC996 /* ZBarSDK */,
 				8318BDE316371610003E2B01 /* SystemConfiguration.framework */,
