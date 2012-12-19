@@ -5,7 +5,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
-
 - (UIViewController *)prepareQrCodeReader;
 - (NSString *)getScannedCode:(NSDictionary *)info;
 

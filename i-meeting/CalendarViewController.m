@@ -9,7 +9,18 @@
 @end
 
 @implementation CalendarViewController
+
 @synthesize eventsSummaries;
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.spinner startAnimating];
+    self.title = self.viewTitle ? self.viewTitle : @"My Meetings";
+    self.calendarId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
+    [self.spinner hidesWhenStopped];
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -25,7 +36,6 @@
     NSMutableArray *todayDateEvents = [NSMutableArray new];
     NSMutableArray *tommorrowDateEvents = [NSMutableArray new];
     NSMutableArray *dayAfterTommorrowDateEvents = [NSMutableArray new];
-   // myArray = [NSMutableArray alloc];
     
     [self savingEventsInArray:tommorrowDateEvents todayDateEvents:todayDateEvents dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents];
     dataArray = [[NSMutableArray alloc] init];
@@ -36,22 +46,17 @@
     NSString *dateString2 = [NSString new];
     myArray = [[NSMutableArray alloc] init];
     
-    
     NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
     NSDate *dayAfterTommorrow = [tommorrow dateByAddingTimeInterval:60*60*24];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEEE, dd MMM yyyy"];
-    
-   
-    
-  
+
     if (todayDateEvents.count > 0)
     {
         NSDictionary *firstItemsArrayDict = [NSDictionary dictionaryWithObject:todayDateEvents forKey:@"data"];
         [dataArray addObject:firstItemsArrayDict];
         dateString = [dateFormatter stringFromDate:now];
         [myArray addObject:dateString];
-        
     }
   
     if ([tommorrowDateEvents count]> 0)
@@ -60,9 +65,7 @@
         [dataArray addObject:secondItemsArrayDict];
         dateString1 = [dateFormatter stringFromDate:tommorrow];
         [myArray addObject:dateString1];
-        
     }
-   
    
     if ([dayAfterTommorrowDateEvents count]> 0)
     {
@@ -71,26 +74,6 @@
         dateString2 = [dateFormatter stringFromDate:dayAfterTommorrow];
         [myArray addObject:dateString2];
     }
-
-    
-          
-   
-   
-          
-    
-    
-   
-    
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self.spinner startAnimating];
-    self.title = self.viewTitle ? self.viewTitle : @"My Meetings";
-    self.calendarId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
-    [self.spinner hidesWhenStopped];
 }
 
 - (void)displayCalendar
@@ -126,7 +109,6 @@
     
     [self.tableView reloadData];
 }
-
 
 - (NSDateComponents *)calculateDateComponents:(NSDate *)date
 {
@@ -182,7 +164,6 @@
     }
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSDictionary *dictionary = [dataArray objectAtIndex:section];
@@ -195,11 +176,8 @@
     return [dataArray count];
 }
 
-
-
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-
     UILabel *label = [[UILabel alloc] init];
     label.frame = CGRectMake(0, 0, 320, 23);
     label.textColor = [UIColor blackColor];
@@ -212,12 +190,10 @@
     [view addSubview:label];
     
     return (view);
-   
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
     static NSString *cellIdentifier = @"Cell";
     CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
@@ -236,7 +212,6 @@
     cell.timingsLabel.text = [NSString stringWithFormat:@"%db %@ - %@", eventStart.day ,eventStartTime, eventEndTime];
     NSArray *organiser = [event valueForKey:@"organizer"];
     cell.organizerLabel.text = [@"Organizer: " stringByAppendingString:[organiser valueForKey:@"displayName"]];
-    
     
     NSLog(@"%@", event);
     
@@ -261,13 +236,6 @@
 - (IBAction)addEvent:(id)sender
 {
     [self performSegueWithIdentifier:@"addEvent" sender:self];
-}
-
-- (void)viewDidUnload {
-    [self setTableView:nil];
-    [self setCurrentDateLabel:nil];
-    [self setCurrentDate:nil];
-    [super viewDidUnload];
 }
 
 @end

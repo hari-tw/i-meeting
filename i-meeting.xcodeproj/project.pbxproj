@@ -59,7 +59,6 @@
 		83AC4DBD16281DE5000C60C9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AC4DBC16281DE5000C60C9 /* Default.png */; };
 		83AC4DBF16281DE5000C60C9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AC4DBE16281DE5000C60C9 /* Default@2x.png */; };
 		83AC4DC116281DE5000C60C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AC4DC016281DE5000C60C9 /* Default-568h@2x.png */; };
-		83AC4DD716281E3D000C60C9 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD016281E3D000C60C9 /* Phone.m */; };
 		83AC4DDA16281E3D000C60C9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4DD616281E3D000C60C9 /* RootViewController.m */; };
 		83AC4DDD16281E6E000C60C9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83AC4DDB16281E6E000C60C9 /* MainStoryboard.storyboard */; };
 		83AC4E0216281EC3000C60C9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC4E0116281EC3000C60C9 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -80,9 +79,7 @@
 		83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */; };
 		83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E337A21640371B00BD3E90 /* CalendarCell.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
-		AF837C7B1679B63D002B5374 /* PopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = AF837C7A1679B63D002B5374 /* PopSegue.m */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
-		F937132C16809407007E1717 /* libGTLTouchStaticLib-sim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -218,8 +215,6 @@
 		83AC4DBC16281DE5000C60C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		83AC4DBE16281DE5000C60C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		83AC4DC016281DE5000C60C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		83AC4DCF16281E3D000C60C9 /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
-		83AC4DD016281E3D000C60C9 /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
 		83AC4DD316281E3D000C60C9 /* QRCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeManager.h; sourceTree = "<group>"; };
 		83AC4DD516281E3D000C60C9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83AC4DD616281E3D000C60C9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -245,8 +240,6 @@
 		83E337A21640371B00BD3E90 /* CalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
 		9B11225C162DA88900723640 /* AddNewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewEventViewController.h; sourceTree = "<group>"; };
 		9B11225D162DA88900723640 /* AddNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewEventViewController.m; sourceTree = "<group>"; };
-		AF837C791679B63D002B5374 /* PopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopSegue.h; sourceTree = "<group>"; };
-		AF837C7A1679B63D002B5374 /* PopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopSegue.m; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGTLTouchStaticLib-sim.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -268,7 +261,6 @@
 				83AC4DAD16281DE5000C60C9 /* Foundation.framework in Frameworks */,
 				83AC4DAF16281DE5000C60C9 /* CoreGraphics.framework in Frameworks */,
 				833FCAC5167E1AE5009CC996 /* libzbar.a in Frameworks */,
-				F937132C16809407007E1717 /* libGTLTouchStaticLib-sim.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,18 +537,14 @@
 				8318BE681637AAA4003E2B01 /* DateTimeUtility.h */,
 				8318BE691637AAA4003E2B01 /* DateTimeUtility.m */,
 				83AC4DDB16281E6E000C60C9 /* MainStoryboard.storyboard */,
-				830B4C9C1681C433001C743E /* SignInViewController.h */,
-				830B4C9D1681C433001C743E /* SignInViewController.m */,
-				83AC4DCF16281E3D000C60C9 /* Phone.h */,
-				83AC4DD016281E3D000C60C9 /* Phone.m */,
-				AF837C791679B63D002B5374 /* PopSegue.h */,
-				AF837C7A1679B63D002B5374 /* PopSegue.m */,
 				83AC4DD316281E3D000C60C9 /* QRCodeManager.h */,
 				83A9949B164419F9009CD997 /* QRCodeManager.m */,
 				83AC4DD516281E3D000C60C9 /* RootViewController.h */,
 				83AC4DD616281E3D000C60C9 /* RootViewController.m */,
 				83A7365B166A724C00DC5D61 /* SignInHandler.h */,
 				83A73659166A6DAB00DC5D61 /* SignInHandler.m */,
+				830B4C9C1681C433001C743E /* SignInViewController.h */,
+				830B4C9D1681C433001C743E /* SignInViewController.m */,
 				83AC4DB116281DE5000C60C9 /* Supporting Files */,
 				83AC4E1616281F24000C60C9 /* i-meeting-tests */,
 			);
@@ -748,7 +736,6 @@
 				8318BE5716371CD2003E2B01 /* GTLServiceCalendar.m in Sources */,
 				83AC4DB716281DE5000C60C9 /* main.m in Sources */,
 				83AC4DBB16281DE5000C60C9 /* AppDelegate.m in Sources */,
-				83AC4DD716281E3D000C60C9 /* Phone.m in Sources */,
 				83AC4DDA16281E3D000C60C9 /* RootViewController.m in Sources */,
 				9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */,
 				8318BE6A1637AAA4003E2B01 /* DateTimeUtility.m in Sources */,
@@ -756,7 +743,6 @@
 				83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */,
 				83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */,
 				83A7365A166A6DAB00DC5D61 /* SignInHandler.m in Sources */,
-				AF837C7B1679B63D002B5374 /* PopSegue.m in Sources */,
 				830B4C9E1681C433001C743E /* SignInViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -876,7 +862,7 @@
 					"-fobjc-arc",
 					"$(FRANK_LDFLAGS)",
 				);
-				"OTHER_LDFLAGS[arch=*]" = (
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
 					"$(inherited)",
 					"-all_load",
 					"-ObjC",

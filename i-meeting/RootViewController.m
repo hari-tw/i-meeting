@@ -2,42 +2,29 @@
 #import "DateTimeUtility.h"
 #import "CalendarViewController.h"
 #import "QRCodeManager.h"
-#import "Phone.h"
-#import "SignInHandler.h"
-#import "Foundation/NSCalendar.h"
-
 
 @interface RootViewController ()
 
-@property (readonly, strong) Phone *phone;
 @property (nonatomic, strong) NSArray *eventsSummaries;
 @property (nonatomic, strong) NSArray *eventsSummariesForTomorrow;
 @property (nonatomic) BOOL isSignedIn;
 @property (nonatomic) NSString *calendarId;
 @property (nonatomic, strong) NSString *meetingRoomName;
-@property (nonatomic, strong) SignInHandler *signInHandler;
 
 @end
 
 @implementation RootViewController
 
-@synthesize phone = _phone;
 @synthesize eventsSummaries = _eventsSummaries;
 @synthesize eventsSummariesForTomorrow = _eventsSummariesForTomorrow;
 @synthesize isSignedIn = _isSignedIn;
 @synthesize calendarId = _calendarUrl;
 @synthesize meetingRoomName = _meetingRoomName;
 
-- (Phone *)phone {
-    if (!_phone) _phone = [Phone new];
-    return _phone;
-}
-
 - (void)viewDidLoad
 {
     // URL to generate QR Code
     // https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=Hello%20World
-    NSLog(@"Scan button tapped.");
     
     UIViewController *reader = [self prepareQrCodeReader];
     [self addChildViewController:reader];
@@ -90,8 +77,4 @@
     [self performSegueWithIdentifier:@"calendarSegue" sender:self];
 }
 
-- (void)viewDidUnload {
-    [self setContainerView:nil];
-    [super viewDidUnload];
-}
 @end

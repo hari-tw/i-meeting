@@ -9,9 +9,10 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="sDa-vP-Bpb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Scan" image="settings.png" id="2dV-KG-bh8"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZOa-VN-TLR">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="ZOa-VN-TLR">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="2" kind="relationship" relationship="rootViewController" id="Twa-Hx-qL6"/>
@@ -26,9 +27,10 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="PQh-AX-0fJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Meetings" image="profile.png" id="lJE-ji-yvf"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8TQ-oN-b3X">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="8TQ-oN-b3X">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="WSa-KA-q1z" kind="relationship" relationship="rootViewController" id="HKs-m8-5cU"/>
@@ -71,7 +73,9 @@
         <scene sceneID="eJW-vM-ac7">
             <objects>
                 <navigationController definesPresentationContext="YES" id="4bC-E7-t9q" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R5v-0t-H2D">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="R5v-0t-H2D">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -377,6 +381,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="CalendarViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addEvent:"/>
                 <relationship kind="outlet" name="currentDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
@@ -398,6 +403,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VM3-JR-CEJ"/>
+        <segue reference="HKs-m8-5cU"/>
     </inferredMetricsTieBreakers>
 </document>

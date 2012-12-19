@@ -4,9 +4,8 @@
 @interface SignInHandler : NSObject
 
 @property (nonatomic) GTLServiceCalendar *calendarService;
+@property (nonatomic) NSString *userEmail;
 
-- (void)authorizeUser:(UIViewController *)parentController;
-- (NSString *)userEmail;
 + (SignInHandler *)instance;
 
 @end
