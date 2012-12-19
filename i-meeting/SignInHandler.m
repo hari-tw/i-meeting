@@ -37,7 +37,6 @@ static SignInHandler *_instance = nil;
 
 - (void)authorizeUser:(UIViewController *)parentController
 {
-    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
     self.authToken = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
                                                                            clientID:kMyClientID
                                                                        clientSecret:kMyClientSecret];

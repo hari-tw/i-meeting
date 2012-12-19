@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nKR-Ea-wdD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4bC-E7-t9q">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Scan-->
@@ -67,10 +67,44 @@
             </objects>
             <point key="canvasLocation" x="-1225" y="-604"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eJW-vM-ac7">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="4bC-E7-t9q" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R5v-0t-H2D">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tCP-j4-Fqp" kind="relationship" relationship="rootViewController" id="dya-i5-7qU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7K-KO-w4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3382" y="-1106"/>
+        </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="85L-8F-YfN">
+            <objects>
+                <viewController id="tCP-j4-Fqp" customClass="SignInViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MUe-Me-yqH">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="662-ed-T76"/>
+                    <connections>
+                        <segue destination="nKR-Ea-wdD" kind="push" identifier="appWorkflowSegue" id="uN9-AW-MFu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fvP-Om-fcd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2922" y="-1106"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tQD-oI-GLS">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="nKR-Ea-wdD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="BRy-vz-LUS"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="GcK-8H-tft">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -353,6 +387,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
             </relationships>
+        </class>
+        <class className="SignInViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignInViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

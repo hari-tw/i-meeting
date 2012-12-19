@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830B4C9E1681C433001C743E /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B4C9D1681C433001C743E /* SignInViewController.m */; };
 		8318BDE2163715C6003E2B01 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE1163715C6003E2B01 /* Security.framework */; };
 		8318BDE416371610003E2B01 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE316371610003E2B01 /* SystemConfiguration.framework */; };
 		8318BE4116371CD2003E2B01 /* GTLCalendarAcl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BD7F16370F4C003E2B01 /* GTLCalendarAcl.m */; };
@@ -86,6 +87,8 @@
 
 /* Begin PBXFileReference section */
 		2070551D167F222500023712 /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGTLTouchStaticLib.a; sourceTree = "<group>"; };
+		830B4C9C1681C433001C743E /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		830B4C9D1681C433001C743E /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		8318BD7C16370F4C003E2B01 /* GTLCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLCalendar.h; sourceTree = "<group>"; };
 		8318BD7E16370F4C003E2B01 /* GTLCalendarAcl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLCalendarAcl.h; sourceTree = "<group>"; };
 		8318BD7F16370F4C003E2B01 /* GTLCalendarAcl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLCalendarAcl.m; sourceTree = "<group>"; };
@@ -542,6 +545,8 @@
 				8318BE681637AAA4003E2B01 /* DateTimeUtility.h */,
 				8318BE691637AAA4003E2B01 /* DateTimeUtility.m */,
 				83AC4DDB16281E6E000C60C9 /* MainStoryboard.storyboard */,
+				830B4C9C1681C433001C743E /* SignInViewController.h */,
+				830B4C9D1681C433001C743E /* SignInViewController.m */,
 				83AC4DCF16281E3D000C60C9 /* Phone.h */,
 				83AC4DD016281E3D000C60C9 /* Phone.m */,
 				AF837C791679B63D002B5374 /* PopSegue.h */,
@@ -752,6 +757,7 @@
 				83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */,
 				83A7365A166A6DAB00DC5D61 /* SignInHandler.m in Sources */,
 				AF837C7B1679B63D002B5374 /* PopSegue.m in Sources */,
+				830B4C9E1681C433001C743E /* SignInViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

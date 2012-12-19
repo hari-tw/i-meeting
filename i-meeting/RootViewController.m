@@ -33,11 +33,6 @@
     return _phone;
 }
 
-- (void)awakeFromNib
-{
-    [[SignInHandler instance ]authorizeUser:self];
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     // URL to generate QR Code
