@@ -37,6 +37,7 @@ static SignInHandler *_instance = nil;
 
 - (void)authorizeUser:(UIViewController *)parentController
 {
+    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
     self.authToken = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
                                                                            clientID:kMyClientID
                                                                        clientSecret:kMyClientSecret];
@@ -69,9 +70,9 @@ static SignInHandler *_instance = nil;
                                                             self.calendarService.authorizer = auth;
                                                         }
                                                     }];
-    
+    viewController.navigationItem.hidesBackButton = YES;
+ 
     [parentController.navigationController pushViewController:viewController animated:YES];
-
 }
 
 @end
