@@ -4,9 +4,11 @@
 @interface CalendarViewController : UITableViewController
 {
     NSMutableArray *dataArray;
+     NSMutableArray *myArray;
 }
 
 @property (nonatomic) NSArray *eventsSummaries;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) NSString *currentDate;

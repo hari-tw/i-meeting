@@ -111,17 +111,51 @@
                                                                     calendarId:userName];
     
     [[SignInHandler instance].calendarService executeQuery:query
-                                         completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+                                         completionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
                                              // Callback
                                              if (error != nil)
                                                  NSLog(@"%@", error.description);
                                              if (error == nil) {
-                                                 [self.navigationController popViewControllerAnimated:YES];
+                                                 GTLQueryCalendar *query1 = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
+                                                 query1.eventId = eventId ;
+                                                 [[SignInHandler instance].calendarService executeQuery:query1 delegate:nil didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
+                                                // id event = self.event;
+                                                 NSArray *attendees = [self.event valueForKey:@"attendees"];
+                                                 NSString *email = [NSString new];
+                                                 NSString *attendeesResponseStatus = [NSString new];
+                                                 //  attendeesResponseStatus = @"declined";
+                                                 
+                                                 for(int j=0; j<attendees.count; j++){
+                                                     
+                                                     email = [attendees[j] valueForKey:@"email"];
+                                                     
+                                                     if ([email isEqualToString:self.meetingRoomId] ){
+                                                         attendeesResponseStatus = [attendees[j] valueForKey:@"responseStatus"];
+                                                         if ([attendeesResponseStatus isEqualToString:@"declined"]){
+                                                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid" message:@"Error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                             [alert show];
+                                                             
+                                                             
+                                                         } }}
+
+                                                 
+                                                                                                 [self.navigationController popViewControllerAnimated:YES];
                                              }
                                          }];
        
 }
 
+- (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
+{
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
+    self.event = events.items;
+   
+    
+}
 
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {

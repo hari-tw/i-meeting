@@ -25,24 +25,62 @@
     NSMutableArray *todayDateEvents = [NSMutableArray new];
     NSMutableArray *tommorrowDateEvents = [NSMutableArray new];
     NSMutableArray *dayAfterTommorrowDateEvents = [NSMutableArray new];
+   // myArray = [NSMutableArray alloc];
     
     [self savingEventsInArray:tommorrowDateEvents todayDateEvents:todayDateEvents dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents];
     dataArray = [[NSMutableArray alloc] init];
     
-    if(todayDateEvents.count > 0){
+    NSDate *now = [NSDate date];
+    NSString *dateString = [NSString new];
+    NSString *dateString1 = [NSString new];
+    NSString *dateString2 = [NSString new];
+    myArray = [[NSMutableArray alloc] init];
+    
+    
+    NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
+    NSDate *dayAfterTommorrow = [tommorrow dateByAddingTimeInterval:60*60*24];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEEE, dd MMM yyyy"];
+    
+   
+    
+  
+    if (todayDateEvents.count > 0)
+    {
         NSDictionary *firstItemsArrayDict = [NSDictionary dictionaryWithObject:todayDateEvents forKey:@"data"];
         [dataArray addObject:firstItemsArrayDict];
+        dateString = [dateFormatter stringFromDate:now];
+        [myArray addObject:dateString];
+        
     }
-    
-    if(tommorrowDateEvents.count > 0){
+  
+    if ([tommorrowDateEvents count]> 0)
+    {
         NSDictionary *secondItemsArrayDict = [NSDictionary dictionaryWithObject:tommorrowDateEvents forKey:@"data"];
         [dataArray addObject:secondItemsArrayDict];
+        dateString1 = [dateFormatter stringFromDate:tommorrow];
+        [myArray addObject:dateString1];
+        
     }
-    
-    if(dayAfterTommorrowDateEvents.count > 0){
+   
+   
+    if ([dayAfterTommorrowDateEvents count]> 0)
+    {
         NSDictionary *thirdItemsArrayDict = [NSDictionary dictionaryWithObject:dayAfterTommorrowDateEvents forKey:@"data"];
         [dataArray addObject:thirdItemsArrayDict];
+        dateString2 = [dateFormatter stringFromDate:dayAfterTommorrow];
+        [myArray addObject:dateString2];
     }
+
+    
+          
+   
+   
+          
+    
+    
+   
+    
 }
 
 - (void)viewDidLoad
@@ -59,7 +97,7 @@
 {
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate new];
-    NSDate *endDate = [[NSDate alloc] initWithTimeIntervalSinceNow:60*60*48];
+    NSDate *endDate = [now dateByAddingTimeInterval:60*60*48];
     
     NSDateComponents* startDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
     NSDateComponents* endDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:endDate];
@@ -93,7 +131,7 @@
 - (NSDateComponents *)calculateDateComponents:(NSDate *)date
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *dateCompsofToday= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
+    NSDateComponents *dateCompsofToday= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit| NSMinuteCalendarUnit fromDate:date];
     return dateCompsofToday;
 }
 
@@ -101,12 +139,14 @@
 {
     NSDate *now = [NSDate date];
     NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
+    
     NSDate *dayAfterTommorrow = [tommorrow dateByAddingTimeInterval:60*60*24];
     
     NSDateComponents *dateCompsofToday = [self calculateDateComponents:now];
     NSDateComponents *dateCompsTommorrow = [self calculateDateComponents:tommorrow];
     NSDateComponents *dateCompsdayAfterTommorrow = [self calculateDateComponents:dayAfterTommorrow];
     for (int i=0; i<self.eventsSummaries.count; i++) {
+        
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.eventsSummaries[i] valueForKey:@"start"]).dateTime.dateComponents;
         
         NSArray *attendees = [eventsSummaries[i] valueForKey:@"attendees"];
@@ -155,44 +195,11 @@
     return [dataArray count];
 }
 
-- (NSString *)durationOfMeeting:(NSDateComponents *)eventStart eventEnd:(NSDateComponents *)eventEnd
-{
-    NSString *durationString;
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *startDate = [calendar dateFromComponents:eventStart];
-    NSDate *endDate = [calendar dateFromComponents:eventEnd];
-    NSTimeInterval duration = [endDate timeIntervalSinceDate:startDate];
-    int durationInMinute = (int) duration / 60;
-    if (durationInMinute < 60) {
-        durationString = [NSString stringWithFormat:@"%d minutes", durationInMinute];}
-    else {
-        int hour = durationInMinute/60;
-        int minutes = durationInMinute%60;
-        if (minutes == 0) {
-            durationString = [NSString stringWithFormat:@"%d hour", hour];
-        }
-        else {
-            durationString = [NSString stringWithFormat:@"%d hour %d minutes", hour,minutes];
-        }
-        
-    }
-    return durationString;
-}
+
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSDate *now = [NSDate date];
-    
-    NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
-    NSDate *dayAfterTommorrow = [tommorrow dateByAddingTimeInterval:60*60*24];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE, dd MMM yyyy"];
-    
-    NSString *dateString = [dateFormatter stringFromDate:now];
-    NSString *dateString1 = [dateFormatter stringFromDate:tommorrow];
-    NSString *dateString2 = [dateFormatter stringFromDate:dayAfterTommorrow];
-    
-    NSMutableArray *myArray = [NSMutableArray arrayWithObjects:dateString , dateString1, dateString2, nil ];
+
     UILabel *label = [[UILabel alloc] init];
     label.frame = CGRectMake(0, 0, 320, 23);
     label.textColor = [UIColor blackColor];
@@ -200,18 +207,17 @@
     label.font = [UIFont fontWithName:@"System Bold" size:20.0];
     label.text = [myArray objectAtIndex:section];
     label.backgroundColor = [UIColor lightGrayColor];
-    // Create header view and add label as a subview
+   
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320,96 )];
     [view addSubview:label];
     
-    
     return (view);
-    
+   
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *durationString = @"";
+  
     static NSString *cellIdentifier = @"Cell";
     CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
@@ -226,10 +232,8 @@
     NSString *eventStartTime = [NSString stringWithFormat:@"%02d:%02d", eventStart.hour, eventStart.minute];
      NSString *eventEndTime = [NSString stringWithFormat:@"%02d:%02d", eventEnd.hour, eventEnd.minute];
     
-    durationString = [self durationOfMeeting:eventStart eventEnd:eventEnd];
-    
     cell.titleLabel.text = [event valueForKey:@"summary"];
-    cell.timingsLabel.text = [NSString stringWithFormat:@"%@ - %@", eventStartTime, eventEndTime];
+    cell.timingsLabel.text = [NSString stringWithFormat:@"%db %@ - %@", eventStart.day ,eventStartTime, eventEndTime];
     NSArray *organiser = [event valueForKey:@"organizer"];
     cell.organizerLabel.text = [@"Organizer: " stringByAppendingString:[organiser valueForKey:@"displayName"]];
     

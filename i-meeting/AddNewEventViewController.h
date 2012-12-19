@@ -9,6 +9,7 @@
 @property (strong, nonatomic) NSString *meetingRoomId;
 @property (strong, nonatomic) NSString *meetingRoomName;
 @property (strong, nonatomic) NSString *calendarId;
+@property (strong, nonatomic) id event;
 
 - (IBAction)bookButton:(id)sender;
 - (IBAction)datePicked:(UIDatePicker *)sender;
