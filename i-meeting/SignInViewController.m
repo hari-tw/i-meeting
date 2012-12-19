@@ -39,6 +39,7 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
     
     if (self.isSignedIn) {
         [SignInHandler instance].calendarService.authorizer = self.authToken;
+        [SignInHandler instance].userEmail = self.authToken.userEmail;
         NSLog(@"%@", self.authToken.userEmail);
         return;
     }

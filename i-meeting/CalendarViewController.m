@@ -209,7 +209,7 @@
      NSString *eventEndTime = [NSString stringWithFormat:@"%02d:%02d", eventEnd.hour, eventEnd.minute];
     
     cell.titleLabel.text = [event valueForKey:@"summary"];
-    cell.timingsLabel.text = [NSString stringWithFormat:@"%db %@ - %@", eventStart.day ,eventStartTime, eventEndTime];
+    cell.timingsLabel.text = [NSString stringWithFormat:@"%@ - %@", eventStartTime, eventEndTime];
     NSArray *organiser = [event valueForKey:@"organizer"];
     cell.organizerLabel.text = [@"Organizer: " stringByAppendingString:[organiser valueForKey:@"displayName"]];
     
