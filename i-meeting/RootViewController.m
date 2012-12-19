@@ -66,7 +66,7 @@
     return symbol.data;
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+- (void)imagePickerController:(UIImagePickerController *)reader didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *scannedCode = [self getScannedCode:info];
     NSArray *arr = [scannedCode componentsSeparatedByString: @"="];
@@ -74,6 +74,7 @@
     self.meetingRoomName = arr[0];
     self.calendarId = arr[1];
     
+    [reader dismissViewControllerAnimated:YES completion:nil];
     [self performSegueWithIdentifier:@"calendarSegue" sender:self];
 }
 
