@@ -33,7 +33,7 @@
     return _phone;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLoad
 {
     // URL to generate QR Code
     // https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=Hello%20World

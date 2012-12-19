@@ -894,7 +894,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = i386;
+				VALID_ARCHS = "i386, armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -931,7 +931,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				VALID_ARCHS = i386;
+				VALID_ARCHS = "i386, armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
