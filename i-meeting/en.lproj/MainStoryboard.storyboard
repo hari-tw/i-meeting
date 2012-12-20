@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4bC-E7-t9q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4bC-E7-t9q">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Scan-->
@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ef-dz-eV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1823" y="-604"/>
+            <point key="canvasLocation" x="-1891" y="-80"/>
         </scene>
         <!--Navigation Controller - My Meetings-->
         <scene sceneID="78a-JY-6jp">
@@ -38,9 +38,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVg-OW-iYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1823" y="-1337"/>
+            <point key="canvasLocation" x="-1579" y="-1793"/>
         </scene>
-        <!--Root View Controller - Where's My Meeting-->
+        <!--Root View Controller - iMeeting-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="RootViewController" sceneMemberID="viewController">
@@ -57,9 +57,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Scan" image="settings.png" id="QbW-C2-p3A"/>
-                    <navigationItem key="navigationItem" title="Where's My Meeting" id="mPD-sh-xYg">
+                    <navigationItem key="navigationItem" title="iMeeting" id="mPD-sh-xYg">
                         <barButtonItem key="backBarButtonItem" title="Back" id="oal-VD-pTv"/>
-                        <barButtonItem key="rightBarButtonItem" title="Sign out" id="FL5-Rc-Eq3">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="FL5-Rc-Eq3">
                             <connections>
                                 <action selector="signOut:" destination="2" id="zbb-oT-Mxu"/>
                             </connections>
@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1225" y="-604"/>
+            <point key="canvasLocation" x="-1293" y="-80"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eJW-vM-ac7">
@@ -90,7 +90,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D7K-KO-w4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3392" y="-1102"/>
+            <point key="canvasLocation" x="-3376" y="-1102"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="85L-8F-YfN">
@@ -128,7 +128,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTo-fb-GIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2503" y="-1102"/>
+            <point key="canvasLocation" x="-2459" y="-1106"/>
         </scene>
         <!--Calendar View Controller - Meetings-->
         <scene sceneID="4fu-u9-4Q2">
@@ -190,7 +190,7 @@
                     <tabBarItem key="tabBarItem" title="My Meetings" image="profile.png" id="16i-lq-jSv"/>
                     <navigationItem key="navigationItem" title="Meetings" id="FeT-Mv-JaP">
                         <barButtonItem key="backBarButtonItem" title="Back" id="gX4-Cd-k1v"/>
-                        <barButtonItem key="rightBarButtonItem" title="Sign out" id="f4E-gZ-yeW">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="f4E-gZ-yeW">
                             <connections>
                                 <action selector="signOut:" destination="WSa-KA-q1z" id="sNw-zG-VwI"/>
                             </connections>
@@ -205,7 +205,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZk-az-2Kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-616" y="-1102"/>
+            <point key="canvasLocation" x="-684" y="-1102"/>
         </scene>
         <!--Add New Event View Controller - Add Event-->
         <scene sceneID="ylq-Uy-k9p">
@@ -370,6 +370,46 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="profile.png" width="22" height="24"/>
         <image name="settings.png" width="21" height="21"/>
     </resources>
+    <classes>
+        <class className="AddNewEventViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bookButton:"/>
+                <relationship kind="action" name="datePicked:" candidateClass="UIDatePicker"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="descriptionField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="subjectField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CalendarCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="organizerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timingsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CalendarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="signOut:"/>
+                <relationship kind="outlet" name="currentDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="signOut:"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SignInViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignInViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
