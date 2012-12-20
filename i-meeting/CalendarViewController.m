@@ -41,9 +41,6 @@
     dataArray = [[NSMutableArray alloc] init];
     
     NSDate *now = [NSDate date];
-    NSString *dateString = [NSString new];
-    NSString *dateString1 = [NSString new];
-    NSString *dateString2 = [NSString new];
     myArray = [[NSMutableArray alloc] init];
     
     NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
@@ -55,26 +52,31 @@
     {
         NSDictionary *firstItemsArrayDict = [NSDictionary dictionaryWithObject:todayDateEvents forKey:@"data"];
         [dataArray addObject:firstItemsArrayDict];
-        dateString = [dateFormatter stringFromDate:now];
+        NSString *dateString = [dateFormatter stringFromDate:now];
         [myArray addObject:dateString];
     }
   
-    if ([tommorrowDateEvents count]> 0)
+    if (tommorrowDateEvents.count > 0)
     {
         NSDictionary *secondItemsArrayDict = [NSDictionary dictionaryWithObject:tommorrowDateEvents forKey:@"data"];
         [dataArray addObject:secondItemsArrayDict];
-        dateString1 = [dateFormatter stringFromDate:tommorrow];
+        NSString *dateString1 = [dateFormatter stringFromDate:tommorrow];
         [myArray addObject:dateString1];
     }
    
-    if ([dayAfterTommorrowDateEvents count]> 0)
+   
+    if (dayAfterTommorrowDateEvents.count > 0)
+
     {
         NSDictionary *thirdItemsArrayDict = [NSDictionary dictionaryWithObject:dayAfterTommorrowDateEvents forKey:@"data"];
         [dataArray addObject:thirdItemsArrayDict];
-        dateString2 = [dateFormatter stringFromDate:dayAfterTommorrow];
+        NSString *dateString2 = [dateFormatter stringFromDate:dayAfterTommorrow];
         [myArray addObject:dateString2];
     }
+
+    
 }
+
 
 - (void)displayCalendar
 {
