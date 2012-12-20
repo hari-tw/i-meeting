@@ -59,10 +59,16 @@
                     <tabBarItem key="tabBarItem" title="Scan" image="settings.png" id="QbW-C2-p3A"/>
                     <navigationItem key="navigationItem" title="Where's My Meeting" id="mPD-sh-xYg">
                         <barButtonItem key="backBarButtonItem" title="Back" id="oal-VD-pTv"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sign out" id="FL5-Rc-Eq3">
+                            <connections>
+                                <action selector="signOut:" destination="2" id="zbb-oT-Mxu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="8TC-xa-oFn" id="dZn-N9-UNl"/>
                         <segue destination="WSa-KA-q1z" kind="push" identifier="calendarSegue" id="VM3-JR-CEJ"/>
+                        <segue destination="4bC-E7-t9q" kind="modal" identifier="signOut" id="cRT-mi-M1h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -124,7 +130,7 @@
             </objects>
             <point key="canvasLocation" x="-2503" y="-1102"/>
         </scene>
-        <!--Calendar View Controller - My Meetings-->
+        <!--Calendar View Controller - Meetings-->
         <scene sceneID="4fu-u9-4Q2">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="WSa-KA-q1z" customClass="CalendarViewController" sceneMemberID="viewController">
@@ -173,7 +179,6 @@
                                     <outlet property="organizerLabel" destination="hCv-r9-WwB" id="Auw-Su-YfJ"/>
                                     <outlet property="timingsLabel" destination="euQ-5c-DjA" id="EtT-kj-2Xu"/>
                                     <outlet property="titleLabel" destination="z8s-aQ-7vv" id="75l-wI-4A3"/>
-                                    <segue destination="4bC-E7-t9q" kind="modal" identifier="signOut" id="DC1-RK-00N"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -183,7 +188,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="My Meetings" image="profile.png" id="16i-lq-jSv"/>
-                    <navigationItem key="navigationItem" id="FeT-Mv-JaP">
+                    <navigationItem key="navigationItem" title="Meetings" id="FeT-Mv-JaP">
                         <barButtonItem key="backBarButtonItem" title="Back" id="gX4-Cd-k1v"/>
                         <barButtonItem key="rightBarButtonItem" title="Sign out" id="f4E-gZ-yeW">
                             <connections>
@@ -195,6 +200,7 @@
                         <outlet property="spinner" destination="B0K-T8-cyi" id="Kxh-1n-RIU"/>
                         <outlet property="tableView" destination="Edq-9P-h3c" id="Gdr-eY-aEH"/>
                         <segue destination="Hh9-z1-7n1" kind="push" identifier="addEvent" id="Lbq-pH-3eE"/>
+                        <segue destination="4bC-E7-t9q" kind="modal" identifier="signOut" id="oYJ-TL-L3x"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZk-az-2Kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -370,6 +376,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HKs-m8-5cU"/>
+        <segue reference="cRT-mi-M1h"/>
+        <segue reference="VM3-JR-CEJ"/>
     </inferredMetricsTieBreakers>
 </document>

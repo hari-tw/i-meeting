@@ -2,6 +2,7 @@
 #import "DateTimeUtility.h"
 #import "CalendarViewController.h"
 #import "QRCodeManager.h"
+#import "GTMOAuth2ViewControllerTouch.h"
 
 @interface RootViewController ()
 
@@ -64,6 +65,12 @@
         break;
     
     return symbol.data;
+}
+
+- (IBAction)signOut:(id)sender {
+    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:@"imeetingauth"];
+    [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:[SignInHandler instance].calendarService.authorizer];
+    [self performSegueWithIdentifier:@"signOut" sender:self];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)reader didFinishPickingMediaWithInfo:(NSDictionary *)info

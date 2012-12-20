@@ -7,6 +7,7 @@
 
 - (UIViewController *)prepareQrCodeReader;
 - (NSString *)getScannedCode:(NSDictionary *)info;
+- (IBAction)signOut:(id)sender;
 
 @end
 
