@@ -4,6 +4,7 @@
 #import "AddNewEventViewController.h"
 #import "Foundation/Foundation.h"
 #import "DateTimeUtility.h"
+#import "GTMOAuth2ViewControllerTouch.h"
 
 @interface CalendarViewController ()
 @end
@@ -240,5 +241,10 @@
     [self performSegueWithIdentifier:@"addEvent" sender:self];
 }
 
+- (IBAction)signOut:(id)sender {
+    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:@"imeetingauth"];
+    [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:[SignInHandler instance].calendarService.authorizer];
+    [self performSegueWithIdentifier:@"signOut" sender:self];
+}
 @end
 

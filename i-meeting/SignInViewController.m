@@ -14,7 +14,7 @@
 @synthesize isSignedIn = _isSignedIn;
 @synthesize authToken = _authToken;
 
-static NSString *kKeychainItemName = @"OAuth2 i-meeting";
+static NSString *kKeychainItemName = @"imeetingauth";
 static NSString *kMyClientID = @"918644537696.apps.googleusercontent.com";
 static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
 
@@ -26,7 +26,11 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
 - (void)viewDidAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden = YES;
-    [self performSegueWithIdentifier:@"appWorkflowSegue" sender:self];
+    if(_isSignedIn) {
+        [self performSegueWithIdentifier:@"appWorkflowSegue" sender:self];
+    } else {
+        [self presentAuthScreen];
+    }
 }
 
 - (void)authorizeUser
@@ -43,8 +47,6 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
         NSLog(@"%@", self.authToken.userEmail);
         return;
     }
-    
-    [self presentAuthScreen];
 }
 
 - (void)presentAuthScreen
@@ -63,6 +65,8 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
                                                             NSLog(@"Authentication succeeded");
                                                             [SignInHandler instance].userEmail = auth.userEmail;
                                                             [SignInHandler instance].calendarService.authorizer = auth;
+                                                            _isSignedIn = true;
+                                                            [self performSegueWithIdentifier:@"appWorkflowSegue" sender:self];
                                                         }
                                                     }];
     viewController.navigationItem.hidesBackButton = YES;
