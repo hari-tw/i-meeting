@@ -242,8 +242,7 @@
 }
 
 - (IBAction)signOut:(id)sender {
-    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:@"imeetingauth"];
-    [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:[SignInHandler instance].calendarService.authorizer];
+    [[SignInHandler instance] signOut];
     [self performSegueWithIdentifier:@"signOut" sender:self];
 }
 @end

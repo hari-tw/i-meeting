@@ -14,7 +14,6 @@
 @synthesize isSignedIn = _isSignedIn;
 @synthesize authToken = _authToken;
 
-static NSString *kKeychainItemName = @"imeetingauth";
 static NSString *kMyClientID = @"918644537696.apps.googleusercontent.com";
 static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
 
@@ -35,7 +34,7 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
 
 - (void)authorizeUser
 {
-    self.authToken = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+    self.authToken = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:[SignInHandler instance].keychainName
                                                                            clientID:kMyClientID
                                                                        clientSecret:kMyClientSecret];
     self.isSignedIn = [self.authToken canAuthorize];
@@ -57,7 +56,7 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
                                                     initWithScope:scope
                                                     clientID:kMyClientID
                                                     clientSecret:kMyClientSecret
-                                                    keychainItemName:kKeychainItemName
+                                                    keychainItemName:[SignInHandler instance].keychainName
                                                     completionHandler:^(GTMOAuth2ViewControllerTouch *viewController, GTMOAuth2Authentication *auth, NSError *error) {
                                                         if (error) {
                                                             NSLog(@"Authentication failed");

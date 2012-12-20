@@ -393,6 +393,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="CalendarViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addEvent:"/>
                 <relationship kind="action" name="signOut:"/>
                 <relationship kind="outlet" name="currentDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
@@ -416,7 +417,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cRT-mi-M1h"/>
+        <segue reference="oYJ-TL-L3x"/>
         <segue reference="VM3-JR-CEJ"/>
     </inferredMetricsTieBreakers>
 </document>
