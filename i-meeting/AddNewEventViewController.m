@@ -93,14 +93,50 @@
     
     newEvent.end = [GTLCalendarEventDateTime new];
     newEvent.end.dateTime = endTime;
-    [self saveEvent:newEvent];
-  }
+    [self busyFreeQuery:newEvent];
+    }
     else
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid" message:validation delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
 
+}
+
+-(void)busyFreeQuery:(GTLCalendarEvent *)event
+{
+    GTLCalendarFreeBusyRequestItem *requestItem = [GTLCalendarFreeBusyRequestItem object];
+    requestItem.identifier = self.meetingRoomId;
+    GTLQueryCalendar *query1 = [GTLQueryCalendar queryForFreebusyQuery];
+    query1.items = [NSArray arrayWithObject:requestItem];
+    query1.timeMax = event.end.dateTime;
+    query1.timeMin = event.start.dateTime;
+    query1.fields = @"calendars";
+    
+    
+    
+    [[SignInHandler instance].calendarService executeQuery:query1 completionHandler:^(GTLServiceTicket *busyFreeTicket, id busyFreeObject, NSError *busyFreeError) {
+        // Callback
+        if (busyFreeError != nil)
+            NSLog(@"%@", busyFreeError.description);
+        if (busyFreeError == nil) {
+            GTLCalendarFreeBusyResponse *response = busyFreeObject;
+            GTLCalendarFreeBusyResponseCalendars *responseCals = response.calendars;
+            NSDictionary *props = responseCals.additionalProperties;
+            
+            if(props == nil)
+            {
+                [self saveEvent:event];
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!" message:@"The time slot is already booked" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+            }
+            
+        }
+    }];
+ 
 }
 
 -(void)saveEvent:(GTLCalendarEvent *)event
