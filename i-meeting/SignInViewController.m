@@ -19,17 +19,8 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
 
 - (void)viewDidLoad
 {
-    [self authorizeUser];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
     self.navigationController.navigationBarHidden = YES;
-    if(_isSignedIn) {
-        [self performSegueWithIdentifier:@"appWorkflowSegue" sender:self];
-    } else {
-        [self presentAuthScreen];
-    }
+    [self authorizeUser];
 }
 
 - (void)authorizeUser
@@ -40,12 +31,15 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
     self.isSignedIn = [self.authToken canAuthorize];
     NSLog(@"Can Authorize: %@", self.isSignedIn ? @"YES" : @"NO");
     
-    if (self.isSignedIn) {
+    if (self.isSignedIn)
+    {
         [SignInHandler instance].calendarService.authorizer = self.authToken;
         [SignInHandler instance].userEmail = self.authToken.userEmail;
         NSLog(@"%@", self.authToken.userEmail);
         return;
     }
+    else
+        [self presentAuthScreen];
 }
 
 - (void)presentAuthScreen
@@ -64,7 +58,7 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
                                                             NSLog(@"Authentication succeeded");
                                                             [SignInHandler instance].userEmail = auth.userEmail;
                                                             [SignInHandler instance].calendarService.authorizer = auth;
-                                                            _isSignedIn = true;
+                                                            self.isSignedIn = YES;
                                                             [self performSegueWithIdentifier:@"appWorkflowSegue" sender:self];
                                                         }
                                                     }];
