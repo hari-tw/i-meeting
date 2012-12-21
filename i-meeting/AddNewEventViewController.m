@@ -159,17 +159,7 @@
        
 }
 
-- (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
-{
-    if (error) {
-        NSLog(@"%@", error);
-        return;
-    }
-    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-    self.event = events.items;
-   
-    
-}
+
 
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {

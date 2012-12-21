@@ -38,7 +38,7 @@
     NSMutableArray *tommorrowDateEvents = [NSMutableArray new];
     NSMutableArray *dayAfterTommorrowDateEvents = [NSMutableArray new];
     
-    [self savingEventsInArray:tommorrowDateEvents todayDateEvents:todayDateEvents dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents];
+    [self checkingWhetherEventIsToBeDisplayed:tommorrowDateEvents todayDateEvents:todayDateEvents dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents];
     dataArray = [[NSMutableArray alloc] init];
     
     NSDate *now = [NSDate date];
@@ -109,7 +109,6 @@
     self.eventsSummaries = events.items;
     [self ForGettingEventsForEachSection];
     [self.spinner stopAnimating];
-    
     [self.tableView reloadData];
 }
 
@@ -120,7 +119,9 @@
     return dateCompsofToday;
 }
 
-- (void)savingEventsInArray:(NSMutableArray *)tommorrowDateEvents todayDateEvents:(NSMutableArray *)todayDateEvents dayAfterTommorrowDateEvents:(NSMutableArray *)dayAfterTommorrowDateEvents
+
+
+- (void)savingEventsInArray:(int)i dayAfterTommorrowDateEvents:(NSMutableArray *)dayAfterTommorrowDateEvents eventStart:(NSDateComponents *)eventStart  tommorrowDateEvents:(NSMutableArray *)tommorrowDateEvents  todayDateEvents:(NSMutableArray *)todayDateEvents
 {
     NSDate *now = [NSDate date];
     NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
@@ -130,6 +131,27 @@
     NSDateComponents *dateCompsofToday = [self calculateDateComponents:now];
     NSDateComponents *dateCompsTommorrow = [self calculateDateComponents:tommorrow];
     NSDateComponents *dateCompsdayAfterTommorrow = [self calculateDateComponents:dayAfterTommorrow];
+
+    if (dateCompsofToday.day == eventStart.day)
+    {
+        [todayDateEvents addObject:self.eventsSummaries[i]];
+    }
+    else if ((dateCompsTommorrow.day)== eventStart.day)
+    {
+        [tommorrowDateEvents addObject:self.eventsSummaries[i]];
+    }
+    else if ((dateCompsdayAfterTommorrow.day)== eventStart.day)
+    {
+        [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
+    }
+}
+
+
+
+
+- (void)checkingWhetherEventIsToBeDisplayed:(NSMutableArray *)tommorrowDateEvents todayDateEvents:(NSMutableArray *)todayDateEvents dayAfterTommorrowDateEvents:(NSMutableArray *)dayAfterTommorrowDateEvents
+{
+     
     for (int i=0; i<self.eventsSummaries.count; i++) {
         
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.eventsSummaries[i] valueForKey:@"start"]).dateTime.dateComponents;
@@ -138,27 +160,24 @@
         NSString *email = [NSString new];
         NSString *attendeesResponseStatus = [NSString new];
         attendeesResponseStatus = @"declined";
-        
+
+        NSArray *organiser = [eventsSummaries[i] valueForKey:@"organizer"];
+        NSString *emailOfOrganiser = [organiser valueForKey:@"email"];
+        if ([emailOfOrganiser isEqualToString:self.calendarId]) {
+           [self savingEventsInArray:i dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents eventStart:eventStart tommorrowDateEvents:tommorrowDateEvents todayDateEvents:todayDateEvents];
+            
+            continue;
+        }
+
         for(int j=0; j<attendees.count; j++){
             
             email = [attendees[j] valueForKey:@"email"];
             
             if ([email isEqualToString:self.calendarId] ){
                 attendeesResponseStatus = [attendees[j] valueForKey:@"responseStatus"];
-            
+                       
            if (![attendeesResponseStatus isEqualToString:@"declined"]){
-            if (dateCompsofToday.day == eventStart.day)
-            {
-                [todayDateEvents addObject:self.eventsSummaries[i]];
-            }
-            else if ((dateCompsTommorrow.day)== eventStart.day)
-            {
-                [tommorrowDateEvents addObject:self.eventsSummaries[i]];
-            }
-            else if ((dateCompsdayAfterTommorrow.day)== eventStart.day)
-            {
-                [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
-            }
+               [self savingEventsInArray:i dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents eventStart:eventStart tommorrowDateEvents:tommorrowDateEvents todayDateEvents:todayDateEvents];
         }
             break;
         
@@ -167,6 +186,8 @@
     }
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSDictionary *dictionary = [dataArray objectAtIndex:section];
@@ -174,10 +195,12 @@
     return [array count];
 }
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [dataArray count];
 }
+
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -194,6 +217,8 @@
     
     return (view);
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -220,6 +245,8 @@
     
     return cell;
 }
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
