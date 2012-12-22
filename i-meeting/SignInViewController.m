@@ -32,12 +32,7 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
     NSLog(@"Can Authorize: %@", self.isSignedIn ? @"YES" : @"NO");
     
     if (self.isSignedIn)
-    {
-        [SignInHandler instance].calendarService.authorizer = self.authToken;
-        [SignInHandler instance].userEmail = self.authToken.userEmail;
-        NSLog(@"%@", self.authToken.userEmail);
-        return;
-    }
+        [self proceedToTheApp];
     else
         [self presentAuthScreen];
 }
@@ -56,15 +51,21 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
                                                             NSLog(@"Authentication failed");
                                                         } else {
                                                             NSLog(@"Authentication succeeded");
-                                                            [SignInHandler instance].userEmail = auth.userEmail;
-                                                            [SignInHandler instance].calendarService.authorizer = auth;
+                                                            self.authToken = auth;
                                                             self.isSignedIn = YES;
-                                                            [self performSegueWithIdentifier:@"appWorkflowSegue" sender:self];
+                                                            [self proceedToTheApp];
                                                         }
                                                     }];
     viewController.navigationItem.hidesBackButton = YES;
     
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)proceedToTheApp
+{
+    [SignInHandler instance].calendarService.authorizer = self.authToken;
+    [SignInHandler instance].userEmail = self.authToken.userEmail;
+    [self performSegueWithIdentifier:@"appWorkflowSegue" sender:self];
 }
 
 @end
