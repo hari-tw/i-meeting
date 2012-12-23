@@ -32,52 +32,34 @@
     }
 }
 
-- (void)ForGettingEventsForEachSection
+- (void)getEventsForEachSection
 {
-    NSMutableArray *todayDateEvents = [NSMutableArray new];
-    NSMutableArray *tommorrowDateEvents = [NSMutableArray new];
-    NSMutableArray *dayAfterTommorrowDateEvents = [NSMutableArray new];
+    eventsForToday = [NSMutableArray new];
+    eventsForTomorrow = [NSMutableArray new];
+    eventsForDayAfterTomorrow = [NSMutableArray new];
     
-    [self checkingWhetherEventIsToBeDisplayed:tommorrowDateEvents todayDateEvents:todayDateEvents dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents];
-    dataArray = [[NSMutableArray alloc] init];
+    [self populateEventsForTheNext48Hours];
+    dataArray = [NSMutableArray new];
+    sectionHeaders = [NSMutableArray new];
     
     NSDate *now = [NSDate date];
-    myArray = [[NSMutableArray alloc] init];
-    
-    NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
-    NSDate *dayAfterTommorrow = [tommorrow dateByAddingTimeInterval:60*60*24];
+    NSDate *tomorrow = [now dateByAddingTimeInterval:60*60*24];
+    NSDate *dayAfterTomorrow = [tomorrow dateByAddingTimeInterval:60*60*24];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEEE, dd MMM yyyy"];
     
-    if (todayDateEvents.count > 0)
-    {
-        NSDictionary *firstItemsArrayDict = [NSDictionary dictionaryWithObject:todayDateEvents forKey:@"data"];
-        [dataArray addObject:firstItemsArrayDict];
-        NSString *dateString = [dateFormatter stringFromDate:now];
-        [myArray addObject:dateString];
-    }
-    
-    if (tommorrowDateEvents.count > 0)
-    {
-        NSDictionary *secondItemsArrayDict = [NSDictionary dictionaryWithObject:tommorrowDateEvents forKey:@"data"];
-        [dataArray addObject:secondItemsArrayDict];
-        NSString *dateString1 = [dateFormatter stringFromDate:tommorrow];
-        [myArray addObject:dateString1];
-    }
-    
-    
-    if (dayAfterTommorrowDateEvents.count > 0)
-        
-    {
-        NSDictionary *thirdItemsArrayDict = [NSDictionary dictionaryWithObject:dayAfterTommorrowDateEvents forKey:@"data"];
-        [dataArray addObject:thirdItemsArrayDict];
-        NSString *dateString2 = [dateFormatter stringFromDate:dayAfterTommorrow];
-        [myArray addObject:dateString2];
-    }
-    
-    
+    [self populateTableViewWithData:eventsForToday andSectionHeader:[dateFormatter stringFromDate:now]];
+    [self populateTableViewWithData:eventsForTomorrow andSectionHeader:[dateFormatter stringFromDate:tomorrow]];
+    [self populateTableViewWithData:eventsForDayAfterTomorrow andSectionHeader:[dateFormatter stringFromDate:dayAfterTomorrow]];
 }
 
+-(void)populateTableViewWithData:(NSMutableArray *)events andSectionHeader:(NSString *)sectionHeader
+{
+    if (events.count <= 0) return;
+    
+    [dataArray addObject:[NSDictionary dictionaryWithObject:events forKey:@"data"]];
+    [sectionHeaders addObject:sectionHeader];
+}
 
 - (void)displayCalendar
 {
@@ -107,7 +89,7 @@
     }
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
-    [self ForGettingEventsForEachSection];
+    [self getEventsForEachSection];
     [self.spinner stopAnimating];
     [self.tableView reloadData];
 }
@@ -119,9 +101,7 @@
     return dateCompsofToday;
 }
 
-
-
-- (void)savingEventsInArray:(int)i dayAfterTommorrowDateEvents:(NSMutableArray *)dayAfterTommorrowDateEvents eventStart:(NSDateComponents *)eventStart  tommorrowDateEvents:(NSMutableArray *)tommorrowDateEvents  todayDateEvents:(NSMutableArray *)todayDateEvents
+- (void)saveEventsInArray:(int)i eventStart:(NSDateComponents *)eventStart
 {
     NSDate *now = [NSDate date];
     NSDate *tommorrow = [now dateByAddingTimeInterval:60*60*24];
@@ -134,24 +114,20 @@
     
     if (dateCompsofToday.day == eventStart.day)
     {
-        [todayDateEvents addObject:self.eventsSummaries[i]];
+        [eventsForToday addObject:self.eventsSummaries[i]];
     }
     else if ((dateCompsTommorrow.day)== eventStart.day)
     {
-        [tommorrowDateEvents addObject:self.eventsSummaries[i]];
+        [eventsForTomorrow addObject:self.eventsSummaries[i]];
     }
     else if ((dateCompsdayAfterTommorrow.day)== eventStart.day)
     {
-        [dayAfterTommorrowDateEvents addObject:self.eventsSummaries[i]];
+        [eventsForDayAfterTomorrow addObject:self.eventsSummaries[i]];
     }
 }
 
-
-
-
-- (void)checkingWhetherEventIsToBeDisplayed:(NSMutableArray *)tommorrowDateEvents todayDateEvents:(NSMutableArray *)todayDateEvents dayAfterTommorrowDateEvents:(NSMutableArray *)dayAfterTommorrowDateEvents
+- (void)populateEventsForTheNext48Hours
 {
-    
     for (int i=0; i<self.eventsSummaries.count; i++) {
         
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.eventsSummaries[i] valueForKey:@"start"]).dateTime.dateComponents;
@@ -164,7 +140,7 @@
         NSArray *organiser = [eventsSummaries[i] valueForKey:@"organizer"];
         NSString *emailOfOrganiser = [organiser valueForKey:@"email"];
         if ([emailOfOrganiser isEqualToString:self.calendarId]) {
-            [self savingEventsInArray:i dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents eventStart:eventStart tommorrowDateEvents:tommorrowDateEvents todayDateEvents:todayDateEvents];
+            [self saveEventsInArray:i eventStart:eventStart];
             
             continue;
         }
@@ -177,16 +153,13 @@
                 attendeesResponseStatus = [attendees[j] valueForKey:@"responseStatus"];
                 
                 if (![attendeesResponseStatus isEqualToString:@"declined"]){
-                    [self savingEventsInArray:i dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents eventStart:eventStart tommorrowDateEvents:tommorrowDateEvents todayDateEvents:todayDateEvents];
+                    [self saveEventsInArray:i eventStart:eventStart];
                 }
                 break;
-                
             }
         }
     }
 }
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -195,12 +168,10 @@
     return [array count];
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [dataArray count];
 }
-
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -209,16 +180,14 @@
     label.textColor = [UIColor blackColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont fontWithName:@"System Bold" size:20.0];
-    label.text = [myArray objectAtIndex:section];
+    label.text = [sectionHeaders objectAtIndex:section];
     label.backgroundColor = [UIColor lightGrayColor];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320,96 )];
     [view addSubview:label];
     
-    return (view);
+    return view;
 }
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

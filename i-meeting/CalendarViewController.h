@@ -5,7 +5,10 @@
 @interface CalendarViewController : UITableViewController
 {
     NSMutableArray *dataArray;
-    NSMutableArray *myArray;
+    NSMutableArray *sectionHeaders;
+    NSMutableArray *eventsForToday;
+    NSMutableArray *eventsForTomorrow;
+    NSMutableArray *eventsForDayAfterTomorrow;
 }
 
 @property (nonatomic) NSArray *eventsSummaries;
