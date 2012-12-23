@@ -48,7 +48,7 @@
     NSDate *dayAfterTommorrow = [tommorrow dateByAddingTimeInterval:60*60*24];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEEE, dd MMM yyyy"];
-
+    
     if (todayDateEvents.count > 0)
     {
         NSDictionary *firstItemsArrayDict = [NSDictionary dictionaryWithObject:todayDateEvents forKey:@"data"];
@@ -56,7 +56,7 @@
         NSString *dateString = [dateFormatter stringFromDate:now];
         [myArray addObject:dateString];
     }
-  
+    
     if (tommorrowDateEvents.count > 0)
     {
         NSDictionary *secondItemsArrayDict = [NSDictionary dictionaryWithObject:tommorrowDateEvents forKey:@"data"];
@@ -64,17 +64,17 @@
         NSString *dateString1 = [dateFormatter stringFromDate:tommorrow];
         [myArray addObject:dateString1];
     }
-   
-   
+    
+    
     if (dayAfterTommorrowDateEvents.count > 0)
-
+        
     {
         NSDictionary *thirdItemsArrayDict = [NSDictionary dictionaryWithObject:dayAfterTommorrowDateEvents forKey:@"data"];
         [dataArray addObject:thirdItemsArrayDict];
         NSString *dateString2 = [dateFormatter stringFromDate:dayAfterTommorrow];
         [myArray addObject:dateString2];
     }
-
+    
     
 }
 
@@ -131,7 +131,7 @@
     NSDateComponents *dateCompsofToday = [self calculateDateComponents:now];
     NSDateComponents *dateCompsTommorrow = [self calculateDateComponents:tommorrow];
     NSDateComponents *dateCompsdayAfterTommorrow = [self calculateDateComponents:dayAfterTommorrow];
-
+    
     if (dateCompsofToday.day == eventStart.day)
     {
         [todayDateEvents addObject:self.eventsSummaries[i]];
@@ -151,7 +151,7 @@
 
 - (void)checkingWhetherEventIsToBeDisplayed:(NSMutableArray *)tommorrowDateEvents todayDateEvents:(NSMutableArray *)todayDateEvents dayAfterTommorrowDateEvents:(NSMutableArray *)dayAfterTommorrowDateEvents
 {
-     
+    
     for (int i=0; i<self.eventsSummaries.count; i++) {
         
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.eventsSummaries[i] valueForKey:@"start"]).dateTime.dateComponents;
@@ -160,27 +160,27 @@
         NSString *email = [NSString new];
         NSString *attendeesResponseStatus = [NSString new];
         attendeesResponseStatus = @"declined";
-
+        
         NSArray *organiser = [eventsSummaries[i] valueForKey:@"organizer"];
         NSString *emailOfOrganiser = [organiser valueForKey:@"email"];
         if ([emailOfOrganiser isEqualToString:self.calendarId]) {
-           [self savingEventsInArray:i dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents eventStart:eventStart tommorrowDateEvents:tommorrowDateEvents todayDateEvents:todayDateEvents];
+            [self savingEventsInArray:i dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents eventStart:eventStart tommorrowDateEvents:tommorrowDateEvents todayDateEvents:todayDateEvents];
             
             continue;
         }
-
+        
         for(int j=0; j<attendees.count; j++){
             
             email = [attendees[j] valueForKey:@"email"];
             
             if ([email isEqualToString:self.calendarId] ){
                 attendeesResponseStatus = [attendees[j] valueForKey:@"responseStatus"];
-                       
-           if (![attendeesResponseStatus isEqualToString:@"declined"]){
-               [self savingEventsInArray:i dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents eventStart:eventStart tommorrowDateEvents:tommorrowDateEvents todayDateEvents:todayDateEvents];
-        }
-            break;
-        
+                
+                if (![attendeesResponseStatus isEqualToString:@"declined"]){
+                    [self savingEventsInArray:i dayAfterTommorrowDateEvents:dayAfterTommorrowDateEvents eventStart:eventStart tommorrowDateEvents:tommorrowDateEvents todayDateEvents:todayDateEvents];
+                }
+                break;
+                
             }
         }
     }
@@ -211,7 +211,7 @@
     label.font = [UIFont fontWithName:@"System Bold" size:20.0];
     label.text = [myArray objectAtIndex:section];
     label.backgroundColor = [UIColor lightGrayColor];
-   
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320,96 )];
     [view addSubview:label];
     
@@ -230,11 +230,11 @@
     NSArray *array = [dictionary objectForKey:@"data"];
     
     id event = [array objectAtIndex:indexPath.row];
-
+    
     NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
     NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
     NSString *eventStartTime = [NSString stringWithFormat:@"%02d:%02d", eventStart.hour, eventStart.minute];
-     NSString *eventEndTime = [NSString stringWithFormat:@"%02d:%02d", eventEnd.hour, eventEnd.minute];
+    NSString *eventEndTime = [NSString stringWithFormat:@"%02d:%02d", eventEnd.hour, eventEnd.minute];
     
     cell.titleLabel.text = [event valueForKey:@"summary"];
     cell.timingsLabel.text = [NSString stringWithFormat:@"%@ - %@", eventStartTime, eventEndTime];
@@ -245,8 +245,6 @@
     
     return cell;
 }
-
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -263,7 +261,7 @@
     self.navigationItem.rightBarButtonItem = addEventButton;
 }
 
-- (IBAction)addEvent:(id)sender
+- (void)addEvent:(id)sender
 {
     [self performSegueWithIdentifier:@"addEvent" sender:self];
 }
