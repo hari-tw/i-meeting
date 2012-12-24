@@ -2,6 +2,7 @@
 #import "CalendarCell.h"
 #import "GTLCalendarEventDateTime.h"
 #import "AddNewEventViewController.h"
+#import "DetailedViewController.h"
 #import "Foundation/Foundation.h"
 #import "DateTimeUtility.h"
 #import "GTMOAuth2ViewControllerTouch.h"
@@ -70,6 +71,7 @@
     NSDateComponents* startDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
     NSDateComponents* endDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:endDate];
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
+    NSLog (@"***  %@  *****",self.calendarId);
     
     query.timeMin = [DateTimeUtility dateTimeForYear:[startDateComponents year] month:[startDateComponents month] day:[startDateComponents day] atHour:[startDateComponents hour] minute:[startDateComponents minute] second:[startDateComponents second]];
     query.timeMax = [DateTimeUtility dateTimeForYear:[endDateComponents year] month:[endDateComponents month] day:[endDateComponents day] atHour:[endDateComponents hour] minute:[endDateComponents minute] second:[endDateComponents second]];
@@ -198,7 +200,7 @@
     
     NSArray *array = [dictionary objectForKey:@"data"];
     
-    id event = [array objectAtIndex:indexPath.row];
+     event = [array objectAtIndex:indexPath.row];
     
     NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
     NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
@@ -210,10 +212,17 @@
     NSArray *organiser = [event valueForKey:@"organizer"];
     cell.organizerLabel.text = [@"Organizer: " stringByAppendingString:[organiser valueForKey:@"displayName"]];
     
-    NSLog(@"%@", event);
+   NSLog(@"%@", event);
     
     return cell;
 }
+
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self tableView:self.tableView cellForRowAtIndexPath:indexPath];
+    return indexPath;
+ }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -222,7 +231,14 @@
         addNewEventViewController.meetingRoomId = self.calendarId;
         addNewEventViewController.meetingRoomName = self.viewTitle;
     }
+    if ([segue.identifier isEqualToString:@"detailedView"]) {
+        DetailedViewController *detailedViewController = segue.destinationViewController;
+        detailedViewController.event = event;
+    }
+
+    
 }
+
 
 - (void)createAddEventButtonDynamically
 {

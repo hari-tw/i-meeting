@@ -9,6 +9,7 @@
     NSMutableArray *eventsForToday;
     NSMutableArray *eventsForTomorrow;
     NSMutableArray *eventsForDayAfterTomorrow;
+    id event;
 }
 
 @property (nonatomic) NSArray *eventsSummaries;
@@ -20,5 +21,6 @@
 
 -(void) createAddEventButtonDynamically;
 - (IBAction)signOut:(id)sender;
+
 
 @end
