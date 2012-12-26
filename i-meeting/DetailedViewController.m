@@ -90,26 +90,43 @@
         description =@"No Description Available";
     }
     
-    NSString *details = [NSString stringWithFormat:@"<html >"
+    NSString *details = [NSString new];
+  
+        details = [NSString stringWithFormat:@"<html >"
                "<body bgcolor=#000000>"
                "<font size=3 color=white>"
-               "<h3>  <font color=#FE642E>%@</font></h3>"
+               "<h3>  <font color=#FE642E>%@</font> </h3>"
                "%@%@"
                "<hr>"
                "<h3><font color=#FE642E>Invitation From : </font></h3>%@ "
                "<hr>"
-               "<h3><font color=#FE642E>Accepted : </font></h3>%@"
-               "<h3><font color=#FE642E>No Reply : </font></h3>%@"
-               "<hr>"
-               "<h3><font color=#FE642E>Notes : </font></h3>%@ <br/><br/>"
-               "</html>", eventName, location, dateTime,organiserName, attendeesStatusAccepted, attendeesStatusNoReply, description];
+               "</html>", eventName, location, dateTime,organiserName];
     
+    if (attendeesStatusAccepted.length != 0)
+    {
+        NSString *tempstring = [NSString stringWithFormat: @"<h3><font color=#FE642E>Accepted : </font></h3> %@",attendeesStatusAccepted];
+
+        details = [details stringByAppendingString:tempstring];
+       
+    }
+    if (attendeesStatusNoReply.length != 0)
+    {
+        NSString *tempstring = [NSString stringWithFormat: @"<h3><font color=#FE642E>No Reply : </font></h3> %@",attendeesStatusNoReply];
+        
+        details = [details stringByAppendingString:tempstring];
+        
+    }
+    NSString *tempString = [NSString stringWithFormat:@"<hr><h3><font color=#FE642E>Notes : </font></h3>%@",description];
+    details = [details stringByAppendingString:tempString];
+    
+    
+
+        
+
     [self.detailsText loadHTMLString:details baseURL:nil];
     //     [NSURL URLWithString:
     //      [NSString stringWithFormat:@"file:/%@//",imagePath]]];
 }
-
-
 
 
 - (void)didReceiveMemoryWarning
