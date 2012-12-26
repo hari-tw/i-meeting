@@ -1,13 +1,10 @@
-//
-//  DetailedViewController.m
-//  i-meeting
-//
-//  Created by Akriti Ayushi on 12/24/12.
-//  Copyright (c) 2012 ThoughtWorks Technologies (India) Pvt. Ltd. All rights reserved.
-//
-
 #import "DetailedViewController.h"
 #import "GTLCalendarEventDateTime.h"
+#import "GTLCalendarEvents.h"
+#import "GTLCalendarEventAttendee.h"
+//#import "NSGraphics.h"
+//#import "NSImage.h"
+#import "GTLCalendarEvent.h"
 
 
 
@@ -29,60 +26,96 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.viewTitle = [self.event valueForKey:@"summary"];
-      
-    self.title = self.viewTitle;
-     NSLog(@"%@", self.event);
-    [self getDateInFormattedForm];
-    [self getTheLocation];
-    [self getTheOrganiserAndTheCalendar];
-    [self getTheDescription];
     
-  
-	// Do any additional setup after loading the view.
+    NSLog(@"%@", self.event);
+    
+    [self getMeetingDetails];
 }
 
--(void) getDateInFormattedForm
+- (NSString *)formattingTheString:(NSString *)location
 {
+    NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@".,"];
+    NSArray *myArray = [location componentsSeparatedByCharactersInSet:characterSet];
+    NSString *formattedLocation = [NSString new];
+    formattedLocation = @"";
+    for (int i=0; i<myArray.count; i++)
+    {
+        formattedLocation = [formattedLocation stringByAppendingString:myArray[i]];
+        formattedLocation = [formattedLocation stringByAppendingString:@".<br/>"];
+    }
+    return formattedLocation;
+}
+
+-(void) getMeetingDetails
+{
+    NSString *eventName = ((GTLCalendarEvent *)self.event).summary;
     NSDate *eventStart = ((GTLCalendarEventDateTime *)[self.event valueForKey:@"start"]).dateTime.date;
     NSDate *eventEnd = ((GTLCalendarEventDateTime *)[self.event valueForKey:@"end"]).dateTime.date;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEE,   dd-MM-yyyy,   HH:mm"];
     NSString *start =[dateFormatter stringFromDate:eventEnd];
-     [dateFormatter setDateFormat:@"HH:mm"];
-     NSString *end =[dateFormatter stringFromDate:eventStart];
-    NSString *dateLbl = [NSString stringWithFormat:@"%@ - %@",start , end];
-    self.dateLabel.text = dateLbl;
+    [dateFormatter setDateFormat:@"HH:mm"];
+    NSString *end =[dateFormatter stringFromDate:eventStart];
+    NSString *dateTime = [NSString stringWithFormat:@"%@ - %@",start , end];
+    
+    NSString *location=[self formattingTheString:((GTLCalendarEvent *)self.event).location];
+    NSString *organiserName = ((GTLCalendarEvent *)self.event).organizer.displayName;
+    NSString *description = ((GTLCalendarEvent *)self.event).descriptionProperty;
+    
+    NSArray *attendees =  ((GTLCalendarEvent *)self.event).attendees;
+    NSString *attendeesStatusAccepted = [NSString new];
+    NSString *attendeesStatusNoReply = [NSString new];
+    //   NSString *imagePath = [[NSBundle mainBundle] resourcePath];
+    //    imagePath = [imagePath stringByReplacingOccurrencesOfString:@"/" withString:@"//"];
+    //    imagePath = [imagePath stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    //
+    for (int i=0; i<attendees.count; i++)
+    {
+        NSString *name = [attendees[i] valueForKey:@"displayName"];
+        NSString *responseStatus = [attendees[i] valueForKey:@"responseStatus"];
+        if([responseStatus isEqualToString:@"accepted"])
+        {
+            attendeesStatusAccepted = [attendeesStatusAccepted stringByAppendingString:name];
+            attendeesStatusAccepted = [attendeesStatusAccepted stringByAppendingString:@"<br/>"];
+        }
+        else{
+            attendeesStatusNoReply = [attendeesStatusNoReply stringByAppendingString:name];
+            attendeesStatusNoReply = [attendeesStatusNoReply stringByAppendingString:@"<br/>"];
+        }
+        
+    }
+    
+    if(description == nil)
+    {
+        description =@"No Description Available";
+    }
+    
+    NSString *details = [NSString stringWithFormat:@"<html >"
+               "<body bgcolor=#000000>"
+               "<font size=3 color=white>"
+               "<h3>  <font color=#FE642E>%@</font></h3>"
+               "%@%@"
+               "<hr>"
+               "<h3><font color=#FE642E>Invitation From : </font></h3>%@ "
+               "<hr>"
+               "<h3><font color=#FE642E>Accepted : </font></h3>%@"
+               "<h3><font color=#FE642E>No Reply : </font></h3>%@"
+               "<hr>"
+               "<h3><font color=#FE642E>Notes : </font></h3>%@ <br/><br/>"
+               "</html>", eventName, location, dateTime,organiserName, attendeesStatusAccepted, attendeesStatusNoReply, description];
+    
+    [self.detailsText loadHTMLString:details baseURL:nil];
+    //     [NSURL URLWithString:
+    //      [NSString stringWithFormat:@"file:/%@//",imagePath]]];
 }
 
--(void) getTheLocation
-{
-    NSString *location = [self.event valueForKey:@"location"];
-    self.locationLabel.text = [NSString stringWithFormat:@"Where : %@",location];
-}
 
--(void) getTheOrganiserAndTheCalendar
-{
-    NSArray *organiser = [self.event valueForKey:@"organizer"];
-    self.organiserLabel.text = [@"Organizer: " stringByAppendingString:[organiser valueForKey:@"displayName"]];
-     self.calendarIdLabel.text = [@"Calendar: " stringByAppendingString:[organiser valueForKey:@"email"]];
-}
-
--(void) getTheDescription
-{
-     NSDictionary *description = [self.event valueForKey:@"description"];
-//    NSRange range = NSMakeRange(0, 27);
-//    NSString *desc = [[description valueForKeyPath:@"description"] stringByReplacingCharactersInRange:range withString:@""];
-//    NSError *error;
-//    NSDictionary *details = [NSJSONSerialization JSONObjectWithData:[desc dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:true] options:nil error:&error];
-    self.descriptionLabel.text = [@"Description: " stringByAppendingString:[description valueForKey:@"description"]];
-}
 
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 @end
