@@ -95,28 +95,29 @@
         details = [NSString stringWithFormat:@"<html >"
                "<body bgcolor=#000000>"
                "<font size=3 color=white>"
-               "<h3>  <font color=#FE642E>%@</font> </h3>"
-               "%@%@"
+               " <font size=4 color=#FE642E><b>%@</b></font><br/>"
+                   "%@%@"
+              
                "<hr>"
-               "<h3><font color=#FE642E>Invitation From : </font></h3>%@ "
+               "<font size=4 color=#FE642E><b>Invitation From : </b></font></h3>%@ "
                "<hr>"
                "</html>", eventName, location, dateTime,organiserName];
     
     if (attendeesStatusAccepted.length != 0)
     {
-        NSString *tempstring = [NSString stringWithFormat: @"<h3><font color=#FE642E>Accepted : </font></h3> %@",attendeesStatusAccepted];
+        NSString *tempstring = [NSString stringWithFormat: @"<font size=4 color=#FE642E><b>Accepted : </b></font> <br/>%@<br/>",attendeesStatusAccepted];
 
         details = [details stringByAppendingString:tempstring];
        
     }
     if (attendeesStatusNoReply.length != 0)
     {
-        NSString *tempstring = [NSString stringWithFormat: @"<h3><font color=#FE642E>No Reply : </font></h3> %@",attendeesStatusNoReply];
+        NSString *tempstring = [NSString stringWithFormat: @"<font size=4 color=#FE642E><b>No Reply : </b></font><br/>%@",attendeesStatusNoReply];
         
         details = [details stringByAppendingString:tempstring];
         
     }
-    NSString *tempString = [NSString stringWithFormat:@"<hr><h3><font color=#FE642E>Notes : </font></h3>%@",description];
+    NSString *tempString = [NSString stringWithFormat:@"<hr><font size=4 color=#FE642E><b>Notes : </b></font>%@",description];
     details = [details stringByAppendingString:tempString];
     
     
