@@ -44,7 +44,7 @@ SCRIPTS_PATH=`cd $(dirname $0); pwd`
 if [ "$RUN_UNIT_TEST_WITH_IOS_SIM" = "YES" ]; then
   TEST_HOST="$CODESIGNING_FOLDER_PATH/$EXECUTABLE_NAME"
 test_bundle_path="$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.$WRAPPER_EXTENSION"
-  environment_args="--setenv GHUNIT_CLI=1 --setenv WRITE_JUNIT_XML=true --setenv DYLD_INSERT_LIBRARIES=/../../Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection --setenv XCInjectBundle=$test_bundle_path --setenv XCInjectBundleInto=$TEST_HOST"
+  environment_args="--setenv JUNIT_XML_DIR=tmp/test-results --setenv GHUNIT_CLI=1 --setenv WRITE_JUNIT_XML=true --setenv DYLD_INSERT_LIBRARIES=/../../Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection --setenv XCInjectBundle=$test_bundle_path --setenv XCInjectBundleInto=$TEST_HOST"
   RUN_CMD="ios-sim launch $(dirname $TEST_HOST) $environment_args --args $test_bundle_path"
 else
   RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
