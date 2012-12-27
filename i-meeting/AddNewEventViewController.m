@@ -34,6 +34,7 @@
 {
     if (indexPath.row == 2)
         cell.detailTextLabel.text = [DateTimeUtility stringFromDate:self.datePicker.date];
+        
     
     if (indexPath.row == 3)
         cell.detailTextLabel.text = [DateTimeUtility stringFromDate:[self.datePicker.date dateByAddingTimeInterval:30 * 60]];
@@ -43,8 +44,10 @@
 {
     UITableViewCell *startDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     UITableViewCell *endDateTimeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-    if (startDateTimeCell.selected)
+    if (startDateTimeCell.selected){
         startDateTimeCell.detailTextLabel.text = [DateTimeUtility stringFromDate:self.datePicker.date];
+        endDateTimeCell.detailTextLabel.text =[DateTimeUtility stringFromDate:[self.datePicker.date dateByAddingTimeInterval:30 * 60]];
+    }
     if (endDateTimeCell.selected)
         endDateTimeCell.detailTextLabel.text = [DateTimeUtility stringFromDate:self.datePicker.date];
 }
@@ -53,6 +56,8 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     self.datePicker.date = [DateTimeUtility dateFromString:cell.detailTextLabel.text];
+    [self.descriptionField resignFirstResponder];
+    [self.subjectField resignFirstResponder];
 }
 
 - (IBAction)bookButton:(id)sender {
