@@ -14,6 +14,6 @@
 
 
 @property (nonatomic) id event;
-@property (weak, nonatomic) IBOutlet UIWebView *detailsText;
+@property (weak, nonatomic) IBOutlet UITextView *detailsText;
 
 @end
