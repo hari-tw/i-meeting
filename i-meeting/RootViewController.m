@@ -77,11 +77,19 @@
     NSString *scannedCode = [self getScannedCode:info];
     NSArray *arr = [scannedCode componentsSeparatedByString: @"="];
     
-    self.meetingRoomName = arr[0];
-    self.calendarId = arr[1];
-    
-    [reader dismissViewControllerAnimated:YES completion:nil];
-    [self performSegueWithIdentifier:@"calendarSegue" sender:self];
+    if (arr == nil || arr.count != 2)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Invalid QR Code" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
+    else
+    {
+        self.meetingRoomName = arr[0];
+        self.calendarId = arr[1];
+        
+        [reader dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"calendarSegue" sender:self];
+    }
 }
 
 @end

@@ -293,6 +293,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                         <action selector="textFieldReturn:" destination="Hh9-z1-7n1" eventType="editingDidEndOnExit" id="Pf4-Jm-wlr"/>
                                                     </connections>
                                                 </textField>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" style="whiteLarge" id="BxK-7h-aiX">
+                                                    <rect key="frame" x="132" y="-1" width="37" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -377,7 +382,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Event" id="9ea-6s-6E9">
                         <barButtonItem key="backBarButtonItem" title="Back" id="DEh-x7-j43"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="vqA-cc-yDB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="vqA-cc-yDB">
                             <connections>
                                 <action selector="bookButton:" destination="Hh9-z1-7n1" id="nk8-Zc-7qh"/>
                             </connections>
@@ -386,6 +391,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <connections>
                         <outlet property="datePicker" destination="SqY-vP-Bdv" id="0hU-3w-9xG"/>
                         <outlet property="descriptionField" destination="x8Y-CM-Y2e" id="FQZ-za-MtM"/>
+                        <outlet property="spinner" destination="BxK-7h-aiX" id="rOa-3s-jvo"/>
                         <outlet property="subjectField" destination="La9-aV-iCG" id="P31-6q-Xjm"/>
                     </connections>
                 </tableViewController>
