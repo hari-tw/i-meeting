@@ -126,7 +126,7 @@
     [[SignInHandler instance].calendarService executeQuery:query1 completionHandler:^(GTLServiceTicket *busyFreeTicket, id busyFreeObject, NSError *busyFreeError) {
         // Callback
         if (busyFreeError != nil){
-            UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Oops Problem Saving Event" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in executing FreeBusyQuery." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alertErrorInQuery show];}
 
         if (busyFreeError == nil) {
@@ -161,7 +161,11 @@
                                          completionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
                                              // Callback
                                              if (error != nil)
+                                             {
+                                                 UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in saving the event in the calander." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                 [alertErrorInQuery show];
                                                  NSLog(@"%@", error.description);
+                                             }
                                              if (error == nil) {
                                                  [self.spinner stopAnimating];
                                                  [self.spinner setHidden:TRUE];

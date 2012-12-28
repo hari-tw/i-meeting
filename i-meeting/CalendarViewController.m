@@ -84,6 +84,8 @@
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
 {
     if (error) {
+        UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in fetching the events from the calander." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertErrorInQuery show];
         NSLog(@"%@", error);
         return;
     }
