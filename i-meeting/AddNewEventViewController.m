@@ -125,8 +125,10 @@
         
     [[SignInHandler instance].calendarService executeQuery:query1 completionHandler:^(GTLServiceTicket *busyFreeTicket, id busyFreeObject, NSError *busyFreeError) {
         // Callback
-        if (busyFreeError != nil)
-            NSLog(@"%@", busyFreeError.description);
+        if (busyFreeError != nil){
+            UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Oops Problem Saving Event" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alertErrorInQuery show];}
+
         if (busyFreeError == nil) {
             GTLCalendarFreeBusyResponse *response = busyFreeObject;
             GTLCalendarFreeBusyResponseCalendars *responseCals = response.calendars;
