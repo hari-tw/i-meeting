@@ -171,13 +171,13 @@
 
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {
-    NSString *error = @"";
-    if([title isEqualToString: @""] && [description isEqualToString: @""])
-    {
-        error = [error stringByAppendingString:@"Enter Title/Description."];
-    }
-    NSDate *currentTime = [NSDate date];
-    if(([startDate compare:currentTime] != NSOrderedDescending)&&([endDate compare:startDate] != NSOrderedDescending)&&([endDate compare:startDate] == NSOrderedSame))
+   NSString *error = @"";
+     if([title isEqualToString: @""])
+     {
+         error = [error stringByAppendingString:@"Enter Title"];
+     }
+     NSDate *currentTime = [NSDate date];
+    if(([startDate compare:currentTime] != NSOrderedDescending) || ([endDate compare:startDate] != NSOrderedDescending) || ([endDate compare:startDate] == NSOrderedSame))
     {
         error = [error stringByAppendingString:@"Invalid event time."];
     }
