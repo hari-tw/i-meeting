@@ -39,10 +39,8 @@ static QRCodeManager *_instance = nil;
 
 - (BOOL)isMeetingRoomQrCode:(NSArray *)qrCode
 {
-    NSString *meetingRoomId = [self.meetingRooms objectForKey:qrCode[0]];
-    return [qrCode[1] isEqualToString:meetingRoomId];
+    NSString *meetingRoomId = [self.meetingRooms objectForKey:[qrCode objectAtIndex:0]];
+    return [meetingRoomId isEqualToString:[qrCode objectAtIndex:1]];
 }
-
-//arrayWithObjects:@"Chandni Chowk", @"Counaught Place", @"Feroz Shah Kotla", @"India Gate", @"Jantar Mantar", @"Lal Quila", @"Parliament", @"Pragati Maidan", @"Qutub Minar", nil
 
 @end
