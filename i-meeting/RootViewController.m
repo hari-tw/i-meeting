@@ -77,7 +77,7 @@
     NSString *scannedCode = [self getScannedCode:info];
     NSArray *arr = [scannedCode componentsSeparatedByString: @"="];
     
-    if (arr == nil || arr.count != 2)
+    if (arr == nil || arr.count != 2 || (![[QRCodeManager instance] isMeetingRoomQrCode:arr] ))
     {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Invalid QR Code" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];

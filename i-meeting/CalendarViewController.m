@@ -87,7 +87,7 @@
         UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in fetching the events from the calander." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alertErrorInQuery show];
         NSLog(@"%@", error);
-        return;
+        [self.navigationController popViewControllerAnimated:YES];
     }
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
