@@ -26,7 +26,7 @@
     return YES;
 }
 
--(IBAction)textFieldReturn:(id)sender
+- (IBAction)textFieldReturn:(id)sender
 {
     [sender resignFirstResponder];
 }
@@ -103,7 +103,7 @@
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:validation delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:validation delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
     
@@ -142,7 +142,7 @@
             {
                 [self.spinner stopAnimating];
                 [self.spinner setHidden:TRUE];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!" message:@"This time slot is already booked." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This time slot is already booked." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alert show];
             }
             

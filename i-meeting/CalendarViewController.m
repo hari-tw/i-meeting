@@ -53,7 +53,7 @@
     [self populateTableViewWithData:eventsForDayAfterTomorrow andSectionHeader:[dateFormatter stringFromDate:dayAfterTomorrow]];
 }
 
--(void)populateTableViewWithData:(NSMutableArray *)events andSectionHeader:(NSString *)sectionHeader
+- (void)populateTableViewWithData:(NSMutableArray *)events andSectionHeader:(NSString *)sectionHeader
 {
     if (events.count <= 0) return;
     
@@ -84,8 +84,10 @@
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
 {
     if (error) {
-        UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in fetching the events from the calander." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alertErrorInQuery show];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [self.spinner stopAnimating];
+        [self.spinner setHidden:YES];
         NSLog(@"%@", error);
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -96,7 +98,7 @@
         label.textColor = [UIColor redColor];
         label.frame = CGRectMake(5, 10, 320, 100);
         label.backgroundColor = [UIColor clearColor];
-        label.text = @"No Scheduled meeting for next 48 hours";
+        label.text = @"No scheduled meeting for next 48 hours.";
         label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
         [self.view addSubview:label];
     }else
