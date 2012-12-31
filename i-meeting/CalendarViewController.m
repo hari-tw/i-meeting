@@ -96,7 +96,7 @@
         label.textColor = [UIColor redColor];
         label.frame = CGRectMake(5, 10, 320, 100);
         label.backgroundColor = [UIColor clearColor];
-        label.text = @"Room is free for next 48 hours";
+        label.text = @"No Scheduled meeting for next 48 hours";
         label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
         [self.view addSubview:label];
     }else
