@@ -194,7 +194,7 @@
     label.frame = CGRectMake(0, 0, 320, 23);
     label.textColor = [UIColor blackColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"System Bold" size:20.0];
+    label.font = [UIFont boldSystemFontOfSize:18.0];
     label.text = [sectionHeaders objectAtIndex:section];
     label.backgroundColor = [UIColor lightGrayColor];
     
