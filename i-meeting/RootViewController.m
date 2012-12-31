@@ -79,7 +79,7 @@
     
     if (arr == nil || arr.count != 2 || (![[QRCodeManager instance] isMeetingRoomQrCode:arr] ))
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Invalid QR Code" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid QR Code" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
     else

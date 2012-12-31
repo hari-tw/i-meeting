@@ -54,7 +54,7 @@
     [self populateTableViewWithData:eventsForDayAfterTomorrow andSectionHeader:[dateFormatter stringFromDate:dayAfterTomorrow]];
 }
 
--(void)populateTableViewWithData:(NSMutableArray *)events andSectionHeader:(NSString *)sectionHeader
+- (void)populateTableViewWithData:(NSMutableArray *)events andSectionHeader:(NSString *)sectionHeader
 {
     if (events.count <= 0) return;
     
@@ -86,16 +86,29 @@
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
 {
     if (error) {
-        UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in fetching the events from the calander." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alertErrorInQuery show];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [self.spinner stopAnimating];
+        [self.spinner setHidden:YES];
         NSLog(@"%@", error);
         [self.navigationController popViewControllerAnimated:YES];
     }
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
-    [self getEventsForEachSection];
+    if(self.eventsSummaries.count == 0){
+        UILabel *label =  [[UILabel alloc] init];
+        label.textColor = [UIColor redColor];
+        label.frame = CGRectMake(5, 10, 320, 100);
+        label.backgroundColor = [UIColor clearColor];
+        label.text = @"No scheduled meeting for next 48 hours.";
+        label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
+        [self.view addSubview:label];
+    }else
+    {
+        [self getEventsForEachSection];
+        [self.tableView reloadData];
+    }
     [self.spinner stopAnimating];
-    [self.tableView reloadData];
 }
 
 - (NSDateComponents *)calculateDateComponents:(NSDate *)date
@@ -183,7 +196,7 @@
     label.frame = CGRectMake(0, 0, 320, 23);
     label.textColor = [UIColor blackColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"System Bold" size:20.0];
+    label.font = [UIFont boldSystemFontOfSize:18.0];
     label.text = [sectionHeaders objectAtIndex:section];
     label.backgroundColor = [UIColor lightGrayColor];
     

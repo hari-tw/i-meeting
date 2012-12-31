@@ -15,11 +15,15 @@
 {
     QRCodeManager *manager = [QRCodeManager new];
     
-    GHAssertTrue([manager isMeetingRoomQrCode:@"Parliament"], @"Assertion failed");
-    GHAssertTrue([manager isMeetingRoomQrCode:@"Chandni Chowk"], @"Assertion failed");
-    GHAssertTrue([manager isMeetingRoomQrCode:@"Jantar Mantar"], @"Assertion failed");
+    NSMutableArray *meetingRoomArray = [NSMutableArray new];
+    [meetingRoomArray addObject:@"Parliament"];
+    [meetingRoomArray addObject:@"thoughtworks.com_383736383938353235@resource.calendar.google.com"];
     
-    GHAssertFalse([manager isMeetingRoomQrCode:@"foo"], @"Assertion failed");
+    GHAssertTrue([manager isMeetingRoomQrCode:meetingRoomArray], @"Assertion failed");
+    
+    [meetingRoomArray removeLastObject];
+    [meetingRoomArray addObject:@""];
+    GHAssertFalse([manager isMeetingRoomQrCode:meetingRoomArray], @"Assertion failed");
 }
 
 @end
