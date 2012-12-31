@@ -91,20 +91,9 @@
     }
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
-    if(self.eventsSummaries.count == 0){
-        UILabel *label =  [[UILabel alloc] init];
-        label.textColor = [UIColor redColor];
-        label.frame = CGRectMake(5, 10, 320, 100);
-        label.backgroundColor = [UIColor clearColor];
-        label.text = @"Room is free for next 48 hours";
-        label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
-        [self.view addSubview:label];
-    }else
-    {
     [self getEventsForEachSection];
-    [self.tableView reloadData];
-    }
     [self.spinner stopAnimating];
+    [self.tableView reloadData];
 }
 
 - (NSDateComponents *)calculateDateComponents:(NSDate *)date
