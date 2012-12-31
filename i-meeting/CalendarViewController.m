@@ -138,17 +138,6 @@
 
 
 
-- (NSDate *)dateAtBeginningOfDayForDate:(NSDate *)inputDate
-{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
-    [calendar setTimeZone:timeZone];
-   
-    NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:inputDate];
-
-    NSDate *beginningOfDay = [calendar dateFromComponents:dateComps];
-    return beginningOfDay;
-}
 
 - (NSDate *)dateByAddingOneDay:(NSInteger)numberOfDays toDate:(NSDate *)inputDate
 {
@@ -203,7 +192,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSDate *now = [NSDate date];
-  //  NSDate *startDate = [self dateAtBeginningOfDayForDate:now];
+  
     NSDate *endDate = [self dateByAddingOneDay:1 toDate:now];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEE, dd MMM yyyy"];
