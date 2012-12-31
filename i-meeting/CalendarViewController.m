@@ -79,14 +79,17 @@
     
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate new];
+    NSDate *tommorrow = [self dateByAddingOneDay:1 toDate:now];
    
     NSDateComponents* components = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
+    NSDateComponents* components1 = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:tommorrow];
     GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
-     NSLog(@"^^^^^ %d ^^^^^^", [components hour]);
-    // query.showDeleted= FALSE;
-    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:[components hour] minute:[components minute] second:[components second]];
-    query.timeMax = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:([components day]+1) atHour:23 minute:59 second:59];
+  
+    query.timeMin = [DateTimeUtility dateTimeForYear:[components year] month:[components month] day:[components day] atHour:0 minute:0 second:0];
+    query.timeMax = [DateTimeUtility dateTimeForYear:[components1 year] month:[components1 month] day:[components1 day] atHour:23 minute:59 second:59];
     query.timeZone = @"Asia/Calcutta";
+    query.singleEvents = TRUE;
+    query.orderBy = @"startTime";
     [self.signInHandler.calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 
@@ -100,7 +103,6 @@
     }
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.events2 = events.items;
-    [self sortingTheEventsAccordingToTime];
     [self ForGettingEventsForEachSection];
     [self.tableView reloadData];
     [self.spinner stopAnimating];
@@ -109,36 +111,26 @@
 }
 
 
-- (void)sortingTheEventsAccordingToTime
-{
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.year" ascending:YES];
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.month" ascending:YES];
-    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.day" ascending:YES];
-    NSSortDescriptor *sortDescriptor3 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.hour" ascending:YES];
-    NSSortDescriptor *sortDescriptor4 = [[NSSortDescriptor alloc] initWithKey:@"start.dateTime.dateComponents.minute" ascending:YES];
-    self.events2 = [self.events2 sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortDescriptor,sortDescriptor1, sortDescriptor2,sortDescriptor3,sortDescriptor4, nil]];
-}
-
-
 - (void)savingEventsInArray:(NSMutableArray *)tommorrowDateEvents todayDateEvents:(NSMutableArray *)todayDateEvents
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate date];
+     NSDate *tommorrow = [self dateByAddingOneDay:1 toDate:now];
     
    NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:now];
+     NSDateComponents *dateComps1 = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:tommorrow];
     
     NSLog (@" %%%% %@ %%%%%%", now);
     for (int i=0; i<self.events2.count; i++) {
       
         NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[self.events2[i] valueForKey:@"start"]).dateTime.dateComponents;
-  //     NSString *status = [self.events2[i] valueForKey:@"status"];
-//        if ([status isEqualToString:@"confirmed"]) {
+ 
                   if (dateComps.day == eventStart.day)
             {
                 [todayDateEvents addObject:self.events2[i]];
                
             }
-            else if ((dateComps.day+1)== eventStart.day){
+            else if ((dateComps1.day)== eventStart.day){
                 [tommorrowDateEvents addObject:self.events2[i]];
             }
         }
@@ -211,12 +203,12 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSDate *now = [NSDate date];
-    NSDate *startDate = [self dateAtBeginningOfDayForDate:now];
-    NSDate *endDate = [self dateByAddingOneDay:1 toDate:startDate];
+  //  NSDate *startDate = [self dateAtBeginningOfDayForDate:now];
+    NSDate *endDate = [self dateByAddingOneDay:1 toDate:now];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEE, dd MMM yyyy"];
     
-    NSString *dateString = [dateFormatter stringFromDate:startDate];
+    NSString *dateString = [dateFormatter stringFromDate:now];
     NSString *dateString1 = [dateFormatter stringFromDate:endDate];
     
     NSMutableArray *myArray = [NSMutableArray array];
