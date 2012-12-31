@@ -125,8 +125,10 @@
         
     [[SignInHandler instance].calendarService executeQuery:query1 completionHandler:^(GTLServiceTicket *busyFreeTicket, id busyFreeObject, NSError *busyFreeError) {
         // Callback
-        if (busyFreeError != nil)
-            NSLog(@"%@", busyFreeError.description);
+        if (busyFreeError != nil){
+            UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in executing FreeBusyQuery." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alertErrorInQuery show];}
+
         if (busyFreeError == nil) {
             GTLCalendarFreeBusyResponse *response = busyFreeObject;
             GTLCalendarFreeBusyResponseCalendars *responseCals = response.calendars;
@@ -159,7 +161,11 @@
                                          completionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
                                              // Callback
                                              if (error != nil)
+                                             {
+                                                 UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in saving the event in the calander." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                 [alertErrorInQuery show];
                                                  NSLog(@"%@", error.description);
+                                             }
                                              if (error == nil) {
                                                  [self.spinner stopAnimating];
                                                  [self.spinner setHidden:TRUE];
@@ -171,13 +177,13 @@
 
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {
-    NSString *error = @"";
-    if([title isEqualToString: @""] && [description isEqualToString: @""])
-    {
-        error = [error stringByAppendingString:@"Enter Title/Description."];
-    }
-    NSDate *currentTime = [NSDate date];
-    if(([startDate compare:currentTime] != NSOrderedDescending)&&([endDate compare:startDate] != NSOrderedDescending)&&([endDate compare:startDate] == NSOrderedSame))
+   NSString *error = @"";
+     if([title isEqualToString: @""])
+     {
+         error = [error stringByAppendingString:@"Enter Title"];
+     }
+     NSDate *currentTime = [NSDate date];
+    if(([startDate compare:currentTime] != NSOrderedDescending) || ([endDate compare:startDate] != NSOrderedDescending) || ([endDate compare:startDate] == NSOrderedSame))
     {
         error = [error stringByAppendingString:@"Invalid event time."];
     }

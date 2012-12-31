@@ -48,6 +48,8 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
                                                     keychainItemName:[SignInHandler instance].keychainName
                                                     completionHandler:^(GTMOAuth2ViewControllerTouch *viewController, GTMOAuth2Authentication *auth, NSError *error) {
                                                         if (error) {
+                                                            UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Authentication failed." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                            [alertErrorInQuery show];
                                                             NSLog(@"Authentication failed");
                                                         } else {
                                                             NSLog(@"Authentication succeeded");
