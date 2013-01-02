@@ -19,7 +19,6 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
 
 - (void)viewDidLoad
 {
-    self.navigationController.navigationBarHidden = YES;
     [self authorizeUser];
 }
 
@@ -67,7 +66,9 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
 {
     [SignInHandler instance].calendarService.authorizer = self.authToken;
     [SignInHandler instance].userEmail = self.authToken.userEmail;
+    self.navigationController.navigationBarHidden = YES;
     [self performSegueWithIdentifier:@"appWorkflowSegue" sender:self];
+    
 }
 
 @end
