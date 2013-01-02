@@ -35,4 +35,10 @@ static QRCodeManager *_instance = nil;
     return [meetingRoomId isEqualToString:[qrCode objectAtIndex:1]];
 }
 
+-(BOOL)validateQRCode:(NSString *)qrCode
+{
+    NSRange abc = [qrCode rangeOfString:@"i-meeting"];
+    return abc.location == NSNotFound;
+}
+
 @end
