@@ -193,16 +193,16 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(0, 0, 320, 23);
-    label.textColor = [UIColor blackColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont boldSystemFontOfSize:18.0];
-    label.text = [sectionHeaders objectAtIndex:section];
-    label.backgroundColor = [UIColor lightGrayColor];
+    UILabel *header = [[UILabel alloc] init];
+    header.frame = CGRectMake(0, 0, 320, 23);
+    header.textColor = [UIColor blackColor];
+    header.textAlignment = NSTextAlignmentCenter;
+    header.font = [UIFont boldSystemFontOfSize:18.0];
+    header.text = [sectionHeaders objectAtIndex:section];
+    header.backgroundColor = [UIColor lightGrayColor];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320,96 )];
-    [view addSubview:label];
+    [view addSubview:header];
     
     return view;
 }
