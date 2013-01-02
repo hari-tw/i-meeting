@@ -16,7 +16,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    label =  [[UILabel alloc] init];
     [self.spinner startAnimating];
     self.title = self.viewTitle ? self.viewTitle : @"My Meetings";
     self.calendarId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
@@ -91,22 +91,25 @@
         NSLog(@"%@", error);
         [self.navigationController popViewControllerAnimated:YES];
     }
+    else {
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
+       
     if(self.eventsSummaries.count == 0){
-        UILabel *label =  [[UILabel alloc] init];
         label.textColor = [UIColor redColor];
         label.frame = CGRectMake(5, 10, 320, 100);
         label.backgroundColor = [UIColor clearColor];
+        label.numberOfLines = 0;
         label.text = @"No scheduled meeting for next 48 hours.";
         label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
         [self.view addSubview:label];
     }else
     {
+        [label setHidden:TRUE];
         [self getEventsForEachSection];
         [self.tableView reloadData];
     }
-    [self.spinner stopAnimating];
+        [self.spinner stopAnimating]; }
 }
 
 - (NSDateComponents *)calculateDateComponents:(NSDate *)date
