@@ -80,6 +80,8 @@
 		83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E337A21640371B00BD3E90 /* CalendarCell.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
+		F9AA4BA61695B6030048C9B9 /* imeeticon.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA51695B6030048C9B9 /* imeeticon.png */; };
+		F9AA4BA91695B60A0048C9B9 /* imeeticon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -242,6 +244,8 @@
 		9B11225D162DA88900723640 /* AddNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewEventViewController.m; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGTLTouchStaticLib-sim.a"; sourceTree = "<group>"; };
+		F9AA4BA51695B6030048C9B9 /* imeeticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imeeticon.png; sourceTree = "<group>"; };
+		F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imeeticon2x.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -483,6 +487,8 @@
 		83AC4D9B16281DE5000C60C9 = {
 			isa = PBXGroup;
 			children = (
+				F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */,
+				F9AA4BA51695B6030048C9B9 /* imeeticon.png */,
 				E896DF0B1639732F00A596A4 /* Settings.bundle */,
 				83AC4DB016281DE5000C60C9 /* i-meeting */,
 				83AC4DA916281DE5000C60C9 /* Frameworks */,
@@ -674,6 +680,8 @@
 				833FCAC7167E1AE5009CC996 /* zbar-help.html in Resources */,
 				833FCAC8167E1AE5009CC996 /* zbar-helpicons.png in Resources */,
 				833FCAC9167E1AE5009CC996 /* zbar-samples.png in Resources */,
+				F9AA4BA61695B6030048C9B9 /* imeeticon.png in Resources */,
+				F9AA4BA91695B60A0048C9B9 /* imeeticon2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
