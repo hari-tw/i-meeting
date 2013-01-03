@@ -45,7 +45,7 @@
             }
             else
             {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Well Done" message:@"Event deleted." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Event deleted." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alertView show];
                 [self.delegate reloadTableView:self];
             }

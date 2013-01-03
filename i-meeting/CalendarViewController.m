@@ -6,6 +6,8 @@
 #import "Foundation/Foundation.h"
 #import "DateTimeUtility.h"
 #import "GTMOAuth2ViewControllerTouch.h"
+#import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/CALayer.h>
 
 @interface CalendarViewController ()
 @end
@@ -239,7 +241,7 @@
     NSString *emailOfOrganiser = [organiser valueForKey:@"email"];
     NSString *gmailId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
     if ([emailOfOrganiser isEqualToString:gmailId]) {
-        [cell.deleteBtn setTintColor:[UIColor grayColor]];
+        [cell.deleteBtn.layer setCornerRadius:5.0f];
         [cell.deleteBtn setHidden:FALSE];
         
     }
