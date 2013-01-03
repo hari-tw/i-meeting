@@ -1,11 +1,9 @@
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
 
-@interface RootViewController : UIViewController <ZBarReaderDelegate>
+@interface RootViewController : ZBarReaderViewController <ZBarReaderDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-
-- (UIViewController *)prepareQrCodeReader;
+- (void)prepareQrCodeReader;
 - (NSString *)getScannedCode:(NSDictionary *)info;
 - (IBAction)signOut:(id)sender;
 

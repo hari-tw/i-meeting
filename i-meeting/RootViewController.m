@@ -26,11 +26,8 @@
 {
     // URL to generate QR Code
     // https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=Hello%20World
-    
-    UIViewController *reader = [self prepareQrCodeReader];
-    [self addChildViewController:reader];
-    [self.containerView addSubview:reader.view];
-    [reader didMoveToParentViewController:self];
+    [super viewDidLoad];
+    [self prepareQrCodeReader];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -43,18 +40,14 @@
     }
 }
 
-- (UIViewController *)prepareQrCodeReader
+- (void)prepareQrCodeReader
 {
-    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+    ZBarReaderViewController *reader = self;
     reader.readerDelegate = self;
     reader.supportedOrientationsMask = ZBarOrientationMaskAll;
     reader.sourceType = UIImagePickerControllerSourceTypeCamera;
     reader.showsZBarControls = NO;
-    
-    ZBarImageScanner *scanner = reader.scanner;
     [scanner setSymbology: ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
-    
-    return reader;
 }
 
 - (NSString *)getScannedCode:(NSDictionary *)info
@@ -63,7 +56,6 @@
     ZBarSymbol *symbol = nil;
     for(symbol in results)
         break;
-    
     return symbol.data;
 }
 
@@ -87,8 +79,6 @@
         NSArray *arr2 = [arr[0] componentsSeparatedByString: @"\\"];
         self.meetingRoomName = arr2[1];
         self.calendarId = arr[1];
-        
-        [reader dismissViewControllerAnimated:YES completion:nil];
         [self performSegueWithIdentifier:@"calendarSegue" sender:self];
     }
 }

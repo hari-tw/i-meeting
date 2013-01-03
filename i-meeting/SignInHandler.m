@@ -32,6 +32,7 @@ static SignInHandler *_instance = nil;
 {
     [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:self.keychainName];
     [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:self.calendarService.authorizer];
+    _instance = Nil;
 }
 
 @end

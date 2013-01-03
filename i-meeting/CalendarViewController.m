@@ -20,17 +20,14 @@
     label =  [[UILabel alloc] init];
     [self.spinner startAnimating];
     self.title = self.viewTitle ? self.viewTitle : @"My Meetings";
-    self.calendarId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
     [self.spinner hidesWhenStopped];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    dataArray = nil;
     [super viewWillAppear:YES];
-    if([self.calendarId length] != 0)
-    {
-        [self displayCalendar];
-    }
+    [self displayCalendar];
 }
 
 - (void)getEventsForEachSection
@@ -70,8 +67,10 @@
     
     NSDateComponents* startDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
     NSDateComponents* endDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:endDate];
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
-    NSLog (@"***  %@  *****",self.calendarId);
+
+    NSString *gmailId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:gmailId];
+
     
     query.timeMin = [DateTimeUtility dateTimeForYear:[startDateComponents year] month:[startDateComponents month] day:[startDateComponents day] atHour:[startDateComponents hour] minute:[startDateComponents minute] second:[startDateComponents second]];
     query.timeMax = [DateTimeUtility dateTimeForYear:[endDateComponents year] month:[endDateComponents month] day:[endDateComponents day] atHour:[endDateComponents hour] minute:[endDateComponents minute] second:[endDateComponents second]];
@@ -94,24 +93,27 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
     else {
-    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-    self.eventsSummaries = events.items;
+        GTLCalendarEvents *events = (GTLCalendarEvents *)object;
+        self.eventsSummaries = events.items;
        
-    if(self.eventsSummaries.count == 0){
-        label.textColor = [UIColor redColor];
-        label.frame = CGRectMake(5, 10, 320, 100);
-        label.backgroundColor = [UIColor clearColor];
-        label.numberOfLines = 0;
-        label.text = @"No scheduled meeting for next 48 hours.";
-        label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
-        [self.view addSubview:label];
-    }else
-    {
-        [label setHidden:TRUE];
-        [self getEventsForEachSection];
-        [self.tableView reloadData];
+        if(self.eventsSummaries.count == 0){
+            [label setHidden:FALSE];
+            label.textColor = [UIColor redColor];
+            label.frame = CGRectMake(5, 10, 320, 100);
+            label.backgroundColor = [UIColor clearColor];
+            label.numberOfLines = 0;
+            label.text = @"No scheduled meeting for next 48 hours.";
+            label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
+            [self.view addSubview:label];
+            
+        }else
+        {
+            [label setHidden:TRUE];
+            [self getEventsForEachSection];
+        }
+        [self.spinner stopAnimating];
     }
-        [self.spinner stopAnimating]; }
+    [self.tableView reloadData];
 }
 
 - (NSDateComponents *)calculateDateComponents:(NSDate *)date
@@ -159,7 +161,8 @@
         
         NSArray *organiser = [eventsSummaries[i] valueForKey:@"organizer"];
         NSString *emailOfOrganiser = [organiser valueForKey:@"email"];
-        if ([emailOfOrganiser isEqualToString:self.calendarId]) {
+        NSString *gmailId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
+        if ([emailOfOrganiser isEqualToString:gmailId]) {
             [self saveEventsInArray:i eventStart:eventStart];
             
             continue;
@@ -169,7 +172,7 @@
             
             email = [attendees[j] valueForKey:@"email"];
             
-            if ([email isEqualToString:self.calendarId] ){
+            if ([email isEqualToString:gmailId] ){
                 attendeesResponseStatus = [attendees[j] valueForKey:@"responseStatus"];
                 
                 if (![attendeesResponseStatus isEqualToString:@"declined"]){
@@ -273,5 +276,6 @@
     [[SignInHandler instance] signOut];
     [self performSegueWithIdentifier:@"signOut" sender:self];
 }
+
 @end
 
