@@ -24,15 +24,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    dataArray = nil;
     [super viewWillAppear:YES];
-    if(self.calendarId == nil) {
-        self.calendarId = [SignInHandler instance].userEmail;
-    }
-    
-    if([self.calendarId length] != 0)
-    {
-        [self displayCalendar];
-    }
+    [self displayCalendar];
 }
 
 - (void)getEventsForEachSection
@@ -66,14 +60,14 @@
 
 - (void)displayCalendar
 {
-    dataArray = nil;
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate new];
     NSDate *endDate = [now dateByAddingTimeInterval:60*60*48];
     
     NSDateComponents* startDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:now];
     NSDateComponents* endDateComponents = [myCalendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:endDate];
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:self.calendarId];
+    NSString *gmailId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:gmailId];
     
     query.timeMin = [DateTimeUtility dateTimeForYear:[startDateComponents year] month:[startDateComponents month] day:[startDateComponents day] atHour:[startDateComponents hour] minute:[startDateComponents minute] second:[startDateComponents second]];
     query.timeMax = [DateTimeUtility dateTimeForYear:[endDateComponents year] month:[endDateComponents month] day:[endDateComponents day] atHour:[endDateComponents hour] minute:[endDateComponents minute] second:[endDateComponents second]];
@@ -164,7 +158,8 @@
         
         NSArray *organiser = [eventsSummaries[i] valueForKey:@"organizer"];
         NSString *emailOfOrganiser = [organiser valueForKey:@"email"];
-        if ([emailOfOrganiser isEqualToString:self.calendarId]) {
+        NSString *gmailId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
+        if ([emailOfOrganiser isEqualToString:gmailId]) {
             [self saveEventsInArray:i eventStart:eventStart];
             
             continue;
@@ -174,7 +169,7 @@
             
             email = [attendees[j] valueForKey:@"email"];
             
-            if ([email isEqualToString:self.calendarId] ){
+            if ([email isEqualToString:gmailId] ){
                 attendeesResponseStatus = [attendees[j] valueForKey:@"responseStatus"];
                 
                 if (![attendeesResponseStatus isEqualToString:@"declined"]){
