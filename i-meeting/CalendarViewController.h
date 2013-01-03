@@ -1,8 +1,9 @@
 #import <UIKit/UIKit.h>
 #import "SignInHandler.h"
 #import "SignInViewController.h"
+#import "CalendarCell.h"
 
-@interface CalendarViewController : UITableViewController
+@interface CalendarViewController : UITableViewController <reloadView>
 {
     NSMutableArray *dataArray;
     NSMutableArray *sectionHeaders;
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSString *calendarId;
 
 -(void) createAddEventButtonDynamically;
+- (void)viewWillAppear:(BOOL)animated;
 - (IBAction)signOut:(id)sender;
 
 

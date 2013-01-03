@@ -13,7 +13,6 @@
 @implementation CalendarViewController
 
 @synthesize eventsSummaries;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -21,7 +20,8 @@
     [self.spinner startAnimating];
     self.title = self.viewTitle ? self.viewTitle : @"My Meetings";
     [self.spinner hidesWhenStopped];
-}
+    
+ }
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -218,7 +218,9 @@
 {
     static NSString *cellIdentifier = @"Cell";
     CalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
+    cell.delegate = self;
+    [cell.deleteBtn setHidden:TRUE];
+  
     NSDictionary *dictionary = [dataArray objectAtIndex:indexPath.section];
     
     NSArray *array = [dictionary objectForKey:@"data"];
@@ -229,15 +231,28 @@
     NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
     NSString *eventStartTime = [NSString stringWithFormat:@"%02d:%02d", eventStart.hour, eventStart.minute];
     NSString *eventEndTime = [NSString stringWithFormat:@"%02d:%02d", eventEnd.hour, eventEnd.minute];
-    
+    cell.eventID = [event valueForKey:@"identifier"];
     cell.titleLabel.text = [event valueForKey:@"summary"];
     cell.timingsLabel.text = [NSString stringWithFormat:@"%@ - %@", eventStartTime, eventEndTime];
     NSArray *organiser = [event valueForKey:@"organizer"];
     cell.organizerLabel.text = [@"Organizer: " stringByAppendingString:[organiser valueForKey:@"displayName"]];
+    NSString *emailOfOrganiser = [organiser valueForKey:@"email"];
+    NSString *gmailId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
+    if ([emailOfOrganiser isEqualToString:gmailId]) {
+        [cell.deleteBtn setTintColor:[UIColor grayColor]];
+        [cell.deleteBtn setHidden:FALSE];
+        
+    }
+
     
    NSLog(@"%@", event);
     
     return cell;
+}
+
+-(void)reloadTableView: (CalendarCell *) sender
+{
+    [self displayCalendar];
 }
 
 
