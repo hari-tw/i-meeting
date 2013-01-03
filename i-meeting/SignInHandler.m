@@ -31,6 +31,11 @@ static SignInHandler *_instance = nil;
 - (void)signOut
 {
     [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:self.keychainName];
+
+    NSMutableURLRequest *logoutRequest = [[NSMutableURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:@"https://cas.thoughtworks.com/cas/logout"]];
+    NSHTTPURLResponse *response;
+    NSError *err;
+    [NSURLConnection sendSynchronousRequest:logoutRequest returningResponse:&response error:&err];
     [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:self.calendarService.authorizer];
     _instance = Nil;
 }

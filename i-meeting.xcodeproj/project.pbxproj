@@ -85,6 +85,8 @@
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 		AF63A8C61695AA92004A14CF /* DarkGreyButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
+		F9AA4BA61695B6030048C9B9 /* imeeticon.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA51695B6030048C9B9 /* imeeticon.png */; };
+		F9AA4BA91695B60A0048C9B9 /* imeeticon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -253,6 +255,8 @@
 		AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DarkGreyButton.jpg; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGTLTouchStaticLib-sim.a"; sourceTree = "<group>"; };
+		F9AA4BA51695B6030048C9B9 /* imeeticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon.png; path = ../imeeticon.png; sourceTree = "<group>"; };
+		F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon2x.png; path = ../imeeticon2x.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,6 +484,8 @@
 			children = (
 				AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */,
 				209DE3DB168AF5B500AD97ED /* images.jpg */,
+				F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */,
+				F9AA4BA51695B6030048C9B9 /* imeeticon.png */,
 				83A9949E16441AE2009CD997 /* profile selected.png */,
 				83A9949F16441AE2009CD997 /* profile.png */,
 				83A994A016441AE2009CD997 /* rooms unselected.png */,
@@ -695,6 +701,8 @@
 				209DE3DC168AF5B500AD97ED /* images.jpg in Resources */,
 				209DE3DE168AF76A00AD97ED /* index.jpg in Resources */,
 				AF63A8C61695AA92004A14CF /* DarkGreyButton.jpg in Resources */,
+				F9AA4BA61695B6030048C9B9 /* imeeticon.png in Resources */,
+				F9AA4BA91695B60A0048C9B9 /* imeeticon2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
