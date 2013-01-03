@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4bC-E7-t9q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4bC-E7-t9q">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Scan-->
@@ -47,13 +47,6 @@
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <containerView contentMode="scaleToFill" id="8TC-xa-oFn">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="402"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Scan" image="settings.png" id="QbW-C2-p3A"/>
@@ -114,7 +107,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="nKR-Ea-wdD" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="BRy-vz-LUS"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="GcK-8H-tft">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -376,13 +369,55 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="profile.png" width="22" height="24"/>
         <image name="settings.png" width="21" height="21"/>
     </resources>
+    <classes>
+        <class className="AddNewEventViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bookButton:"/>
+                <relationship kind="action" name="datePicked:" candidateClass="UIDatePicker"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="descriptionField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="subjectField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CalendarCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="organizerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timingsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CalendarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="signOut:"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="ZBarReaderViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="signOut:"/>
+            </relationships>
+        </class>
+        <class className="SignInViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignInViewController.h"/>
+        </class>
+        <class className="ZBarReaderViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZBarReaderViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VM3-JR-CEJ"/>
         <segue reference="cRT-mi-M1h"/>
+        <segue reference="VM3-JR-CEJ"/>
     </inferredMetricsTieBreakers>
 </document>
