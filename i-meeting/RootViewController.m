@@ -47,6 +47,7 @@
     reader.supportedOrientationsMask = ZBarOrientationMaskAll;
     reader.sourceType = UIImagePickerControllerSourceTypeCamera;
     reader.showsZBarControls = NO;
+    reader.readerView.frame = CGRectMake(0,  0 , 320 , 480);
     [scanner setSymbology: ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
 }
 
