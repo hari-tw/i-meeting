@@ -19,13 +19,16 @@
     label =  [[UILabel alloc] init];
     [self.spinner startAnimating];
     self.title = self.viewTitle ? self.viewTitle : @"My Meetings";
-    self.calendarId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
     [self.spinner hidesWhenStopped];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    if(self.calendarId == nil) {
+        self.calendarId = [SignInHandler instance].userEmail;
+    }
+    
     if([self.calendarId length] != 0)
     {
         [self displayCalendar];
@@ -63,6 +66,7 @@
 
 - (void)displayCalendar
 {
+    dataArray = nil;
     NSCalendar* myCalendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate new];
     NSDate *endDate = [now dateByAddingTimeInterval:60*60*48];
@@ -92,24 +96,27 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
     else {
-    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-    self.eventsSummaries = events.items;
+        GTLCalendarEvents *events = (GTLCalendarEvents *)object;
+        self.eventsSummaries = events.items;
        
-    if(self.eventsSummaries.count == 0){
-        label.textColor = [UIColor redColor];
-        label.frame = CGRectMake(5, 10, 320, 100);
-        label.backgroundColor = [UIColor clearColor];
-        label.numberOfLines = 0;
-        label.text = @"No scheduled meeting for next 48 hours.";
-        label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
-        [self.view addSubview:label];
-    }else
-    {
-        [label setHidden:TRUE];
-        [self getEventsForEachSection];
-        [self.tableView reloadData];
+        if(self.eventsSummaries.count == 0){
+            [label setHidden:FALSE];
+            label.textColor = [UIColor redColor];
+            label.frame = CGRectMake(5, 10, 320, 100);
+            label.backgroundColor = [UIColor clearColor];
+            label.numberOfLines = 0;
+            label.text = @"No scheduled meeting for next 48 hours.";
+            label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
+            [self.view addSubview:label];
+            
+        }else
+        {
+            [label setHidden:TRUE];
+            [self getEventsForEachSection];
+        }
+        [self.spinner stopAnimating];
     }
-        [self.spinner stopAnimating]; }
+    [self.tableView reloadData];
 }
 
 - (NSDateComponents *)calculateDateComponents:(NSDate *)date
@@ -257,5 +264,6 @@
     [[SignInHandler instance] signOut];
     [self performSegueWithIdentifier:@"signOut" sender:self];
 }
+
 @end
 
