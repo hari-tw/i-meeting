@@ -75,21 +75,21 @@
 - (void)imagePickerController:(UIImagePickerController *)reader didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *scannedCode = [self getScannedCode:info];
-    NSArray *arr = [scannedCode componentsSeparatedByString: @"="];
-    
-    if (arr == nil || arr.count != 2 || (![[QRCodeManager instance] isMeetingRoomQrCode:arr] ))
+
+    if ([[QRCodeManager instance] validateQRCode:scannedCode])
     {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid QR Code" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
     else
     {
-        self.meetingRoomName = arr[0];
+        NSArray *arr = [scannedCode componentsSeparatedByString: @"="];
+        NSArray *arr2 = [arr[0] componentsSeparatedByString: @"\\"];
+        self.meetingRoomName = arr2[1];
         self.calendarId = arr[1];
         
         [reader dismissViewControllerAnimated:YES completion:nil];
         [self performSegueWithIdentifier:@"calendarSegue" sender:self];
     }
 }
-
 @end

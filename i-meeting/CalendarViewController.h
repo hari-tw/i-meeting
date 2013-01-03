@@ -10,6 +10,7 @@
     NSMutableArray *eventsForTomorrow;
     NSMutableArray *eventsForDayAfterTomorrow;
     id event;
+    UILabel *label;
 }
 
 @property (nonatomic) NSArray *eventsSummaries;
