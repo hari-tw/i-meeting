@@ -19,6 +19,7 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     [self authorizeUser];
 }
 
@@ -58,6 +59,7 @@ static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
                                                         }
                                                     }];
     viewController.navigationItem.hidesBackButton = YES;
+    viewController.title = @"iMeeting";
     
     [self.navigationController pushViewController:viewController animated:YES];
 }

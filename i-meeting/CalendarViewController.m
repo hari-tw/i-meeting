@@ -84,18 +84,20 @@
 
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
 {
-    if (error) {
+    if (error)
+    {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
         [self.spinner stopAnimating];
         [self.spinner setHidden:YES];
         NSLog(@"%@", error);
         [self.navigationController popViewControllerAnimated:YES];
+        return;
     }
     else {
         GTLCalendarEvents *events = (GTLCalendarEvents *)object;
         self.eventsSummaries = events.items;
-       
+        
         if(self.eventsSummaries.count == 0){
             [label setHidden:FALSE];
             label.textColor = [UIColor redColor];
