@@ -83,9 +83,6 @@
 		83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AC4E2E16282032000C60C9 /* QRCodeManagerTest.m */; };
 		83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E337A21640371B00BD3E90 /* CalendarCell.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
-		AF63A8B816959597004A14CF /* rect.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF63A8B716959597004A14CF /* rect.jpg */; };
-		AF63A8BA16959646004A14CF /* rectangle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF63A8B916959646004A14CF /* rectangle.jpg */; };
-		AF63A8BC1695A6C2004A14CF /* grey_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = AF63A8BB1695A6C2004A14CF /* grey_demo.png */; };
 		AF63A8C61695AA92004A14CF /* DarkGreyButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
 /* End PBXBuildFile section */
@@ -253,9 +250,6 @@
 		83E337A21640371B00BD3E90 /* CalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
 		9B11225C162DA88900723640 /* AddNewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewEventViewController.h; sourceTree = "<group>"; };
 		9B11225D162DA88900723640 /* AddNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewEventViewController.m; sourceTree = "<group>"; };
-		AF63A8B716959597004A14CF /* rect.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rect.jpg; path = ../../../Desktop/rect.jpg; sourceTree = "<group>"; };
-		AF63A8B916959646004A14CF /* rectangle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rectangle.jpg; path = ../../../Desktop/rectangle.jpg; sourceTree = "<group>"; };
-		AF63A8BB1695A6C2004A14CF /* grey_demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grey_demo.png; path = ../../../Desktop/grey_demo.png; sourceTree = "<group>"; };
 		AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DarkGreyButton.jpg; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGTLTouchStaticLib-sim.a"; sourceTree = "<group>"; };
@@ -484,10 +478,7 @@
 		83A9949D16441AAA009CD997 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				AF63A8BB1695A6C2004A14CF /* grey_demo.png */,
 				AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */,
-				AF63A8B916959646004A14CF /* rectangle.jpg */,
-				AF63A8B716959597004A14CF /* rect.jpg */,
 				209DE3DB168AF5B500AD97ED /* images.jpg */,
 				83A9949E16441AE2009CD997 /* profile selected.png */,
 				83A9949F16441AE2009CD997 /* profile.png */,
@@ -703,9 +694,6 @@
 				209DE3DA168AF24400AD97ED /* tick-cross.png in Resources */,
 				209DE3DC168AF5B500AD97ED /* images.jpg in Resources */,
 				209DE3DE168AF76A00AD97ED /* index.jpg in Resources */,
-				AF63A8B816959597004A14CF /* rect.jpg in Resources */,
-				AF63A8BA16959646004A14CF /* rectangle.jpg in Resources */,
-				AF63A8BC1695A6C2004A14CF /* grey_demo.png in Resources */,
 				AF63A8C61695AA92004A14CF /* DarkGreyButton.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
