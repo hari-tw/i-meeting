@@ -18,3 +18,15 @@ end
 Given /^I launch the app using iOS (\d\.\d) and the (iphone|ipad) simulator$/ do |sdk, version|
   launch_app app_path, sdk, version
 end
+
+When /^I click "(.*?)" Button$/ do |tab_name|
+  touch "view:'UITabBarButton' marked:'#{tab_name}'"
+end
+
+Then /^I navigate to MyMeetings Page$/ do
+  check_element_exists "view:'UINavigationItemView' marked:'My Meetings'"
+end
+
+Then /^I navigate to Scan Page$/ do
+  check_element_exists "view:'UINavigationItemView' marked:'iMeeting'"
+end
