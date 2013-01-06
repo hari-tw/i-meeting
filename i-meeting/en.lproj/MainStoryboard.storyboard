@@ -261,7 +261,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <rect key="frame" x="9" y="0.0" width="282" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="textFieldReturn:" destination="Hh9-z1-7n1" eventType="editingDidEndOnExit" id="Pf4-Jm-wlr"/>
                                                     </connections>
@@ -286,7 +286,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <rect key="frame" x="10" y="0.0" width="282" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="textFieldReturn:" destination="Hh9-z1-7n1" eventType="editingDidEndOnExit" id="BYP-RO-w9g"/>
                                                     </connections>
@@ -355,7 +355,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Event" id="9ea-6s-6E9">
                         <barButtonItem key="backBarButtonItem" title="Back" id="DEh-x7-j43"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="vqA-cc-yDB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vqA-cc-yDB">
                             <connections>
                                 <action selector="bookButton:" destination="Hh9-z1-7n1" id="nk8-Zc-7qh"/>
                             </connections>
