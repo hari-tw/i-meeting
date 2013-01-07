@@ -880,7 +880,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "i386, armv7";
+				VALID_ARCHS = "i386 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -917,7 +917,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				VALID_ARCHS = "i386, armv7";
+				VALID_ARCHS = "i386 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -937,10 +937,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"$(FRANK_LIBRARY_SEARCH_PATHS)",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-all_load",
 					"-ObjC",
+					"$(FRANK_LDFLAGS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
