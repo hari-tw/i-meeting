@@ -1,5 +1,6 @@
 # Xcode
 Library*
+Frank/frankified_build/
 build/*
 *.pbxuser
 !default.pbxuser
