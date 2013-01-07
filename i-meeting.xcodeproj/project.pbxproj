@@ -735,7 +735,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sh RunTests.sh";
+			shellScript = RunTests.sh;
 		};
 /* End PBXShellScriptBuildPhase section */
 
