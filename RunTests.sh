@@ -59,7 +59,7 @@ unset DYLD_ROOT_PATH
 unset DYLD_FRAMEWORK_PATH
 unset IPHONE_SIMULATOR_ROOT
 if [ "$RUN_UNIT_TEST_WITH_IOS_SIM" = "YES" ]; then
-  exit $RETVAL;
+  exit 0;
 else
 if [ -n "$WRITE_JUNIT_XML" ]; then
   MY_TMPDIR=`/usr/bin/getconf DARWIN_USER_TEMP_DIR`
