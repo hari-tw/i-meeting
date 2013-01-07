@@ -735,7 +735,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"$RUN_UNIT_TEST_WITH_IOS_SIM\" = \"YES\" ]; then\n//TEST_HOST=\"$CODESIGNING_FOLDER_PATH/$EXECUTABLE_NAME\"\n//environment_args=\"--setenv JUNIT_XML_DIR=$TEMP_ROOT/tmp/test-results --setenv GHUNIT_CLI=1 --setenv WRITE_JUNIT_XML=true --setenv DYLD_INSERT_LIBRARIES=/../../Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection --setenv XCInjectBundle=$test_bundle_path --setenv XCInjectBundleInto=$TEST_HOST\"\n//RUN_CMD=\"ios-sim launch \\\"$(dirname $TEST_HOST)\\\" $environment_args\"\n//sh -c \"$RUN_CMD\"\nexit 0\nelse\nsh RunTests.sh\nfi";
+			shellScript = "if [ \"$RUN_UNIT_TEST_WITH_IOS_SIM\" = \"YES\" ]; then\n exit 0\nelse\n sh RunTests.sh\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
