@@ -41,16 +41,7 @@ fi
 SCRIPTS_PATH=`cd $(dirname $0); pwd`
 #launchctl submit -l GHUNIT_RunIPhoneSecurityd -- "$SCRIPTS_PATH"/RunIPhoneSecurityd.sh $IPHONE_SIMULATOR_ROOT $CFFIXED_USER_HOME
 #trap "launchctl remove GHUNIT_RunIPhoneSecurityd" EXIT TERM INT
-if [ "$RUN_UNIT_TEST_WITH_IOS_SIM" = "YES" ]; then
-  ios-sim start
-  sleep 60
-  TEST_HOST="$CODESIGNING_FOLDER_PATH/$EXECUTABLE_NAME"
-test_bundle_path="$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.$WRAPPER_EXTENSION"
-  environment_args="--setenv JUNIT_XML_DIR=$TEMP_ROOT/tmp/test-results --setenv GHUNIT_CLI=1 --setenv WRITE_JUNIT_XML=true --setenv DYLD_INSERT_LIBRARIES=/../../Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection --setenv XCInjectBundle=$test_bundle_path --setenv XCInjectBundleInto=$TEST_HOST"
-  RUN_CMD="ios-sim launch \"$(dirname $TEST_HOST)\" $environment_args --args $test_bundle_path"
-else
-  RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
-fi
+RUN_CMD="\"$TEST_TARGET_EXECUTABLE_PATH\" -RegisterForSystemEvents"
 echo "Running: $RUN_CMD"
 set +o errexit # Disable exiting on error so script continues if tests fail
 sh -c "$RUN_CMD"
@@ -60,9 +51,6 @@ set -o errexit
 unset DYLD_ROOT_PATH
 unset DYLD_FRAMEWORK_PATH
 unset IPHONE_SIMULATOR_ROOT
-if [ "$RUN_UNIT_TEST_WITH_IOS_SIM" = "YES" ]; then
-  exit 0;
-else
 if [ -n "$WRITE_JUNIT_XML" ]; then
   MY_TMPDIR=`/usr/bin/getconf DARWIN_USER_TEMP_DIR`
   RESULTS_DIR="${MY_TMPDIR}test-results"
