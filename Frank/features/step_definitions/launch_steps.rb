@@ -1,3 +1,4 @@
+
 def app_path
   ENV['APP_BUNDLE_PATH'] || (defined?(APP_BUNDLE_PATH) && APP_BUNDLE_PATH)
 end
@@ -19,14 +20,21 @@ Given /^I launch the app using iOS (\d\.\d) and the (iphone|ipad) simulator$/ do
   launch_app app_path, sdk, version
 end
 
-When /^I click "(.*?)" Button$/ do |tab_name|
-  touch "view:'UITabBarButton' marked:'#{tab_name}'"
+Given /^I note the number of meetings$/ do
+  @count = frankly_map("view:'CalendarCell'",'tag').count
 end
 
-Then /^I navigate to MyMeetings Page$/ do
-  check_element_exists "view:'UINavigationItemView' marked:'My Meetings'"
+Given /^I should see same number of rows as earlier$/ do
+  @count.should == frankly_map("view:'CalendarCell'",'tag').count
 end
 
-Then /^I navigate to Scan Page$/ do
-  check_element_exists "view:'UINavigationItemView' marked:'iMeeting'"
+Given /^I should see less number of rows as earlier$/ do
+  @deleted = @count - 1
+  @deleted == frankly_map("view:'CalendarCell'",'tag').count
+end
+
+When /^I wait to see "(.*?)" element$/ do |element|
+  wait_until(:message => "The specified element #{element} did not appear!") {
+    element_exists(element)
+  }
 end

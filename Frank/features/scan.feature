@@ -1,10 +1,10 @@
 Feature: 
   As an i-meeting user
-  I want to see home page
-  So I can see options available in app on home page
+  I want to go to scan page
+  So I can scan the qr code of meeting room
 
 Scenario: 
   Navigating to Scan Page
 Given I launch the app
-When I click "Scan" Button
-Then I navigate to Scan Page
+When I touch "Scan"
+Then I should see a navigation bar titled "iMeeting"
