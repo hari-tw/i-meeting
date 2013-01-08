@@ -27,7 +27,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    dataArray = nil;
     [super viewWillAppear:YES];
     [self displayCalendar];
 }
@@ -77,7 +76,7 @@
     query.timeMin = [DateTimeUtility dateTimeForYear:[startDateComponents year] month:[startDateComponents month] day:[startDateComponents day] atHour:[startDateComponents hour] minute:[startDateComponents minute] second:[startDateComponents second]];
     query.timeMax = [DateTimeUtility dateTimeForYear:[endDateComponents year] month:[endDateComponents month] day:[endDateComponents day] atHour:[endDateComponents hour] minute:[endDateComponents minute] second:[endDateComponents second]];
     query.timeZone = @"Asia/Calcutta";
-    query.fields = @"description,items(attendees(displayName,email,responseStatus),created,creator,description,end,endTimeUnspecified,htmlLink,id,location,organizer,originalStartTime,start,status,summary),kind,nextPageToken,summary,timeZone";
+    query.fields = @"description,items(attendees(displayName,email,organizer,resource,responseStatus),created,creator,description,end,endTimeUnspecified,htmlLink,id,location,organizer,originalStartTime,start,status,summary),kind,nextPageToken,summary,timeZone";
     query.singleEvents = TRUE;
     query.orderBy = @"startTime";
     
@@ -227,7 +226,7 @@
     
     NSArray *array = [dictionary objectForKey:@"data"];
     
-     event = [array objectAtIndex:indexPath.row];
+    event = [array objectAtIndex:indexPath.row];
     
     NSDateComponents *eventStart = ((GTLCalendarEventDateTime *)[event valueForKey:@"start"]).dateTime.dateComponents;
     NSDateComponents *eventEnd = ((GTLCalendarEventDateTime *)[event valueForKey:@"end"]).dateTime.dateComponents;
@@ -247,7 +246,7 @@
     }
 
     
-   NSLog(@"%@", event);
+    NSLog(@"%@", event);
     
     return cell;
 }
