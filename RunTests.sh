@@ -59,5 +59,4 @@ if [ -n "$WRITE_JUNIT_XML" ]; then
 	`$CP -r "$RESULTS_DIR" "$BUILD_DIR" && rm -r "$RESULTS_DIR"`
   fi
 fi
-fi
 exit $RETVAL
