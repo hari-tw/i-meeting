@@ -40,12 +40,13 @@
 		8318BE6716379E00003E2B01 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8318BE6616379E00003E2B01 /* GTMOAuth2ViewTouch.xib */; };
 		8318BE6A1637AAA4003E2B01 /* DateTimeUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE691637AAA4003E2B01 /* DateTimeUtility.m */; };
 		8318BE6D1637C979003E2B01 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8318BE6C1637C979003E2B01 /* CalendarViewController.m */; };
-		833FCAC5167E1AE5009CC996 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 833FCABF167E1AE5009CC996 /* libzbar.a */; };
 		833FCAC6167E1AE5009CC996 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 833FCAC1167E1AE5009CC996 /* zbar-back.png */; };
 		833FCAC7167E1AE5009CC996 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 833FCAC2167E1AE5009CC996 /* zbar-help.html */; };
 		833FCAC8167E1AE5009CC996 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 833FCAC3167E1AE5009CC996 /* zbar-helpicons.png */; };
 		833FCAC9167E1AE5009CC996 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 833FCAC4167E1AE5009CC996 /* zbar-samples.png */; };
 		836F9FC516493486009E61AD /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9949B164419F9009CD997 /* QRCodeManager.m */; };
+		839FE19C169DE24100DA8146 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 839FE19B169DE24100DA8146 /* libzbar.a */; };
+		839FE19E169DE5F100DA8146 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 839FE19D169DE5F100DA8146 /* libGTLTouchStaticLib.a */; };
 		83A7365A166A6DAB00DC5D61 /* SignInHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A73659166A6DAB00DC5D61 /* SignInHandler.m */; };
 		83A9949C164419F9009CD997 /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9949B164419F9009CD997 /* QRCodeManager.m */; };
 		83A994A616441AE2009CD997 /* profile selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A9949E16441AE2009CD997 /* profile selected.png */; };
@@ -201,11 +202,12 @@
 		833FCABC167E1AE5009CC996 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
 		833FCABD167E1AE5009CC996 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		833FCABE167E1AE5009CC996 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
-		833FCABF167E1AE5009CC996 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		833FCAC1167E1AE5009CC996 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		833FCAC2167E1AE5009CC996 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		833FCAC3167E1AE5009CC996 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		833FCAC4167E1AE5009CC996 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		839FE19B169DE24100DA8146 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
+		839FE19D169DE5F100DA8146 /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGTLTouchStaticLib.a; sourceTree = "<group>"; };
 		83A73659166A6DAB00DC5D61 /* SignInHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInHandler.m; sourceTree = "<group>"; };
 		83A7365B166A724C00DC5D61 /* SignInHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInHandler.h; sourceTree = "<group>"; };
 		83A9949B164419F9009CD997 /* QRCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeManager.m; sourceTree = "<group>"; };
@@ -256,9 +258,9 @@
 		A7B269C11696A67100D58074 /* delete button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete button.png"; sourceTree = "<group>"; };
 		AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DarkGreyButton.jpg; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGTLTouchStaticLib-sim.a"; sourceTree = "<group>"; };
 		F9AA4BA51695B6030048C9B9 /* imeeticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon.png; path = ../imeeticon.png; sourceTree = "<group>"; };
 		F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon2x.png; path = ../imeeticon2x.png; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,7 +279,8 @@
 				83AC4DAB16281DE5000C60C9 /* UIKit.framework in Frameworks */,
 				83AC4DAD16281DE5000C60C9 /* Foundation.framework in Frameworks */,
 				83AC4DAF16281DE5000C60C9 /* CoreGraphics.framework in Frameworks */,
-				833FCAC5167E1AE5009CC996 /* libzbar.a in Frameworks */,
+				839FE19C169DE24100DA8146 /* libzbar.a in Frameworks */,
+				839FE19E169DE5F100DA8146 /* libGTLTouchStaticLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,8 +423,8 @@
 		833FCAA7167E1AE5009CC996 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
+				839FE19B169DE24100DA8146 /* libzbar.a */,
 				833FCAA8167E1AE5009CC996 /* Headers */,
-				833FCABF167E1AE5009CC996 /* libzbar.a */,
 				833FCAC0167E1AE5009CC996 /* Resources */,
 			);
 			path = ZBarSDK;
@@ -526,8 +529,7 @@
 		83AC4DA916281DE5000C60C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F937132B16809407007E1717 /* libGTLTouchStaticLib-sim.a */,
-				2070551D167F222500023712 /* libGTLTouchStaticLib.a */,
+				839FE19D169DE5F100DA8146 /* libGTLTouchStaticLib.a */,
 				833FCAA7167E1AE5009CC996 /* ZBarSDK */,
 				8318BDE316371610003E2B01 /* SystemConfiguration.framework */,
 				8318BDE1163715C6003E2B01 /* Security.framework */,
@@ -902,7 +904,6 @@
 					"-ObjC",
 					"-fobjc-arc",
 					"$(FRANK_LDFLAGS)",
-					"\"$(SRCROOT)/libGTLTouchStaticLib.a\"",
 				);
 				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
 					"$(inherited)",
@@ -910,10 +911,11 @@
 					"-ObjC",
 					"-fobjc-arc",
 					"$(FRANK_LDFLAGS)",
-					"\"$(SRCROOT)/libGTLTouchStaticLib-sim.a\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+
+				VALID_ARCHS = "armv7 i386 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -945,11 +947,11 @@
 					"-all_load",
 					"-ObjC",
 					"-fobjc-arc",
-					"\"$(SRCROOT)/libGTLTouchStaticLib.a\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				VALID_ARCHS = "armv7 i386 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
