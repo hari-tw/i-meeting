@@ -6,6 +6,7 @@
 #import "RootViewController.h"
 #import "DateTimeUtility.h"
 #import "CalendarViewController.h"
+#import "GTLCalendarManager.h"
 
 @implementation AddNewEventViewController
 
@@ -104,8 +105,7 @@
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:validation delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
-    }
-    
+    }    
 }
 
 -(void)busyFreeQuery:(GTLCalendarEvent *)event
@@ -116,13 +116,9 @@
     
     GTLCalendarFreeBusyRequestItem *requestItem = [GTLCalendarFreeBusyRequestItem object];
     requestItem.identifier = self.meetingRoomId;
-    GTLQueryCalendar *query1 = [GTLQueryCalendar queryForFreebusyQuery];
-    query1.items = [NSArray arrayWithObject:requestItem];
-    query1.timeMax = event.end.dateTime;
-    query1.timeMin = event.start.dateTime;
-    query1.fields = @"calendars";
-        
-    [[SignInHandler instance].calendarService executeQuery:query1 completionHandler:^(GTLServiceTicket *busyFreeTicket, id busyFreeObject, NSError *busyFreeError) {
+    GTLQueryCalendar *query = [GTLCalendarManager getCalendarQueryWithCalendars:[NSArray arrayWithObject:requestItem] timeMin:event.start.dateTime timeMax:event.end.dateTime];
+    
+    [[SignInHandler instance].calendarService executeQuery:query completionHandler:^(GTLServiceTicket *busyFreeTicket, id busyFreeObject, NSError *busyFreeError) {
         // Callback
         if (busyFreeError != nil){
             UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in executing FreeBusyQuery." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
