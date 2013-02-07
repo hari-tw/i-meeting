@@ -266,10 +266,8 @@
     if ([emailOfOrganiser isEqualToString:gmailId]) {
         [cell.deleteBtn.layer setCornerRadius:5.0f];
         [cell.deleteBtn setHidden:FALSE];
-        
     }
 
-    
     NSLog(@"%@", event);
     
     return cell;

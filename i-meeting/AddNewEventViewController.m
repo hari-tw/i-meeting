@@ -6,6 +6,7 @@
 #import "RootViewController.h"
 #import "DateTimeUtility.h"
 #import "CalendarViewController.h"
+#import "GTLCalendarManager.h"
 
 @implementation AddNewEventViewController
 
@@ -35,8 +36,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 2)
-        cell.detailTextLabel.text = [DateTimeUtility stringFromDate:self.datePicker.date];
-    
+        cell.detailTextLabel.text = [DateTimeUtility stringFromDate:[self.datePicker.date dateByAddingTimeInterval:5 * 60]];
     
     if (indexPath.row == 3)
         cell.detailTextLabel.text = [DateTimeUtility stringFromDate:[self.datePicker.date dateByAddingTimeInterval:30 * 60]];
@@ -126,7 +126,6 @@
     [self.spinner setHidden:TRUE];
     
 }
-
 
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {

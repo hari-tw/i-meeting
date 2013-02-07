@@ -1,4 +1,4 @@
-
+require 'pry'
 def app_path
   ENV['APP_BUNDLE_PATH'] || (defined?(APP_BUNDLE_PATH) && APP_BUNDLE_PATH)
 end
@@ -38,3 +38,15 @@ When /^I wait to see "(.*?)" element$/ do |element|
     element_exists(element)
   }
 end
+
+When /^I see "(.*?)" button and touch it$/ do |element|
+quote = get_selector_quote(element)
+  selector = "view marked:#{quote}#{element}#{quote} first"
+  if element_exists(selector) && element_is_not_hidden(selector)
+    binding.pry
+     touch( selector )
+  else
+     binding.pry  
+  end
+end
+

@@ -45,6 +45,7 @@
 		833FCAC7167E1AE5009CC996 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 833FCAC2167E1AE5009CC996 /* zbar-help.html */; };
 		833FCAC8167E1AE5009CC996 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 833FCAC3167E1AE5009CC996 /* zbar-helpicons.png */; };
 		833FCAC9167E1AE5009CC996 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 833FCAC4167E1AE5009CC996 /* zbar-samples.png */; };
+		8361797216BA6F1800DEB869 /* GTLCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361797116BA6F1800DEB869 /* GTLCalendarManager.m */; };
 		836F9FC516493486009E61AD /* QRCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9949B164419F9009CD997 /* QRCodeManager.m */; };
 		839FE19C169DE24100DA8146 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 839FE19B169DE24100DA8146 /* libzbar.a */; };
 		839FE19E169DE5F100DA8146 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 839FE19D169DE5F100DA8146 /* libGTLTouchStaticLib.a */; };
@@ -208,6 +209,8 @@
 		833FCAC2167E1AE5009CC996 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		833FCAC3167E1AE5009CC996 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		833FCAC4167E1AE5009CC996 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		8361797016BA6F1800DEB869 /* GTLCalendarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLCalendarManager.h; path = ../GTLCalendarManager.h; sourceTree = "<group>"; };
+		8361797116BA6F1800DEB869 /* GTLCalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarManager.m; path = ../GTLCalendarManager.m; sourceTree = "<group>"; };
 		839FE19B169DE24100DA8146 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		839FE19D169DE5F100DA8146 /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGTLTouchStaticLib.a; sourceTree = "<group>"; };
 		83A73659166A6DAB00DC5D61 /* SignInHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInHandler.m; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 		83AC4DB016281DE5000C60C9 /* i-meeting */ = {
 			isa = PBXGroup;
 			children = (
+				8361797016BA6F1800DEB869 /* GTLCalendarManager.h */,
+				8361797116BA6F1800DEB869 /* GTLCalendarManager.m */,
 				833D6D28167E0D7400BB44FB /* i-meeting.entitlements */,
 				9B11225C162DA88900723640 /* AddNewEventViewController.h */,
 				9B11225D162DA88900723640 /* AddNewEventViewController.m */,
@@ -784,6 +789,8 @@
 				830B4C9E1681C433001C743E /* SignInViewController.m in Sources */,
 				209DE3D2168AD46000AD97ED /* DetailedViewController.m in Sources */,
 				371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */,
+				8361797216BA6F1800DEB869 /* GTLCalendarManager.m in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
