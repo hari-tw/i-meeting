@@ -3,7 +3,7 @@
 #import "SignInViewController.h"
 #import "CalendarCell.h"
 
-@interface CalendarViewController : UITableViewController <reloadView>
+@interface CalendarViewController : UITableViewController <reloadView, UIActionSheetDelegate>
 {
     NSMutableArray *dataArray;
     NSMutableArray *sectionHeaders;

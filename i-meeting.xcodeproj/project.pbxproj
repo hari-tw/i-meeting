@@ -11,6 +11,7 @@
 		209DE3DA168AF24400AD97ED /* tick-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 209DE3D9168AF24400AD97ED /* tick-cross.png */; };
 		209DE3DC168AF5B500AD97ED /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 209DE3DB168AF5B500AD97ED /* images.jpg */; };
 		209DE3DE168AF76A00AD97ED /* index.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 209DE3DD168AF76A00AD97ED /* index.jpg */; };
+		371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 371A311B16C38B78001BFCF2 /* CalendarEvent.m */; };
 		830B4C9E1681C433001C743E /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B4C9D1681C433001C743E /* SignInViewController.m */; };
 		8318BDE2163715C6003E2B01 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE1163715C6003E2B01 /* Security.framework */; };
 		8318BDE416371610003E2B01 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE316371610003E2B01 /* SystemConfiguration.framework */; };
@@ -92,12 +93,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2070551D167F222500023712 /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGTLTouchStaticLib.a; sourceTree = "<group>"; };
 		209DE3D0168AD46000AD97ED /* DetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedViewController.h; sourceTree = "<group>"; };
 		209DE3D1168AD46000AD97ED /* DetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedViewController.m; sourceTree = "<group>"; };
 		209DE3D9168AF24400AD97ED /* tick-cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick-cross.png"; sourceTree = "<group>"; };
 		209DE3DB168AF5B500AD97ED /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
 		209DE3DD168AF76A00AD97ED /* index.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index.jpg; sourceTree = "<group>"; };
+		371A311A16C38B78001BFCF2 /* CalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarEvent.h; sourceTree = "<group>"; };
+		371A311B16C38B78001BFCF2 /* CalendarEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarEvent.m; sourceTree = "<group>"; };
 		830B4C9C1681C433001C743E /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		830B4C9D1681C433001C743E /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		8318BD7C16370F4C003E2B01 /* GTLCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLCalendar.h; sourceTree = "<group>"; };
@@ -260,7 +262,6 @@
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F9AA4BA51695B6030048C9B9 /* imeeticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon.png; path = ../imeeticon.png; sourceTree = "<group>"; };
 		F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon2x.png; path = ../imeeticon2x.png; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -575,6 +576,8 @@
 				830B4C9D1681C433001C743E /* SignInViewController.m */,
 				83AC4DB116281DE5000C60C9 /* Supporting Files */,
 				83AC4E1616281F24000C60C9 /* i-meeting-tests */,
+				371A311A16C38B78001BFCF2 /* CalendarEvent.h */,
+				371A311B16C38B78001BFCF2 /* CalendarEvent.m */,
 			);
 			path = "i-meeting";
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				83A7365A166A6DAB00DC5D61 /* SignInHandler.m in Sources */,
 				830B4C9E1681C433001C743E /* SignInViewController.m in Sources */,
 				209DE3D2168AD46000AD97ED /* DetailedViewController.m in Sources */,
+				371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,7 +918,6 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-
 				VALID_ARCHS = "armv7 i386 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

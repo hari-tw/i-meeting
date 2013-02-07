@@ -99,81 +99,34 @@
         
         newEvent.end = [GTLCalendarEventDateTime new];
         newEvent.end.dateTime = endTime;
-        [self busyFreeQuery:newEvent];
+        [self.spinner setHidden:FALSE];
+        [self.spinner startAnimating];
+        [self.spinner hidesWhenStopped];
+        [CalendarEvent busyFreeQuery:newEvent withMeetingRoom:self.meetingRoomId withCompletionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
+            // Callback
+            if (error != nil)
+            {
+                UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in saving the event in the calander." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alertErrorInQuery show];
+                NSLog(@"%@", error.description);
+            }
+            if (error == nil) {
+                [self.spinner stopAnimating];
+                [self.spinner setHidden:TRUE];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
     }
     else
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:validation delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
+    [self.spinner stopAnimating];
+    [self.spinner setHidden:TRUE];
     
 }
 
--(void)busyFreeQuery:(GTLCalendarEvent *)event
-{
-    [self.spinner setHidden:FALSE];
-    [self.spinner startAnimating];
-    [self.spinner hidesWhenStopped];
-    
-    GTLCalendarFreeBusyRequestItem *requestItem = [GTLCalendarFreeBusyRequestItem object];
-    requestItem.identifier = self.meetingRoomId;
-    GTLQueryCalendar *query1 = [GTLQueryCalendar queryForFreebusyQuery];
-    query1.items = [NSArray arrayWithObject:requestItem];
-    query1.timeMax = event.end.dateTime;
-    query1.timeMin = event.start.dateTime;
-    query1.fields = @"calendars";
-        
-    [[SignInHandler instance].calendarService executeQuery:query1 completionHandler:^(GTLServiceTicket *busyFreeTicket, id busyFreeObject, NSError *busyFreeError) {
-        // Callback
-        if (busyFreeError != nil){
-            UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in executing FreeBusyQuery." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alertErrorInQuery show];}
-
-        if (busyFreeError == nil) {
-            GTLCalendarFreeBusyResponse *response = busyFreeObject;
-            GTLCalendarFreeBusyResponseCalendars *responseCals = response.calendars;
-            NSDictionary *props = responseCals.additionalProperties;
-            
-            if(props == nil)
-            {
-                [self saveEvent:event];
-            }
-            else
-            {
-                [self.spinner stopAnimating];
-                [self.spinner setHidden:TRUE];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This time slot is already booked." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alert show];
-            }
-            
-        }
-    }];
-}
-
--(void)saveEvent:(GTLCalendarEvent *)event
-{
-    NSString *userName = [[SignInHandler instance] userEmail];
-    
-    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:event
-                                                                    calendarId:userName];
-    
-    [[SignInHandler instance].calendarService executeQuery:query
-                                         completionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
-                                             // Callback
-                                             if (error != nil)
-                                             {
-                                                 UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in saving the event in the calander." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                                                 [alertErrorInQuery show];
-                                                 NSLog(@"%@", error.description);
-                                             }
-                                             if (error == nil) {
-                                                 [self.spinner stopAnimating];
-                                                 [self.spinner setHidden:TRUE];
-                                                 [self.navigationController popViewControllerAnimated:YES];
-                                             }
-                                         }];
-    
-}
 
 -(NSString *)validateEventTitle:(NSString *)title Description:(NSString *)description StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate
 {

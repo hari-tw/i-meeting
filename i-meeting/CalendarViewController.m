@@ -95,28 +95,52 @@
         [self.navigationController popViewControllerAnimated:YES];
         return;
     }
-    else {
-        GTLCalendarEvents *events = (GTLCalendarEvents *)object;
-        self.eventsSummaries = events.items;
+
+    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
+    self.eventsSummaries = events.items;
+    NSString * quickBookText = @"This room is available. Quick Book?";
+    NSMutableArray * quickBookOptions = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    if(self.eventsSummaries.count == 0){
+        [label setHidden:FALSE];
+        label.textColor = [UIColor redColor];
+        label.frame = CGRectMake(5, 10, 320, 100);
+        label.backgroundColor = [UIColor clearColor];
+        label.numberOfLines = 0;
+        label.text = @"No scheduled meeting for next 48 hours.";
+        label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
+        [self.view addSubview:label];
+        [quickBookOptions addObject:@"Half Hour"];
+        [quickBookOptions addObject:@"One Hour"];
+        [quickBookOptions addObject:nil];
         
-        if(self.eventsSummaries.count == 0){
-            [label setHidden:FALSE];
-            label.textColor = [UIColor redColor];
-            label.frame = CGRectMake(5, 10, 320, 100);
-            label.backgroundColor = [UIColor clearColor];
-            label.numberOfLines = 0;
-            label.text = @"No scheduled meeting for next 48 hours.";
-            label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
-            [self.view addSubview:label];
-            
-        }else
-        {
-            [label setHidden:TRUE];
-            [self getEventsForEachSection];
-        }
-        [self.spinner stopAnimating];
     }
+    else {
+        [label setHidden:TRUE];
+        [self getEventsForEachSection];
+        NSDate *eventStart = ((GTLCalendarEventDateTime *)[[self.eventsSummaries objectAtIndex:0] valueForKey:@"start"]).dateTime.date;
+        double interval = [eventStart timeIntervalSinceNow];
+        if (interval >= 1800) {
+            [quickBookOptions addObject:@"Half Hour"];
+        }
+        
+        if (interval > 3600) {
+            [quickBookOptions addObject:@"One Hour"];
+        }
+    }
+    
+    
+    [self.spinner stopAnimating];
     [self.tableView reloadData];
+    
+    if (quickBookOptions.count > 0) {
+        UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:quickBookText delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Cancel" otherButtonTitles: nil];
+        for (NSString * title in quickBookOptions) {
+            [actionSheet addButtonWithTitle:title];
+        }
+        
+        [actionSheet showInView:self.view];
+    }
 }
 
 - (NSDateComponents *)calculateDateComponents:(NSDate *)date
@@ -293,6 +317,49 @@
 - (IBAction)signOut:(id)sender {
     [[SignInHandler instance] signOut];
     [self performSegueWithIdentifier:@"signOut" sender:self];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+        return;
+    GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
+    int interval = buttonIndex * 1800;
+    newEvent.summary = @"Quick booking this room";
+    newEvent.descriptionProperty = @"Booked using my iPhone";
+    newEvent.location = self.viewTitle;
+    GTLCalendarEventAttendee *attendee = [GTLCalendarEventAttendee new];
+    GTLCalendarEventAttendee *attendee1 = [GTLCalendarEventAttendee new];
+    attendee.email = self.calendarId;
+    attendee1.email = [[SignInHandler instance] userEmail];
+    attendee1.responseStatus = @"accepted";
+    newEvent.attendees = [NSArray arrayWithObjects:attendee,attendee1, nil];
+    GTLDateTime *endTime = [GTLDateTime dateTimeWithDate: [NSDate dateWithTimeIntervalSinceNow:interval] timeZone: [NSTimeZone systemTimeZone]];
+    GTLDateTime *startTime = [GTLDateTime dateTimeWithDate: [NSDate date] timeZone: [NSTimeZone systemTimeZone]];
+    
+    newEvent.start = [GTLCalendarEventDateTime new];
+    newEvent.start.dateTime = startTime;
+    
+    newEvent.end = [GTLCalendarEventDateTime new];
+    newEvent.end.dateTime = endTime;
+    [self.spinner setHidden:FALSE];
+    [self.spinner startAnimating];
+    [self.spinner hidesWhenStopped];
+    [CalendarEvent busyFreeQuery:newEvent withMeetingRoom:self.calendarId withCompletionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
+        // Callback
+        if (error != nil)
+        {
+            UIAlertView *alertErrorInQuery = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Problem in saving the event in the calander." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alertErrorInQuery show];
+            NSLog(@"%@", error.description);
+        }
+        if (error == nil) {
+            [self.spinner stopAnimating];
+            [self.spinner setHidden:TRUE];
+            [self displayCalendar];
+        }
+    }];
+
 }
 
 @end
