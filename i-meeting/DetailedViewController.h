@@ -13,6 +13,7 @@
     UILabel *dynamicLabel;
     CGSize previousLabelSize;
     NSArray *titleFontDetails;
+    NSArray *eventVenueFontDetails;
     NSArray *subTitleFontDetails;
     NSArray *textFontDetails;
     NSMutableArray *attendeesStatusAccepted;
