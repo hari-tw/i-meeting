@@ -112,8 +112,6 @@
         [self.view addSubview:label];
         [quickBookOptions addObject:@"Half Hour"];
         [quickBookOptions addObject:@"One Hour"];
-        [quickBookOptions addObject:nil];
-        
     }
     else {
         [label setHidden:TRUE];
