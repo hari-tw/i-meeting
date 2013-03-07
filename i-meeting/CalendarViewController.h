@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *currentDate;
 @property (strong, nonatomic) NSString *viewTitle;
 @property (strong, nonatomic) NSString *calendarId;
+@property (strong, nonatomic) NSString *room;
 
 -(void) createAddEventButtonDynamically;
 - (void)viewWillAppear:(BOOL)animated;

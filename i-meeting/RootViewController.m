@@ -35,6 +35,7 @@
     if ([segue.identifier isEqualToString:@"calendarSegue"]) {
         CalendarViewController *calendarViewController = segue.destinationViewController;
         calendarViewController.viewTitle = self.meetingRoomName;
+        calendarViewController.room = self.meetingRoomName;
         calendarViewController.calendarId = self.calendarId;
         [calendarViewController createAddEventButtonDynamically];
     }

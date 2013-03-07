@@ -516,7 +516,6 @@
 			children = (
 				E896DF0B1639732F00A596A4 /* Settings.bundle */,
 				83AC4DB016281DE5000C60C9 /* i-meeting */,
-				83AC4DA916281DE5000C60C9 /* Frameworks */,
 				83AC4DA716281DE5000C60C9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -550,6 +549,7 @@
 				83AC4DAE16281DE5000C60C9 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		83AC4DB016281DE5000C60C9 /* i-meeting */ = {
@@ -572,17 +572,18 @@
 				83AC4DD316281E3D000C60C9 /* QRCodeManager.h */,
 				83A9949B164419F9009CD997 /* QRCodeManager.m */,
 				209DE3D0168AD46000AD97ED /* DetailedViewController.h */,
+				371A311A16C38B78001BFCF2 /* CalendarEvent.h */,
 				209DE3D1168AD46000AD97ED /* DetailedViewController.m */,
 				83AC4DD516281E3D000C60C9 /* RootViewController.h */,
 				83AC4DD616281E3D000C60C9 /* RootViewController.m */,
 				83A7365B166A724C00DC5D61 /* SignInHandler.h */,
+				830B4C9D1681C433001C743E /* SignInViewController.m */,
+				371A311B16C38B78001BFCF2 /* CalendarEvent.m */,
 				83A73659166A6DAB00DC5D61 /* SignInHandler.m */,
 				830B4C9C1681C433001C743E /* SignInViewController.h */,
-				830B4C9D1681C433001C743E /* SignInViewController.m */,
+				83AC4DA916281DE5000C60C9 /* Frameworks */,
 				83AC4DB116281DE5000C60C9 /* Supporting Files */,
 				83AC4E1616281F24000C60C9 /* i-meeting-tests */,
-				371A311A16C38B78001BFCF2 /* CalendarEvent.h */,
-				371A311B16C38B78001BFCF2 /* CalendarEvent.m */,
 			);
 			path = "i-meeting";
 			sourceTree = "<group>";
@@ -790,7 +791,6 @@
 				209DE3D2168AD46000AD97ED /* DetailedViewController.m in Sources */,
 				371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */,
 				8361797216BA6F1800DEB869 /* GTLCalendarManager.m in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -83,8 +83,30 @@
     [[SignInHandler instance].calendarService executeQuery:query delegate:self didFinishSelector:@selector(didFinishQueryCalendar:finishedWithObject:error:)];
 }
 
+- (void)prepareQuickBookActionSheet:(double)interval
+{
+    NSString * quickBookText = @"This room is available. Quick Book?";
+    NSMutableArray * quickBookOptions = [[NSMutableArray alloc] initWithCapacity:2];
+    if (interval >= 1800) {
+        [quickBookOptions addObject:@"Half Hour"];
+    }
+    
+    if (interval > 3600) {
+        [quickBookOptions addObject:@"One Hour"];
+    }
+    if (quickBookOptions.count > 0) {
+        UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:quickBookText delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Cancel" otherButtonTitles: nil];
+        for (NSString * title in quickBookOptions) {
+            [actionSheet addButtonWithTitle:title];
+        }
+        
+        [actionSheet showInView:self.view];
+    }
+}
+
 - (void)didFinishQueryCalendar:(GTLServiceTicket *)ticket finishedWithObject:(GTLObject *)object error:(NSError *)error
 {
+    double interval;
     if (error)
     {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -98,8 +120,6 @@
 
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
-    NSString * quickBookText = @"This room is available. Quick Book?";
-    NSMutableArray * quickBookOptions = [[NSMutableArray alloc] initWithCapacity:2];
     
     if(self.eventsSummaries.count == 0){
         [label setHidden:FALSE];
@@ -110,37 +130,19 @@
         label.text = @"No scheduled meeting for next 48 hours.";
         label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
         [self.view addSubview:label];
-        [quickBookOptions addObject:@"Half Hour"];
-        [quickBookOptions addObject:@"One Hour"];
-        [quickBookOptions addObject:nil];
-        
+        interval = 48*3600;
     }
     else {
         [label setHidden:TRUE];
         [self getEventsForEachSection];
         NSDate *eventStart = ((GTLCalendarEventDateTime *)[[self.eventsSummaries objectAtIndex:0] valueForKey:@"start"]).dateTime.date;
-        double interval = [eventStart timeIntervalSinceNow];
-        if (interval >= 1800) {
-            [quickBookOptions addObject:@"Half Hour"];
-        }
-        
-        if (interval > 3600) {
-            [quickBookOptions addObject:@"One Hour"];
-        }
+        interval = [eventStart timeIntervalSinceNow];
     }
-    
     
     [self.spinner stopAnimating];
     [self.tableView reloadData];
     
-    if (quickBookOptions.count > 0) {
-        UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:quickBookText delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Cancel" otherButtonTitles: nil];
-        for (NSString * title in quickBookOptions) {
-            [actionSheet addButtonWithTitle:title];
-        }
-        
-        [actionSheet showInView:self.view];
-    }
+    if (self.room) [self prepareQuickBookActionSheet:interval];
 }
 
 - (NSDateComponents *)calculateDateComponents:(NSDate *)date
@@ -325,7 +327,7 @@
     int interval = buttonIndex * 1800;
     newEvent.summary = @"Quick booking this room";
     newEvent.descriptionProperty = @"Booked using my iPhone";
-    newEvent.location = self.viewTitle;
+    newEvent.location = self.room;
     GTLCalendarEventAttendee *attendee = [GTLCalendarEventAttendee new];
     GTLCalendarEventAttendee *attendee1 = [GTLCalendarEventAttendee new];
     attendee.email = self.calendarId;
