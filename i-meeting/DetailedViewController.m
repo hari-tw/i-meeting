@@ -24,7 +24,7 @@
     [super viewDidLoad];
     
     NSLog(@"%@", self.event);
-    previousLabelSize = CGSizeMake(320, 80);
+    previousLabelSize = CGSizeMake(290, 80);
     
     [self initializeFontSettings];
     [self getMeetingDetails];
@@ -35,9 +35,10 @@
 -(void)initializeFontSettings
 {
  
-    titleFontDetails = [NSArray arrayWithObjects:@"Helvetica-Bold",[NSNumber numberWithFloat:24.0],[UIColor colorWithRed:1.0 green:0.36 blue:0.2 alpha:1.0], nil];
+    titleFontDetails = [NSArray arrayWithObjects:@"Helvetica-Bold",[NSNumber numberWithFloat:20.0],[UIColor colorWithRed:1.0 green:0.36 blue:0.2 alpha:1.0], nil];
+    eventVenueFontDetails = [NSArray arrayWithObjects:@"Helvetica",[NSNumber numberWithFloat:15.0],[UIColor lightGrayColor], nil];
     subTitleFontDetails = [NSArray arrayWithObjects:@"Helvetica-Bold",[NSNumber numberWithFloat:17.0],[UIColor colorWithRed:1.0 green:0.36 blue:0.2 alpha:1.0], nil];
-    textFontDetails = [NSArray arrayWithObjects:@"Helvetica",[NSNumber numberWithFloat:15.0],[UIColor whiteColor], nil];
+    textFontDetails = [NSArray arrayWithObjects:@"Helvetica-Bold",[NSNumber numberWithFloat:15.0],[UIColor whiteColor], nil];
 }
 
 -(void) getMeetingDetails
@@ -49,17 +50,17 @@
     NSString *description = [self getDescriptionOfEvent];
 
     [self createLabel:eventName withFontDetails:titleFontDetails];
-    [self createLabel:location withFontDetails:textFontDetails];
+    [self createLabel:location withFontDetails:eventVenueFontDetails];
     [self createLabel:dateTime withFontDetails:textFontDetails];
     [self createLine];
     
-    [self createLabel:@"Invitation From : " withFontDetails:subTitleFontDetails];
+    [self createLabel:@"Invitation from" withFontDetails:subTitleFontDetails];
     [self createLabel:organiserName withFontDetails:textFontDetails];
     [self createLine];
     
     [self createAttendeesList];
     
-    [self createLabel:@"Notes : " withFontDetails:subTitleFontDetails];
+    [self createLabel:@"Notes" withFontDetails:subTitleFontDetails];
     [self createLabel:description withFontDetails:textFontDetails];
     
     self.scrollView.contentSize = CGSizeMake(previousLabelSize.width,previousLabelSize.height);
@@ -72,11 +73,12 @@
     NSDate *eventStart = ((GTLCalendarEventDateTime *)[self.event valueForKey:@"start"]).dateTime.date;
     NSDate *eventEnd = ((GTLCalendarEventDateTime *)[self.event valueForKey:@"end"]).dateTime.date;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEE, dd-MM-yyyy, HH:mm"];
-    NSString *start =[dateFormatter stringFromDate:eventStart];
+    [dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy"];
+    NSString *day =[dateFormatter stringFromDate:eventStart];
     [dateFormatter setDateFormat:@"HH:mm"];
+    NSString *start =[dateFormatter stringFromDate:eventStart];
     NSString *end =[dateFormatter stringFromDate:eventEnd];
-    NSString *dateTime = [NSString stringWithFormat:@"%@ - %@",start , end];
+    NSString *dateTime = [NSString stringWithFormat:@"%@\nFrom %@ to %@", day, start, end];
     return dateTime;
 }
 
@@ -98,7 +100,7 @@
     dynamicLabel.font = [UIFont fontWithName:fontSettings[0] size:[fontSettings[1] floatValue]];
     dynamicLabel.textColor = fontSettings[2];
        
-    dynamicLabel.frame = CGRectMake(0, previousLabelSize.height, 310, (previousLabelSize.height + 400));
+    dynamicLabel.frame = CGRectMake(0, previousLabelSize.height, previousLabelSize.width, (previousLabelSize.height + 400));
     [dynamicLabel setText:textContent];
     [dynamicLabel sizeToFit];
     previousLabelSize.height = previousLabelSize.height + dynamicLabel.frame.size.height + 5;
@@ -108,7 +110,7 @@
 
 -(void)createLine
 {
-    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, previousLabelSize.height, 320, 1)];
+    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, previousLabelSize.height, previousLabelSize.width, 1)];
     line.backgroundColor = [UIColor whiteColor];
     [self.scrollView addSubview:line];
     previousLabelSize.height += 1;
@@ -149,10 +151,10 @@
         }
     }
     
-    [self displayAttendeesListFor:attendeesStatusAccepted withStatus:@"Accepted :"];
-    [self displayAttendeesListFor:attendeesStatusTentative withStatus:@"MayBe :"];
-    [self displayAttendeesListFor:attendeesStatusDeclined withStatus:@"Declined :"];
-    [self displayAttendeesListFor:attendeesStatusNoReply withStatus:@"No Reply :"];
+    [self displayAttendeesListFor:attendeesStatusAccepted withStatus:@"Accepted"];
+    [self displayAttendeesListFor:attendeesStatusTentative withStatus:@"Maybe"];
+    [self displayAttendeesListFor:attendeesStatusDeclined withStatus:@"Declined"];
+    [self displayAttendeesListFor:attendeesStatusNoReply withStatus:@"No Reply"];
     
 }
 
