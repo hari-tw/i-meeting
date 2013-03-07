@@ -9,6 +9,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (strong, nonatomic) NSString *meetingRoomId;
 @property (strong, nonatomic) NSString *meetingRoomName;
+@property (strong, nonatomic) IBOutlet UILabel *roomName;
 @property (strong, nonatomic) NSString *calendarId;
 @property (strong, nonatomic) id event;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;

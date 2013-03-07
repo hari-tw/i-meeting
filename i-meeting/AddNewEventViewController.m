@@ -15,6 +15,7 @@
     NSDate *minDate = [NSDate date];
     NSDate *maxDate = [[NSDate alloc] initWithTimeIntervalSinceNow:60*60*48];
     
+    self.roomName.text = self.meetingRoomName;
     self.datePicker.minimumDate = minDate;
     self.datePicker.maximumDate = maxDate;
     [super viewDidLoad];
