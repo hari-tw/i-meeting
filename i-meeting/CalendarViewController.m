@@ -50,6 +50,18 @@
     [self populateTableViewWithData:eventsForToday andSectionHeader:[dateFormatter stringFromDate:now]];
     [self populateTableViewWithData:eventsForTomorrow andSectionHeader:[dateFormatter stringFromDate:tomorrow]];
     [self populateTableViewWithData:eventsForDayAfterTomorrow andSectionHeader:[dateFormatter stringFromDate:dayAfterTomorrow]];
+    if([dataArray count] == 0) {
+        [label setHidden:FALSE];
+        label.textColor = [UIColor redColor];
+        label.frame = CGRectMake(5, 10, 320, 100);
+        label.backgroundColor = [UIColor clearColor];
+        label.numberOfLines = 0;
+        label.text = @"No scheduled meeting for next 48 hours.";
+        label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
+        [self.view addSubview:label];
+    } else {
+        [label setHidden:TRUE];
+    }
 }
 
 - (void)populateTableViewWithData:(NSMutableArray *)events andSectionHeader:(NSString *)sectionHeader
@@ -121,19 +133,12 @@
     GTLCalendarEvents *events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
     
-    if(self.eventsSummaries.count == 0){
-        [label setHidden:FALSE];
-        label.textColor = [UIColor redColor];
-        label.frame = CGRectMake(5, 10, 320, 100);
-        label.backgroundColor = [UIColor clearColor];
-        label.numberOfLines = 0;
-        label.text = @"No scheduled meeting for next 48 hours.";
-        label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
-        [self.view addSubview:label];
+    if(self.eventsSummaries.count == 0)
+    {
         interval = 48*3600;
     }
-    else {
-        [label setHidden:TRUE];
+    else
+    {
         [self getEventsForEachSection];
         NSDate *eventStart = ((GTLCalendarEventDateTime *)[[self.eventsSummaries objectAtIndex:0] valueForKey:@"start"]).dateTime.date;
         interval = [eventStart timeIntervalSinceNow];
