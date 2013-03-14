@@ -91,6 +91,10 @@
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
 		F9AA4BA61695B6030048C9B9 /* imeeticon.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA51695B6030048C9B9 /* imeeticon.png */; };
 		F9AA4BA91695B60A0048C9B9 /* imeeticon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */; };
+		F9F8F5D116F1E20B00EFDACE /* CalendarResourceRetreiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5D016F1E20B00EFDACE /* CalendarResourceRetreiver.m */; };
+		F9F8F5D216F1E20B00EFDACE /* CalendarResourceRetreiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5D016F1E20B00EFDACE /* CalendarResourceRetreiver.m */; };
+		F9F8F5DB16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5DA16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m */; };
+		F9F8F5DC16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5DA16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -265,6 +269,10 @@
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F9AA4BA51695B6030048C9B9 /* imeeticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon.png; path = ../imeeticon.png; sourceTree = "<group>"; };
 		F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon2x.png; path = ../imeeticon2x.png; sourceTree = "<group>"; };
+		F9F8F5CF16F1E20B00EFDACE /* CalendarResourceRetreiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarResourceRetreiver.h; sourceTree = "<group>"; };
+		F9F8F5D016F1E20B00EFDACE /* CalendarResourceRetreiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarResourceRetreiver.m; sourceTree = "<group>"; };
+		F9F8F5D916F1ECCB00EFDACE /* GTLClientLoginAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLClientLoginAuthentication.h; path = ../GTLClientLoginAuthentication.h; sourceTree = "<group>"; };
+		F9F8F5DA16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLClientLoginAuthentication.m; path = ../GTLClientLoginAuthentication.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,9 +589,13 @@
 				371A311B16C38B78001BFCF2 /* CalendarEvent.m */,
 				83A73659166A6DAB00DC5D61 /* SignInHandler.m */,
 				830B4C9C1681C433001C743E /* SignInViewController.h */,
+				F9F8F5D916F1ECCB00EFDACE /* GTLClientLoginAuthentication.h */,
+				F9F8F5DA16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m */,
 				83AC4DA916281DE5000C60C9 /* Frameworks */,
 				83AC4DB116281DE5000C60C9 /* Supporting Files */,
 				83AC4E1616281F24000C60C9 /* i-meeting-tests */,
+				F9F8F5CF16F1E20B00EFDACE /* CalendarResourceRetreiver.h */,
+				F9F8F5D016F1E20B00EFDACE /* CalendarResourceRetreiver.m */,
 			);
 			path = "i-meeting";
 			sourceTree = "<group>";
@@ -791,6 +803,8 @@
 				209DE3D2168AD46000AD97ED /* DetailedViewController.m in Sources */,
 				371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */,
 				8361797216BA6F1800DEB869 /* GTLCalendarManager.m in Sources */,
+				F9F8F5D116F1E20B00EFDACE /* CalendarResourceRetreiver.m in Sources */,
+				F9F8F5DB16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,6 +815,8 @@
 				836F9FC516493486009E61AD /* QRCodeManager.m in Sources */,
 				83AC4E1D16281F24000C60C9 /* main.m in Sources */,
 				83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */,
+				F9F8F5D216F1E20B00EFDACE /* CalendarResourceRetreiver.m in Sources */,
+				F9F8F5DC16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
