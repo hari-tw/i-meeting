@@ -10,10 +10,18 @@
 #import <QuartzCore/CALayer.h>
 
 @interface CalendarViewController ()
+@property (strong, nonatomic) CalendarEvent *calendarEvent;
+
 @end
 
-@implementation CalendarViewController
 
+@implementation CalendarViewController
+@synthesize calendarEvent = _calendarEvent;
+
+- (CalendarEvent *) calendarEvent {
+    if(_calendarEvent == nil) _calendarEvent = [[CalendarEvent alloc] init];
+    return _calendarEvent;
+}
 @synthesize eventsSummaries;
 - (void)viewDidLoad
 {
@@ -29,6 +37,19 @@
 {
     [super viewWillAppear:YES];
     [self displayCalendar];
+}
+
+- (void)showNoEventsLabel
+{
+    [self.tableView reloadData];
+    [label setHidden:FALSE];
+    label.textColor = [UIColor redColor];
+    label.frame = CGRectMake(5, 10, 320, 100);
+    label.backgroundColor = [UIColor clearColor];
+    label.numberOfLines = 0;
+    label.text = @"No scheduled meeting for next 48 hours.";
+    label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
+    [self.view addSubview:label];
 }
 
 - (void)getEventsForEachSection
@@ -51,24 +72,17 @@
     [self populateTableViewWithData:eventsForTomorrow andSectionHeader:[dateFormatter stringFromDate:tomorrow]];
     [self populateTableViewWithData:eventsForDayAfterTomorrow andSectionHeader:[dateFormatter stringFromDate:dayAfterTomorrow]];
     if([dataArray count] == 0) {
-        [label setHidden:FALSE];
-        label.textColor = [UIColor redColor];
-        label.frame = CGRectMake(5, 10, 320, 100);
-        label.backgroundColor = [UIColor clearColor];
-        label.numberOfLines = 0;
-        label.text = @"No scheduled meeting for next 48 hours.";
-        label.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
-        [self.view addSubview:label];
+        [self showNoEventsLabel];
     } else {
         [label setHidden:TRUE];
     }
 }
 
-- (void)populateTableViewWithData:(NSMutableArray *)events andSectionHeader:(NSString *)sectionHeader
+- (void)populateTableViewWithData:(NSMutableArray *)calendarEvents andSectionHeader:(NSString *)sectionHeader
 {
-    if (events.count <= 0) return;
+    if (calendarEvents.count <= 0) return;
     
-    [dataArray addObject:[NSDictionary dictionaryWithObject:events forKey:@"data"]];
+    [dataArray addObject:[NSDictionary dictionaryWithObject:calendarEvents forKey:@"data"]];
     [sectionHeaders addObject:sectionHeader];
 }
 
@@ -130,12 +144,14 @@
         return;
     }
 
-    GTLCalendarEvents *events = (GTLCalendarEvents *)object;
+    events = (GTLCalendarEvents *)object;
     self.eventsSummaries = events.items;
     
     if(self.eventsSummaries.count == 0)
     {
         interval = 48*3600;
+        [dataArray removeAllObjects];
+        [self showNoEventsLabel];
     }
     else
     {
@@ -298,6 +314,7 @@
         AddNewEventViewController *addNewEventViewController = segue.destinationViewController;
         addNewEventViewController.meetingRoomId = self.calendarId;
         addNewEventViewController.meetingRoomName = self.viewTitle;
+        addNewEventViewController.meetingRoomLocation = events.summary;
     }
     if ([segue.identifier isEqualToString:@"detailedView"]) {
         DetailedViewController *detailedViewController = segue.destinationViewController;
@@ -350,7 +367,7 @@
     [self.spinner setHidden:FALSE];
     [self.spinner startAnimating];
     [self.spinner hidesWhenStopped];
-    [CalendarEvent busyFreeQuery:newEvent withMeetingRoom:self.calendarId withCompletionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
+    [self.calendarEvent busyFreeQuery:newEvent withController:self withMeetingRoom:self.calendarId withCompletionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
         // Callback
         if (error != nil)
         {
@@ -362,6 +379,7 @@
             [self.spinner stopAnimating];
             [self.spinner setHidden:TRUE];
             [self displayCalendar];
+            [self.tableView reloadData];
         }
     }];
 

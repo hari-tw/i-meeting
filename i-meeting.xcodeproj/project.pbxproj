@@ -87,7 +87,9 @@
 		83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E337A21640371B00BD3E90 /* CalendarCell.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 		A7B269C21696A67100D58074 /* delete button.png in Resources */ = {isa = PBXBuildFile; fileRef = A7B269C11696A67100D58074 /* delete button.png */; };
+		AF06117316EE0CDA00ADF961 /* AvailableRoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF06117216EE0CDA00ADF961 /* AvailableRoomsViewController.m */; };
 		AF63A8C61695AA92004A14CF /* DarkGreyButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */; };
+		AF6E219116EF458C005210BA /* rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = AF6E219016EF458C005210BA /* rooms.json */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
 		F9AA4BA61695B6030048C9B9 /* imeeticon.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA51695B6030048C9B9 /* imeeticon.png */; };
 		F9AA4BA91695B60A0048C9B9 /* imeeticon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */; };
@@ -265,7 +267,10 @@
 		9B11225C162DA88900723640 /* AddNewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewEventViewController.h; sourceTree = "<group>"; };
 		9B11225D162DA88900723640 /* AddNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewEventViewController.m; sourceTree = "<group>"; };
 		A7B269C11696A67100D58074 /* delete button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete button.png"; sourceTree = "<group>"; };
+		AF06117116EE0CD900ADF961 /* AvailableRoomsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableRoomsViewController.h; sourceTree = "<group>"; };
+		AF06117216EE0CDA00ADF961 /* AvailableRoomsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableRoomsViewController.m; sourceTree = "<group>"; };
 		AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DarkGreyButton.jpg; sourceTree = "<group>"; };
+		AF6E219016EF458C005210BA /* rooms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rooms.json; sourceTree = "<group>"; };
 		E896DF0B1639732F00A596A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F9AA4BA51695B6030048C9B9 /* imeeticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon.png; path = ../imeeticon.png; sourceTree = "<group>"; };
 		F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imeeticon2x.png; path = ../imeeticon2x.png; sourceTree = "<group>"; };
@@ -581,12 +586,14 @@
 				83A9949B164419F9009CD997 /* QRCodeManager.m */,
 				209DE3D0168AD46000AD97ED /* DetailedViewController.h */,
 				371A311A16C38B78001BFCF2 /* CalendarEvent.h */,
+				371A311B16C38B78001BFCF2 /* CalendarEvent.m */,
 				209DE3D1168AD46000AD97ED /* DetailedViewController.m */,
 				83AC4DD516281E3D000C60C9 /* RootViewController.h */,
 				83AC4DD616281E3D000C60C9 /* RootViewController.m */,
+				AF06117116EE0CD900ADF961 /* AvailableRoomsViewController.h */,
+				AF06117216EE0CDA00ADF961 /* AvailableRoomsViewController.m */,
 				83A7365B166A724C00DC5D61 /* SignInHandler.h */,
 				830B4C9D1681C433001C743E /* SignInViewController.m */,
-				371A311B16C38B78001BFCF2 /* CalendarEvent.m */,
 				83A73659166A6DAB00DC5D61 /* SignInHandler.m */,
 				830B4C9C1681C433001C743E /* SignInViewController.h */,
 				F9F8F5D916F1ECCB00EFDACE /* GTLClientLoginAuthentication.h */,
@@ -603,6 +610,7 @@
 		83AC4DB116281DE5000C60C9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AF6E219016EF458C005210BA /* rooms.json */,
 				83A9949D16441AAA009CD997 /* Images */,
 				83AC4DB216281DE5000C60C9 /* i-meeting-Info.plist */,
 				83AC4DB316281DE5000C60C9 /* InfoPlist.strings */,
@@ -730,6 +738,7 @@
 				F9AA4BA61695B6030048C9B9 /* imeeticon.png in Resources */,
 				F9AA4BA91695B60A0048C9B9 /* imeeticon2x.png in Resources */,
 				A7B269C21696A67100D58074 /* delete button.png in Resources */,
+				AF6E219116EF458C005210BA /* rooms.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +814,7 @@
 				8361797216BA6F1800DEB869 /* GTLCalendarManager.m in Sources */,
 				F9F8F5D116F1E20B00EFDACE /* CalendarResourceRetreiver.m in Sources */,
 				F9F8F5DB16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m in Sources */,
+				AF06117316EE0CDA00ADF961 /* AvailableRoomsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

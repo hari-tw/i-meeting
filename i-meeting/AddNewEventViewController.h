@@ -1,4 +1,3 @@
-#import <UIKit/UIKit.h>
 #import "SignInHandler.h"
 #import "CalendarEvent.h"
 
@@ -9,10 +8,13 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (strong, nonatomic) NSString *meetingRoomId;
 @property (strong, nonatomic) NSString *meetingRoomName;
+@property (strong, nonatomic) NSString *meetingRoomLocation;
 @property (strong, nonatomic) IBOutlet UILabel *roomName;
 @property (strong, nonatomic) NSString *calendarId;
 @property (strong, nonatomic) id event;
+@property (strong, nonatomic) GTLCalendarEvent *newEvent;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
 
 - (IBAction)bookButton:(id)sender;
 - (IBAction)datePicked:(UIDatePicker *)sender;

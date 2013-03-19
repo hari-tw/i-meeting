@@ -1,14 +1,7 @@
-//
-//  CalendarEvent.m
-//  i-meeting
-//
-//  Created by Anuj Jamwal on 07/02/13.
-//  Copyright (c) 2013 ThoughtWorks Technologies (India) Pvt. Ltd. All rights reserved.
-//
-
 #import "CalendarEvent.h"
 
 @implementation CalendarEvent
+id controller_id = nil;
 
 + (void)saveEvent:(GTLCalendarEvent *)event withCompletionHandler:(id)completionHandler
 {
@@ -23,8 +16,9 @@
 }
 
 
-+ (void)busyFreeQuery:(GTLCalendarEvent *)event withMeetingRoom:(NSString *)meetingRoomId withCompletionHandler:(id)completionHandler
+- (void)busyFreeQuery:(GTLCalendarEvent *)event withController:(id)controller withMeetingRoom:(NSString *)meetingRoomId withCompletionHandler:(id)completionHandler 
 {
+    controller_id = controller;
     GTLCalendarFreeBusyRequestItem *requestItem = [GTLCalendarFreeBusyRequestItem object];
     requestItem.identifier = meetingRoomId;
     GTLQueryCalendar *query1 = [GTLQueryCalendar queryForFreebusyQuery];
@@ -50,12 +44,30 @@
             }
             else
             {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This time slot is already booked." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                UIAlertView *alert = [[UIAlertView alloc] init];
+                [alert setTitle:@"Message"];
+                [alert setMessage:@"This time slot is already booked. Would you like to book another room?"];
+                [alert setDelegate:self];
+                [alert addButtonWithTitle:@"Yes"];
+                [alert addButtonWithTitle:@"No"];
                 [alert show];
             }
             
         }
     }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 0)
+	{
+        [controller_id performSegueWithIdentifier:@"availableRooms" sender:controller_id];
+    }
+	else if (buttonIndex == 1)
+	{
+        NSLog(@"This is a test log for the alert view");
+
+	}
 }
 
 

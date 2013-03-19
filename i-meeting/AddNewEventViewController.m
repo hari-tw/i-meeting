@@ -7,8 +7,23 @@
 #import "DateTimeUtility.h"
 #import "CalendarViewController.h"
 #import "GTLCalendarManager.h"
+#import "CalendarEvent.h"
+#import "AvailableRoomsViewController.h"
 
+@interface AddNewEventViewController()
+@property (strong, nonatomic) CalendarEvent *calendarEvent;
+@end
 @implementation AddNewEventViewController
+@synthesize calendarEvent = _calendarEvent;
+@synthesize newEvent = _newEvent;
+-(GTLCalendarEvent *)newEvent
+{
+    return _newEvent;
+}
+- (CalendarEvent *) calendarEvent {
+    if(_calendarEvent == nil) _calendarEvent = [[CalendarEvent alloc] init];
+    return _calendarEvent;
+}
 
 - (void)viewDidLoad
 {
@@ -81,29 +96,29 @@
     
     if([validation isEqualToString:@""])
     {
-        GTLCalendarEvent *newEvent = [GTLCalendarEvent new];
+        self.newEvent = [GTLCalendarEvent new];
         
-        newEvent.summary = self.subjectField.text;
-        newEvent.descriptionProperty = self.descriptionField.text;
-        newEvent.location = self.meetingRoomName;
+        self.newEvent.summary = self.subjectField.text;
+        self.newEvent.descriptionProperty = self.descriptionField.text;
+        self.newEvent.location = self.meetingRoomName;
         GTLCalendarEventAttendee *attendee = [GTLCalendarEventAttendee new];
         GTLCalendarEventAttendee *attendee1 = [GTLCalendarEventAttendee new];
         attendee.email = self.meetingRoomId;
         attendee1.email = [[SignInHandler instance] userEmail];
         attendee1.responseStatus = @"accepted";
-        newEvent.attendees = [NSArray arrayWithObjects:attendee,attendee1, nil];
+        self.newEvent.attendees = [NSArray arrayWithObjects:attendee,attendee1, nil];
         GTLDateTime *endTime = [GTLDateTime dateTimeWithDate: eDate timeZone: [NSTimeZone systemTimeZone]];
         GTLDateTime *startTime = [GTLDateTime dateTimeWithDate: sDate timeZone: [NSTimeZone systemTimeZone]];
         
-        newEvent.start = [GTLCalendarEventDateTime new];
-        newEvent.start.dateTime = startTime;
+        self.newEvent.start = [GTLCalendarEventDateTime new];
+        self.newEvent.start.dateTime = startTime;
         
-        newEvent.end = [GTLCalendarEventDateTime new];
-        newEvent.end.dateTime = endTime;
+        self.newEvent.end = [GTLCalendarEventDateTime new];
+        self.newEvent.end.dateTime = endTime;
         [self.spinner setHidden:FALSE];
         [self.spinner startAnimating];
         [self.spinner hidesWhenStopped];
-        [CalendarEvent busyFreeQuery:newEvent withMeetingRoom:self.meetingRoomId withCompletionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
+        [self.calendarEvent busyFreeQuery:self.newEvent withController:self withMeetingRoom:self.meetingRoomId withCompletionHandler:^(GTLServiceTicket *ticket, id eventId, NSError *error) {
             // Callback
             if (error != nil)
             {
@@ -147,5 +162,14 @@
     [self setSubjectField:nil];
     [self setDescriptionField:nil];
     [super viewDidUnload];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"availableRooms"]) {
+        AvailableRoomsViewController *availableRoomsViewController = segue.destinationViewController;
+        availableRoomsViewController.meetingRoomLocation = self.meetingRoomLocation;
+        availableRoomsViewController.newEventToBeCreated = self.newEvent;
+    }
 }
 @end

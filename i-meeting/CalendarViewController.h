@@ -12,6 +12,7 @@
     NSMutableArray *eventsForDayAfterTomorrow;
     id event;
     UILabel *label;
+    GTLCalendarEvents *events;
 }
 
 @property (nonatomic) NSArray *eventsSummaries;

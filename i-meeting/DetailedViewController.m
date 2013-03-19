@@ -45,7 +45,7 @@
 {
     NSString *eventName = ((GTLCalendarEvent *)self.event).summary;
     NSString *dateTime= [self getDateAndTimeOfEvent];
-    NSString *location= ((GTLCalendarEvent *)self.event).location;;
+    NSString *location= ((GTLCalendarEvent *)self.event).location;
     NSString *organiserName = ((GTLCalendarEvent *)self.event).organizer.displayName;
     NSString *description = [self getDescriptionOfEvent];
 
