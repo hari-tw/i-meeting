@@ -87,15 +87,15 @@
 		83E337A31640371B00BD3E90 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E337A21640371B00BD3E90 /* CalendarCell.m */; };
 		9B11225E162DA88900723640 /* AddNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11225D162DA88900723640 /* AddNewEventViewController.m */; };
 		A7B269C21696A67100D58074 /* delete button.png in Resources */ = {isa = PBXBuildFile; fileRef = A7B269C11696A67100D58074 /* delete button.png */; };
-		AF06117316EE0CDA00ADF961 /* AvailableRoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF06117216EE0CDA00ADF961 /* AvailableRoomsViewController.m */; };
+		AF35B51516F87A0A00ABCF09 /* AvailableRoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF06117216EE0CDA00ADF961 /* AvailableRoomsViewController.m */; };
+		AF35B51716F87A2F00ABCF09 /* GTLClientLoginAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5DA16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m */; };
+		AF35B51816F87A3600ABCF09 /* CalendarResourceRetreiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5D016F1E20B00EFDACE /* CalendarResourceRetreiver.m */; };
 		AF63A8C61695AA92004A14CF /* DarkGreyButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF63A8C51695AA92004A14CF /* DarkGreyButton.jpg */; };
 		AF6E219116EF458C005210BA /* rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = AF6E219016EF458C005210BA /* rooms.json */; };
 		E896DF0C1639732F00A596A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E896DF0B1639732F00A596A4 /* Settings.bundle */; };
 		F9AA4BA61695B6030048C9B9 /* imeeticon.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA51695B6030048C9B9 /* imeeticon.png */; };
 		F9AA4BA91695B60A0048C9B9 /* imeeticon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BA81695B60A0048C9B9 /* imeeticon2x.png */; };
-		F9F8F5D116F1E20B00EFDACE /* CalendarResourceRetreiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5D016F1E20B00EFDACE /* CalendarResourceRetreiver.m */; };
 		F9F8F5D216F1E20B00EFDACE /* CalendarResourceRetreiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5D016F1E20B00EFDACE /* CalendarResourceRetreiver.m */; };
-		F9F8F5DB16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5DA16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m */; };
 		F9F8F5DC16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F8F5DA16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m */; };
 /* End PBXBuildFile section */
 
@@ -776,6 +776,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF35B51816F87A3600ABCF09 /* CalendarResourceRetreiver.m in Sources */,
+				AF35B51716F87A2F00ABCF09 /* GTLClientLoginAuthentication.m in Sources */,
+				AF35B51516F87A0A00ABCF09 /* AvailableRoomsViewController.m in Sources */,
 				8318BE4116371CD2003E2B01 /* GTLCalendarAcl.m in Sources */,
 				8318BE4216371CD2003E2B01 /* GTLCalendarAclRule.m in Sources */,
 				8318BE4316371CD2003E2B01 /* GTLCalendarCalendar.m in Sources */,
@@ -812,9 +815,6 @@
 				209DE3D2168AD46000AD97ED /* DetailedViewController.m in Sources */,
 				371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */,
 				8361797216BA6F1800DEB869 /* GTLCalendarManager.m in Sources */,
-				F9F8F5D116F1E20B00EFDACE /* CalendarResourceRetreiver.m in Sources */,
-				F9F8F5DB16F1ECCB00EFDACE /* GTLClientLoginAuthentication.m in Sources */,
-				AF06117316EE0CDA00ADF961 /* AvailableRoomsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
