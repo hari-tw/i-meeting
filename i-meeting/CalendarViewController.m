@@ -126,7 +126,7 @@
             [actionSheet addButtonWithTitle:title];
         }
         
-        [actionSheet showInView:self.view];
+        [actionSheet showFromTabBar:self.tabBarController.tabBar];
     }
 }
 
