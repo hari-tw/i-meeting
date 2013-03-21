@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		209DE3D2168AD46000AD97ED /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209DE3D1168AD46000AD97ED /* DetailedViewController.m */; };
-		209DE3DA168AF24400AD97ED /* tick-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 209DE3D9168AF24400AD97ED /* tick-cross.png */; };
 		209DE3DC168AF5B500AD97ED /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 209DE3DB168AF5B500AD97ED /* images.jpg */; };
 		209DE3DE168AF76A00AD97ED /* index.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 209DE3DD168AF76A00AD97ED /* index.jpg */; };
 		371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 371A311B16C38B78001BFCF2 /* CalendarEvent.m */; };
@@ -102,7 +101,6 @@
 /* Begin PBXFileReference section */
 		209DE3D0168AD46000AD97ED /* DetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedViewController.h; sourceTree = "<group>"; };
 		209DE3D1168AD46000AD97ED /* DetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedViewController.m; sourceTree = "<group>"; };
-		209DE3D9168AF24400AD97ED /* tick-cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick-cross.png"; sourceTree = "<group>"; };
 		209DE3DB168AF5B500AD97ED /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
 		209DE3DD168AF76A00AD97ED /* index.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index.jpg; sourceTree = "<group>"; };
 		371A311A16C38B78001BFCF2 /* CalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarEvent.h; sourceTree = "<group>"; };
@@ -513,7 +511,6 @@
 				83A9949F16441AE2009CD997 /* profile.png */,
 				83A994A016441AE2009CD997 /* rooms unselected.png */,
 				209DE3DD168AF76A00AD97ED /* index.jpg */,
-				209DE3D9168AF24400AD97ED /* tick-cross.png */,
 				83A994A116441AE2009CD997 /* rooms.png */,
 				83A994A416441AE2009CD997 /* settings selected.png */,
 				83A994A516441AE2009CD997 /* settings.png */,
@@ -731,7 +728,6 @@
 				833FCAC7167E1AE5009CC996 /* zbar-help.html in Resources */,
 				833FCAC8167E1AE5009CC996 /* zbar-helpicons.png in Resources */,
 				833FCAC9167E1AE5009CC996 /* zbar-samples.png in Resources */,
-				209DE3DA168AF24400AD97ED /* tick-cross.png in Resources */,
 				209DE3DC168AF5B500AD97ED /* images.jpg in Resources */,
 				209DE3DE168AF76A00AD97ED /* index.jpg in Resources */,
 				AF63A8C61695AA92004A14CF /* DarkGreyButton.jpg in Resources */,
