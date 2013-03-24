@@ -1,5 +1,4 @@
 #import "CalendarEvent.h"
-
 #import "AvailableRoomsViewController.h"
 #import "CalendarViewController.h"
 #import "AppDelegate.h"
@@ -83,6 +82,7 @@
         }
     }];
 }
+
 -(void)getAllRooms
 {
     NSString *key = [self keyForTheMeetingRoom];
@@ -99,11 +99,8 @@
             NSString *roomId = [room objectForKey:@"id"];
             NSString *roomName = [room objectForKey:@"name"];
             [self freeBusyQuery:roomId roomName:roomName];
-            
         }
-        
     }
-
 }
 
 -(NSString *)keyForTheMeetingRoom
@@ -170,6 +167,5 @@
         [tabController setSelectedIndex:1];
     }
 }
-
 
 @end
