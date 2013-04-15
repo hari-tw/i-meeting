@@ -142,7 +142,6 @@
                 [self.freeRooms addObject:availableRoom];
                 self.freeRoomMessage.text = @"Please select a room";
                 [self.tableView reloadData];
-                NSLog(@"Hello");
             }
         }
         if (iterator == queryCount ) {
