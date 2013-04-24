@@ -47,6 +47,10 @@
     NSString *dateTime= [self getDateAndTimeOfEvent];
     NSString *location= ((GTLCalendarEvent *)self.event).location;
     NSString *organiserName = ((GTLCalendarEvent *)self.event).organizer.displayName;
+    if(organiserName == nil)
+    {
+        organiserName = ((GTLCalendarEvent *)self.event).organizer.email;
+    }
     NSString *description = [self getDescriptionOfEvent];
 
     [self createLabel:eventName withFontDetails:titleFontDetails];
@@ -129,6 +133,10 @@
     for (int i=0; i<attendees.count; i++)
     {
         NSString *name = [attendees[i] valueForKey:@"displayName"];
+        if(name == nil)
+        {
+            name = [attendees[i] valueForKey:@"email"];
+        }
         NSString *responseStatus = [attendees[i] valueForKey:@"responseStatus"];
         NSString *organizer = [attendees[i] valueForKey:@"organizer"];
         NSString *resource = [attendees[i] valueForKey:@"resource"];

@@ -283,7 +283,14 @@
     cell.titleLabel.text = [event valueForKey:@"summary"];
     cell.timingsLabel.text = [NSString stringWithFormat:@"%@ - %@", eventStartTime, eventEndTime];
     NSArray *organiser = [event valueForKey:@"organizer"];
+    if([[organiser valueForKey:@"displayName"] length] == 0)
+    {
+        cell.organizerLabel.text = [@"Organizer: " stringByAppendingString:[organiser valueForKey:@"email"]];
+    }
+    else
+    {
     cell.organizerLabel.text = [@"Organizer: " stringByAppendingString:[organiser valueForKey:@"displayName"]];
+    }
     NSString *emailOfOrganiser = [organiser valueForKey:@"email"];
     NSString *gmailId = self.calendarId ? self.calendarId : [SignInHandler instance].userEmail;
     if ([emailOfOrganiser isEqualToString:gmailId]) {
