@@ -17,3 +17,4 @@ profile
 *.moved-aside
 .DS_Store
 tmp/*
+.idea/
