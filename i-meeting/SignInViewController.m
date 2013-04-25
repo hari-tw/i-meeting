@@ -14,8 +14,8 @@
 @synthesize isSignedIn = _isSignedIn;
 @synthesize authToken = _authToken;
 
-static NSString *kMyClientID = @"918644537696.apps.googleusercontent.com";
-static NSString *kMyClientSecret = @"OH0beWXoas6VOKqWq6_SvM5i";
+static NSString *kMyClientID = @"471799291546-hudka7jkgjsgtub7jnniblqe3lnoggcn.apps.googleusercontent.com";
+static NSString *kMyClientSecret = @"zeAwF9BC1_BeokXZWxPZMpZK";
 
 - (void)viewDidLoad
 {

@@ -38,7 +38,7 @@
     titleFontDetails = [NSArray arrayWithObjects:@"Helvetica-Bold",[NSNumber numberWithFloat:20.0],[UIColor colorWithRed:1.0 green:0.36 blue:0.2 alpha:1.0], nil];
     eventVenueFontDetails = [NSArray arrayWithObjects:@"Helvetica",[NSNumber numberWithFloat:15.0],[UIColor lightGrayColor], nil];
     subTitleFontDetails = [NSArray arrayWithObjects:@"Helvetica-Bold",[NSNumber numberWithFloat:17.0],[UIColor colorWithRed:1.0 green:0.36 blue:0.2 alpha:1.0], nil];
-    textFontDetails = [NSArray arrayWithObjects:@"Helvetica-Bold",[NSNumber numberWithFloat:15.0],[UIColor whiteColor], nil];
+    textFontDetails = [NSArray arrayWithObjects:@"Helvetica-Bold",[NSNumber numberWithFloat:13.0],[UIColor whiteColor], nil];
 }
 
 -(void) getMeetingDetails
