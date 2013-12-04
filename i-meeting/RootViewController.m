@@ -27,7 +27,6 @@
     // URL to generate QR Code
     // https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=Hello%20World
     [super viewDidLoad];
-    [self prepareQrCodeReader];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -41,47 +40,9 @@
     }
 }
 
-- (void)prepareQrCodeReader
-{
-    ZBarReaderViewController *reader = self;
-    reader.readerDelegate = self;
-    reader.supportedOrientationsMask = ZBarOrientationMaskAll;
-    reader.sourceType = UIImagePickerControllerSourceTypeCamera;
-    reader.showsZBarControls = NO;
-    reader.readerView.frame = CGRectMake(0,  0 , 320 , 480);
-    [scanner setSymbology: ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
-}
-
-- (NSString *)getScannedCode:(NSDictionary *)info
-{
-    id<NSFastEnumeration> results = [info objectForKey: ZBarReaderControllerResults];
-    ZBarSymbol *symbol = nil;
-    for(symbol in results)
-        break;
-    return symbol.data;
-}
-
 - (IBAction)signOut:(id)sender {
     [[SignInHandler instance] signOut];
     [self performSegueWithIdentifier:@"signOut" sender:self];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)reader didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    NSString *scannedCode = [self getScannedCode:info];
-
-    if ([[QRCodeManager instance] validateQRCode:scannedCode])
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid QR Code" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-    }
-    else
-    {
-        NSArray *arr = [scannedCode componentsSeparatedByString: @"="];
-        NSArray *arr2 = [arr[0] componentsSeparatedByString: @"\\"];
-        self.meetingRoomName = arr2[1];
-        self.calendarId = arr[1];
-        [self performSegueWithIdentifier:@"calendarSegue" sender:self];
-    }
-}
 @end

@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
 
-@interface RootViewController : ZBarReaderViewController <ZBarReaderDelegate>
+@interface RootViewController : UIViewController
 
 - (void)prepareQrCodeReader;
 - (NSString *)getScannedCode:(NSDictionary *)info;
