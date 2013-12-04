@@ -11,6 +11,8 @@
 		209DE3DC168AF5B500AD97ED /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 209DE3DB168AF5B500AD97ED /* images.jpg */; };
 		209DE3DE168AF76A00AD97ED /* index.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 209DE3DD168AF76A00AD97ED /* index.jpg */; };
 		371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 371A311B16C38B78001BFCF2 /* CalendarEvent.m */; };
+		57CDA66F184F99BC00533EA8 /* libEstimoteSDK7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDA66E184F99BC00533EA8 /* libEstimoteSDK7.a */; };
+		57CDA670184F99BC00533EA8 /* libEstimoteSDK7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDA66E184F99BC00533EA8 /* libEstimoteSDK7.a */; };
 		830B4C9E1681C433001C743E /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B4C9D1681C433001C743E /* SignInViewController.m */; };
 		8318BDE2163715C6003E2B01 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE1163715C6003E2B01 /* Security.framework */; };
 		8318BDE416371610003E2B01 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE316371610003E2B01 /* SystemConfiguration.framework */; };
@@ -72,6 +74,11 @@
 		209DE3DD168AF76A00AD97ED /* index.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = index.jpg; sourceTree = "<group>"; };
 		371A311A16C38B78001BFCF2 /* CalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarEvent.h; sourceTree = "<group>"; };
 		371A311B16C38B78001BFCF2 /* CalendarEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarEvent.m; sourceTree = "<group>"; };
+		57CDA66A184F99BC00533EA8 /* ESTBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeacon.h; sourceTree = "<group>"; };
+		57CDA66B184F99BC00533EA8 /* ESTBeaconDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconDefinitions.h; sourceTree = "<group>"; };
+		57CDA66C184F99BC00533EA8 /* ESTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconManager.h; sourceTree = "<group>"; };
+		57CDA66D184F99BC00533EA8 /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
+		57CDA66E184F99BC00533EA8 /* libEstimoteSDK7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK7.a; sourceTree = "<group>"; };
 		830B4C9C1681C433001C743E /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		830B4C9D1681C433001C743E /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		8318BDE1163715C6003E2B01 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -155,6 +162,7 @@
 				83AC4E0616281ED9000C60C9 /* AudioToolbox.framework in Frameworks */,
 				83AC4E0416281EC9000C60C9 /* CoreMedia.framework in Frameworks */,
 				83AC4E0216281EC3000C60C9 /* AVFoundation.framework in Frameworks */,
+				57CDA66F184F99BC00533EA8 /* libEstimoteSDK7.a in Frameworks */,
 				83AC4DAB16281DE5000C60C9 /* UIKit.framework in Frameworks */,
 				83AC4DAD16281DE5000C60C9 /* Foundation.framework in Frameworks */,
 				83AC4DAF16281DE5000C60C9 /* CoreGraphics.framework in Frameworks */,
@@ -169,6 +177,7 @@
 				83AC4E1316281F24000C60C9 /* UIKit.framework in Frameworks */,
 				83AC4E1416281F24000C60C9 /* Foundation.framework in Frameworks */,
 				83AC4E1516281F24000C60C9 /* CoreGraphics.framework in Frameworks */,
+				57CDA670184F99BC00533EA8 /* libEstimoteSDK7.a in Frameworks */,
 				83AC4E2C16281F42000C60C9 /* GHUnitIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,9 +188,30 @@
 		35423314FE3E452BBA4BA406 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57CDA668184F99BC00533EA8 /* EstimoteSDK */,
 				A79F9A93165F4982877AD5F2 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		57CDA668184F99BC00533EA8 /* EstimoteSDK */ = {
+			isa = PBXGroup;
+			children = (
+				57CDA669184F99BC00533EA8 /* Headers */,
+				57CDA66E184F99BC00533EA8 /* libEstimoteSDK7.a */,
+			);
+			path = EstimoteSDK;
+			sourceTree = "<group>";
+		};
+		57CDA669184F99BC00533EA8 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				57CDA66A184F99BC00533EA8 /* ESTBeacon.h */,
+				57CDA66B184F99BC00533EA8 /* ESTBeaconDefinitions.h */,
+				57CDA66C184F99BC00533EA8 /* ESTBeaconManager.h */,
+				57CDA66D184F99BC00533EA8 /* ESTBeaconRegion.h */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 		83A9949D16441AAA009CD997 /* Images */ = {
@@ -380,8 +410,6 @@
 			mainGroup = 83AC4D9B16281DE5000C60C9;
 			productRefGroup = 83AC4DA716281DE5000C60C9 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				83AC4DA516281DE5000C60C9 /* i-meeting */,
@@ -599,13 +627,22 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "i-meeting/i-meeting-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/GTMHTTPFetcher\"",
+					"\"${PODS_ROOT}/Headers/Google-API-Client\"",
+					"\"${PODS_ROOT}/Headers/SBJson\"",
+					"\"${PODS_ROOT}/Headers/gtm-oauth2\"",
+					"\"$(SRCROOT)/../EstimoteSDK/Headers\"",
+				);
 				INFOPLIST_FILE = "i-meeting/i-meeting-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ZBarSDK\"",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"$(FRANK_LIBRARY_SEARCH_PATHS)",
+					"/Users/harib/work/Official/i-meeting/externals/EstimoteSDK",
+					"/Users/harib/work/Official/i-meeting/EstimoteSDK",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -647,12 +684,21 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "i-meeting/i-meeting-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/GTMHTTPFetcher\"",
+					"\"${PODS_ROOT}/Headers/Google-API-Client\"",
+					"\"${PODS_ROOT}/Headers/SBJson\"",
+					"\"${PODS_ROOT}/Headers/gtm-oauth2\"",
+					"\"$(SRCROOT)/../EstimoteSDK/Headers\"",
+				);
 				INFOPLIST_FILE = "i-meeting/i-meeting-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ZBarSDK\"",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"/Users/harib/work/Official/i-meeting/externals/EstimoteSDK",
+					"/Users/harib/work/Official/i-meeting/EstimoteSDK",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -691,8 +737,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"$(FRANK_LIBRARY_SEARCH_PATHS)",
+					"/Users/harib/work/Official/i-meeting/externals/EstimoteSDK",
+					"/Users/harib/work/Official/i-meeting/EstimoteSDK",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -724,7 +772,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"/Users/harib/work/Official/i-meeting/externals/EstimoteSDK",
+					"/Users/harib/work/Official/i-meeting/EstimoteSDK",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
