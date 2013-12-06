@@ -13,6 +13,10 @@
 		371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 371A311B16C38B78001BFCF2 /* CalendarEvent.m */; };
 		57CDA66F184F99BC00533EA8 /* libEstimoteSDK7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDA66E184F99BC00533EA8 /* libEstimoteSDK7.a */; };
 		57CDA670184F99BC00533EA8 /* libEstimoteSDK7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDA66E184F99BC00533EA8 /* libEstimoteSDK7.a */; };
+		5E75D506BA1BD793025DAAB5 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E75D09C25AA07CD26D2AE97 /* Room.m */; };
+		5E75D8E6C9F281B0A641966C /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E75D09C25AA07CD26D2AE97 /* Room.m */; };
+		5E75D936BB606582E25E8F5D /* Rooms.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E75DF8D0237CED970FF4060 /* Rooms.m */; };
+		5E75DE9C761FDAC1605E91B0 /* Rooms.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E75DF8D0237CED970FF4060 /* Rooms.m */; };
 		830B4C9E1681C433001C743E /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B4C9D1681C433001C743E /* SignInViewController.m */; };
 		8318BDE2163715C6003E2B01 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE1163715C6003E2B01 /* Security.framework */; };
 		8318BDE416371610003E2B01 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8318BDE316371610003E2B01 /* SystemConfiguration.framework */; };
@@ -79,6 +83,10 @@
 		57CDA66C184F99BC00533EA8 /* ESTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconManager.h; sourceTree = "<group>"; };
 		57CDA66D184F99BC00533EA8 /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconRegion.h; sourceTree = "<group>"; };
 		57CDA66E184F99BC00533EA8 /* libEstimoteSDK7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK7.a; sourceTree = "<group>"; };
+		5E75D09C25AA07CD26D2AE97 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		5E75D6B9F5CAB1BC94BCE61F /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		5E75D74F94C288CBBCFD7847 /* Rooms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rooms.h; sourceTree = "<group>"; };
+		5E75DF8D0237CED970FF4060 /* Rooms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rooms.m; sourceTree = "<group>"; };
 		830B4C9C1681C433001C743E /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		830B4C9D1681C433001C743E /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		8318BDE1163715C6003E2B01 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -310,6 +318,10 @@
 				83AC4DA916281DE5000C60C9 /* Frameworks */,
 				83AC4DB116281DE5000C60C9 /* Supporting Files */,
 				83AC4E1616281F24000C60C9 /* i-meeting-tests */,
+				5E75DF8D0237CED970FF4060 /* Rooms.m */,
+				5E75D74F94C288CBBCFD7847 /* Rooms.h */,
+				5E75D09C25AA07CD26D2AE97 /* Room.m */,
+				5E75D6B9F5CAB1BC94BCE61F /* Room.h */,
 			);
 			path = "i-meeting";
 			sourceTree = "<group>";
@@ -523,6 +535,8 @@
 				209DE3D2168AD46000AD97ED /* DetailedViewController.m in Sources */,
 				371A311C16C38B78001BFCF2 /* CalendarEvent.m in Sources */,
 				8361797216BA6F1800DEB869 /* GTLCalendarManager.m in Sources */,
+				5E75D936BB606582E25E8F5D /* Rooms.m in Sources */,
+				5E75D8E6C9F281B0A641966C /* Room.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +547,8 @@
 				836F9FC516493486009E61AD /* QRCodeManager.m in Sources */,
 				83AC4E1D16281F24000C60C9 /* main.m in Sources */,
 				83AC4E2F16282032000C60C9 /* QRCodeManagerTest.m in Sources */,
+				5E75DE9C761FDAC1605E91B0 /* Rooms.m in Sources */,
+				5E75D506BA1BD793025DAAB5 /* Room.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
